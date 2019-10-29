@@ -122,6 +122,8 @@
                     <a target="_blank" class="margin btn btn-sm bg-blue" href="http://tinymax.cn">JJ-MAX</a>
                     <a target="_blank" class="margin btn btn-sm bg-blue" href="http://keron-relo.com">Keron</a>
                     <a target="_blank" class="margin btn btn-sm bg-blue" href="http://yunfei-piano.com">云飞</a>
+                    <a target="_blank" class="margin btn btn-sm bg-blue" href="http://seo.shmitong.com/">速效云</a>
+                    <a target="_blank" class="margin btn btn-sm bg-blue" href="http://baixing.suxiaoyun.cn/">速效云-百姓网</a>
                 </div>
                 <div>
                     <a target="_blank" class="margin btn btn-sm bg-blue" href="http://seo.mitong.com">SEO</a>
@@ -130,6 +132,8 @@
                     <a target="_blank" class="margin btn btn-sm bg-blue" href="http://local-jjmax.com">JJ-MAX</a>
                     <a target="_blank" class="margin btn btn-sm bg-blue" href="http://local-keron.com">Keron</a>
                     <a target="_blank" class="margin btn btn-sm bg-blue" href="http://local-yunfei.com">云飞</a>
+                    <a target="_blank" class="margin btn btn-sm bg-blue" href="http://seo.mitong.com/">速效云</a>
+                    <a target="_blank" class="margin btn btn-sm bg-blue" href="http://api.mitong.com/">速效云-百姓网</a>
                 </div>
             </div>
 

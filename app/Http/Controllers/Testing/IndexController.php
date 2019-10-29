@@ -20,6 +20,10 @@ class IndexController extends Controller
     }
 
 
+
+
+
+
     public function seo_youbangyun()
     {
         $post_data['content'] = json_encode(request()->all());
