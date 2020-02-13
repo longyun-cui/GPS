@@ -1,10 +1,10 @@
 {{--最新资讯--}}
-<section class="module-container bg-light">
+<section class="module-container bg-light bg-grey">
     <div class="container main-container">
 
         <header class="module-row module-header-container text-center">
-            <div class="wow slideInLeft module-title-row title-with-double-line color-1 border-dark title-h2"><b>Article-list</b></div>
-            <div class="wow slideInRight module-subtitle-row color-5 title-h4"><b>Article-description</b></div>
+            <div class="wow slideInLeft module-title-row title-with-double-line title-md _bold">Article-list</div>
+            <div class="wow slideInRight module-subtitle-row title-sm">Article-description</div>
         </header>
 
         <div class="module-row module-body-container section-block-container bg-white">
@@ -25,7 +25,7 @@
 
             <div>
                 <div class="col-lg-4 col-md-4 col-sm-6 item-col">
-                    @include('library.section.section-article-list-2', ['items'=>$items])
+                    @include('library.section.section-article-list-1', ['items'=>$items])
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-6 item-col">
                     @include('library.section.section-article-list-2', ['items'=>$items])

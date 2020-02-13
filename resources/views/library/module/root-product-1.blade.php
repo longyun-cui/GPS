@@ -1,10 +1,10 @@
 {{--main--}}
-<section class="module-container bg-light">
+<section class="module-container bg-orange-1 bg-dark">
     <div class="container main-container">
 
         <header class="module-row module-header-container text-center">
-            <div class="wow slideInLeft module-title-row title-with-double-line color-1 border-light title-h2"><b>Product-1</b></div>
-            <div class="wow slideInRight module-subtitle-row color-5 title-h4"><b>description-1</b></div>
+            <div class="wow slideInLeft module-title-row title-with-double-line title-md"><b>Product-1</b></div>
+            <div class="wow slideInRight module-subtitle-row title-h4">Product-Description-1</div>
         </header>
 
         <div class="module-row module-body-container">
@@ -23,10 +23,12 @@
 
                         <figure class="text-container clearfix">
                             <div class="text-box">
-                                <div class="text-title-row multi-ellipsis-2"><a href="{{ url('/item/'.$v->id) }}"><b>{{ $v->title or '' }}</b></a></div>
+                                <div class="text-title-row multi-ellipsis-1" title="{{ $v->title or '' }}">
+                                    <a href="{{ url('/item/'.$v->id) }}"><b>{{ $v->title or '' }}</b></a>
+                                </div>
                                 <div class="text-description-row">
                                     <div>
-                                        <i class="fa fa-cny"></i> <span class="font-18px color-red"><b>{{ $v->custom->price or '' }}</b></span>
+                                        租金：<i class="fa fa-cny"></i> <span class="color-red"><b>{{ $v->custom->price or '' }}</b></span>
                                     </div>
                                     <div>
                                         <span>押金：<i class="fa fa-cny"></i> {{ $v->custom->deposit or '' }} </span>
@@ -36,7 +38,7 @@
                             <div class="text-box with-border-top text-center clearfix">
                                 <a target="_blank" href="{{ url('/item/'.$v->id) }}">
                                     <button class="btn btn-default btn-flat btn-3d btn-clicker" data-hover="点击查看" style="border-radius:0;">
-                                        <strong>查看详情</strong>
+                                        查看详情
                                     </button>
                                 </a>
                             </div>

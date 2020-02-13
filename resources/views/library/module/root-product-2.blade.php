@@ -1,10 +1,10 @@
 {{--最新资讯--}}
-<section class="module-container bg-dark text-center">
+<section class="module-container bg-dark bg-grey-27 text-center">
     <div class="container main-container">
 
         <header class="module-row module-header-container text-center">
-            <div class="wow slideInLeft module-title-row title-with-double-line color-e border-light title-h2">Product-2</div>
-            <div class="wow slideInRight module-subtitle-row color-b title-h4">description-2</div>
+            <div class="wow slideInLeft module-title-row title-with-double-line title-md">Product-2</div>
+            <div class="wow slideInRight module-subtitle-row title-sm">description-2</div>
         </header>
 
         <div class="module-row module-body-container ">
@@ -23,7 +23,9 @@
 
                         <figure class="text-container clearfix">
                             <div class="text-box">
-                                <div class="text-title-row multi-ellipsis-2"><a href="{{ url('/item/'.$v->id) }}"><b>{{ $v->title or '' }}</b></a></div>
+                                <div class="text-title-row multi-ellipsis-1" title="{{ $v->title or '' }}">
+                                    <a href="{{ url('/item/'.$v->id) }}"><b>{{ $v->title or '' }}</b></a>
+                                </div>
                                 <div class="hidden-xs"><i class="fa fa-map-marker"></i> {{ $v->custom->deposit or '' }}</div>
                             </div>
                             <div class="text-box with-border-top text-center clearfix hidden-xs">
@@ -41,7 +43,7 @@
         </div>
 
         <footer class="module-row module-footer-container text-center">
-            <a href="{{ url('/cooperation/list') }}" class="view-more style-light">查看更多 <i class="fa fa-hand-o-right"></i></a>
+            <a href="{{ url('/cooperation/list') }}" class="view-more">查看更多 <i class="fa fa-hand-o-right"></i></a>
         </footer>
 
     </div>

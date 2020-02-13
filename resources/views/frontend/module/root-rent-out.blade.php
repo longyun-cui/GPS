@@ -4,13 +4,13 @@
 
         <header class="module-row module-header-container text-center">
             <div class="wow slideInLeft module-title-row title-with-double-line color-1 border-light title-h2"><b>钢琴出租</b></div>
-            <div class="wow slideInRight module-subtitle-row color-5 title-h4"><b>上海地区最实惠的租琴</b></div>
+            <div class="wow slideInRight module-subtitle-row color-5 title-h4">上海地区最实惠的租琴</div>
         </header>
 
         <div class="module-row module-body-container">
             @foreach($items as $v)
                 <div class="item-col col-lg-3 col-md-4 col-sm-6 col-xs-6">
-                    <div class="item-container">
+                    <div class="item-container item-with-padding">
 
                         <figure class="image-container padding-top-3-4">
                             <div class="image-box">

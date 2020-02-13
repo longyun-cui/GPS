@@ -1,17 +1,17 @@
 {{--main--}}
-<section class="module-container bg-blue-1" id="">
+<section class="module-container bg-dark bg-blue-1" id="">
     <div class="container main-container">
 
         <header class="module-row module-header-container text-center">
-            <div class="wow slideInLeft module-title-row title-with-double-line color-e border-light title-h2"><b>section-left-right-bar</b></div>
-            <div class="wow slideInRight module-subtitle-row color-b title-h4"><b>description-left-right-bar</b></div>
+            <div class="wow slideInLeft module-title-row title-with-double-line title-md _blod">Section-Left-Right-Bar</div>
+            <div class="wow slideInRight module-subtitle-row title-sm">Description-Left-Right-Bar</div>
         </header>
 
         <div class="module-row module-body-container">
             @foreach($items as $v)
-                <div class="col-lg-4 col-md-4 col-sm-6 item-col">
+                <div class="col-lg-6 col-md-4 col-sm-6 item-col" >
                     <a class="zoom- clearfix" target="_blank" href="{{ url('/item/'.$v->id) }}">
-                        <div class="item-container model-left-right padding-8px bg-light">
+                        <div class="item-container model-left-right padding-8px bg-grey-f5">
 
                             <figure class="image-container">
                                 <div class="image-box">
@@ -24,11 +24,11 @@
                                 <div class="text-box">
                                     <div class="text-title-row multi-ellipsis-2"><b>{{ $v->title or '' }}</b></div>
                                     <div class="text-description-row">
-                                        <div>
-                                            <i class="fa fa-cny"></i> <span class="font-16px color-red"><b>{{ $v->custom->price or '' }}</b></span>
+                                        <div class="row-sm">
+                                            租金：<i class="fa fa-cny"></i> <span class="color-red"><b>{{ $v->custom->price or '' }}</b></span>
                                         </div>
-                                        <div>
-                                            <span><i class="fa fa-cny"></i>123</span>
+                                        <div class="row-md">
+                                            <span>押金：<i class="fa fa-cny"></i>123</span>
                                             <span><i class="fa fa-share-alt"></i>1468</span>
                                             <span><i class="fa fa-star"></i>560</span>
                                         </div>
@@ -39,7 +39,6 @@
                         </div>
                     </a>
                 </div>
-
             @endforeach
         </div>
 
