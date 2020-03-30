@@ -1,18 +1,20 @@
-{{--main--}}
-<section class="module-container bg-orange-1 bg-dark">
+{{--<!-- START: 优势 -->--}}
+<section class="module-container bg-dark bg-grey-27 text-center">
     <div class="container main-container">
 
+
         <header class="module-row module-header-container text-center">
-            <div class="wow slideInLeft module-title-row title-with-double-line title-md"><b>Product-1</b></div>
-            <div class="wow slideInRight module-subtitle-row title-h4">Product-Description-1</div>
+            <div class="wow slideInLeft module-title-row title-with-double-line title-md _bold">Product-2</div>
+            <div class="wow slideInRight module-subtitle-row title-sm">product-2-description</div>
         </header>
 
-        <div class="module-row module-body-container">
-            @foreach($items as $v)
-                <div class="item-col col-lg-3 col-md-4 col-sm-6 col-xs-6" style="display: table-cell;">
-                    <div class="item-container">
 
-                        <figure class="image-container padding-top-3-4">
+        <div class="module-row module-body-container ">
+            @foreach($items as $v)
+                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 item-col">
+                    <div class="item-container padding-8px">
+
+                        <figure class="image-container padding-top-4-5">
                             <div class="image-box">
                                 <a class="clearfix zoom-" target="_blank"  href="{{ url('/item/'.$v->id) }}">
                                     <img class="grow" data-action="zoom-" src="{{ config('common.host.'.env('APP_ENV').'.cdn').'/'.$v->cover_pic }}" alt="Property Image">
@@ -26,19 +28,12 @@
                                 <div class="text-title-row multi-ellipsis-1" title="{{ $v->title or '' }}">
                                     <a href="{{ url('/item/'.$v->id) }}"><b>{{ $v->title or '' }}</b></a>
                                 </div>
-                                <div class="text-description-row">
-                                    <div>
-                                        租金：<i class="fa fa-cny"></i> <span class="color-red"><b>{{ $v->custom->price or '' }}</b></span>
-                                    </div>
-                                    <div>
-                                        <span>押金：<i class="fa fa-cny"></i> {{ $v->custom->deposit or '' }} </span>
-                                    </div>
-                                </div>
+                                <div class="hidden-xs"><i class="fa fa-map-marker"></i> {{ $v->custom->deposit or '' }}</div>
                             </div>
-                            <div class="text-box with-border-top text-center clearfix">
+                            <div class="text-box with-border-top text-center clearfix hidden-xs">
                                 <a target="_blank" href="{{ url('/item/'.$v->id) }}">
-                                    <button class="btn btn-default btn-flat btn-3d btn-clicker" data-hover="点击查看" style="border-radius:0;">
-                                        查看详情
+                                    <button class="btn btn-default btn-3d btn-clicker" data-hover="点击查看" style="border-radius:0;">
+                                        <strong>查看详情</strong>
                                     </button>
                                 </a>
                             </div>
@@ -49,9 +44,12 @@
             @endforeach
         </div>
 
+
         <footer class="module-row module-footer-container text-center">
-            <a href="{{ url('/rent-out/list') }}" class="view-more style-dark">查看更多 <i class="fa fa-hand-o-right"></i></a>
+            <a href="{{ url('/cooperation/list') }}" class="view-more">查看更多 <i class="fa fa-hand-o-right"></i></a>
         </footer>
+
 
     </div>
 </section>
+{{--<!-- END -->--}}

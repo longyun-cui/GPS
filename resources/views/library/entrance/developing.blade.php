@@ -32,25 +32,30 @@
 
     <div class="page-root">
 
-        @include('library.module.section-left-right-bar', ['items'=>$items])
 
-        @include('library.module.root-service-list', ['items'=>$items])
+        @include('library.module.module-product-1', ['items'=>$items])
 
-        @include('library.module.root-article-list', ['items'=>$items])
+        @include('library.module.module-product-2', ['items'=>$items])
 
-        @include('library.module.root-product-1', ['items'=>$items])
+        @include('library.module.module-block-bar', ['items'=>$items])
 
-        @include('library.module.root-product-2', ['items'=>$items])
+        @include('library.module.module-left-right', ['items'=>$items])
 
-        @include('library.module.root-recycle')
+        @include('library.module.module-article-list', ['items'=>$items])
 
-        @include('library.module.root-advantage-1')
+        @include('library.module.module-recycle')
 
-        @include('library.module.root-coverage', ['items'=>$items])
+        @include('library.module.module-advantage-1')
 
-        @include('frontend.module.root-qrcode')
+        @include('library.module.module-coverage', ['items'=>$items])
 
-        @include('library.module.root-client-1')
+        @include('library.module.module-qrcode')
+
+        @include('library.module.module-client-1')
+
+
+        @include('library.group.group-1', ['data'=>$item,'items'=>$items])
+
 
     </div>
 

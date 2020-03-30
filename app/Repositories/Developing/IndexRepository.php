@@ -27,6 +27,10 @@ class IndexRepository {
 //        $info = json_decode(json_encode(config('mitong.company.info')));
 //        $menus = RootMenu::where(['active'=>1])->orderby('order', 'asc')->get();
 
+        $item = RootItem::where(['category'=>11, 'active'=>1])->orderby('id', 'desc')->first();
+        $item->custom = json_decode($item->custom);
+        $item->custom2 = json_decode($item->custom2);
+
         $items = RootItem::where(['category'=>11, 'active'=>1])->orderby('id', 'desc')->limit(8)->get();
         foreach($items as $item)
         {
@@ -34,7 +38,7 @@ class IndexRepository {
         }
 
 
-        $html = view('library.entrance.developing')->with(['items'=>$items])->__toString();
+        $html = view('library.entrance.developing')->with(['item'=>$item,'items'=>$items])->__toString();
         return $html;
     }
 

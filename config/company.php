@@ -19,7 +19,7 @@
             'mobile' => '158-0068-9433',
             'email' => 'longyun@softorg.cn',
             'wechat_id' => '',
-            'wechat_qrcode' => '/custom/images/wechat.jpeg',
+            'wechat_qrcode' => '/custom/images/wechat_qrcode.jpg',
             'weibo_name' => '',
             'weibo_address' => '',
         ],

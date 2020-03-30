@@ -1,11 +1,13 @@
-{{--最新资讯--}}
+{{--<!-- START: 优势 -->--}}
 <section class="module-container bg-dark" id="home-property-for-rent-listing">
     <div class="container main-container">
 
+
         <header class="module-row module-header-container text-center">
             <div class="wow slideInLeft module-title-row title-with-double-line title-md _blod">Coverage</div>
-            <div class="wow slideInRight module-subtitle-row  title-sm">description-coverage</div>
+            <div class="wow slideInRight module-subtitle-row title-sm">coverage-description</div>
         </header>
+
 
         <div class="module-row module-body-container root-slider">
             @foreach($items as $v)
@@ -51,9 +53,12 @@
             @endforeach
         </div>
 
+
         <footer class="module-row module-footer-container text-center">
             <a href="{{ url('/coverage/list') }}" class="view-more">查看更多 <i class="fa fa-hand-o-right"></i></a>
         </footer>
 
+
     </div>
 </section>
+{{--<!-- END -->--}}

@@ -7,6 +7,7 @@ body {
 img { max-width:100%; }
 
 ._none { display:none !important; }
+._bold { font-weight:bold !important; }
 ._pointer { cursor:pointer !important; }
 
 .width-auto { width:auto !important; }
@@ -485,8 +486,8 @@ img { max-width:100%; }
 }
 .bg-orange-1 {
     background: #f54ea2;
-    background: -webkit-gradient(linear,left top,right top,from(#ffa500),to(#fd8747));
-    background: linear-gradient(to right,#ffa500 0,#fd8747 100%);
+    background: -webkit-gradient(linear,left top,right top,from(#fe962f),to(#fd8747));
+    background: linear-gradient(to right,#fe962f 0,#fd8747 100%);
 }
 
 

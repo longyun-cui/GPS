@@ -1,13 +1,16 @@
-{{--优势--}}
-<section class="module-container text-center">
+{{--<!-- START: 优势 -->--}}
+<section class="module-container text-center bg-light" id="">
     <div class="container main-container">
 
+
         <header class="module-row module-header-container text-center">
-            <div class="wow slideInLeft module-title-row title-with-double-line color-1 border-light title-h2">advantage-1</div>
-            <div class="wow slideInRight module-subtitle-row color-5 title-h4"><b>advantage-description</b></div>
+            <div class="wow slideInLeft module-title-row title-with-double-line title-md _bold">Advantage-1</div>
+            <div class="wow slideInRight module-subtitle-row title-sm">advantage-description-1</div>
         </header>
 
+
         <div class="module-row module-body-container">
+
             <div class="item-col col-md-3 col-sm-6 col-xs-6">
                 <div class="feature clearfix">
                     <i class="icon"><img src="{{ url('/templates/moban2030/assets/images/features/1.png') }}" alt="Feature Icon"></i>
@@ -36,11 +39,10 @@
                     <p>我司选择的房源开发商往往拥有十余年甚至数十年的房产开发经历，。</p>
                 </div>
             </div>
+
         </div>
 
-    </div>
-    <div class="container">
-        <div class="row">
-        </div>
+
     </div>
 </section>
+{{--<!-- END -->--}}
