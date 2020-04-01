@@ -14,10 +14,10 @@
                 <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 item-col">
                     <div class="item-container padding-8px">
 
-                        <figure class="image-container padding-top-3-4">
+                        <figure class="image-container padding-top-3-5">
                             <div class="image-box">
                                 <a class="clearfix zoom-" target="_blank"  href="{{ url('/item/'.$v->id) }}">
-                                    <img class="grow" data-action="zoom-" src="{{ config('common.host.'.env('APP_ENV').'.cdn').'/'.$v->cover_pic }}" alt="Property Image">
+                                    <img class="grow" data-action="zoom-" src="{{ url(env('DOMAIN_CDN').'/'.$v->cover_pic) }}" alt="Image">
                                 </a>
                                 {{--<span class="btn btn-warning">热销中</span>--}}
                             </div>
@@ -33,10 +33,10 @@
                                     <div>
                                         <span class="property-location"><i class="fa fa-map-marker"></i> 14 Tottenham Road, London</span>
                                     </div>
-                                    <span><i class="fa fa-arrows-alt"></i> 3060 SqFt</span>
-                                    <span><i class="fa fa-bed"></i> 3 Beds</span>
-                                    <span><i class="fa fa-bathtub"></i> 3 Baths</span>
-                                    <span><i class="fa fa-cab"></i> Yes</span>
+                                    {{--<span><i class="fa fa-arrows-alt"></i> 3060 SqFt</span>--}}
+                                    {{--<span><i class="fa fa-bed"></i> 3 Beds</span>--}}
+                                    {{--<span><i class="fa fa-bathtub"></i> 3 Baths</span>--}}
+                                    {{--<span><i class="fa fa-cab"></i> Yes</span>--}}
                                 </div>
                             </div>
                             <div class="text-box with-border-top text-right clearfix">

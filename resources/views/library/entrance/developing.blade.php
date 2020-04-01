@@ -33,9 +33,11 @@
     <div class="page-root">
 
 
-        @include('library.module.module-product-1', ['items'=>$items])
+        @include('library.module.module-product-1-1', ['items'=>$items])
+        @include('library.module.module-product-1-2', ['items'=>$items])
 
-        @include('library.module.module-product-2', ['items'=>$items])
+        @include('library.module.module-product-2-1', ['items'=>$items])
+        @include('library.module.module-product-2-2', ['items'=>$items])
 
         @include('library.module.module-block-bar', ['items'=>$items])
 
@@ -46,10 +48,12 @@
         @include('library.module.module-recycle')
 
         @include('library.module.module-advantage-1')
+        @include('library.module.module-advantage-2')
 
         @include('library.module.module-coverage', ['items'=>$items])
 
         @include('library.module.module-qrcode')
+        @include('library.module.module-video')
 
         @include('library.module.module-client-1')
 

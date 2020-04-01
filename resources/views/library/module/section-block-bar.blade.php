@@ -1,4 +1,4 @@
-{{--main--}}
+{{--<!-- START: module-link-contact -->--}}
 <section class="section-container bg-light bg-f">
     <div class="row">
 
@@ -22,13 +22,17 @@
 
                             <figure class="text-container">
                                 <div class="text-box">
-                                    <div class="text-title-row"><b>{{ $v->title or '' }}</b></div>
+                                    <div class="text-title-row multi-ellipsis-1">
+                                        <span class="multi-ellipsis-1 _bold">{{ $v->title or '' }}</span>
+                                    </div>
                                     <div class="text-description-row">
                                         <div>
-                                            <span>租金：<i class="fa fa-cny"></i> <span class="color-red">{{ $v->custom->price or '' }}</span></span>
+                                            <span>租金：<i class="fa fa-cny"></i></span>
+                                            <span class="color-red">{{ $v->custom->price or '' }}</span>
                                         </div>
                                         <div>
-                                            <span>押金：<i class="fa fa-cny"></i> {{ $v->custom->deposit or '' }} </span>
+                                            <span>押金：<i class="fa fa-cny"></i> </span>
+                                            <span>{{ $v->custom->deposit or '' }} </span>
                                         </div>
                                     </div>
                                 </div>
@@ -37,7 +41,6 @@
                         </div>
                     </a>
                 </div>
-
             @endforeach
         </div>
 
@@ -47,3 +50,4 @@
 
     </div>
 </section>
+{{--<!-- END: module-link-contact -->--}}

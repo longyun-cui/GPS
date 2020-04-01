@@ -26,7 +26,7 @@
             {{--经纪人--}}
             {{--@include('library.module.section-agent')--}}
 
-            @include('library.module.section-rent-out', ['items'=>$items])
+            @include('library.module.section-block-bar', ['items'=>$items])
 
     </div>
 </div>

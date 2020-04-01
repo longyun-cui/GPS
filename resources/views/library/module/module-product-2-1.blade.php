@@ -1,11 +1,11 @@
 {{--<!-- START: 优势 -->--}}
-<section class="module-container bg-orange-1 bg-dark">
+<section class="module-container text-center bg-dark bg-green-1">
     <div class="container main-container">
 
 
         <header class="module-row module-header-container text-center">
-            <div class="wow slideInLeft module-title-row title-with-double-line title-md _bold">Product-1</div>
-            <div class="wow slideInRight module-subtitle-row title-sm">product-1-description</div>
+            <div class="wow slideInLeft module-title-row title-with-double-line title-md _bold">Product-2-1</div>
+            <div class="wow slideInRight module-subtitle-row title-sm">product-2-1-description</div>
         </header>
 
 
@@ -26,22 +26,22 @@
                         <figure class="text-container clearfix">
                             <div class="text-box">
                                 <div class="text-title-row multi-ellipsis-1" title="{{ $v->title or '' }}">
-                                    <a href="{{ url('/item/'.$v->id) }}"><b>{{ $v->title or '' }}</b></a>
+                                    <a href="{{ url('/item/'.$v->id) }}" class="multi-ellipsis-1 color-blue-2 content-lg _bold">{{ $v->title or '' }}</a>
                                 </div>
-                                <div class="text-description-row">
+                                <div class="text-description-row _none">
                                     <div>
-                                        租金：<i class="fa fa-cny"></i> <span class="color-red"><b>{{ $v->custom->price or '' }}</b></span>
+                                        <span>租金：<i class="fa fa-cny"></i></span>
+                                        <span class="color-red _bold">{{ $v->custom->price or '' }}</span>
                                     </div>
                                     <div>
-                                        <span>押金：<i class="fa fa-cny"></i> {{ $v->custom->deposit or '' }} </span>
+                                        <span>押金：<i class="fa fa-cny"></i></span>
+                                        <span>{{ $v->custom->deposit or '' }} </span>
                                     </div>
                                 </div>
                             </div>
                             <div class="text-box with-border-top text-center clearfix">
-                                <a target="_blank" href="{{ url('/item/'.$v->id) }}">
-                                    <button class="btn btn-default btn-flat btn-3d btn-clicker" data-hover="点击查看" style="border-radius:0;">
-                                        查看详情
-                                    </button>
+                                <a href="{{ url('/item/'.$v->id) }}" class="">
+                                    <button class="btn btn-item-1">了解更多</button>
                                 </a>
                             </div>
                         </figure>
@@ -53,7 +53,9 @@
 
 
         <footer class="module-row module-footer-container text-center">
-            <a href="{{ url('/rent-out/list') }}" class="view-more style-dark">查看更多 <i class="fa fa-hand-o-right"></i></a>
+            <div class="col-md-4 col-md-offset-4">
+                <a href="javascript:void(0);" class="btn btn-lg btn-block btn-ghost btn-ghost-white" role="button"> 查看更多 </a>
+            </div>
         </footer>
 
 
