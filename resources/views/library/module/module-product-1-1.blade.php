@@ -17,7 +17,7 @@
                         <figure class="image-container padding-top-3-4">
                             <div class="image-box">
                                 <a class="clearfix zoom-" target="_blank"  href="{{ url('/item/'.$v->id) }}">
-                                    <img class="grow" data-action="zoom-" src="{{ config('common.host.'.env('APP_ENV').'.cdn').'/'.$v->cover_pic }}" alt="Property Image">
+                                    <img class="grow" data-action="zoom-" src="{{ url(env('DOMAIN_CDN').'/'.$v->cover_pic) }}" alt="Property Image">
                                 </a>
                                 {{--<span class="btn btn-warning">热销中</span>--}}
                             </div>
@@ -53,7 +53,7 @@
 
 
         <footer class="module-row module-footer-container text-center">
-            <a href="{{ url('/rent-out/list') }}" class="view-more style-dark">查看更多 <i class="fa fa-hand-o-right"></i></a>
+            <a href="{{ url('/') }}" class="view-more style-dark">查看更多 <i class="fa fa-hand-o-right"></i></a>
         </footer>
 
 

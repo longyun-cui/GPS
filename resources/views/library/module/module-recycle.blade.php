@@ -10,7 +10,7 @@
 
 
         <footer class="module-row module-footer-container text-center">
-            <a href="{{ url('/recycle/page') }}" class="view-more style-light" role="button">查看详情 <i class="fa fa-hand-o-right"></i></a>
+            <a href="{{ url('/') }}" class="view-more style-light" role="button">查看详情 <i class="fa fa-hand-o-right"></i></a>
         </footer>
 
 

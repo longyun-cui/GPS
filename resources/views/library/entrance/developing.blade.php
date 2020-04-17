@@ -33,11 +33,14 @@
     <div class="page-root">
 
 
+        @include('library.module.module-1-0', ['data'=>$items])
         @include('library.module.module-product-1-1', ['items'=>$items])
         @include('library.module.module-product-1-2', ['items'=>$items])
 
         @include('library.module.module-product-2-1', ['items'=>$items])
         @include('library.module.module-product-2-2', ['items'=>$items])
+
+        @include('library.module.module-faq-1', ['items'=>$items])
 
         @include('library.module.module-block-bar', ['items'=>$items])
 
@@ -68,7 +71,12 @@
 
 
 
-{{--style--}}
+{{--custom-css&style--}}
+@section('custom-css')
+    <link rel="stylesheet" href="/templates/jiaoben2806/css/bellows.css">
+    <link rel="stylesheet" href="/templates/jiaoben2806/css/bellows-theme.css">
+    {{--<link rel="stylesheet" href="/templates/jiaoben2806/css/main.css">--}}
+@endsection
 @section('custom-style')
 <style>
 </style>
@@ -77,8 +85,18 @@
 
 
 
-{{--style--}}
+{{--custom-js&script--}}
+@section('custom-js')
+    <script src="/templates/jiaoben2806/js/highlight.pack.js"></script>
+    <script src="/templates/jiaoben2806/js/velocity.min.js"></script>
+    <script src="/templates/jiaoben2806/js/bellows.js"></script>
+@endsection
 @section('custom-script')
 <script>
+    $(function() {
+
+        $('.bellows').bellows();
+
+    });
 </script>
 @endsection

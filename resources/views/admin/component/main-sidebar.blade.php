@@ -41,14 +41,15 @@
                 </a>
             </li>
 
-            <li class="treeview" style="display:none;">
+            <li class="treeview _none">
                 <a href="{{ url('/admin/info/edit') }}">
                     <i class="fa fa-circle-o text-aqua"></i> <span>编辑基本信息</span>
                 </a>
             </li>
 
-            <li class="treeview" style="display:none;">
-                <a href=""><i class="fa fa-th text-aqua"></i> <span>更多信息</span>
+            <li class="treeview _none">
+                <a href="">
+                    <i class="fa fa-th text-aqua"></i> <span>更多信息</span>
                     <span class="pull-right-container">
                             <i class="fa fa-angle-left pull-right"></i>
                         </span>

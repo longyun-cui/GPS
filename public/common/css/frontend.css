@@ -569,7 +569,7 @@
 .image-box img { width:100%; height:100%; object-fit:cover; }
 
 .text-container { position:relative; color:#444; }
-.text-box { padding:8px; }
+.text-box { padding:12px; }
 .text-box.with-border-top { border-top:1px solid #e6e6e6; }
 .text-box.with-border-bottom { border-bottom:1px solid #e6e6e6; }
 .text-title-row { padding:0; line-height:1.5; color:#444; }
@@ -643,6 +643,158 @@
     .item-left-right-style .text-container { padding:8px; }
     .item-left-right-style .btn { padding:4px 8px; }
 }
+
+
+
+
+
+
+
+
+
+/*case*/
+.case-bin .image-container { display:block; position:relative; overflow:hidden; }
+.case-bin .image-container:before {
+    display:block;
+    position:absolute;
+    content:'';
+    top:50%;
+    left:50%;
+    width:15px;
+    height:1px;
+    margin-left:-7px;
+    -webkit-transition:.1s .2s ease-in-out;
+    -moz-transition:.1s .2s ease-in-out;
+    -ms-transition:.1s .2s ease-in-out;
+    -o-transition:.1s .2s ease-in-out;
+    transition:.1s .2s ease-in-out;
+    background:#fff;
+    opacity:0;
+    z-index:10;
+}
+.case-bin .image-container:after {
+    display:block;
+    position:absolute;
+    content:'';
+    top:50%;
+    left:50%;
+    width:1px;
+    height:15px;
+    margin-top:-7px;
+    -webkit-transition:.1s .2s ease-in-out;
+    -moz-transition:.1s .2s ease-in-out;
+    -ms-transition:.1s .2s ease-in-out;
+    -o-transition:.1s .2s ease-in-out;
+    transition:.1s .2s ease-in-out;
+    background:#fff;
+    opacity:0;
+    z-index:10;
+}
+
+.case-bin:hover .image-container:before { opacity:1; }
+.case-bin:hover .image-container:after { opacity:1; }
+
+.case-bin .image-container b {
+    display:block;
+    position:absolute;
+    top:-100%;
+    left:0;
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    -webkit-transition:.2s ease-in-out;
+    -moz-transition:.2s ease-in-out;
+    -ms-transition:.2s ease-in-out;
+    -o-transition:.2s ease-in-out;
+    transition:.2s ease-in-out;
+}
+.case-bin:hover .image-container b {top:0;}
+
+.case-bin .image-container b:before {
+    position:absolute;
+    content:'';
+    left:50%;
+    top:50%;
+    width:50px;
+    height:50px;
+    margin:-525px 0 0 -525px;
+    border-radius:50%;
+    -webkit-box-sizing:content-box;
+    -moz-box-sizing:content-box;
+    -ms-box-sizing:content-box;
+    box-sizing:content-box;
+    border:500px solid rgba(0,0,0,.6);
+    z-index:2;
+}
+.case-bin .image-container b:after {
+    position:absolute;
+    content:'';
+    left:50%;
+    top:50%;
+    width:50px;
+    height:50px;
+    margin:-25px 0 0 -25px;
+    border-radius:50%;
+    background:rgba(47,208,181,.6);
+    z-index:2;
+}
+
+.case-bin .image-container img { display:block; width:100%; }
+
+
+.case-bin .text-container {
+    display:block;
+    position:relative;
+    background:rgba(255,255,255,.5);
+    z-index:1;
+}
+
+.case-bin .text-container:after {
+    position:absolute;
+    display:block;
+    content:'';
+    bottom:0;
+    left:0;
+    right:0;
+    height:2px;
+    -webkit-transition:.2s ease-in-out;
+    -moz-transition:.2s ease-in-out;
+    -ms-transition:.2s ease-in-out;
+    -o-transition:.2s ease-in-out;
+    transition:.2s ease-in-out;
+    background:#00dfb9;
+    z-index:1;
+}
+.case-bin:hover .text-container:after { height:100%; }
+
+.case-bin .text-container .text-title-row {
+    display:block;
+    margin:0;
+    padding:0;
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+    position:relative;
+    -webkit-transition:.2s ease-in-out;
+    -moz-transition:.2s ease-in-out;
+    -ms-transition:.2s ease-in-out;
+    -o-transition:.2s ease-in-out;
+    transition:.2s ease-in-out;
+    z-index:5;
+}
+.case-bin:hover .text-container .text-title-row { color:#fff; z-index:6; }
+
+.case-bin .text-container .text-description-row {
+    -webkit-transition:.2s ease-in-out;
+    -moz-transition:.2s ease-in-out;
+    -ms-transition:.2s ease-in-out;
+    -o-transition:.2s ease-in-out;
+    transition:.2s ease-in-out;
+    z-index:5;
+}
+.case-bin:hover .text-container .text-description-row { visibility:hidden; }
+
+
 
 
 

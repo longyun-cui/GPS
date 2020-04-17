@@ -66,7 +66,7 @@
 
 
         <footer class="module-row module-footer-container text-center">
-            <a href="{{ url('/course/xiaotang01') }}" class="view-more" role="button">查看更多 <i class="fa fa-hand-o-right"></i></a>
+            <a href="{{ url('/') }}" class="view-more" role="button">查看更多 <i class="fa fa-hand-o-right"></i></a>
         </footer>
 
 
