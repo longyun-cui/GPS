@@ -1,7 +1,13 @@
+#################
+## Learvel
+#################
+
 /node_modules
 /public/hot
 /public/storage
+/public/uploads
 /storage/*.key
+/storage/resource
 /vendor
 /.idea
 /.vscode
@@ -11,8 +17,4 @@ Homestead.yaml
 npm-debug.log
 yarn-error.log
 .env
-
-/storage/*.key
-/storage/resource
-
-.composer.lock
+composer.lock

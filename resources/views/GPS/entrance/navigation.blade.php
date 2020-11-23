@@ -63,12 +63,12 @@
                 </div>
 
                 <div>
-                    <a target="_blank" class="margin btn btn-sm bg-black" href="https://ecs.console.aliyun.com/#/server/region/cn-hangzhou">ECS-HZ</a>
+                    <a target="_blank" class="margin btn btn-sm bg-black" href="https://ecs.console.aliyun.com/#/server/i-bp10lxdukyo9gnku1t5a/detail?regionId=cn-hangzhou">ECS-HZ</a>
                     <a target="_blank" class="margin btn btn-sm bg-maroon" href="http://116.62.214.223/public/ppma/index.php">HZ-phpMyAdmin</a>
                 </div>
 
                 <div>
-                    <a target="_blank" class="margin btn btn-sm bg-black" href="https://ecs.console.aliyun.com/#/server/region/cn-hongkong">ECS-HK</a>
+                    <a target="_blank" class="margin btn btn-sm bg-black" href="https://ecs.console.aliyun.com/#/server/i-j6cgq48vcu8aj97enzhz/detail?regionId=cn-hongkong">ECS-HK</a>
                     <a target="_blank" class="margin btn btn-sm bg-maroon" href="http://47.52.149.252/phpMyAdmin/">HK-phpMyAdmin</a>
                 </div>
 
@@ -90,6 +90,8 @@
             <div class="box-body">
                 <div>
                     <a target="_blank" class="margin btn btn-sm btn-danger" href="http://softorg.cn">softorg</a>
+                    <a target="_blank" class="margin btn btn-sm btn-danger" href="http://softorg.cn/super-admin/">超级管理员</a>
+                    <a target="_blank" class="margin btn btn-sm btn-danger" href="http://softorg.cn/org-admin/">机构管理员</a>
                     <a target="_blank" class="margin btn btn-sm btn-danger" href="http://softdoc.cn">softdoc</a>
                     <a target="_blank" class="margin btn btn-sm btn-danger" href="http://chaoxianzu-org.cn/">K-ORG</a>
                     <a target="_blank" class="margin btn btn-sm btn-primary" href="http://softorg.cn/developing/style/gps">softorg.GPS</a>
@@ -102,6 +104,8 @@
                 </div>
                 <div>
                     <a target="_blank" class="margin btn btn-sm btn-danger" href="http://softorg.com">softorg</a>
+                    <a target="_blank" class="margin btn btn-sm btn-danger" href="http://softorg.com/super-admin/">超级管理员</a>
+                    <a target="_blank" class="margin btn btn-sm btn-danger" href="http://softorg.com/org-admin/">机构管理员</a>
                     <a target="_blank" class="margin btn btn-sm btn-danger" href="http://softdoc.com">softdoc</a>
                     <a target="_blank" class="margin btn btn-sm btn-danger" href="http://chaoxianzu-org.com/">K-ORG</a>
                     <a target="_blank" class="margin btn btn-sm btn-primary" href="http://softorg.com/developing/style/gps">softorg.GPS</a>

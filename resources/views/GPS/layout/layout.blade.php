@@ -7,8 +7,21 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <link rel="shortcut icon" type="image/ico" href="{{ url('favicon.ico') }}">
+    <link rel="shortcut icon" type="image/png" href="{{ url('favicon.png') }}">
+    <link rel="icon" sizes="16x16 32x32 64x64" href="{{ url('favicon.ico') }}">
+    <link rel="icon" type="image/png" sizes="196x196" href="{{ url('favicon.png') }}">
+
     <title>@yield('head_title')</title>
+    <meta name="title" content="@yield('meta_title')" />
+    <meta name="author" content="@yield('meta_author')" />
+    <meta name="description" content="@yield('meta_description')" />
+    <meta name="keywords" content="@yield('meta_keywords')" />
+    <meta name="robots" content="all" />
     <meta name="_token" content="{{ csrf_token() }}"/>
+
+
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.6 -->
@@ -16,10 +29,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
     {{--<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">--}}
     <!-- Font Awesome -->
     {{--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">--}}
-    <link href="https://cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    {{--<link href="https://cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">--}}
+    <link rel="stylesheet" href="{{ asset('/lib/css/font-awesome-4.5.0.min.css') }}">
     <!-- Ionicons -->
     {{--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">--}}
-    <link href="https://cdn.bootcss.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet">
+    {{--<link href="https://cdn.bootcss.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet">--}}
+    <link rel="stylesheet" href="{{ asset('/lib/css/ionicons-2.0.1.min.css') }}">
     <!-- Theme style -->
     <link rel="stylesheet" href="/AdminLTE/dist/css/AdminLTE.min.css">
     {{--<link href="https://cdn.bootcss.com/admin-lte/2.3.11/css/AdminLTE.min.css" rel="stylesheet">--}}
@@ -37,18 +52,41 @@ scratch. This page gets rid of all links and provides the needed markup only.
     {{--<![endif]-->--}}
     {{--<link href="https://cdn.bootcss.com/bootstrap-modal/2.2.6/css/bootstrap-modal.min.css" rel="stylesheet">--}}
 
-    <link href="https://cdn.bootcss.com/bootstrap-fileinput/4.4.8/css/fileinput.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('common/css/component/fileinput.css') }}" media="all" />
+    {{--<link href="https://cdn.bootcss.com/bootstrap-fileinput/4.4.8/css/fileinput.min.css" rel="stylesheet">--}}
+    <link rel="stylesheet" href="{{ asset('/lib/css/bootstrap-fileinput-4.4.8.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('/lib/css/fileinput-only.css') }}">
 
     <link rel="stylesheet" href="{{asset('AdminLTE/plugins/datatables/dataTables.bootstrap.css')}}">
 
-    <link href="https://cdn.bootcss.com/iCheck/1.0.2/skins/all.css" rel="stylesheet">
+    {{--<link href="https://cdn.bootcss.com/iCheck/1.0.2/skins/all.css" rel="stylesheet">--}}
+    <link rel="stylesheet" href="/AdminLTE/plugins/iCheck/all.css">
 
-    <link href="https://cdn.bootcss.com/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+    {{--<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css">--}}
+    {{--<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">--}}
+    <link rel="stylesheet" href="{{ asset('/lib/css/bootstrap-datetimepicker-4.17.47.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('/lib/css/bootstrap-datepicker-1.9.0.min.css') }}">
 
-    <link href="https://cdn.bootcss.com/bootstrap-switch/3.3.4/css/bootstrap3/bootstrap-switch.min.css" rel="stylesheet">
+    {{--<link rel="stylesheet" href="https://cdn.bootcss.com/layer/3.0.3/skin/moon/style.min.css">--}}
+    {{--<link rel="stylesheet" href="{{ asset('/lib/css/layer-style-3.0.3.min.css') }}">--}}
+    {{--<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/layer/3.1.1/theme/moon/style.min.css">--}}
+    {{--<link rel="stylesheet" href="{{ asset('/lib/css/layer-style-3.1.1.min.css') }}">--}}
 
-    <link href="https://cdn.bootcss.com/Swiper/4.2.2/css/swiper.min.css" rel="stylesheet">
+
+    {{--<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap-switch/3.3.4/css/bootstrap3/bootstrap-switch.min.css">--}}
+    <link rel="stylesheet" href="{{ asset('/lib/css/bootstrap-switch-3.3.4.min.css') }}">
+
+    {{--<link rel="stylesheet" href="https://cdn.bootcss.com/Swiper/4.2.2/css/swiper.min.css">--}}
+    <link rel="stylesheet" href="{{ asset('/lib/css/swiper-4.2.2.min.css') }}">
+
+    {{--<link rel="stylesheet" href="https://cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.css">--}}
+    <link rel="stylesheet" href="{{ asset('/lib/css/jquery.fancybox-3.3.5.css') }}">
+
+    {{--<link rel="stylesheet" href="https://cdn.bootcss.com/lightcase/2.5.0/css/lightcase.min.css">--}}
+    <link rel="stylesheet" href="{{ asset('/lib/css/lightcase-2.5.0.min.css') }}">
+
+    {{--<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/timelinejs/3.6.6/css/timeline.min.css">--}}
+    <link rel="stylesheet" href="{{ asset('/lib/css/timeline-3.6.6.min.css') }}">
+
 
     <link rel="stylesheet" href="{{ asset('common/css/common.css') }}" media="all" />
     <link rel="stylesheet" href="{{ asset('common/css/frontend/index.css') }}" media="all" />
