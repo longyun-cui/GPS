@@ -152,29 +152,68 @@ desired effect
 {{--<!-- AdminLTE App -->--}}
 <script src="/AdminLTE/dist/js/app.min.js"></script>
 
-<script src="https://cdn.bootcss.com/jqueryui/1.12.1/jquery-ui.min.js"></script>
+{{--<script src="https://cdn.bootcss.com/iCheck/1.0.2/icheck.min.js"></script>--}}
+{{--<script src="{{ asset('/lib/js/icheck-1.0.2.min.js') }}"></script>--}}
+<script src="/AdminLTE/plugins/iCheck/icheck.min.js"></script>
+
+<script src="{{ asset('AdminLTE/plugins/datatables/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('AdminLTE/plugins/datatables/dataTables.bootstrap.min.js') }}"></script>
+
+{{--<script src="https://cdn.bootcss.com/jqueryui/1.12.1/jquery-ui.min.js"></script>--}}
+<script src="{{ asset('/lib/js/jquery-ui-1.12.1.min.js') }}"></script>
+
+{{--<script src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>--}}
+<script src="{{ asset('/lib/js/jquery.cookie-1.4.1.min.js') }}"></script>
 
 {{--<script src="https://cdn.bootcss.com/bootstrap-modal/2.2.6/js/bootstrap-modal.min.js"></script>--}}
+{{--<script src="{{ asset('/lib/js/bootstrap-modal-2.2.6.min.js') }}"></script>--}}
 
-<script src="https://cdn.bootcss.com/layer/3.0.3/layer.min.js"></script>
+{{--<script src="https://cdn.bootcss.com/layer/3.0.3/layer.min.js"></script>--}}
+<script src="{{ asset('/lib/js/layer-3.0.3.min.js') }}"></script>
 
-<script src="https://cdn.bootcss.com/bootstrap-fileinput/4.4.8/js/fileinput.min.js"></script>
-<script src="{{ asset('common/js/component/fileinput-only.js') }}"></script>
+{{--<script src="https://cdn.bootcss.com/bootstrap-fileinput/4.4.3/js/fileinput.min.js"></script>--}}
+<script src="{{ asset('/lib/js/fileinput-4.4.8.min.js') }}"></script>
+<script src="{{ asset('/lib/js/fileinput-only.js') }}"></script>
 
-<script src="https://cdn.bootcss.com/jquery.form/4.2.2/jquery.form.min.js"></script>
+{{--<script src="https://cdn.bootcss.com/jquery.form/4.2.2/jquery.form.min.js"></script>--}}
+<script src="{{ asset('/lib/js/jquery.form-4.2.2.min.js') }}"></script>
 
-<script src="https://cdn.bootcss.com/moment.js/2.19.0/moment.min.js"></script>
+{{--<script src="https://cdn.bootcss.com/moment.js/2.19.0/moment.min.js"></script>--}}
+<script src="{{ asset('/lib/js/moment-2.19.0.min.js') }}"></script>
+<script src="{{ asset('/lib/js/moment-2.19.0-locale-zh-cn.js') }}"></script>
+<script src="{{ asset('/lib/js/moment-2.19.0-locale-ko.js') }}"></script>
 
-<script src="{{asset('AdminLTE/plugins/datatables/jquery.dataTables.min.js')}}"></script>
-<script src="{{asset('AdminLTE/plugins/datatables/dataTables.bootstrap.min.js')}}"></script>
+{{--<script src="https://cdn.bootcss.com/bootstrap-switch/3.3.4/js/bootstrap-switch.min.js"></script>--}}
+<script src="{{ asset('/lib/js/bootstrap-switch-3.3.4.min.js') }}"></script>
 
-<script src="https://cdn.bootcss.com/iCheck/1.0.2/icheck.min.js"></script>
+{{--<script src="https://cdn.bootcss.com/Swiper/4.2.2/js/swiper.min.js"></script>--}}
+<script src="{{ asset('/lib/js/swiper-4.2.2.min.js') }}"></script>
 
-<script src="https://cdn.bootcss.com/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+{{--<script src="https://cdn.bootcss.com/jquery.sticky/1.0.4/jquery.sticky.min.js"></script>--}}
+<script src="{{ asset('/lib/js/jquery.sticky-1.0.4.min.js') }}"></script>
 
-<script src="https://cdn.bootcss.com/bootstrap-switch/3.3.4/js/bootstrap-switch.min.js"></script>
+{{--<script src="https://cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.js"></script>--}}
+<script src="{{ asset('/lib/js/jquery.fancybox-3.3.5.js') }}"></script>
 
-<script src="https://cdn.bootcss.com/Swiper/4.2.2/js/swiper.min.js"></script>
+{{--<script src="https://cdn.bootcss.com/lightcase/2.5.0/js/lightcase.min.js"></script>--}}
+<script src="{{ asset('/lib/js/lightcase-2.5.0.min.js') }}"></script>
+
+{{--<script src="https://cdn.bootcss.com/Readmore.js/2.2.0/readmore.min.js"></script>--}}
+<script src="{{ asset('/lib/js/readmore-2.2.0.min.js') }}"></script>
+
+
+{{--<script src="https://cdn.bootcdn.net/ajax/libs/timelinejs/3.6.6/js/timeline-min.min.js"></script>--}}
+{{--<script src="https://cdn.bootcdn.net/ajax/libs/timelinejs/3.6.6/js/timeline.min.js"></script>--}}
+<script src="{{ asset('/lib/js/timeline-min-3.6.6.min.js') }}"></script>
+<script src="{{ asset('/lib/js/timeline-3.6.6.min.js') }}"></script>
+
+
+{{--<script src="https://cdn.bootcss.com/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>--}}
+{{--<script src="https://cdn.bootcdn.net/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>--}}
+{{--<script src="https://cdn.bootcdn.net/ajax/libs/bootstrap-datepicker/1.9.0/locales/bootstrap-datepicker.zh-CN.min.js"></script>--}}
+<script src="{{ asset('/lib/js/bootstrap-datetimepicker-4.17.47.min.js') }}"></script>
+<script src="{{ asset('/lib/js/bootstrap-datepicker-1.9.0.zh-CN.min.js') }}"></script>
+<script src="{{ asset('/lib/js/bootstrap-datepicker-1.9.0.min.js') }}"></script>
 
 
 {{--<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>--}}
