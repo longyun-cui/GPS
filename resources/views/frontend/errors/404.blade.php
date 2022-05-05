@@ -1,6 +1,6 @@
 
 
-<div>你访问的页面没找到，<span id="time" style="color:#ff0018;">3</span> 秒钟自动跳到首页。</div>
+<div>你访问的页面没找到，<span id="time" style="color:#ff0018;">10</span> 秒钟自动跳到首页。</div>
 
 <script src="{{ asset('/templates/moban2030/assets/js/jquery.min.js') }}"></script>
 <script language="javascript" type="text/javascript">

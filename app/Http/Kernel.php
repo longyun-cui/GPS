@@ -58,11 +58,16 @@ class Kernel extends HttpKernel
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
 
-        'wechat.share' => \App\Http\Middleware\WechatShareMiddleware::class,
+        'wx.share' => \App\Http\Middleware\WXShareMiddleware::class,
         'admin' => \App\Http\Middleware\AdminMiddleware::class,
         'home' => \App\Http\Middleware\HomeMiddleware::class,
         'notification' => \App\Http\Middleware\NotificationMiddleware::class,
         'login' => \App\Http\Middleware\LoginMiddleware::class,
         'login.turn' => \App\Http\Middleware\TurnToLoginMiddleware::class,
+
+        'zy.user.login' => \App\Http\Middleware\ZYUserLoginMiddleware::class,
+        'zy.super.login' => \App\Http\Middleware\ZYSuperLoginMiddleware::class,
+        'zy.admin.login' => \App\Http\Middleware\ZYAdminLoginMiddleware::class,
+        'zy.staff.login' => \App\Http\Middleware\ZYStaffLoginMiddleware::class,
     ];
 }

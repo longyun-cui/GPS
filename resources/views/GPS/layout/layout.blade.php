@@ -14,8 +14,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <link rel="icon" type="image/png" sizes="196x196" href="{{ url('favicon.png') }}">
 
     <title>@yield('head_title')</title>
-    <meta name="title" content="@yield('meta_title')" />
     <meta name="author" content="@yield('meta_author')" />
+    <meta name="title" content="@yield('meta_title')" />
     <meta name="description" content="@yield('meta_description')" />
     <meta name="keywords" content="@yield('meta_keywords')" />
     <meta name="robots" content="all" />
@@ -55,7 +55,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <link rel="stylesheet" href="{{ asset('/lib/css/bootstrap-fileinput-4.4.8.min.css') }}">
     <link rel="stylesheet" href="{{ asset('/lib/css/fileinput-only.css') }}">
 
-    <link rel="stylesheet" href="{{asset('AdminLTE/plugins/datatables/dataTables.bootstrap.css')}}">
+    <link rel="stylesheet" href="{{ asset('AdminLTE/plugins/datatables/dataTables.bootstrap.css') }}">
 
     {{--<link href="https://cdn.bootcss.com/iCheck/1.0.2/skins/all.css" rel="stylesheet">--}}
     <link rel="stylesheet" href="/AdminLTE/plugins/iCheck/all.css">
@@ -91,8 +91,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <link rel="stylesheet" href="{{ asset('common/css/frontend/index.css') }}" media="all" />
     <link rel="stylesheet" href="{{ asset('common/css/backend/index.css') }}" media="all" />
 
-    <link rel="stylesheet" href="{{asset('css/common.css')}}">
-    <link rel="stylesheet" href="{{asset('css/admin/index.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/common.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/admin/index.css') }}">
 
 
     @yield('css')
@@ -125,19 +125,19 @@ desired effect
 
 
     {{--main-header--}}
-    @include('GPS.component.main-header')
+    @include('GPS.layout.main-header')
 
     {{--main-sidebar--}}
-    @include('GPS.component.main-sidebar')
+    @include('GPS.layout.main-sidebar')
 
     {{--main-content--}}
-    @include('GPS.component.main-content')
+    @include('GPS.layout.main-content')
 
     {{--main-footer--}}
-    @include('GPS.component.main-footer')
+    @include('GPS.layout.main-footer')
 
     {{--control-sidebar--}}
-    @include('GPS.component.control-sidebar')
+    @include('GPS.layout.control-sidebar')
 
 
 </div>
@@ -212,7 +212,7 @@ desired effect
 {{--<script src="https://cdn.bootcdn.net/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>--}}
 {{--<script src="https://cdn.bootcdn.net/ajax/libs/bootstrap-datepicker/1.9.0/locales/bootstrap-datepicker.zh-CN.min.js"></script>--}}
 <script src="{{ asset('/lib/js/bootstrap-datetimepicker-4.17.47.min.js') }}"></script>
-<script src="{{ asset('/lib/js/bootstrap-datepicker-1.9.0.zh-CN.min.js') }}"></script>
+{{--<script src="{{ asset('/lib/js/bootstrap-datepicker-1.9.0.zh-CN.min.js') }}"></script>--}}
 <script src="{{ asset('/lib/js/bootstrap-datepicker-1.9.0.min.js') }}"></script>
 
 

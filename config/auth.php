@@ -50,6 +50,25 @@ return [
             'driver' => 'token',
             'provider' => 'users',
         ],
+
+
+        'zy_user' => [
+            'driver' => 'session',
+            'provider' => 'zy_users',
+        ],
+        'zy_super' => [
+            'driver' => 'session',
+            'provider' => 'zy_supers',
+        ],
+        'zy_admin' => [
+            'driver' => 'session',
+            'provider' => 'zy_admins',
+        ],
+        'zy_staff' => [
+            'driver' => 'session',
+            'provider' => 'zy_staffs',
+        ],
+
     ],
 
     /*
@@ -84,6 +103,28 @@ return [
         //     'driver' => 'database',
         //     'table' => 'users',
         // ],
+
+
+        'zy_users' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\ZY\ZY_User::class,
+        ],
+
+        'zy_supers' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\ZY\ZY_User::class,
+        ],
+
+        'zy_admins' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\ZY\ZY_User::class,
+        ],
+
+        'zy_staffs' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\ZY\ZY_User::class,
+        ],
+
     ],
 
     /*

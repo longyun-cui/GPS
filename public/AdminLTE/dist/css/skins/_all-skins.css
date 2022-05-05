@@ -321,7 +321,7 @@
   background-color: #ffffff;
 }
 .skin-black .main-header .navbar .nav > li > a {
-  color: #333333;
+  color: #eee;
 }
 .skin-black .main-header .navbar .nav > li > a:hover,
 .skin-black .main-header .navbar .nav > li > a:active,
@@ -331,7 +331,7 @@
 .skin-black .main-header .navbar .nav .open > a:focus,
 .skin-black .main-header .navbar .nav > .active > a {
   background: #ffffff;
-  color: #999999;
+  color: #eee;
 }
 .skin-black .main-header .navbar .sidebar-toggle {
   color: #333333;

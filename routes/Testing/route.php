@@ -8,6 +8,79 @@ Route::get('/', function () {
 });
 
 
+
+
+
+
+Route::get('/ip1', function () {
+
+    header('content-type:text/html;charset=utf-8');
+
+    $ip = '54.36.148.99';
+    $response = file_get_contents('http://ip.taobao.com/service/getIpInfo.php?ip='.$ip);
+    $result   = json_decode($response);
+    print_r($result);
+
+//    $str = file_get_contents("http://www.yodao.com/smartresult-xml/search.s?type=ip&q=".$IP);
+//    dd($str);
+
+//    $url = 'https://ip.qq.com/cgi-bin/searchip?searchip1='.$IP;
+//
+//    $ch = curl_init($url);
+//
+//    curl_setopt($ch,CURLOPT_ENCODING ,'gb2312');
+//
+//    curl_setopt($ch, CURLOPT_TIMEOUT, 10);
+//
+//    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true) ; // 获取数据返回
+//
+//    $result = curl_exec($ch);
+//
+//    $result = mb_convert_encoding($result, "utf-8", "gb2312"); // 编码转换，否则乱码
+//    dd($result);
+//
+//    curl_close($ch);
+//
+//    preg_match("@<span>(.*)</span></p>@iU",$result,$ipArray);
+//
+//    $loc = $ipArray[1];
+//
+//    return $loc;
+
+
+    $url = 'http://ip.qq.com/cgi-bin/searchip?searchip1='.$ip; // 腾讯
+//    $url = 'http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=json&ip='.$ip; // 新浪
+
+//    $ch = curl_init($url);
+//    curl_setopt($ch,CURLOPT_ENCODING ,'gb2312');
+//    curl_setopt($ch, CURLOPT_TIMEOUT, 10);
+//    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true) ; // 获取数据返回
+//    $result = curl_exec($ch);
+//    $result = mb_convert_encoding($result, "utf-8", "gb2312"); // 编码转换，否则乱码
+//    curl_close($ch);
+//
+//    dd($result);
+//    preg_match("@<span>(.*)</span></p>@iU",$result,$ipArray); //匹配标签，抓取查询到的ip地址(以数组的形式返回)
+//    $location = $ipArray[0];
+//    return $location;
+
+
+//    $url="http://ip.taobao.com/service/getIpInfo.php?ip=".$IP;
+//    print_r(file_get_contents($url));
+//    $ipinfo=json_decode(file_get_contents($url));
+//    dd($ipinfo);
+//    if($ipinfo->code=='1'){
+//        return false;
+//    }
+//    $city = $ipinfo->data->region.$ipinfo->data->city;
+//    return $city;
+
+
+
+
+});
+
+
 Route::get('/++', function () {
     $x=15;
     echo "y=15 x++=".$x++;
@@ -18,6 +91,8 @@ Route::get('/++', function () {
 });
 
 
+
+Route::match(['get','post'], '/ip', "{$controller}@get_ip_location");
 
 Route::match(['get','post'], '/seo/youbangyun', "{$controller}@seo_youbangyun");
 Route::match(['get','post'], '/seo/youbangyun/get', "{$controller}@seo_youbangyun_get");
