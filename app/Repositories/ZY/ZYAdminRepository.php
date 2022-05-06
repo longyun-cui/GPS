@@ -1059,6 +1059,7 @@ class ZYAdminRepository {
                 $task->mobile = $value['mobile'];
                 $task->address = $value['address'];
                 $task->city = $value['city'];
+                $task->description = $value['description'];
 
                 $bool = $task->save();
                 if(!$bool) throw new Exception("insert--item--fail");
