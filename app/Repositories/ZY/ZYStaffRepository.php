@@ -126,6 +126,8 @@ class ZYStaffRepository {
 //            $item_query->whereIn('item_active',[1]);
 //            $item_query->whereIn('item_status',[1]);
             $item_query->where('is_completed',1);
+            $item_query->orderByDesc('completed_at');
+
             $return['head_title'] = "已完成任务";
             $return['menu_active_of_finished'] = 'active';
         }
@@ -133,6 +135,7 @@ class ZYStaffRepository {
         {
             $item_query->where('is_completed',1);
             $item_query->where('item_result',71);
+
             $return['head_title'] = "未接";
             $return['custom_menu_title'] = "未接";
             $return['menu_active_of_custom'] = 'active';
@@ -141,6 +144,8 @@ class ZYStaffRepository {
         {
             $item_query->where('is_completed',1);
             $item_query->where('item_result',72);
+            $item_query->orderByDesc('completed_at');
+
             $return['head_title'] = "拒接";
             $return['custom_menu_title'] = "拒接";
             $return['menu_active_of_custom'] = 'active';
@@ -149,6 +154,8 @@ class ZYStaffRepository {
         {
             $item_query->where('is_completed',1);
             $item_query->where('item_result',19);
+            $item_query->orderByDesc('completed_at');
+
             $return['head_title'] = "已加微信";
             $return['custom_menu_title'] = "已加微信";
             $return['menu_active_of_custom'] = 'active';
