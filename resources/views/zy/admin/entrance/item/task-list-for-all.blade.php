@@ -1,16 +1,16 @@
 @extends(env('TEMPLATE_ZY_ADMIN').'layout.layout')
 
 
-@section('head_title','【S】全部内容')
+@section('head_title','任务列表')
+
+
 
 
 @section('header','')
-@section('description','超级管理员系统 - 如未科技')
+@section('description','管理员后台系统 - 兆益信息')
 @section('breadcrumb')
-    <li><a href="{{ url('/admin') }}"><i class="fa fa-home"></i>首页</a></li>
+    <li><a href="{{ url('/') }}"><i class="fa fa-home"></i>首页</a></li>
 @endsection
-
-
 @section('content')
 <div class="row">
     <div class="col-md-12">
@@ -176,6 +176,8 @@
     </div>
 </div>
 @endsection
+
+
 
 
 @section('custom-script')
