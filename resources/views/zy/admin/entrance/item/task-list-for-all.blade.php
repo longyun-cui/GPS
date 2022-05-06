@@ -245,7 +245,7 @@
                     },
                     {
                         "className": "text-left",
-                        "width": "120px",
+                        "width": "64px",
                         "title": "联系人",
                         "data": "name",
                         "orderable": false,
@@ -287,7 +287,7 @@
                     },
                     {
                         "className": "text-left",
-                        "width": "120px",
+                        "width": "64px",
                         "title": "拥有者",
                         "data": "owner_id",
                         "orderable": false,
@@ -297,7 +297,7 @@
                     },
                     {
                         "className": "text-left",
-                        "width": "120px",
+                        "width": "64px",
                         "title": "发布者",
                         "data": "creator_id",
                         "orderable": false,
@@ -383,7 +383,7 @@
                         }
                     },
                     {
-                        "width": "288px",
+                        "width": "240px",
                         "title": "操作",
                         "data": 'id',
                         "orderable": false,
@@ -413,7 +413,7 @@
                                     '<a class="btn btn-xs btn-primary item-edit-link" data-id="'+data+'">编辑</a>'+
                                     $html_publish+
                                     '<a class="btn btn-xs bg-navy item-admin-delete-submit" data-id="'+data+'">删除</a>'+
-                                    '<a class="btn btn-xs bg-navy item-admin-delete-permanently-submit" data-id="'+data+'">永久删除</a>'+
+//                                    '<a class="btn btn-xs bg-navy item-admin-delete-permanently-submit" data-id="'+data+'">永久删除</a>'+
 //                                    '<a class="btn btn-xs bg-primary item-detail-show" data-id="'+data+'">查看详情</a>'+
 //                                    '<a class="btn btn-xs bg-olive item-download-qr-code-submit" data-id="'+data+'">下载二维码</a>'+
                                     '';

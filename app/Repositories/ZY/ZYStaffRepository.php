@@ -154,26 +154,35 @@ class ZYStaffRepository {
      * 用户基本信息
      */
     // 【基本信息】返回视图
-    public function view_my_info_index()
+    public function view_my_profile_info_index()
     {
-        $me = Auth::guard('staff')->user();
+        $this->get_me();
+        $me = $this->me;
+
+        $return['data'] = $me;
+
         $view_template = env('TEMPLATE_ZY_STAFF');
-        $view_blade = $view_template.'entrance.my-info.my-info-index';
-        return view($view_blade)->with(['info'=>$me]);
+        $view_blade = $view_template.'entrance.my-account.my-profile-info-index';
+        return view($view_blade)->with($return);
     }
 
     // 【基本信息】返回-编辑-视图
-    public function view_my_info_edit()
+    public function view_my_profile_info_edit()
     {
-        $me = Auth::guard('staff')->user();
+        $this->get_me();
+        $me = $this->me;
+
+        $return['data'] = $me;
+
         $view_template = env('TEMPLATE_ZY_STAFF');
-        $view_blade = $view_template.'entrance.my-info.my-info-edit';
-        return view($view_blade)->with(['info'=>$me]);
+        $view_blade = $view_template.'entrance.my-account.my-profile-info-edit';
+        return view($view_blade)->with($return);
     }
     // 【基本信息】保存数据
-    public function operate_my_info_save($post_data)
+    public function operate_my_profile_info_save($post_data)
     {
-        $me = Auth::guard('staff')->user();
+        $this->get_me();
+        $me = $this->me;
 
         // 启动数据库事务
         DB::beginTransaction();
@@ -195,12 +204,12 @@ class ZYStaffRepository {
                 {
                     // 删除原文件
                     $mine_portrait_img = $me->portrait_img;
-                    if(!empty($mine_portrait_img) && file_exists(storage_path("resource/" . $mine_portrait_img)))
+                    if(!empty($mine_portrait_img) && file_exists(storage_resource_path($mine_portrait_img)))
                     {
-                        unlink(storage_path("resource/" . $mine_portrait_img));
+                        unlink(storage_resource_path($mine_portrait_img));
                     }
 
-                    $result = upload_img_storage($post_data["portrait"],'user_'.$me->id,'staff/unique/portrait/','assign');
+                    $result = upload_img_storage($post_data["portrait"],'portrait_for_user_by_user_'.$me->id,'zy/unique/portrait/','assign');
                     if($result["result"])
                     {
                         $me->portrait_img = $result["local"];
@@ -226,15 +235,19 @@ class ZYStaffRepository {
     }
 
     // 【密码】返回修改视图
-    public function view_my_info_password_reset()
+    public function view_my_account_password_change()
     {
-        $me = Auth::guard('staff')->user();
+        $this->get_me();
+        $me = $this->me;
+
+        $return['data'] = $me;
+
         $view_template = env('TEMPLATE_ZY_STAFF');
-        $view_blade = $view_template.'entrance.my-info.my-info-password-reset';
-        return view($view_blade)->with(['data'=>$me]);
+        $view_blade = $view_template.'entrance.my-account.my-account-password-change';
+        return view($view_blade)->with($return);
     }
     // 【密码】保存数据
-    public function operate_my_info_password_reset_save($post_data)
+    public function operate_my_account_password_change_save($post_data)
     {
         $messages = [
             'password_pre.required' => '请输入旧密码',
@@ -258,7 +271,9 @@ class ZYStaffRepository {
 
         if($password_new == $password_confirm)
         {
-            $me = Auth::guard('staff')->user();
+            $this->get_me();
+            $me = $this->me;
+
             if(password_check($password_pre,$me->password))
             {
                 $me->password = password_encode($password_new);

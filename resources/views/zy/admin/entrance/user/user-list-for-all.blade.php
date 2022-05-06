@@ -306,8 +306,8 @@
                     },
                     {
                         "className": "text-left",
-                        "width": "",
-                        "title": "名称",
+                        "width": "80px",
+                        "title": "姓名",
                         "data": "id",
                         "orderable": false,
                         render: function(data, type, row, meta) {
@@ -406,7 +406,7 @@
 //                    },
                     {
                         "className": "font-12px",
-                        "width": "96px",
+                        "width": "64px",
                         "title": "创建人",
                         "data": "creator_id",
                         "orderable": false,
@@ -417,7 +417,7 @@
                     },
                     {
                         "className": "font-12px",
-                        "width": "112px",
+                        "width": "96px",
                         "title": "创建时间",
                         "data": 'created_at',
                         "orderable": true,
@@ -464,7 +464,7 @@
                         }
                     },
                     {
-                        "width": "320px",
+                        "width": "240px",
                         "title": "操作",
                         "data": "id",
                         "orderable": false,
@@ -493,10 +493,11 @@
 //                                '<a class="btn btn-xs item-download-qrcode-submit" data-id="'+value+'">下载二维码</a>'+
 //                                '<a class="btn btn-xs btn-primary item-recharge-show" data-id="'+data+'">充值/退款</a>'+
                                 $html_edit+
-                                '<a class="btn btn-xs bg-maroon item-change-password-show" data-id="'+data+'">修改密码</a>'+
+//                                '<a class="btn btn-xs bg-maroon item-password-change-show" data-id="'+data+'">修改密码</a>'+
+                                '<a class="btn btn-xs bg-maroon item-password-reset-submit" data-id="'+data+'">重置密码</a>'+
                                 '<a class="btn btn-xs bg-navy item-delete-submit" data-id="'+data+'" >删除</a>'+
-                                '<a class="btn btn-xs bg-olive item-login-submit" data-id="'+data+'">登录</a>'+
-                                '<a class="btn btn-xs bg-purple item-statistic-submit" data-id="'+data+'">流量统计</a>'+
+//                                '<a class="btn btn-xs bg-olive item-login-submit" data-id="'+data+'">登录</a>'+
+//                                '<a class="btn btn-xs bg-purple item-statistic-submit" data-id="'+data+'">流量统计</a>'+
                                 '';
                             return html;
                         }

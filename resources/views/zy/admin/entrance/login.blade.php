@@ -1,6 +1,6 @@
 @extends(env('TEMPLATE_ZY_ADMIN').'layout.auth')
 
-@section('title','员工登陆')
+@section('title','管理员登陆 - 兆益信息')
 
 @section('content')
 <div class="login-box">

@@ -150,28 +150,12 @@
                             </li>
                             <!-- Menu Footer-->
                             <li class="user-footer">
-                                @if($me->user_type == 1)
                                 <div class="pull-left">
-                                    <a href="{{ url('/mine/my-card-edit') }}" class="btn btn-default btn-flat">
-                                        <i class="fa fa-edit"></i>
-                                        <span>编辑名片</span>
+                                    <a href="{{ url('/my-account/my-profile-info-index') }}" class="btn btn-default btn-flat">
+                                        <i class="fa fa-info"></i>
+                                        <span>我的资料</span>
                                     </a>
                                 </div>
-                                @elseif($me->user_type == 11)
-                                    <div class="pull-left">
-                                        <a href="{{ url('/org') }}" class="btn btn-default btn-flat">
-                                            <i class="fa fa-home"></i>
-                                            <span>返回后台</span>
-                                        </a>
-                                    </div>
-                                @elseif($me->user_type == 88)
-                                    <div class="pull-left">
-                                        <a href="{{ url('/sponsor') }}" class="btn btn-default btn-flat">
-                                            <i class="fa fa-home"></i>
-                                            <span>返回后台</span>
-                                        </a>
-                                    </div>
-                                @endif
                                 <div class="pull-right">
                                     <a href="{{ url('/logout') }}" class="btn btn-default btn-flat">
                                         <i class="fa fa-sign-in"></i>

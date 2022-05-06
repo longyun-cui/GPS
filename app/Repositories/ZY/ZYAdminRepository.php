@@ -437,6 +437,7 @@ class ZYAdminRepository {
             $post_data["active"] = 1;
             $post_data["password"] = password_encode("12345678");
             $post_data["creator_id"] = $me->id;
+            $post_data['true_name'] = $post_data['username'];
         }
         else if($operate == 'edit') // 编辑
         {
@@ -490,7 +491,7 @@ class ZYAdminRepository {
                         $mine->portrait_img = $result["local"];
                         $mine->save();
                     }
-                    else throw new Exception("upload--portrait--fail");
+                    else throw new Exception("upload--portrait_img--file--fail");
                 }
                 else
                 {

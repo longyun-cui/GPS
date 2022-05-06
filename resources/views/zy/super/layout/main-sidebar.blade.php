@@ -58,22 +58,17 @@
             {{--用户管理--}}
             <li class="header">用户管理</li>
 
-            <li class="treeview {{ $sidebar_user_all_list_active or '' }}">
+            <li class="treeview {{ $menu_active_of_user_list_for_all or '' }}">
                 <a href="{{ url('/user/user-list-for-all') }}">
                     <i class="fa fa-user"></i><span>全部用户</span>
                 </a>
             </li>
-            <li class="treeview {{ $sidebar_user_list_for_individual_active or '' }}">
+            <li class="treeview {{ $menu_active_of_user_list_for_individual or '' }}">
                 <a href="{{ url('/user/user-list-for-individual') }}">
                     <i class="fa fa-user"></i><span>个人</span>
                 </a>
             </li>
-            <li class="treeview {{ $sidebar_user_list_for_doc_active or '' }}">
-                <a href="{{ url('/user/user-list-for-doc') }}">
-                    <i class="fa fa-user"></i><span>轻博</span>
-                </a>
-            </li>
-            <li class="treeview {{ $sidebar_user_list_for_org_active or '' }}">
+            <li class="treeview {{ $menu_active_of_user_list_for_org or '' }}">
                 <a href="{{ url('/user/user-list-for-org') }}">
                     <i class="fa fa-user"></i><span>组织</span>
                 </a>
@@ -82,36 +77,19 @@
 
 
 
+            {{--内容管理--}}
             <li class="header">内容管理</li>
 
-            <li class="treeview {{ $sidebar_item_list_for_all_active or '' }}">
-                <a href="{{ url('/admin/item/item-list-for-all')}}">
+            <li class="treeview {{ $menu_active_of_item_list_for_all or '' }}">
+                <a href="{{ url('/item/item-list-for-all')}}">
                     <i class="fa fa-list text-red"></i>
                     <span>全部内容</span>
                 </a>
             </li>
-            <li class="treeview {{ $sidebar_item_list_for_atom_active or '' }}">
-                <a href="{{ url('/admin/item/item-list-for-atom') }}">
-                    <i class="fa fa-circle-o text-red"></i>
-                    <span>ATOM</span>
-                </a>
-            </li>
-            <li class="treeview {{ $sidebar_item_list_for_doc_active or '' }}">
-                <a href="{{ url('/admin/item/item-list-for-doc') }}">
-                    <i class="fa fa-circle-o text-red"></i>
-                    <span>DOC</span>
-                </a>
-            </li>
-
-
-
-
-            <li class="header">地域管理</li>
-
-            <li class="treeview {{ $sidebar_district_list_for_all_active or '' }}">
-                <a href="{{ url('/admin/district/district-list-for-all')}}">
+            <li class="treeview {{ $menu_active_of_task_list_for_all or '' }}">
+                <a href="{{ url('/item/task-list-for-all')}}">
                     <i class="fa fa-list text-red"></i>
-                    <span>全部地域</span>
+                    <span>任务列表</span>
                 </a>
             </li>
 
@@ -121,13 +99,13 @@
             {{--流量统计--}}
             <li class="header">流量统计</li>
 
-            <li class="treeview {{ $sidebar_statistic_active or '' }}">
-                <a href="{{ url('/admin/statistic') }}">
+            <li class="treeview {{ $menu_active_of_statistic or '' }}">
+                <a href="{{ url('/statistic') }}">
                     <i class="fa fa-bar-chart text-green"></i> <span>流量统计</span>
                 </a>
             </li>
-            <li class="treeview {{ $sidebar_statistic_all_list_active or '' }}">
-                <a href="{{ url('/admin/statistic/statistic-all-list') }}">
+            <li class="treeview {{ $menu_active_of_statistic_list_for_all or '' }}">
+                <a href="{{ url('/statistic/statistic-list-for-all') }}">
                     <i class="fa fa-bar-chart text-green"></i> <span>统计列表</span>
                 </a>
             </li>
@@ -138,28 +116,13 @@
             <li class="header">平台</li>
 
             <li class="treeview">
-                <a href="{{ env('DOMAIN_WWW') }}" target="_blank">
-                    <i class="fa fa-cube text-default"></i> <span>平台首页</span>
+                <a href="{{ env('DOMAIN_ZY_ADMIN') }}" target="_blank">
+                    <i class="fa fa-cube text-default"></i> <span>管理员系统</span>
                 </a>
             </li>
             <li class="treeview">
-                <a href="{{ url('/admin/user/user-login?type=gps&user_id=99&admin_id=666001') }}" target="_blank">
-                    <i class="fa fa-sign-in text-default"></i> <span>GPS</span>
-                </a>
-            </li>
-            <li class="treeview">
-                <a href="{{ url('/admin/user/user-login?type=atom&user_id=100&admin_id=666001') }}" target="_blank">
-                    <i class="fa fa-sign-in text-default"></i> <span>ATOM</span>
-                </a>
-            </li>
-            <li class="treeview">
-                <a href="{{ url('/admin/user/user-login?type=doc&user_id=10000&admin_id=666001') }}" target="_blank">
-                    <i class="fa fa-sign-in text-default"></i> <span>DOC</span>
-                </a>
-            </li>
-            <li class="treeview _none">
-                <a href="{{ url('/admin/user/user-login?type=org&user_id=10000&admin_id=666001') }}" target="_blank">
-                    <i class="fa fa-sign-in text-default"></i> <span>登录轻企</span>
+                <a href="{{ env('DOMAIN_ZY_STAFF') }}" target="_blank">
+                    <i class="fa fa-cube text-default"></i> <span>员工系统</span>
                 </a>
             </li>
 
