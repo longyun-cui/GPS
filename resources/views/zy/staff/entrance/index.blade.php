@@ -28,7 +28,7 @@
                 <ul class="nav nav-tabs">
                     <li class="{{ $menu_active_of_unfinished or '' }}"><a href="/?task-list-type=unfinished" data-toggle="tab-">待完成</a></li>
                     <li class="{{ $menu_active_of_finished or '' }}"><a href="/?task-list-type=finished" data-toggle="tab-">已完成</a></li>
-                    {{--<li class="{{ $menu_active_of_all or '' }}"><a href="/?task-list-type=all" data-toggle="tab-">全部</a></li>--}}
+                    <li class="{{ $menu_active_of_custom or '' }}"><a href="/?task-list-type=all" data-toggle="tab-">{{ $custom_menu_title or '' }}</a></li>
                 </ul>
                 <div class="tab-content" style="width:100%; padding:10px 0;float:left;">
                     <div class="active tab-pane" id="all">

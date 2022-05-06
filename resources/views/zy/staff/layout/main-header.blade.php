@@ -80,27 +80,21 @@
                         <li>
                             <!-- inner menu: contains the actual data -->
                             <ul class="menu">
-                                @if(!empty($auth_check) && $auth_check)
-                                    <li>
-                                        <a href="{{ url('/home') }}">
-                                            <i class="fa fa-home text-default" style="width:16px;"></i>
-                                            <span>{{ $me->username }}</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ url('/logout') }}">
-                                            <i class="fa fa-sign-out text-default" style="width:16px;"></i>
-                                            <span>退出</span>
-                                        </a>
-                                    </li>
-                                @else
-                                    <li>
-                                        <a href="{{ url('/login-link') }}">
-                                            <i class="fa fa-sign-in"></i>
-                                            <span>登录</span>
-                                        </a>
-                                    </li>
-                                @endif
+                                <li>
+                                    <a href="{{ url('/?task-list-type=missed') }}">
+                                        <i class="fa fa-circle-o"></i> <span>未接</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ url('/?task-list-type=reject') }}">
+                                        <i class="fa fa-circle-o"></i> <span>拒接</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ url('/?task-list-type=added') }}">
+                                        <i class="fa fa-circle-o"></i> <span>已加微信</span>
+                                    </a>
+                                </li>
                             </ul>
                         </li>
                         {{--<li class="footer"><a href="#">View all</a></li>--}}

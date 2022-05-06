@@ -229,9 +229,11 @@
                                     {{----}}
                                     <select class="form-control form-filter" name="result"  style="width:72px;">
                                         <option value="0">结果</option>
-                                        <option value="0">未接</option>
+                                        <option value="71">未接</option>
+                                        <option value="72">拒接</option>
                                         <option value="1">通话</option>
                                         <option value="19">加微信</option>
+                                        <option value="51">打错了</option>
                                         <option value="99">空号</option>
                                     </select>
 
@@ -241,15 +243,17 @@
 
                                 @elseif($item->is_completed == 1)
                                     <lable class="tag bg-olive">
-                                        <i class="icon ion-android-checkbox"></i> 已完成 by 【{{ $item->completer->username or '' }}】{{ time_show($item->completed_at) }}
+                                        <i class="icon ion-android-checkbox"></i> 已完成 by【{{ $item->completer->true_name or '' }}】{{ time_show($item->completed_at) }}
                                     </lable>
-                                    <lable class="tag bg-purple">
-                                        @if($item->item_result == 0) 未接
-                                        @elseif($item->item_result == 1) 通话
-                                        @elseif($item->item_result == 19) 加微信
-                                        @elseif($item->item_result == 99) 空号
-                                        @endif
-                                    </lable>
+                                    @if($item->item_result == 0) <lable class="tag bg-info">未标记</lable>
+                                    @elseif($item->item_result == 1) <lable class="tag bg-olive">通话</lable>
+                                    @elseif($item->item_result == 19) <lable class="tag bg-olive">加微信</lable>
+                                    @elseif($item->item_result == 71) <lable class="tag bg-yellow">未接</lable>
+                                    @elseif($item->item_result == 72) <lable class="tag bg-yellow">拒接</lable>
+                                    @elseif($item->item_result == 51) <lable class="tag bg-yellow">打错了</lable>
+                                    @elseif($item->item_result == 99) <lable class="tag bg-yellow">空号</lable>
+                                    @endif
+
                                 @endif
 
                             @endif
