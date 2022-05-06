@@ -367,7 +367,6 @@
 @section('custom-style')
 <style>
     .form-control { display:inline-block; height:24px; padding:2px 4px; margin-right:4px; font-size:12px; }
-    .text-box { padding:4px 8px; }
 </style>
 @endsection
 
