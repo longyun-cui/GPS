@@ -63,9 +63,6 @@
                             <th></th>
                             <th></th>
                             <th></th>
-                            <th></th>
-                            <th></th>
-                            <th></th>
                             <th>操作</th>
                         </tr>
                     </thead>

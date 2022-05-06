@@ -412,7 +412,7 @@
                         "orderable": false,
                         render: function(data, type, row, meta) {
                             if(data == 0) return '未知';
-                            return row.creator.username;
+                            return row.creator.true_name;
                         }
                     },
                     {

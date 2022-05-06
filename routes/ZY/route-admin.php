@@ -28,11 +28,9 @@ Route::group(['middleware' => ['zy.admin.login']], function () {
     /*
      * 个人信息管理
      */
-    Route::get('/my-info/', $controller.'@view_my_info_index');
-    Route::get('/my-info/index', $controller.'@view_my_info_index');
-    Route::get('/my-info/my-info-index', $controller.'@view_my_info_index');
-    Route::match(['get','post'], '/my-info/my-info-edit', $controller.'@operate_my_info_edit');
-    Route::match(['get','post'], '/my-info/password-reset', $controller.'@operate_my_info_password_reset');
+    Route::get('/my-account/my-profile-info-index/', $controller.'@view_my_profile_info_index');
+    Route::match(['get','post'], '/my-account/my-profile-info-edit', $controller.'@operate_my_profile_info_edit');
+    Route::match(['get','post'], '/my-account/my-password-change', $controller.'@operate_my_account_password_change');
 
 
 
