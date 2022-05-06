@@ -44,7 +44,7 @@
                 </div>
             </div>
 
-            {!! $item_list->links() !!}
+            {!! $item_list->appends($condition)->links() !!}
 
             {{--@include(env('TEMPLATE_ROOT_FRONT').'component.left-tag')--}}
 

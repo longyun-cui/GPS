@@ -69,9 +69,26 @@
         <figure class="text-container clearfix">
             <div class="text-box with-border-top-">
 
-                {{--主要内容--}}
-                <div class="text-row text-content-row multi-ellipsis-1- margin-top-4px margin-bottom-4px">
 
+                {{--已完成--}}
+                @if($item->is_completed == 1)
+                <div class="text-row text-content-row multi-ellipsis-1- margin-top-4px margin-bottom-4px">
+                    <lable class="tag bg-olive">
+                        <i class="icon ion-android-checkbox"></i> 已完成 by【{{ $item->completer->true_name or '' }}】{{ time_show($item->completed_at) }}
+                    </lable>
+                    @if($item->item_result == 0) <lable class="tag bg-info">未标记</lable>
+                    @elseif($item->item_result == 1) <lable class="tag bg-olive">通话</lable>
+                    @elseif($item->item_result == 19) <lable class="tag bg-olive">加微信</lable>
+                    @elseif($item->item_result == 71) <lable class="tag bg-yellow">未接</lable>
+                    @elseif($item->item_result == 72) <lable class="tag bg-yellow">拒接</lable>
+                    @elseif($item->item_result == 51) <lable class="tag bg-yellow">打错了</lable>
+                    @elseif($item->item_result == 99) <lable class="tag bg-yellow">空号</lable>
+                    @endif
+                </div>
+                @endif
+
+                {{--主要内容-公司名称-注册资金--}}
+                <div class="text-row text-content-row multi-ellipsis-1- margin-top-4px margin-bottom-4px">
 
                     {{--是否删除--}}
                     @if($item->deleted_at != null)
@@ -224,37 +241,35 @@
                             {{--是否完成--}}
                             @if(in_array($me_staff->user_type,[0,1,9,11,19,21,22,41,61,88]))
 
-                                @if($item->is_completed == 0)
+                                <select class="form-control form-filter" name="result"  style="width:72px;">
+                                    <option value="0">结果</option>
+                                    <option value="71">未接</option>
+                                    <option value="72">拒接</option>
+                                    <option value="1">通话</option>
+                                    <option value="19">加微信</option>
+                                    <option value="51">打错了</option>
+                                    <option value="99">空号</option>
+                                </select>
 
-                                    {{----}}
-                                    <select class="form-control form-filter" name="result"  style="width:72px;">
-                                        <option value="0">结果</option>
-                                        <option value="71">未接</option>
-                                        <option value="72">拒接</option>
-                                        <option value="1">通话</option>
-                                        <option value="19">加微信</option>
-                                        <option value="51">打错了</option>
-                                        <option value="99">空号</option>
-                                    </select>
+                                <a class="tool-button operate-btn complete-btn task-complete-this" role="button">
+                                    <i class="icon ion-android-checkbox-outline"></i> 完成
+                                </a>
 
-                                    <a class="tool-button operate-btn complete-btn task-complete-this" role="button">
-                                        <i class="icon ion-android-checkbox-outline"></i> 完成
-                                    </a>
-
-                                @elseif($item->is_completed == 1)
-                                    <lable class="tag bg-olive">
-                                        <i class="icon ion-android-checkbox"></i> 已完成 by【{{ $item->completer->true_name or '' }}】{{ time_show($item->completed_at) }}
-                                    </lable>
-                                    @if($item->item_result == 0) <lable class="tag bg-info">未标记</lable>
-                                    @elseif($item->item_result == 1) <lable class="tag bg-olive">通话</lable>
-                                    @elseif($item->item_result == 19) <lable class="tag bg-olive">加微信</lable>
-                                    @elseif($item->item_result == 71) <lable class="tag bg-yellow">未接</lable>
-                                    @elseif($item->item_result == 72) <lable class="tag bg-yellow">拒接</lable>
-                                    @elseif($item->item_result == 51) <lable class="tag bg-yellow">打错了</lable>
-                                    @elseif($item->item_result == 99) <lable class="tag bg-yellow">空号</lable>
-                                    @endif
-
-                                @endif
+                                {{----}}
+                                {{--@if($item->is_completed == 0)--}}
+                                {{--@elseif($item->is_completed == 1)--}}
+                                    {{--<lable class="tag bg-olive">--}}
+                                        {{--<i class="icon ion-android-checkbox"></i> 已完成 by【{{ $item->completer->true_name or '' }}】{{ time_show($item->completed_at) }}--}}
+                                    {{--</lable>--}}
+                                    {{--@if($item->item_result == 0) <lable class="tag bg-info">未标记</lable>--}}
+                                    {{--@elseif($item->item_result == 1) <lable class="tag bg-olive">通话</lable>--}}
+                                    {{--@elseif($item->item_result == 19) <lable class="tag bg-olive">加微信</lable>--}}
+                                    {{--@elseif($item->item_result == 71) <lable class="tag bg-yellow">未接</lable>--}}
+                                    {{--@elseif($item->item_result == 72) <lable class="tag bg-yellow">拒接</lable>--}}
+                                    {{--@elseif($item->item_result == 51) <lable class="tag bg-yellow">打错了</lable>--}}
+                                    {{--@elseif($item->item_result == 99) <lable class="tag bg-yellow">空号</lable>--}}
+                                    {{--@endif--}}
+                                {{--@endif--}}
 
                             @endif
 
@@ -352,6 +367,7 @@
 @section('custom-style')
 <style>
     .form-control { display:inline-block; height:24px; padding:2px 4px; margin-right:4px; font-size:12px; }
+    .text-box { padding:4px 8px; }
 </style>
 @endsection
 
