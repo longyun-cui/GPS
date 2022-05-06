@@ -78,7 +78,7 @@
                     </lable>
                     @if($item->item_result == 0) <lable class="tag bg-info">未标记</lable>
                     @elseif($item->item_result == 1) <lable class="tag bg-olive">通话</lable>
-                    @elseif($item->item_result == 19) <lable class="tag bg-olive">加微信</lable>
+                    @elseif($item->item_result == 19) <lable class="tag bg-olive">通话</lable> <lable class="tag bg-red">加微信</lable>
                     @elseif($item->item_result == 71) <lable class="tag bg-yellow">未接</lable>
                     @elseif($item->item_result == 72) <lable class="tag bg-yellow">拒接</lable>
                     @elseif($item->item_result == 51) <lable class="tag bg-yellow">打错了</lable>
