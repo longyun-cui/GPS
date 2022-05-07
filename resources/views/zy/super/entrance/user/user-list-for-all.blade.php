@@ -1,7 +1,7 @@
 @extends(env('TEMPLATE_ZY_SUPER').'layout.layout')
 
 
-@section('head_title','【S】兆益信息-全部用户')
+@section('head_title','【S】全部用户 - 兆益信息')
 
 
 

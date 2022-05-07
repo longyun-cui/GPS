@@ -1,6 +1,12 @@
 @extends(env('TEMPLATE_ZY_ADMIN').'layout.auth')
 
-@section('title','管理员登陆 - 兆益信息')
+
+@section('head_title')
+    @if(in_array(env('APP_ENV'),['local']))【A】@endif{{ $title_text or '管理员登陆' }} - 兆益信息
+@endsection
+
+
+
 
 @section('content')
 <div class="login-box">
@@ -56,7 +62,9 @@
 @endsection
 
 
-@section('js')
+
+
+@section('script')
 <script>
     $(function() {
         $('input').iCheck({

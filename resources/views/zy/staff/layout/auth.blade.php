@@ -7,7 +7,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>@yield('title')</title>
+    <title>@yield('head_title')</title>
     <meta name="_token" content="{{ csrf_token() }}"/>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -87,13 +87,13 @@ desired effect
         </div>
         <!-- Default to the left -->
         {{--<strong>Copyright &copy; 上海如哉网络科技有限公司 2017-2020 <a href="#">Company</a>.</strong> All rights reserved. 沪ICP备17052782号-4--}}
-        <small>如有疑问请联系管理员 电话：</small><strong>17721364771</strong></small>
-        <br>
+        {{--<small>如有疑问请联系管理员 电话：</small><strong>17721364771</strong></small>--}}
+        {{--<br>--}}
         {{--<small>联系电话：</small><strong>17721364771</strong>--}}
         {{--<br>--}}
-        <small>版权所有&copy;上海如哉网络科技有限公司</small><span class="_none">(2017-2021)</span>
+        <small>版权所有&copy;上海如哉网络科技有限公司</small><span class="_none">(2017-2022)</span>
         <br class="visible-xs">
-        <a target="_blank" href="https://beian.miit.gov.cn"><small>沪ICP备17052782号-4</small></a>
+        <a target="_blank" href="https://beian.miit.gov.cn"><small>沪ICP备17052782号</small></a>
     </footer>
 
 <!-- ./wrapper -->

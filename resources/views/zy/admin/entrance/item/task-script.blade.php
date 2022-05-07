@@ -37,369 +37,21 @@
         // 【数据分析】
         $("#item-main-body").on('click', ".item-statistic-submit", function() {
             var that = $(this);
-            window.open("/admin/statistic/statistic-item?id="+that.attr('data-id'));
+            window.open("/statistic/statistic-item?id="+that.attr('data-id'));
 //            window.location.href = "/admin/statistic/statistic-item?id="+that.attr('data-id');
         });
 
         // 【编辑】
-        $(".item-option").on('click', ".task-edit-this", function() {
-            var $this = $(this);
-            var $item_option = $this.parents('.item-option');
-            window.location.href = "/item/task-edit?item-id="+$item_option.attr('data-item-id');
-        });
-
-        // 【删除】
-        $(".main-content-container").off("click",".task-delete-this").on('click', ".task-delete-this", function() {
-            var $this = $(this);
-            var $item_option = $this.parents('.item-option');
-
-            layer.msg('确定要"删除"么？', {
-                time: 0
-                ,btn: ['确定', '取消']
-                ,yes: function(index){
-                    $.post(
-                        "{{ url('/item/task-delete') }}",
-                        {
-                            _token: $('meta[name="_token"]').attr('content'),
-                            operate: "item-delete",
-                            item_id: $item_option.attr('data-item-id')
-                        },
-                        function(data){
-                            layer.close(index);
-                            if(!data.success) layer.msg(data.msg);
-                            else
-                            {
-                                layer.closeAll();
-                                $item_option.replaceWith(data.data.item_html);
-                            }
-                        },
-                        'json'
-                    );
-                }
-            });
-        });
-
-        // 【恢复】
-        $(".main-content-container").off("click",".task-restore-this").on('click', ".task-restore-this", function() {
-            var $this = $(this);
-            var $item_option = $this.parents('.item-option');
-
-            layer.msg('确定要"恢复"么？', {
-                time: 0
-                ,btn: ['确定', '取消']
-                ,yes: function(index){
-                    $.post(
-                        "{{ url('/item/task-restore') }}",
-                        {
-                            _token: $('meta[name="_token"]').attr('content'),
-                            operate: "item-restore",
-                            item_id: $item_option.attr('data-item-id')
-                        },
-                        function(data){
-                            layer.close(index);
-                            if(!data.success) layer.msg(data.msg);
-                            else
-                            {
-                                layer.closeAll();
-                                $item_option.replaceWith(data.data.item_html);
-                            }
-                        },
-                        'json'
-                    );
-                }
-            });
-        });
-
-        // 【永久删除】
-        $(".main-content-container").off("click",".task-delete-permanently-this").on('click', ".task-delete-permanently-this", function() {
-            var $this = $(this);
-            var $item_option = $this.parents('.item-option');
-
-            layer.msg('确定要"永久删除"么？', {
-                time: 0
-                ,btn: ['确定', '取消']
-                ,yes: function(index){
-                    $.post(
-                        "{{ url('/item/task-delete-permanently') }}",
-                        {
-                            _token: $('meta[name="_token"]').attr('content'),
-                            operate: "item-delete-permanently",
-                            item_id: $item_option.attr('data-item-id')
-                        },
-                        function(data){
-                            layer.close(index);
-                            if(!data.success) layer.msg(data.msg);
-                            else
-                            {
-                                $item_option.remove();
-                            }
-                        },
-                        'json'
-                    );
-                }
-            });
-        });
-
-        // 【发布】
-        $(".main-content-container").off("click",".task-publish-this").on('click', ".task-publish-this", function() {
-            var $this = $(this);
-            var $item_option = $this.parents('.item-option');
-
-            layer.msg('确定要"发布"么？', {
-                time: 0
-                ,btn: ['确定', '取消']
-                ,yes: function(index){
-                    $.post(
-                        "{{ url('/item/task-publish') }}",
-                        {
-                            _token: $('meta[name="_token"]').attr('content'),
-                            operate: "item-publish",
-                            item_id: $item_option.attr('data-item-id')
-                        },
-                        function(data){
-                            layer.close(index);
-                            if(!data.success) layer.msg(data.msg);
-                            else
-                            {
-                                layer.closeAll();
-                                $item_option.replaceWith(data.data.item_html);
-                            }
-                        },
-                        'json'
-                    );
-                }
-            });
-        });
-
-        // 【完成】
-        $(".main-content-container").off("click",".task-complete-this").on('click', ".task-complete-this", function() {
-            var $this = $(this);
-            var $item_option = $this.parents('.item-option');
-
-            layer.msg('确认"完成"？', {
-                time: 0
-                ,btn: ['确定', '取消']
-                ,yes: function(index){
-
-                    $.post(
-                        "/item/task-complete",
-                        {
-                            _token: $('meta[name="_token"]').attr('content'),
-                            operate: 'item-complete',
-                            item_id: $item_option.attr('data-item-id'),
-                            type: 1
-                        },
-                        function(data){
-                            if(!data.success) layer.msg(data.msg);
-                            else
-                            {
-                                layer.closeAll();
-                                $item_option.replaceWith(data.data.item_html);
-                            }
-                        },
-                        'json'
-                    );
-
-                }
-            });
-
-
-        });
-
-        // 【启用】
-        $(".main-content-container").on('click', ".item-enable-submit", function() {
-            var $this = $(this);
-            var $item_option = $this.parents('.item-option');
-
-            layer.msg('确定"启用"？', {
-                time: 0
-                ,btn: ['确定', '取消']
-                ,yes: function(index){
-                    $.post(
-                        "{{ url('/admin/item/item-admin-enable') }}",
-                        {
-                            _token: $('meta[name="_token"]').attr('content'),
-                            operate: "item-enable",
-                            item_id: $item_option.attr('data-item-id')
-                        },
-                        function(data){
-                            layer.close(index);
-                            if(!data.success) layer.msg(data.msg);
-                            else
-                            {
-                                layer.closeAll();
-                                $item_option.replaceWith(data.data.item_html);
-                            }
-                        },
-                        'json'
-                    );
-                }
-            });
-        });
-        // 【禁用】
-        $(".main-content-container").on('click', ".item-disable-submit", function() {
-            var $this = $(this);
-            var $item_option = $this.parents('.item-option');
-
-            layer.msg('确定"禁用"？', {
-                time: 0
-                ,btn: ['确定', '取消']
-                ,yes: function(index){
-                    $.post(
-                        "{{ url('/admin/item/item-admin-disable') }}",
-                        {
-                            _token: $('meta[name="_token"]').attr('content'),
-                            operate: "item-disable",
-                            item_id: $item_option.attr('data-item-id')
-                        },
-                        function(data){
-                            layer.close(index);
-                            if(!data.success) layer.msg(data.msg);
-                            else
-                            {
-                                layer.closeAll();
-                                $item_option.replaceWith(data.data.item_html);
-                            }
-                        },
-                        'json'
-                    );
-                }
-            });
-        });
-
-
-
-
-
-
-
-
-        // 显示备注编辑窗口
-        $(".main-content-container").off("click",".remark-toggle").on('click', ".remark-toggle", function() {
-            var $this = $(this);
-            var $item_option = $this.parents('.item-option');
-
-            $item_option.find(".remark-container").toggle();
-        });
-        // 发布评论
-        $(".main-content-container").off("click",".remark-submit").on('click', ".remark-submit", function() {
-            var $this = $(this);
-            var $item_option = $this.parents('.item-option');
-
-            var form = $(this).parents('.item-remark-form');
-            var options = {
-                url: "/item/task-remark-edit",
-                type: "post",
-                dataType: "json",
-                success: function (data) {
-                    if(!data.success) layer.msg(data.msg);
-                    else
-                    {
-                        layer.closeAll();
-                        $item_option.replaceWith(data.data.item_html);
-                    }
-                }
-            };
-            form.ajaxSubmit(options);
-        });
-
-
-        // 查看评论
-        $(".main-content-container").off("click",".comments-get").on('click', ".comments-get", function() {
+        $("#item-main-body").on('click', ".item-edit-link", function() {
             var that = $(this);
-            var item_option = $(this).parents('.item-option');
-            var getSort = that.attr('data-getSort');
-            var getSupport = item_option.find('input[name=get-support]:checked').val();
-
-            $.post(
-                "/item/comment/get",
-                {
-                    _token: $('meta[name="_token"]').attr('content'),
-                    item_id: item_option.attr('data-item-id'),
-                    support: getSupport,
-                    category: 11,
-                    type: 0
-                },
-                function(data){
-                    if(!data.success) layer.msg(data.msg);
-                    else
-                    {
-                        item_option.find('.comment-list-container').html(data.data.html);
-
-                        item_option.find('.comments-more').attr("data-getSort",getSort);
-                        item_option.find('.comments-more').attr("data-maxId",data.data.max_id);
-                        item_option.find('.comments-more').attr("data-minId",data.data.min_id);
-                        item_option.find('.comments-more').attr("data-more",data.data.more);
-                        if(data.data.more == 'more')
-                        {
-                            item_option.find('.comments-more').html("更多");
-                        }
-                        else if(data.data.more == 'none')
-                        {
-                            item_option.find('.comments-more').html("评论也是有底的！");
-                        }
-                    }
-                },
-                'json'
-            );
+            window.location.href = "/item/item-edit?id="+that.attr('data-id');
         });
-        // 更多评论
-        $(".main-content-container").off("click",".comments-more").on('click', ".comments-more", function() {
-
-            var that = $(this);
-            var more = that.attr('data-more');
-            var getSort = that.attr('data-getSort');
-            var min_id = that.attr('data-minId');
-
-            var item_option = $(this).parents('.item-option');
-
-            if(more == 'more')
-            {
-                $.post(
-                    "/item/comment/get",
-                    {
-                        _token: $('meta[name="_token"]').attr('content'),
-                        item_id: item_option.attr('data-item-id'),
-                        min_id: min_id,
-                        category: 11,
-                        type: 0
-                    },
-                    function(data){
-                        if(!data.success) layer.msg(data.msg);
-                        else
-                        {
-                            item_option.find('.comment-list-container').append(data.data.html);
-
-                            item_option.find('.comments-more').attr("data-getSort",getSort);
-                            item_option.find('.comments-more').attr("data-maxId",data.data.max_id);
-                            item_option.find('.comments-more').attr("data-minId",data.data.min_id);
-                            item_option.find('.comments-more').attr("data-more",data.data.more);
-                            if(data.data.more == 'more')
-                            {
-                                item_option.find('.comments-more').html("更多");
-                            }
-                            else if(data.data.more == 'none')
-                            {
-                                item_option.find('.comments-more').html("我是有底的！");
-                            }
-                        }
-                    },
-                    'json'
-                );
-            }
-            else if(more == 'none')
-            {
-                layer.msg('没有更多评论了', function(){});
-            }
-        });
-
-
 
 
 
 
         /*
-         * 批量操作
+            // 批量操作
          */
         // 【批量操作】全选or反选
         $(".main-list-body").on('click', '#check-review-all', function () {
@@ -419,7 +71,7 @@
                 ,yes: function(index){
 
                     $.post(
-                        "{{ url('/admin/item/item-operate-bulk') }}",
+                        "{{ url('/item/item-operate-bulk') }}",
                         {
                             _token: $('meta[name="_token"]').attr('content'),
                             operate: "operate-bulk",
@@ -455,7 +107,7 @@
                 ,yes: function(index){
 
                     $.post(
-                        "{{ url('/admin/item/item-delete-bulk') }}",
+                        "{{ url('/item/item-delete-bulk') }}",
                         {
                             _token: $('meta[name="_token"]').attr('content'),
                             operate: "item-delete-bulk",
@@ -516,10 +168,228 @@
 
         });
 
+        // 内容【删除】
+        $("#item-main-body").on('click', ".item-admin-delete-submit", function() {
+            var that = $(this);
+            layer.msg('确定要"删除"么？', {
+                time: 0
+                ,btn: ['确定', '取消']
+                ,yes: function(index){
+                    $.post(
+                        "{{ url('/item/task-delete') }}",
+                        {
+                            _token: $('meta[name="_token"]').attr('content'),
+                            operate: "item-delete",
+                            id:that.attr('data-id')
+                        },
+                        function(data){
+                            layer.close(index);
+                            if(!data.success) layer.msg(data.msg);
+                            {
+                                $('#datatable_ajax').DataTable().ajax.reload(null,false);
+                            }
+                        },
+                        'json'
+                    );
+                }
+            });
+        });
+
+        // 内容【恢复】
+        $("#item-main-body").on('click', ".item-admin-restore-submit", function() {
+            var that = $(this);
+            layer.msg('确定要"恢复"么？', {
+                time: 0
+                ,btn: ['确定', '取消']
+                ,yes: function(index){
+                    $.post(
+                        "{{ url('/admin/item/item-restore') }}",
+                        {
+                            _token: $('meta[name="_token"]').attr('content'),
+                            operate: "item-restore",
+                            id:that.attr('data-id')
+                        },
+                        function(data){
+                            layer.close(index);
+                            if(!data.success) layer.msg(data.msg);
+                            {
+                                $('#datatable_ajax').DataTable().ajax.reload(null,false);
+                            }
+                        },
+                        'json'
+                    );
+                }
+            });
+        });
+
+        // 内容【永久删除】
+        $("#item-main-body").on('click', ".item-admin-delete-permanently-submit", function() {
+            var that = $(this);
+            layer.msg('确定要"永久删除"么？', {
+                time: 0
+                ,btn: ['确定', '取消']
+                ,yes: function(index){
+                    $.post(
+                        "{{ url('/admin/item/item-delete-permanently') }}",
+                        {
+                            _token: $('meta[name="_token"]').attr('content'),
+                            operate: "item-delete-permanently",
+                            id:that.attr('data-id')
+                        },
+                        function(data){
+                            layer.close(index);
+                            if(!data.success) layer.msg(data.msg);
+                            {
+                                $('#datatable_ajax').DataTable().ajax.reload(null,false);
+                            }
+                        },
+                        'json'
+                    );
+                }
+            });
+        });
+
+        // 内容【推送】
+        $("#item-main-body").on('click', ".item-publish-submit", function() {
+            var that = $(this);
+            layer.msg('确定要"发布"么？', {
+                time: 0
+                ,btn: ['确定', '取消']
+                ,yes: function(index){
+                    $.post(
+                        "{{ url('/admin/item/item-publish') }}",
+                        {
+                            _token: $('meta[name="_token"]').attr('content'),
+                            operate: "item-publish",
+                            id:that.attr('data-id')
+                        },
+                        function(data){
+                            layer.close(index);
+                            if(!data.success) layer.msg(data.msg);
+                            else
+                            {
+                                $('#datatable_ajax').DataTable().ajax.reload(null,false);
+                            }
+                        },
+                        'json'
+                    );
+                }
+            });
+        });
+
+        // 内容【设置贴片广告】
+        $("#item-main-body").on('click', ".item-ad-set-submit", function() {
+            var that = $(this);
+            layer.msg('确定要"设置"么，原有广告将被替换？', {
+                time: 0
+                ,btn: ['确定', '取消']
+                ,yes: function(index){
+                    $.post(
+                        "{{ url('/admin/item/item-ad-set') }}",
+                        {
+                            _token: $('meta[name="_token"]').attr('content'),
+                            operate: "item-ad-set",
+                            id:that.attr('data-id')
+                        },
+                        function(data){
+                            layer.close(index);
+                            if(!data.success) layer.msg(data.msg);
+                            else
+                            {
+                                $('#datatable_ajax').DataTable().ajax.reload(null,false);
+                            }
+                        },
+                        'json'
+                    );
+                }
+            });
+        });
+
+        // 内容【取消贴片广告】
+        $("#item-main-body").on('click', ".item-ad-cancel-submit", function() {
+            var that = $(this);
+            layer.msg('确定要"取消"么？', {
+                time: 0
+                ,btn: ['确定', '取消']
+                ,yes: function(index){
+                    $.post(
+                        "{{ url('/admin/item/item-ad-cancel') }}",
+                        {
+                            _token: $('meta[name="_token"]').attr('content'),
+                            operate: "item-ad-cancel",
+                            id:that.attr('data-id')
+                        },
+                        function(data){
+                            layer.close(index);
+                            if(!data.success) layer.msg(data.msg);
+                            else
+                            {
+                                $('#datatable_ajax').DataTable().ajax.reload(null,false);
+                            }
+                        },
+                        'json'
+                    );
+                }
+            });
+        });
 
 
 
 
+        // 【启用】
+        $("#item-main-body").on('click', ".item-admin-enable-submit", function() {
+            var that = $(this);
+            layer.msg('确定"封禁"？', {
+                time: 0
+                ,btn: ['确定', '取消']
+                ,yes: function(index){
+                    $.post(
+                        "{{ url('/admin/item/item-admin-enable') }}",
+                        {
+                            _token: $('meta[name="_token"]').attr('content'),
+                            operate: "item-admin-enable",
+                            id:that.attr('data-id')
+                        },
+                        function(data){
+                            layer.close(index);
+                            if(!data.success) layer.msg(data.msg);
+                            else
+                            {
+                                $('#datatable_ajax').DataTable().ajax.reload(null,false);
+                            }
+                        },
+                        'json'
+                    );
+                }
+            });
+        });
+        // 【禁用】
+        $("#item-main-body").on('click', ".item-admin-disable-submit", function() {
+            var that = $(this);
+            layer.msg('确定"解禁"？', {
+                time: 0
+                ,btn: ['确定', '取消']
+                ,yes: function(index){
+                    $.post(
+                        "{{ url('/admin/item/item-admin-disable') }}",
+                        {
+                            _token: $('meta[name="_token"]').attr('content'),
+                            operate: "item-admin-disable",
+                            id:that.attr('data-id')
+                        },
+                        function(data){
+                            layer.close(index);
+                            if(!data.success) layer.msg(data.msg);
+                            else
+                            {
+                                $('#datatable_ajax').DataTable().ajax.reload(null,false);
+                            }
+                        },
+                        'json'
+                    );
+                }
+            });
+        });
 
     });
 </script>

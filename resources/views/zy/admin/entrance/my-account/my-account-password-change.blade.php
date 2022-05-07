@@ -1,7 +1,9 @@
 @extends(env('TEMPLATE_ZY_ADMIN').'layout.layout')
 
 
-@section('head_title','修改密码 - 管理员后台系统 - 兆益信息')
+@section('head_title')
+    @if(in_array(env('APP_ENV'),['local']))【A】@endif{{ $head_title or '修改密码 - 管理员后台系统 - 兆益信息' }}
+@endsection
 @section('meta_author')@endsection
 @section('meta_title')@endsection
 @section('meta_description')@endsection

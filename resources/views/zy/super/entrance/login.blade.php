@@ -1,11 +1,17 @@
 @extends(env('TEMPLATE_ZY_SUPER').'layout.auth')
 
-@section('title','超级管理员登陆 - 兆益信息')
+
+@section('head_title')
+    @if(in_array(env('APP_ENV'),['local']))【S】@endif{{ $title_text or '超级管理员登陆' }} - 兆益信息
+@endsection
+
+
+
 
 @section('content')
 <div class="login-box">
     <div class="login-logo">
-        <a href="/admin"><b>兆益信息</b></a>
+        <a href="/"><b>兆益信息</b></a>
     </div>
     <!-- /.login-logo -->
     <div class="login-box-body">
@@ -56,7 +62,9 @@
 @endsection
 
 
-@section('js')
+
+
+@section('script')
 <script>
     $(function() {
         $('input').iCheck({

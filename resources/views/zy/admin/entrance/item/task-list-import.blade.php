@@ -2,7 +2,7 @@
 
 
 @section('head_title')
-    {{ $title_text }} - 兆益信息
+    @if(in_array(env('APP_ENV'),['local']))【A】@endif{{ $title_text }} - 兆益信息
 @endsection
 
 

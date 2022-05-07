@@ -1,6 +1,9 @@
 @extends(env('TEMPLATE_ROOT_FRONT').'layout.layout')
 
-@section('head_title','我的信息 - 云飞钢琴')
+
+@section('head_title')
+    @if(in_array(env('APP_ENV'),['local']))【A】@endif{{ $title_text or '任务' }} - 兆益信息
+@endsection
 @section('meta_title')@endsection
 @section('meta_author')@endsection
 @section('meta_description')@endsection
@@ -8,9 +11,7 @@
 
 
 @section('sidebar')
-
     @include(env('TEMPLATE_ROOT_FRONT').'component.sidebar-root')
-
 @endsection
 @section('header','')
 @section('description','')

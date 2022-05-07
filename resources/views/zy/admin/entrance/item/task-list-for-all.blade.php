@@ -1,13 +1,15 @@
 @extends(env('TEMPLATE_ZY_ADMIN').'layout.layout')
 
 
-@section('head_title','任务列表')
+@section('head_title')
+    @if(in_array(env('APP_ENV'),['local']))【A】@endif{{ $title_text or '任务列表' }} - 兆益信息
+@endsection
 
 
 
 
 @section('header','')
-@section('description','管理员后台系统 - 兆益信息')
+@section('description','任务列表 - 管理员后台系统 - 兆益信息')
 @section('breadcrumb')
     <li><a href="{{ url('/') }}"><i class="fa fa-home"></i>首页</a></li>
 @endsection

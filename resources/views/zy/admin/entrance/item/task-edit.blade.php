@@ -2,7 +2,7 @@
 
 
 @section('head_title')
-    {{ $title_text }} - 云飞钢琴
+    @if(in_array(env('APP_ENV'),['local']))【A】@endif{{ $title_text or '任务编辑' }} - 兆益信息
 @endsection
 
 
@@ -12,16 +12,11 @@
 @section('meta_keywords')@endsection
 
 
-@section('wx_share_title')@endsection
-@section('wx_share_desc')@endsection
-@section('wx_share_imgUrl'){{ url('/k-org.cn.png') }}@endsection
 
 
 @section('sidebar')
     @include(env('TEMPLATE_STAFF_FRONT').'component.sidebar.sidebar-root')
 @endsection
-
-
 @section('header','')
 @section('description','')
 @section('content')

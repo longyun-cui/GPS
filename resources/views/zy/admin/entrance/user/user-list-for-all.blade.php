@@ -1,17 +1,19 @@
 @extends(env('TEMPLATE_ZY_ADMIN').'layout.layout')
 
 
-@section('head_title','全部用户 - 管理员后台 - 兆益信息')
+@section('head_title')
+    @if(in_array(env('APP_ENV'),['local']))【A】@endif{{ $title_text or '全部用户' }} - 管理员后台系统 - 兆益信息
+@endsection
+
+
 
 
 @section('header','')
-@section('description','全部用户 - 管理员后台 - 兆益信息')
+@section('description','全部用户 - 管理员后台系统 - 兆益信息')
 @section('breadcrumb')
     <li><a href="{{url('/admin')}}"><i class="fa fa-dashboard"></i>首页</a></li>
     <li><a href="#"><i class="fa "></i>Here</a></li>
 @endsection
-
-
 @section('content')
 <div class="row">
     <div class="col-md-12">
@@ -234,6 +236,8 @@
     </div>
 </div>
 @endsection
+
+
 
 
 @section('custom-script')

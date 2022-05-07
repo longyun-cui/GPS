@@ -1,7 +1,9 @@
 @extends(env('TEMPLATE_ZY_STAFF').'layout.layout')
 
 
-@section('head_title','编辑基本资料 - 组织管理 - 朝鲜族组织活动平台 - 如未科技')
+@section('head_title')
+    @if(in_array(env('APP_ENV'),['local']))(l)@endif{{ $head_title or '编辑基本资料 - 员工系统 - 兆益信息' }}
+@endsection
 @section('meta_author')@endsection
 @section('meta_title')@endsection
 @section('meta_description')@endsection
