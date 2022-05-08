@@ -41,6 +41,12 @@
 
                         <input type="text" class="form-control form-filter item-search-keyup" name="title" placeholder="标题" />
 
+                        <select class="form-control form-filter" name="finished" style="width:96px;">
+                            <option value ="-1">全部</option>
+                            <option value ="0">待完成</option>
+                            <option value ="1">已完成</option>
+                        </select>
+
                         <button type="button" class="form-control btn btn-flat btn-success filter-submit" id="filter-submit">
                             <i class="fa fa-search"></i> 搜索
                         </button>
@@ -202,6 +208,7 @@
                         d._token = $('meta[name="_token"]').attr('content');
                         d.keyword = $('input[name="keyword"]').val();
                         d.website = $('input[name="website"]').val();
+                        d.finished = $('select[name="finished"]').val();
 //                        d.nickname 	= $('input[name="nickname"]').val();
 //                        d.certificate_type_id = $('select[name="certificate_type_id"]').val();
 //                        d.certificate_state = $('select[name="certificate_state"]').val();
@@ -349,7 +356,7 @@
                     {
                         "width": "64px",
                         "title": "状态",
-                        "data": "active",
+                        "data": "item_result",
                         "orderable": false,
                         render: function(data, type, row, meta) {
 //                            return data;
@@ -360,21 +367,13 @@
 
                             if(row.item_status == 1)
                             {
-                                if(data == 0)
-                                {
-                                    return '<small class="btn-xs bg-teal">待发布</small>';
-                                }
-                                else if(data == 1)
-                                {
-                                    return '<small class="btn-xs bg-olive">已发布</small>';
-//                                if(row.is_read == 0) return '<small class="btn-xs bg-olive">未读</small>';
-//                                else if(row.is_read == 1) return '<small class="btn-xs bg-primary">已读</small>';
-//                                else return "--";
-                                }
-                                else if(data == 9)
-                                {
-                                    return '<small class="btn-xs bg-purple">已完成</small>';
-                                }
+                                if(data == 0) return '<small class="btn-xs bg-teal">待完成</small>';
+                                else if(data == 1) return '<small class="btn-xs bg-olive">通话</small>';
+                                else if(data == 19) return '<small class="btn-xs bg-purple">加微信</small>';
+                                else if(data == 71) return '<small class="btn-xs bg-yellow">未接</small>';
+                                else if(data == 72) return '<small class="btn-xs bg-yellow">拒接</small>';
+                                else if(data == 51) return '<small class="btn-xs bg-yellow">打错了</small>';
+                                else if(data == 99) return '<small class="btn-xs bg-yellow">空号</small>';
                                 else return "有误";
                             }
                             else

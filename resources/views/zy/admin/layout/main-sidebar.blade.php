@@ -89,17 +89,21 @@
                     <i class="fa fa-list text-red"></i>
                     <span>任务列表</span>
                 </a>
+                {{--<a href="{{ url('/item/task-list-for-finished')}}">--}}
+                    {{--<i class="fa fa-list text-red"></i>--}}
+                    {{--<span>已完成任务</span>--}}
+                {{--</a>--}}
             </li>
 
 
 
 
             {{--流量统计--}}
-            <li class="header _none">流量统计</li>
+            <li class="header">数据统计</li>
 
-            <li class="treeview {{ $menu_active_of_statistic or '' }} _none">
-                <a href="{{ url('/statistic') }}">
-                    <i class="fa fa-bar-chart text-green"></i> <span>流量统计</span>
+            <li class="treeview {{ $menu_active_of_statistic_index or '' }}">
+                <a href="{{ url('/statistic/statistic-index') }}">
+                    <i class="fa fa-bar-chart text-green"></i> <span>数据统计</span>
                 </a>
             </li>
             <li class="treeview {{ $menu_active_of_statistic_list_for_all or '' }} _none">

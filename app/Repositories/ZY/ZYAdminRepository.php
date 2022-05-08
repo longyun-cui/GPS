@@ -923,6 +923,11 @@ class ZYAdminRepository {
         else if($item_type == "vote") $query->where('item_type', 29);
         else if($item_type == "ask") $query->where('item_type', 31);
 
+
+        $is_completed = isset($post_data['finished']) ? $post_data['finished'] : '';
+        if($is_completed == 0) $query->where('is_completed', 0);
+        else if($is_completed == 1) $query->where('is_completed', 1);
+
         $total = $query->count();
 
         $draw  = isset($post_data['draw'])  ? $post_data['draw']  : 1;
@@ -1941,8 +1946,8 @@ class ZYAdminRepository {
     // 【】流量统计
     public function view_statistic_index()
     {
-        $me = Auth::guard('super')->user();
-        $me_id = $me->id;
+        $this->get_me();
+        $me = $this->me;
 
         $this_month = date('Y-m');
         $this_month_year = date('Y');

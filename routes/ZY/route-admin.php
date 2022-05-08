@@ -101,6 +101,7 @@ Route::group(['middleware' => ['zy.admin.login']], function () {
     Route::match(['get','post'], '/item/item-list-for-debase', $controller.'@view_item_list_for_debase');
 
     Route::match(['get','post'], '/item/task-list-for-all', $controller.'@view_task_list_for_all');
+    Route::match(['get','post'], '/item/task-list-for-finished', $controller.'@view_task_list_for_finished');
 
 
     Route::match(['get','post'], '/user/my-administrator-list', $controller.'@view_user_my_administrator_list');
@@ -109,6 +110,14 @@ Route::group(['middleware' => ['zy.admin.login']], function () {
     Route::match(['get','post'], '/user/administrator-relation-add-bulk', $controller.'@operate_user_administrator_relation_add_bulk');
 
     Route::match(['get','post'], '/user/administrator-relation-remove', $controller.'@operate_user_administrator_relation_remove');
+
+
+
+
+    /*
+     * statistic
+     */
+    Route::match(['get','post'], '/statistic/statistic-index', $controller.'@view_statistic_index');
 
 
 });
