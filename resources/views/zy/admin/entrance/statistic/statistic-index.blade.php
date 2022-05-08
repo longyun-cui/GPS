@@ -1,13 +1,15 @@
 @extends(env('TEMPLATE_ZY_ADMIN').'layout.layout')
 
 
-@section('head_title','【A】流量统计')
+@section('head_title')
+    @if(in_array(env('APP_ENV'),['local']))【A】@endif{{ $head_title or '统计 - 管理员后台系统 - 兆益信息' }}
+@endsection
 
 
 
 
 @section('header','')
-@section('description','管理员后台系统 - 朝鲜族组织活动平台 - 如未科技')
+@section('description','统计 - 管理员后台系统 - 兆益信息')
 @section('breadcrumb')
     <li><a href="{{url('/')}}"><i class="fa fa-home"></i>首页</a></li>
     <li><a href="#"><i class="fa "></i>Here</a></li>
@@ -20,7 +22,7 @@
         <div class="box box-info">
 
             <div class="box-header with-border" style="margin:16px 0;">
-                <h3 class="box-title">流量统计</h3>
+                <h3 class="box-title">总量统计</h3>
             </div>
 
             {{--总访问量--}}
