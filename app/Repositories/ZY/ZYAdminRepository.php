@@ -1958,166 +1958,186 @@ class ZYAdminRepository {
 
 
         // 总访问量【统计】
-        $all = Def_Record::select(
+//        $all = ZY_TASK::select(
+//            DB::raw("DATE(FROM_UNIXTIME(created_at)) as date"),
+//            DB::raw("DATE_FORMAT(FROM_UNIXTIME(completed_at),'%Y-%m') as month"),
+//            DB::raw("DATE_FORMAT(FROM_UNIXTIME(completed_at),'%c') as month_0"),
+//            DB::raw("DATE_FORMAT(FROM_UNIXTIME(completed_at),'%e') as day"),
+//            DB::raw('count(*) as count')
+//        )
+//            ->groupBy(DB::raw("DATE(FROM_UNIXTIME(completed_at))"))
+//            ->whereYear(DB::raw("DATE(FROM_UNIXTIME(completed_at))"),$this_month_year)
+//            ->whereMonth(DB::raw("DATE(FROM_UNIXTIME(completed_at))"),$this_month_month)
+//            ->where(['is_completed'=>1])
+//            ->get();
+//        $all = $all->keyBy('day');
+
+
+        $query = ZY_TASK::select(
             DB::raw("DATE(FROM_UNIXTIME(created_at)) as date"),
-            DB::raw("DATE_FORMAT(FROM_UNIXTIME(created_at),'%Y-%m') as month"),
-            DB::raw("DATE_FORMAT(FROM_UNIXTIME(created_at),'%c') as month_0"),
-            DB::raw("DATE_FORMAT(FROM_UNIXTIME(created_at),'%e') as day"),
+            DB::raw("DATE_FORMAT(FROM_UNIXTIME(completed_at),'%Y-%m') as month"),
+            DB::raw("DATE_FORMAT(FROM_UNIXTIME(completed_at),'%c') as month_0"),
+            DB::raw("DATE_FORMAT(FROM_UNIXTIME(completed_at),'%e') as day"),
             DB::raw('count(*) as count')
         )
-            ->groupBy(DB::raw("DATE(FROM_UNIXTIME(created_at))"))
-            ->whereYear(DB::raw("DATE(FROM_UNIXTIME(created_at))"),$this_month_year)
-            ->whereMonth(DB::raw("DATE(FROM_UNIXTIME(created_at))"),$this_month_month)
-            ->where(['record_category'=>1,'record_type'=>1])
-            ->get();
-        $all = $all->keyBy('day');
+            ->groupBy(DB::raw("DATE(FROM_UNIXTIME(completed_at))"))
+            ->whereYear(DB::raw("DATE(FROM_UNIXTIME(completed_at))"),$this_month_year)
+            ->whereMonth(DB::raw("DATE(FROM_UNIXTIME(completed_at))"),$this_month_month)
+            ->where(['is_completed'=>1]);
+
+        $all = $query->get()->keyBy('day');
+        $dialog = $query->where('item_result',1)->get()->keyBy('day');
+        $plus_wx = $query->where('item_result',19)->get()->keyBy('day');
+//        dd($all->toArray());
 
         // 首页访问量【统计】
-        $rooted = Def_Record::select(
-            DB::raw("DATE(FROM_UNIXTIME(created_at)) as date"),
-            DB::raw("DATE_FORMAT(FROM_UNIXTIME(created_at),'%Y-%m') as month"),
-            DB::raw("DATE_FORMAT(FROM_UNIXTIME(created_at),'%c') as month_0"),
-            DB::raw("DATE_FORMAT(FROM_UNIXTIME(created_at),'%e') as day"),
-            DB::raw('count(*) as count')
-        )
-            ->groupBy(DB::raw("DATE(FROM_UNIXTIME(created_at))"))
-            ->whereYear(DB::raw("DATE(FROM_UNIXTIME(created_at))"),$this_month_year)
-            ->whereMonth(DB::raw("DATE(FROM_UNIXTIME(created_at))"),$this_month_month)
-            ->where(['record_category'=>1,'record_type'=>1,'page_type'=>1,'page_module'=>1])
-            ->get();
-        $rooted = $rooted->keyBy('day');
+//        $rooted = ZY_TASK::select(
+//            DB::raw("DATE(FROM_UNIXTIME(created_at)) as date"),
+//            DB::raw("DATE_FORMAT(FROM_UNIXTIME(created_at),'%Y-%m') as month"),
+//            DB::raw("DATE_FORMAT(FROM_UNIXTIME(created_at),'%c') as month_0"),
+//            DB::raw("DATE_FORMAT(FROM_UNIXTIME(created_at),'%e') as day"),
+//            DB::raw('count(*) as count')
+//        )
+//            ->groupBy(DB::raw("DATE(FROM_UNIXTIME(created_at))"))
+//            ->whereYear(DB::raw("DATE(FROM_UNIXTIME(created_at))"),$this_month_year)
+//            ->whereMonth(DB::raw("DATE(FROM_UNIXTIME(created_at))"),$this_month_month)
+//            ->where(['record_category'=>1,'record_type'=>1,'page_type'=>1,'page_module'=>1])
+//            ->get();
+//        $rooted = $rooted->keyBy('day');
 
         // 介绍页访问量【统计】
-        $introduction = Def_Record::select(
-            DB::raw("DATE(FROM_UNIXTIME(created_at)) as date"),
-            DB::raw("DATE_FORMAT(FROM_UNIXTIME(created_at),'%Y-%m') as month"),
-            DB::raw("DATE_FORMAT(FROM_UNIXTIME(created_at),'%c') as month_0"),
-            DB::raw("DATE_FORMAT(FROM_UNIXTIME(created_at),'%e') as day"),
-            DB::raw('count(*) as count')
-        )
-            ->groupBy(DB::raw("DATE(FROM_UNIXTIME(created_at))"))
-            ->whereYear(DB::raw("DATE(FROM_UNIXTIME(created_at))"),$this_month_year)
-            ->whereMonth(DB::raw("DATE(FROM_UNIXTIME(created_at))"),$this_month_month)
-            ->where(['record_category'=>1,'record_type'=>1,'page_type'=>1,'page_module'=>2])
-            ->get();
-        $introduction = $introduction->keyBy('day');
+//        $introduction = ZY_TASK::select(
+//            DB::raw("DATE(FROM_UNIXTIME(created_at)) as date"),
+//            DB::raw("DATE_FORMAT(FROM_UNIXTIME(created_at),'%Y-%m') as month"),
+//            DB::raw("DATE_FORMAT(FROM_UNIXTIME(created_at),'%c') as month_0"),
+//            DB::raw("DATE_FORMAT(FROM_UNIXTIME(created_at),'%e') as day"),
+//            DB::raw('count(*) as count')
+//        )
+//            ->groupBy(DB::raw("DATE(FROM_UNIXTIME(created_at))"))
+//            ->whereYear(DB::raw("DATE(FROM_UNIXTIME(created_at))"),$this_month_year)
+//            ->whereMonth(DB::raw("DATE(FROM_UNIXTIME(created_at))"),$this_month_month)
+//            ->where(['record_category'=>1,'record_type'=>1,'page_type'=>1,'page_module'=>2])
+//            ->get();
+//        $introduction = $introduction->keyBy('day');
 
 
 
 
         // 打开设备类型【占比】
-        $open_device_type = Def_Record::select('open_device_type',DB::raw('count(*) as count'))
-            ->groupBy('open_device_type')
-            ->where(['record_category'=>1,'record_type'=>1])
-            ->get();
-        foreach($open_device_type as $k => $v)
-        {
-            if($v->open_device_type == 0) $open_device_type[$k]->name = "默认";
-            else if($v->open_device_type == 1) $open_device_type[$k]->name = "移动端";
-            else if($v->open_device_type == 2)  $open_device_type[$k]->name = "PC端";
-        }
+//        $open_device_type = ZY_TASK::select('open_device_type',DB::raw('count(*) as count'))
+//            ->groupBy('open_device_type')
+//            ->where(['record_category'=>1,'record_type'=>1])
+//            ->get();
+//        foreach($open_device_type as $k => $v)
+//        {
+//            if($v->open_device_type == 0) $open_device_type[$k]->name = "默认";
+//            else if($v->open_device_type == 1) $open_device_type[$k]->name = "移动端";
+//            else if($v->open_device_type == 2)  $open_device_type[$k]->name = "PC端";
+//        }
 
         // 打开系统类型【占比】
-        $open_system = Def_Record::select('open_system',DB::raw('count(*) as count'))
-            ->groupBy('open_system')
-            ->where(['record_category'=>1,'record_type'=>1])
-            ->get();
+//        $open_system = ZY_TASK::select('open_system',DB::raw('count(*) as count'))
+//            ->groupBy('open_system')
+//            ->where(['record_category'=>1,'record_type'=>1])
+//            ->get();
 
         // 打开APP类型【占比】
-        $open_app = Def_Record::select('open_app',DB::raw('count(*) as count'))
-            ->groupBy('open_app')
-            ->where(['record_category'=>1,'record_type'=>1])
-            ->get();
+//        $open_app = ZY_TASK::select('open_app',DB::raw('count(*) as count'))
+//            ->groupBy('open_app')
+//            ->where(['record_category'=>1,'record_type'=>1])
+//            ->get();
 
 
 
         // 总分享【统计】
-        $shared_all = Def_Record::select(
-            DB::raw("DATE(FROM_UNIXTIME(created_at)) as date"),
-            DB::raw("DATE_FORMAT(FROM_UNIXTIME(created_at),'%Y-%m') as month"),
-            DB::raw("DATE_FORMAT(FROM_UNIXTIME(created_at),'%c') as month_0"),
-            DB::raw("DATE_FORMAT(FROM_UNIXTIME(created_at),'%e') as day"),
-            DB::raw('count(*) as count')
-        )
-            ->groupBy(DB::raw("DATE(FROM_UNIXTIME(created_at))"))
-            ->whereYear(DB::raw("DATE(FROM_UNIXTIME(created_at))"),$this_month_year)
-            ->whereMonth(DB::raw("DATE(FROM_UNIXTIME(created_at))"),$this_month_month)
-            ->where(['record_category'=>1,'record_type'=>2])
-            ->get();
-        $shared_all = $shared_all->keyBy('day');
+//        $shared_all = ZY_TASK::select(
+//            DB::raw("DATE(FROM_UNIXTIME(created_at)) as date"),
+//            DB::raw("DATE_FORMAT(FROM_UNIXTIME(created_at),'%Y-%m') as month"),
+//            DB::raw("DATE_FORMAT(FROM_UNIXTIME(created_at),'%c') as month_0"),
+//            DB::raw("DATE_FORMAT(FROM_UNIXTIME(created_at),'%e') as day"),
+//            DB::raw('count(*) as count')
+//        )
+//            ->groupBy(DB::raw("DATE(FROM_UNIXTIME(created_at))"))
+//            ->whereYear(DB::raw("DATE(FROM_UNIXTIME(created_at))"),$this_month_year)
+//            ->whereMonth(DB::raw("DATE(FROM_UNIXTIME(created_at))"),$this_month_month)
+//            ->where(['record_category'=>1,'record_type'=>2])
+//            ->get();
+//        $shared_all = $shared_all->keyBy('day');
 
         // 首页分享【统计】
-        $shared_root = Def_Record::select(
-            DB::raw("DATE(FROM_UNIXTIME(created_at)) as date"),
-            DB::raw("DATE_FORMAT(FROM_UNIXTIME(created_at),'%Y-%m') as month"),
-            DB::raw("DATE_FORMAT(FROM_UNIXTIME(created_at),'%c') as month_0"),
-            DB::raw("DATE_FORMAT(FROM_UNIXTIME(created_at),'%e') as day"),
-            DB::raw('count(*) as count')
-        )
-            ->groupBy(DB::raw("DATE(FROM_UNIXTIME(created_at))"))
-            ->whereYear(DB::raw("DATE(FROM_UNIXTIME(created_at))"),$this_month_year)
-            ->whereMonth(DB::raw("DATE(FROM_UNIXTIME(created_at))"),$this_month_month)
-            ->where(['record_category'=>1,'record_type'=>2])
-            ->where(['page_type'=>1,'page_module'=>1])
-            ->get();
-        $shared_root = $shared_root->keyBy('day');
+//        $shared_root = ZY_TASK::select(
+//            DB::raw("DATE(FROM_UNIXTIME(created_at)) as date"),
+//            DB::raw("DATE_FORMAT(FROM_UNIXTIME(created_at),'%Y-%m') as month"),
+//            DB::raw("DATE_FORMAT(FROM_UNIXTIME(created_at),'%c') as month_0"),
+//            DB::raw("DATE_FORMAT(FROM_UNIXTIME(created_at),'%e') as day"),
+//            DB::raw('count(*) as count')
+//        )
+//            ->groupBy(DB::raw("DATE(FROM_UNIXTIME(created_at))"))
+//            ->whereYear(DB::raw("DATE(FROM_UNIXTIME(created_at))"),$this_month_year)
+//            ->whereMonth(DB::raw("DATE(FROM_UNIXTIME(created_at))"),$this_month_month)
+//            ->where(['record_category'=>1,'record_type'=>2])
+//            ->where(['page_type'=>1,'page_module'=>1])
+//            ->get();
+//        $shared_root = $shared_root->keyBy('day');
 
 
 
 
         // 总分享【占比】
-        $shared_all_scale = Def_Record::select('record_module',DB::raw('count(*) as count'))
-//            ->groupBy('shared_location')
-            ->groupBy('record_module')
-            ->where(['record_category'=>1,'record_type'=>2])
-            ->get();
-        foreach($shared_all_scale as $k => $v)
-        {
-//            if($v->shared_location == 1) $shared_all_scale[$k]->name = "微信好友";
-//            else if($v->shared_location == 2) $shared_all_scale[$k]->name = "微信朋友圈";
-//            else if($v->shared_location == 3) $shared_all_scale[$k]->name = "QQ好友";
-//            else if($v->shared_location == 4) $shared_all_scale[$k]->name = "QQ空间";
-//            else if($v->shared_location == 5) $shared_all_scale[$k]->name = "腾讯微博";
+//        $shared_all_scale = ZY_TASK::select('record_module',DB::raw('count(*) as count'))
+////            ->groupBy('shared_location')
+//            ->groupBy('record_module')
+//            ->where(['record_category'=>1,'record_type'=>2])
+//            ->get();
+//        foreach($shared_all_scale as $k => $v)
+//        {
+////            if($v->shared_location == 1) $shared_all_scale[$k]->name = "微信好友";
+////            else if($v->shared_location == 2) $shared_all_scale[$k]->name = "微信朋友圈";
+////            else if($v->shared_location == 3) $shared_all_scale[$k]->name = "QQ好友";
+////            else if($v->shared_location == 4) $shared_all_scale[$k]->name = "QQ空间";
+////            else if($v->shared_location == 5) $shared_all_scale[$k]->name = "腾讯微博";
+////            else $shared_all_scale[$k]->name = "其他";
+//
+//            if($v->record_module == 1) $shared_all_scale[$k]->name = "微信好友|QQ好友";
+//            else if($v->record_module == 2) $shared_all_scale[$k]->name = "朋友圈|QQ空间";
 //            else $shared_all_scale[$k]->name = "其他";
-
-            if($v->record_module == 1) $shared_all_scale[$k]->name = "微信好友|QQ好友";
-            else if($v->record_module == 2) $shared_all_scale[$k]->name = "朋友圈|QQ空间";
-            else $shared_all_scale[$k]->name = "其他";
-        }
+//        }
 
         // 首页分享【占比】
-        $shared_root_scale = Def_Record::select('record_module',DB::raw('count(*) as count'))
-//            ->groupBy('shared_location')
-            ->groupBy('record_module')
-            ->where(['record_category'=>1,'record_type'=>2])
-            ->where(['page_type'=>1,'page_module'=>1])
-            ->get();
-        foreach($shared_root_scale as $k => $v)
-        {
-//            if($v->shared_location == 1) $shared_root_scale[$k]->name = "微信好友";
-//            else if($v->shared_location == 2) $shared_root_scale[$k]->name = "微信朋友圈";
-//            else if($v->shared_location == 3) $shared_root_scale[$k]->name = "QQ好友";
-//            else if($v->shared_location == 4) $shared_root_scale[$k]->name = "QQ空间";
-//            else if($v->shared_location == 5) $shared_root_scale[$k]->name = "腾讯微博";
+//        $shared_root_scale = ZY_TASK::select('record_module',DB::raw('count(*) as count'))
+////            ->groupBy('shared_location')
+//            ->groupBy('record_module')
+//            ->where(['record_category'=>1,'record_type'=>2])
+//            ->where(['page_type'=>1,'page_module'=>1])
+//            ->get();
+//        foreach($shared_root_scale as $k => $v)
+//        {
+////            if($v->shared_location == 1) $shared_root_scale[$k]->name = "微信好友";
+////            else if($v->shared_location == 2) $shared_root_scale[$k]->name = "微信朋友圈";
+////            else if($v->shared_location == 3) $shared_root_scale[$k]->name = "QQ好友";
+////            else if($v->shared_location == 4) $shared_root_scale[$k]->name = "QQ空间";
+////            else if($v->shared_location == 5) $shared_root_scale[$k]->name = "腾讯微博";
+////            else $shared_root_scale[$k]->name = "其他";
+//
+//            if($v->record_module == 1) $shared_root_scale[$k]->name = "微信好友|QQ好友";
+//            else if($v->record_module == 2) $shared_root_scale[$k]->name = "朋友圈|QQ空间";
 //            else $shared_root_scale[$k]->name = "其他";
-
-            if($v->record_module == 1) $shared_root_scale[$k]->name = "微信好友|QQ好友";
-            else if($v->record_module == 2) $shared_root_scale[$k]->name = "朋友圈|QQ空间";
-            else $shared_root_scale[$k]->name = "其他";
-        }
+//        }
 
 
         $view_data["all"] = $all;
-        $view_data["rooted"] = $rooted;
-        $view_data["introduction"] = $introduction;
-        $view_data["open_device_type"] = $open_device_type;
-        $view_data["open_app"] = $open_app;
-        $view_data["open_system"] = $open_system;
-        $view_data["shared_all"] = $shared_all;
-        $view_data["shared_all_scale"] = $shared_all_scale;
-        $view_data["shared_root"] = $shared_root;
-        $view_data["shared_root_scale"] = $shared_root_scale;
-        $view_data["sidebar_statistic_active"] = 'active';
+        $view_data["dialog"] = $dialog;
+        $view_data["plus_wx"] = $plus_wx;
+//        $view_data["rooted"] = $rooted;
+//        $view_data["introduction"] = $introduction;
+//        $view_data["open_device_type"] = $open_device_type;
+//        $view_data["open_app"] = $open_app;
+//        $view_data["open_system"] = $open_system;
+//        $view_data["shared_all"] = $shared_all;
+//        $view_data["shared_all_scale"] = $shared_all_scale;
+//        $view_data["shared_root"] = $shared_root;
+//        $view_data["shared_root_scale"] = $shared_root_scale;
+//        $view_data["sidebar_statistic_active"] = 'active';
 
         $view_blade = env('TEMPLATE_ZY_ADMIN').'entrance.statistic.statistic-index';
         return view($view_blade)->with($view_data);
