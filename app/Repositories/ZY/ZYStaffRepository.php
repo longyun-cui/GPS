@@ -2103,7 +2103,7 @@ class ZYStaffRepository {
         // 打开设备类型【占比】
         $all_rate = ZY_TASK::select('item_result',DB::raw('count(*) as count'))
             ->groupBy('item_result')
-            ->where(['is_completed'=>1])
+            ->where(['is_completed'=>1,'owner_id'=>$me_id])
             ->get();
         foreach($all_rate as $k => $v)
         {
