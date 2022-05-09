@@ -1986,8 +1986,9 @@ class ZYAdminRepository {
             ->where(['is_completed'=>1]);
 
         $all = $query->get()->keyBy('day');
-        $dialog = $query->where('item_result',1)->get()->keyBy('day');
+        $dialog = $query->whereIn('item_result',[1,19])->get()->keyBy('day');
         $plus_wx = $query->where('item_result',19)->get()->keyBy('day');
+//        dd($plus_wx->toArray());
 
 
 

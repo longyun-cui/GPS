@@ -2084,7 +2084,7 @@ class ZYStaffRepository {
             ->where(['is_completed'=>1,'owner_id'=>$me_id]);
 
         $all = $query->get()->keyBy('day');
-        $dialog = $query->where('item_result',1)->get()->keyBy('day');
+        $dialog = $query->whereIn('item_result',[1,19])->get()->keyBy('day');
         $plus_wx = $query->where('item_result',19)->get()->keyBy('day');
 
 
