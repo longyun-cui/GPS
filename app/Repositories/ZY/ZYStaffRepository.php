@@ -2051,4 +2051,76 @@ class ZYStaffRepository {
 
 
 
+
+    /*
+     * Statistic 流量统计
+     */
+
+    // 【】流量统计
+    public function view_statistic_index()
+    {
+        $this->get_me();
+        $me = $this->me;
+        $me_id = $me->id;
+
+        $this_month = date('Y-m');
+        $this_month_year = date('Y');
+        $this_month_month = date('m');
+        $last_month = date('Y-m',strtotime('last month'));
+        $last_month_year = date('Y',strtotime('last month'));
+        $last_month_month = date('m',strtotime('last month'));
+
+
+        $query = ZY_TASK::select(
+            DB::raw("DATE(FROM_UNIXTIME(created_at)) as date"),
+            DB::raw("DATE_FORMAT(FROM_UNIXTIME(completed_at),'%Y-%m') as month"),
+            DB::raw("DATE_FORMAT(FROM_UNIXTIME(completed_at),'%c') as month_0"),
+            DB::raw("DATE_FORMAT(FROM_UNIXTIME(completed_at),'%e') as day"),
+            DB::raw('count(*) as count')
+        )
+            ->groupBy(DB::raw("DATE(FROM_UNIXTIME(completed_at))"))
+            ->whereYear(DB::raw("DATE(FROM_UNIXTIME(completed_at))"),$this_month_year)
+            ->whereMonth(DB::raw("DATE(FROM_UNIXTIME(completed_at))"),$this_month_month)
+            ->where(['is_completed'=>1,'owner_id'=>$me_id]);
+
+        $all = $query->get()->keyBy('day');
+        $dialog = $query->where('item_result',1)->get()->keyBy('day');
+        $plus_wx = $query->where('item_result',19)->get()->keyBy('day');
+
+
+
+
+        // 打开设备类型【占比】
+        $all_rate = ZY_TASK::select('item_result',DB::raw('count(*) as count'))
+            ->groupBy('item_result')
+            ->where(['is_completed'=>1])
+            ->get();
+        foreach($all_rate as $k => $v)
+        {
+            if($v->item_result == 0) $all_rate[$k]->name = "未选择";
+            else if($v->item_result == 1) $all_rate[$k]->name = "通话";
+            else if($v->item_result == 19)  $all_rate[$k]->name = "加微信";
+            else if($v->item_result == 71)  $all_rate[$k]->name = "未接";
+            else if($v->item_result == 72)  $all_rate[$k]->name = "拒接";
+            else if($v->item_result == 51)  $all_rate[$k]->name = "打错了";
+            else if($v->item_result == 99)  $all_rate[$k]->name = "空号";
+            else $all_rate[$k]->name = "其他";
+        }
+
+
+
+
+        $view_data["all"] = $all;
+        $view_data["dialog"] = $dialog;
+        $view_data["plus_wx"] = $plus_wx;
+        $view_data["all_rate"] = $all_rate;
+
+        $view_blade = env('TEMPLATE_ZY_STAFF').'entrance.statistic.statistic-index';
+        return view($view_blade)->with($view_data);
+    }
+
+
+
+
+
 }

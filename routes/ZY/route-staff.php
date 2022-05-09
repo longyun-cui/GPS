@@ -90,5 +90,13 @@ Route::group(['middleware' => ['zy.staff.login']], function () {
     Route::match(['get','post'], '/user/administrator-relation-remove', $controller.'@operate_user_administrator_relation_remove');
 
 
+
+
+    /*
+     * statistic
+     */
+    Route::match(['get','post'], '/statistic/statistic-index', $controller.'@view_statistic_index');
+
+
 });
 

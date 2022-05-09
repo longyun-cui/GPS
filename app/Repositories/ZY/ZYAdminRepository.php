@@ -2006,6 +2006,7 @@ class ZYAdminRepository {
             else if($v->item_result == 72)  $all_rate[$k]->name = "拒接";
             else if($v->item_result == 51)  $all_rate[$k]->name = "打错了";
             else if($v->item_result == 99)  $all_rate[$k]->name = "空号";
+            else $all_rate[$k]->name = "其他";
         }
 
 

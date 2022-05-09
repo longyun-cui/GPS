@@ -95,6 +95,12 @@
                                         <i class="fa fa-circle-o"></i> <span>已加微信</span>
                                     </a>
                                 </li>
+                                <li class="header">统计</li>
+                                <li>
+                                    <a href="{{ url('/statistic/statistic-index') }}">
+                                        <i class="fa fa-circle-o"></i> <span>统计</span>
+                                    </a>
+                                </li>
                             </ul>
                         </li>
                         {{--<li class="footer"><a href="#">View all</a></li>--}}

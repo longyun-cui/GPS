@@ -301,5 +301,21 @@ class ZYStaffController extends Controller
 
 
 
+
+
+    /*
+     * Statistic 统计
+     */
+    // 【统计】概览
+    public function view_statistic_index()
+    {
+        return $this->repo->view_statistic_index();
+    }
+
+
+
+
+
+
 }
 
