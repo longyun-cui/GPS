@@ -66,3 +66,8 @@ table.dataTable .text-right { text-align:right; }
 .dropdown-menu li a { cursor:pointer; }
 
 .form-horizontal .checkbox, .form-horizontal .radio { padding-top:2px; min-height:24px; }
+
+
+.navbar-nav>.notifications-menu>.dropdown-menu>li .menu, .navbar-nav>.messages-menu>.dropdown-menu>li .menu, .navbar-nav>.tasks-menu>.dropdown-menu>li .menu {
+    max-height: 320px;
+}

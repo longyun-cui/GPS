@@ -160,6 +160,16 @@ class ZYStaffRepository {
             $return['custom_menu_title'] = "已加微信";
             $return['menu_active_of_custom'] = 'active';
         }
+        else if($task_list_type == 'remark')
+        {
+            $item_query->where('is_completed',1);
+            $item_query->whereNotNull('remark');
+            $item_query->orderByDesc('completed_at');
+
+            $return['head_title'] = "有备注";
+            $return['custom_menu_title'] = "有备注";
+            $return['menu_active_of_custom'] = 'active';
+        }
 //        else
 //        {
 //        }

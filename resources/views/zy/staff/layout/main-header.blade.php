@@ -95,6 +95,11 @@
                                         <i class="fa fa-circle-o"></i> <span>已加微信</span>
                                     </a>
                                 </li>
+                                <li>
+                                    <a href="{{ url('/?task-list-type=remark') }}">
+                                        <i class="fa fa-circle-o"></i> <span>有备注</span>
+                                    </a>
+                                </li>
                                 <li class="header">统计</li>
                                 <li>
                                     <a href="{{ url('/statistic/statistic-index') }}">
