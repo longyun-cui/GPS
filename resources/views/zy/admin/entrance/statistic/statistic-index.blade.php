@@ -61,26 +61,23 @@
 </div>
 
 
-{{--访问比例--}}
+{{--转化率--}}
 <div class="row">
     <div class="col-md-12">
         <!-- BEGIN PORTLET-->
         <div class="box box-warning">
 
             <div class="box-header with-border" style="margin:16px 0;">
-                <h3 class="box-title">访问比例</h3>
+                <h3 class="box-title">转化率</h3>
             </div>
 
             <div class="box-body">
                 <div class="row">
-                    <div class="col-md-4">
-                        <div id="echart-device-type" style="width:100%;height:320px;"></div>
+                    <div class="col-md-6">
+                        <div id="echart-all-rate" style="width:100%;height:320px;"></div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <div id="echart-system" style="width:100%;height:320px;"></div>
-                    </div>
-                    <div class="col-md-4">
-                        <div id="echart-app" style="width:100%;height:320px;"></div>
                     </div>
                 </div>
             </div>
@@ -137,7 +134,7 @@ $(function() {
 
         var option_all = {
             title: {
-                text: '访问统计'
+                text: '电话量'
             },
             tooltip : {
                 trigger: 'axis',
@@ -230,6 +227,69 @@ $(function() {
         };
         var myChart_all = echarts.init(document.getElementById('echart-all'));
         myChart_all.setOption(option_all);
+
+        // 转化率
+        var option_all_rate = {
+            title : {
+                text: '转化率',
+                subtext: '转化率',
+                x:'center'
+            },
+            tooltip : {
+                trigger: 'item',
+                formatter: "{a} <br/>{b} : {c} ({d}%)"
+            },
+            legend: {
+                orient : 'vertical',
+                x : 'left',
+                data: [
+                    @foreach($all_rate as $v)
+                            @if (!$loop->last) '{{ $v->name }}', @else '{{ $v->name }}' @endif
+                    @endforeach
+                ]
+            },
+            toolbox: {
+                show : true,
+                feature : {
+                    mark : {show: true},
+                    dataView : {show: true, readOnly: false},
+                    magicType : {
+                        show: true,
+                        type: ['pie', 'funnel'],
+                        option: {
+                            funnel: {
+                                x: '25%',
+                                width: '50%',
+                                funnelAlign: 'left',
+                                max: 1548
+                            }
+                        }
+                    },
+                    restore : {show: true},
+                    saveAsImage : {show: true}
+                }
+            },
+            calculable : true,
+            series : [
+                {
+                    name:'访问来源',
+                    type:'pie',
+                    radius : '55%',
+                    center: ['50%', '60%'],
+                    data: [
+                        @foreach($all_rate as $v)
+                            @if (!$loop->last)
+                                { value:'{{ $v->count }}', name:'{{ $v->name }}' },
+                            @else
+                                { value:'{{ $v->count }}', name:'{{ $v->name }}' }
+                            @endif
+                        @endforeach
+                    ]
+                }
+            ]
+        };
+        var myChart_all_rate = echarts.init(document.getElementById('echart-all-rate'));
+        myChart_all_rate.setOption(option_all_rate);
 
 
     });
