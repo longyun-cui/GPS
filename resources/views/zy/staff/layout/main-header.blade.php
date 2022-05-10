@@ -69,6 +69,14 @@
                 @endif
                 @endif
 
+                {{----}}
+                <li class="">
+                    <a href="{{ url('/item/item-list') }}" data-type="notification">
+                        <i class="fa fa-file-text"></i>
+                        {{--<span class="label label-success">公告</span>--}}
+                    </a>
+                </li>
+
                 {{--<!-- Notifications Menu -->--}}
                 <li class="dropdown notifications-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">

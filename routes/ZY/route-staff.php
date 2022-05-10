@@ -48,8 +48,31 @@ Route::group(['middleware' => ['zy.staff.login']], function () {
 
 
 
+
     /*
-     * 任务管理
+     * 内容管理-模块
+     */
+
+
+    Route::match(['get','post'], '/item/item-list', $controller.'@view_item_list');
+    Route::match(['get','post'], '/item/item-list-for-all', $controller.'@view_item_list_for_all');
+    Route::match(['get','post'], '/item/item-list-for-menu_type', $controller.'@view_item_list_for_menu_type');
+    Route::match(['get','post'], '/item/item-list-for-time_line', $controller.'@view_item_list_for_time_line');
+    Route::match(['get','post'], '/item/item-list-for-debase', $controller.'@view_item_list_for_debase');
+
+
+    Route::match(['get','post'], '/item/content-management', $controller.'@view_item_content_management');
+    Route::post('/item/content-edit', $controller.'@operate_item_content_edit');
+    Route::post('/item/content-get', $controller.'@operate_item_content_get');
+    Route::post('/item/content-delete', $controller.'@operate_item_content_delete');
+    Route::post('/item/content-enable', $controller.'@operate_item_content_enable');
+    Route::post('/item/content-disable', $controller.'@operate_item_content_disable');
+
+
+
+
+    /*
+     * 任务管理-模块
      */
     Route::match(['get','post'], '/item/task-create', $controller.'@operate_item_task_create');
     Route::match(['get','post'], '/item/task-edit', $controller.'@operate_item_task_edit');
@@ -61,25 +84,13 @@ Route::group(['middleware' => ['zy.staff.login']], function () {
     Route::post('/item/task-remark-edit', $controller.'@operate_item_task_remark_edit');
 
 
+    Route::get('item/{id?}', $controller.'@view_item');
 
 
 
 
 
 
-    Route::match(['get','post'], '/item/content-management', $controller.'@view_item_content_management');
-    Route::post('/item/content-edit', $controller.'@operate_item_content_edit');
-    Route::post('/item/content-get', $controller.'@operate_item_content_get');
-    Route::post('/item/content-delete', $controller.'@operate_item_content_delete');
-    Route::post('/item/content-enable', $controller.'@operate_item_content_enable');
-    Route::post('/item/content-disable', $controller.'@operate_item_content_disable');
-
-
-    Route::match(['get','post'], '/item/item-list', $controller.'@view_item_list');
-    Route::match(['get','post'], '/item/item-list-for-all', $controller.'@view_item_list_for_all');
-    Route::match(['get','post'], '/item/item-list-for-menu_type', $controller.'@view_item_list_for_menu_type');
-    Route::match(['get','post'], '/item/item-list-for-time_line', $controller.'@view_item_list_for_time_line');
-    Route::match(['get','post'], '/item/item-list-for-debase', $controller.'@view_item_list_for_debase');
 
 
     Route::match(['get','post'], '/user/my-administrator-list', $controller.'@view_user_my_administrator_list');
@@ -93,7 +104,7 @@ Route::group(['middleware' => ['zy.staff.login']], function () {
 
 
     /*
-     * statistic
+     * statistic 统计管理-模块
      */
     Route::match(['get','post'], '/statistic/statistic-index', $controller.'@view_statistic_index');
 

@@ -89,9 +89,18 @@ class ZYStaffController extends Controller
         return $this->repo->view_staff_index();
 	}
 
-    public function dataTableI18n()
+
+    // 【内容列表】返回-列表-视图
+    public function view_item_list()
     {
-    	return trans('pagination.i18n');
+        return $this->repo->view_item_list(request()->all());
+    }
+
+
+    // 【内容详情】返回-列表-视图
+    public function view_item($id=0)
+    {
+        return $this->repo->view_item(request()->all(),$id);
     }
 
 
@@ -249,56 +258,6 @@ class ZYStaffController extends Controller
     {
         return $this->repo->operate_item_select2_people(request()->all());
     }
-
-
-    // 【内容】返回-列表-视图
-    public function view_item_list()
-    {
-        if(request()->isMethod('get')) return $this->repo->view_item_list(request()->all());
-        else if(request()->isMethod('post')) return $this->repo->get_item_list_datatable(request()->all());
-    }
-    // 【内容】返回-全部内容-列表-视图
-    public function view_item_list_for_all()
-    {
-        if(request()->isMethod('get')) return $this->repo->view_item_list_for_all(request()->all());
-        else if(request()->isMethod('post')) return $this->repo->get_item_list_for_all_datatable(request()->all());
-    }
-    // 【内容】返回-列表-视图
-    public function view_item_list_for_people()
-    {
-        if(request()->isMethod('get')) return $this->repo->view_item_list_for_people(request()->all());
-        else if(request()->isMethod('post')) return $this->repo->get_item_list_for_people_datatable(request()->all());
-    }
-    // 【内容】返回-列表-视图
-    public function view_item_list_for_object()
-    {
-        if(request()->isMethod('get')) return $this->repo->view_item_list_for_object(request()->all());
-        else if(request()->isMethod('post')) return $this->repo->get_item_list_for_object_datatable(request()->all());
-    }
-    // 【内容】返回-列表-视图
-    public function view_item_list_for_product()
-    {
-        if(request()->isMethod('get')) return $this->repo->view_item_list_for_product(request()->all());
-        else if(request()->isMethod('post')) return $this->repo->get_item_list_for_product_datatable(request()->all());
-    }
-
-    // 【内容】返回-全部内容-列表-视图
-    public function view_item_list_for_event()
-    {
-        if(request()->isMethod('get')) return $this->repo->view_item_list_for_event(request()->all());
-        else if(request()->isMethod('post')) return $this->repo->get_item_list_for_event_datatable(request()->all());
-    }
-
-    // 【内容】返回-全部内容-列表-视图
-    public function view_item_list_for_conception()
-    {
-        if(request()->isMethod('get')) return $this->repo->view_item_list_for_conception(request()->all());
-        else if(request()->isMethod('post')) return $this->repo->get_item_list_for_conception_datatable(request()->all());
-    }
-
-
-
-
 
 
 

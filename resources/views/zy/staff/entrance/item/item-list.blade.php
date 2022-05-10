@@ -2,7 +2,7 @@
 
 
 @section('head_title')
-    @if(in_array(env('APP_ENV'),['local']))(l)@endif{{ $head_title or '兆益信息' }}
+    @if(in_array(env('APP_ENV'),['local']))(l)@endif{{ $head_title or '内容' }} - 兆益信息
 @endsection
 @section('meta_title')@endsection
 @section('meta_author')@endsection
@@ -26,14 +26,15 @@
 
             <div class="nav-tabs-custom">
                 <ul class="nav nav-tabs">
-                    <li class="{{ $menu_active_of_unfinished or '' }}"><a href="/?task-list-type=unfinished" data-toggle="tab-">待完成</a></li>
-                    <li class="{{ $menu_active_of_finished or '' }}"><a href="/?task-list-type=finished" data-toggle="tab-">已完成</a></li>
-                    <li class="{{ $menu_active_of_custom or '' }}"><a href="/?task-list-type=all" data-toggle="tab-">{{ $custom_menu_title or '' }}</a></li>
+                    <li class="{{ $menu_active_of_all or '' }}"><a href="/item/item-list?item-list-type=all" data-toggle="tab-">全部</a></li>
+                    <li class="{{ $menu_active_of_notice or '' }}"><a href="/item/item-list?item-list-type=notice" data-toggle="tab-">公告</a></li>
+                    <li class="{{ $menu_active_of_production or '' }}"><a href="/item/item-list?item-list-type=production" data-toggle="tab-">产品</a></li>
+                    <li class="{{ $menu_active_of_custom or '' }}"><a href="/item/item-list?item-list-type=custom" data-toggle="tab-">{{ $custom_menu_title or '' }}</a></li>
                 </ul>
                 <div class="tab-content" style="width:100%; padding:10px 0;float:left;">
                     <div class="active tab-pane" id="all">
                         @if(!empty($item_list) && count($item_list))
-                            @include(env('TEMPLATE_ZY_STAFF').'component.item-list-for-task',['item_list'=>$item_list])
+                            @include(env('TEMPLATE_ZY_STAFF').'component.item-list',['item_list'=>$item_list])
                         @endif
                     </div>
                     {{--<div class="tab-pane" id="timeline">--}}
@@ -77,8 +78,6 @@
 
 
 @section('custom-css')
-    <link rel="stylesheet" href="{{ asset('/custom/zy-staff/css/item.css') }}">
-    <link rel="stylesheet" href="{{ asset('/custom/zy-staff/css/frontend.css') }}">
 @endsection
 @section('custom-style')
 <style>

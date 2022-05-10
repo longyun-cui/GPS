@@ -101,9 +101,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <link rel="stylesheet" href="{{ asset('/resource/common/css/frontend/index.css') }}">
     <link rel="stylesheet" href="{{ asset('/resource/others/css/frontend/index.css') }}">
 
-    <link rel="stylesheet" href="{{ asset('/custom/zy-staff/css/item.css') }}">
-    <link rel="stylesheet" href="{{ asset('/custom/zy-staff/css/frontend.css') }}">
-
 
     @yield('css')
     @yield('style')

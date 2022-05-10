@@ -189,10 +189,134 @@ class ZYStaffRepository {
     }
 
 
+    // 【内容列表】返回-列表-视图
+    public function view_item_list($post_data)
+    {
+        $this->get_me();
+        $me = $this->me;
+
+        $menu_active = 'menu_root_active';
+
+//        $item_query = ZY_Item::with(['owner','creator','updater','completer']);
+        $item_query = ZY_Item::with(['owner','creator']);
+//        $item_query->where(['item_status'=>1,'active'=>1]);
+        $item_query->where(['item_category'=>11]);
+
+
+        $condition = request()->all();
+//
+        $item_list_type = request('item-list-type','root');
+        if($item_list_type == 'root')
+        {
+//            $condition['item-list-type'] = 'all';
+//            $parameter_result = http_build_query($condition);
+//            return redirect('/?'.$parameter_result);
+
+            $return['head_title'] = "全部内容";
+            $return['menu_active_of_all'] = 'active';
+        }
+        else if($item_list_type == 'all')
+        {
+            $item_query->whereIn('item_type',[1,21,41,42,99,101]);
+
+            $return['head_title'] = "全部内容";
+            $return['menu_active_of_all'] = 'active';
+        }
+        else if($item_list_type == 'production')
+        {
+            $item_query->where('item_type',11);
+
+            $return['head_title'] = "产品";
+            $return['menu_active_of_production'] = 'active';
+        }
+        else if($item_list_type == 'notice')
+        {
+            $item_query->where('item_type',99);
+
+            $return['head_title'] = "公告";
+            $return['menu_active_of_notice'] = 'active';
+        }
+        else
+        {
+        }
+
+        $item_list = $item_query->orderByDesc('published_at')->orderByDesc('updated_at')->paginate(20);
+//        dd($item_list->toArray());
+        foreach ($item_list as $item)
+        {
+            $item->custom = json_decode($item->custom);
+        }
+
+        $return['condition'] = $condition;
+        $return['item_list'] = $item_list;
+        $view_blade = env('TEMPLATE_ZY_STAFF').'entrance.item.item-list';
+        return view($view_blade)->with($return);
+    }
+    // 【内容详情】
+    public function view_item($post_data,$id=0)
+    {
+        $this->get_me();
+        $me = $this->me;
+
+        $item = ZY_Item::with(['owner','creator'])->find($id);
+        if($item)
+        {
+
+            $item->timestamps = false;
+            $item->increment('visit_num');
+
+//            if($item->item_category != 11)
+//            {
+//                $error["text"] = '该内容拒绝访问！';
+//                return view(env('TEMPLATE_ZY_STAFF').'errors.404')->with('error',$error);
+//            }
+//
+//            if($item->item_status != 1)
+//            {
+//                $error["text"] = '该内容被禁啦！';
+//                return view(env('TEMPLATE_ZY_STAFF').'errors.404')->with('error',$error);
+//            }
+
+//            if($item->owner)
+//            {
+//                if($item->owner->user_category != 1)
+//                {
+//                    $error["text"] = '该内容用户有误！';
+//                    return view(env('TEMPLATE_ZY_STAFF').'errors.404')->with('error',$error);
+//                }
+//                if($item->owner->user_status != 1)
+//                {
+//                    $error["text"] = '该内容用户被禁啦！';
+//                    return view(env('TEMPLATE_ZY_STAFF').'errors.404')->with('error',$error);
+//                }
+//            }
+//            else
+//            {
+//                $error["text"] = '作者有误！';
+//                return view(env('TEMPLATE_ZY_STAFF').'errors.404')->with('error',$error);
+//            }
+
+            $item->custom_decode = json_decode($item->custom);
+        }
+        else
+        {
+            $error["text"] = '内容不存在或者被删除了！';
+            return view(env('TEMPLATE_ZY_STAFF').'errors.404')->with('error',$error);
+        }
+
+
+        $return['getType'] = 'item';
+        $return['item'] = $item;
+
+        $view_blade = env('TEMPLATE_ZY_STAFF').'entrance.item.item';
+        return view($view_blade)->with($return);
+    }
+
+
 
 
     /*
-     * 用户基本信息
+     * 用户基本信息 - 模块
      */
     // 【基本信息】返回视图
     public function view_my_profile_info_index()
@@ -1681,381 +1805,6 @@ class ZYStaffRepository {
 
 
 
-    // 【内容】返回-列表-视图
-    public function view_item_list($post_data)
-    {
-        return view(env('TEMPLATE_ATOM_ADMIN').'entrance.item.item-list')
-            ->with([
-                'sidebar_item_list_active'=>'active'
-            ]);
-    }
-    // 【内容】返回-列表-数据
-    public function get_item_list_datatable($post_data)
-    {
-        $me = Auth::guard("admin")->user();
-        $query = ZY_Item::select('*')
-            ->with('owner')
-            ->where('owner_id','>=',1);
-
-        if(!empty($post_data['title'])) $query->where('title', 'like', "%{$post_data['title']}%");
-
-        $total = $query->count();
-
-        $draw  = isset($post_data['draw'])  ? $post_data['draw']  : 1;
-        $skip  = isset($post_data['start'])  ? $post_data['start']  : 0;
-        $limit = isset($post_data['length']) ? $post_data['length'] : 20;
-
-        if(isset($post_data['order']))
-        {
-            $columns = $post_data['columns'];
-            $order = $post_data['order'][0];
-            $order_column = $order['column'];
-            $order_dir = $order['dir'];
-
-            $field = $columns[$order_column]["data"];
-            $query->orderBy($field, $order_dir);
-        }
-        else $query->orderBy("id", "desc");
-
-        if($limit == -1) $list = $query->withTrashed()->get();
-        else $list = $query->skip($skip)->take($limit)->withTrashed()->get();
-
-        foreach ($list as $k => $v)
-        {
-            $list[$k]->encode_id = encode($v->id);
-            $list[$k]->description = replace_blank($v->description);
-        }
-//        dd($list->toArray());
-        return datatable_response($list, $draw, $total);
-    }
-
-
-    // 【内容】【全部】返回-列表-视图
-    public function view_item_list_for_all($post_data)
-    {
-        return view(env('TEMPLATE_ATOM_ADMIN').'entrance.item.item-list-for-all')
-            ->with([
-                'sidebar_item_list_active'=>'active',
-                'sidebar_item_list_for_all_active'=>'active'
-            ]);
-    }
-    // 【内容】【全部】返回-列表-数据
-    public function get_item_list_for_all_datatable($post_data)
-    {
-        $me = Auth::guard("admin")->user();
-        $query = ZY_Item::select('*')->withTrashed()
-            ->with(['owner','creator'])
-            ->where('owner_id','>=',1)
-            ->where(['owner_id'=>100,'item_category'=>100])
-            ->where('item_type','!=',0);
-
-        if(!empty($post_data['name'])) $query->where('name', 'like', "%{$post_data['name']}%");
-        if(!empty($post_data['title'])) $query->where('title', 'like', "%{$post_data['title']}%");
-        if(!empty($post_data['tag'])) $query->where('tag', 'like', "%{$post_data['tag']}%");
-        if(!empty($post_data['major'])) $query->where('major', 'like', "%{$post_data['major']}%");
-        if(!empty($post_data['nation'])) $query->where('nation', 'like', "%{$post_data['nation']}%");
-
-        $total = $query->count();
-
-        $draw  = isset($post_data['draw'])  ? $post_data['draw']  : 1;
-        $skip  = isset($post_data['start'])  ? $post_data['start']  : 0;
-        $limit = isset($post_data['length']) ? $post_data['length'] : 20;
-
-        if(isset($post_data['order']))
-        {
-            $columns = $post_data['columns'];
-            $order = $post_data['order'][0];
-            $order_column = $order['column'];
-            $order_dir = $order['dir'];
-
-            $field = $columns[$order_column]["data"];
-            $query->orderBy($field, $order_dir);
-        }
-        else $query->orderBy("updated_at", "desc");
-
-        if($limit == -1) $list = $query->get();
-        else $list = $query->skip($skip)->take($limit)->get();
-
-        foreach ($list as $k => $v)
-        {
-            $list[$k]->encode_id = encode($v->id);
-            $list[$k]->description = replace_blank($v->description);
-        }
-//        dd($list->toArray());
-        return datatable_response($list, $draw, $total);
-    }
-
-
-    // 【内容】【活动】返回-列表-视图
-    public function view_item_list_for_object($post_data)
-    {
-        return view(env('TEMPLATE_ATOM_ADMIN').'entrance.item.item-list-for-object')
-            ->with([
-                'sidebar_item_list_active'=>'active',
-                'sidebar_item_list_for_object_active'=>'active'
-            ]);
-    }
-    // 【内容】【活动】返回-列表-数据
-    public function get_item_list_for_object_datatable($post_data)
-    {
-        $me = Auth::guard("admin")->user();
-        $query = ZY_Item::select('*')->withTrashed()
-            ->with(['owner','creator'])
-            ->where(['owner_id'=>100,'item_category'=>100,'item_type'=>1]);
-
-        if(!empty($post_data['name'])) $query->where('name', 'like', "%{$post_data['name']}%");
-        if(!empty($post_data['title'])) $query->where('title', 'like', "%{$post_data['title']}%");
-        if(!empty($post_data['tag'])) $query->where('tag', 'like', "%{$post_data['tag']}%");
-
-        $total = $query->count();
-
-        $draw  = isset($post_data['draw'])  ? $post_data['draw']  : 1;
-        $skip  = isset($post_data['start'])  ? $post_data['start']  : 0;
-        $limit = isset($post_data['length']) ? $post_data['length'] : 20;
-
-        if(isset($post_data['order']))
-        {
-            $columns = $post_data['columns'];
-            $order = $post_data['order'][0];
-            $order_column = $order['column'];
-            $order_dir = $order['dir'];
-
-            $field = $columns[$order_column]["data"];
-            $query->orderBy($field, $order_dir);
-        }
-        else $query->orderBy("updated_at", "desc");
-
-        if($limit == -1) $list = $query->get();
-        else $list = $query->skip($skip)->take($limit)->get();
-
-        foreach ($list as $k => $v)
-        {
-            $list[$k]->encode_id = encode($v->id);
-            $list[$k]->description = replace_blank($v->description);
-        }
-//        dd($list->toArray());
-        return datatable_response($list, $draw, $total);
-    }
-
-
-    // 【内容】【人】返回-列表-视图
-    public function view_item_list_for_people($post_data)
-    {
-        return view(env('TEMPLATE_ATOM_ADMIN').'entrance.item.item-list-for-people')
-            ->with([
-                'sidebar_item_list_people'=>'active',
-                'sidebar_item_list_for_people_active'=>'active'
-            ]);
-    }
-    // 【内容】【文章】返回-列表-数据
-    public function get_item_list_for_people_datatable($post_data)
-    {
-        $me = Auth::guard("atom")->user();
-        $query = ZY_Item::select('*')->withTrashed()
-            ->with(['owner','creator'])
-            ->where(['owner_id'=>100,'item_category'=>100,'item_type'=>11]);
-
-        if(!empty($post_data['name'])) $query->where('name', 'like', "%{$post_data['name']}%");
-        if(!empty($post_data['title'])) $query->where('title', 'like', "%{$post_data['title']}%");
-        if(!empty($post_data['tag'])) $query->where('tag', 'like', "%{$post_data['tag']}%");
-        if(!empty($post_data['major'])) $query->where('major', 'like', "%{$post_data['major']}%");
-        if(!empty($post_data['nation'])) $query->where('nation', 'like', "%{$post_data['nation']}%");
-
-        $query->addSelect(DB::raw('cast(birth_time as DECIMAL) as t'));
-        $query->addSelect(DB::raw('cast(birth_time as DATE) as tt'));
-        $query->addSelect(DB::raw('FROM_UNIXTIME(UNIX_TIMESTAMP(cast(birth_time as DATE))) as ttt'));
-
-        $total = $query->count();
-
-        $draw  = isset($post_data['draw'])  ? $post_data['draw']  : 1;
-        $skip  = isset($post_data['start'])  ? $post_data['start']  : 0;
-        $limit = isset($post_data['length']) ? $post_data['length'] : 20;
-
-        if(isset($post_data['order']))
-        {
-            $columns = $post_data['columns'];
-            $order = $post_data['order'][0];
-            $order_column = $order['column'];
-            $order_dir = $order['dir'];
-
-            $field = $columns[$order_column]["data"];
-            if($field == "birth_time") $query->orderByRaw(DB::raw('cast(birth_time as SIGNED) '.$order_dir));
-            else if($field == "death_time") $query->orderByRaw(DB::raw('cast(death_time as SIGNED) '.$order_dir));
-            $query->orderBy($field, $order_dir);
-        }
-        else $query->orderBy("updated_at", "desc");
-
-        if($limit == -1) $list = $query->get();
-        else $list = $query->skip($skip)->take($limit)->get();
-
-        foreach ($list as $k => $v)
-        {
-            $list[$k]->encode_id = encode($v->id);
-            $list[$k]->description = replace_blank($v->description);
-        }
-//        dd($list->toArray());
-        return datatable_response($list, $draw, $total);
-    }
-
-
-    // 【内容】【广告】返回-列表-视图
-    public function view_item_list_for_product($post_data)
-    {
-        return view(env('TEMPLATE_ATOM_ADMIN').'entrance.item.item-list-for-product')
-            ->with([
-                'sidebar_item_list_active'=>'active',
-                'sidebar_item_list_for_product_active'=>'active'
-            ]);
-    }
-    // 【内容】【广告】返回-列表-数据
-    public function get_item_list_for_product_datatable($post_data)
-    {
-        $me = Auth::guard("atom")->user();
-        $query = ZY_Item::select('*')->withTrashed()
-            ->with([
-                'owner',
-                'creator',
-                'pivot_product_people'=>function ($query) { $query->where('relation_type',1); }
-            ])
-            ->where(['owner_id'=>100,'item_category'=>100,'item_type'=>22]);
-
-        if(!empty($post_data['name'])) $query->where('name', 'like', "%{$post_data['name']}%");
-        if(!empty($post_data['title'])) $query->where('title', 'like', "%{$post_data['title']}%");
-        if(!empty($post_data['tag'])) $query->where('tag', 'like', "%{$post_data['tag']}%");
-
-        $total = $query->count();
-
-        $draw  = isset($post_data['draw'])  ? $post_data['draw']  : 1;
-        $skip  = isset($post_data['start'])  ? $post_data['start']  : 0;
-        $limit = isset($post_data['length']) ? $post_data['length'] : 20;
-
-        if(isset($post_data['order']))
-        {
-            $columns = $post_data['columns'];
-            $order = $post_data['order'][0];
-            $order_column = $order['column'];
-            $order_dir = $order['dir'];
-
-            $field = $columns[$order_column]["data"];
-            $query->orderBy($field, $order_dir);
-        }
-        else $query->orderBy("updated_at", "desc");
-
-        if($limit == -1) $list = $query->get();
-        else $list = $query->skip($skip)->take($limit)->get();
-
-        foreach ($list as $k => $v)
-        {
-            $list[$k]->encode_id = encode($v->id);
-            $list[$k]->description = replace_blank($v->description);
-        }
-//        dd($list->toArray());
-        return datatable_response($list, $draw, $total);
-    }
-
-
-    // 【内容】【广告】返回-列表-视图
-    public function view_item_list_for_event($post_data)
-    {
-        return view(env('TEMPLATE_ATOM_ADMIN').'entrance.item.item-list-for-event')
-            ->with([
-                'sidebar_item_list_active'=>'active',
-                'sidebar_item_list_for_event_active'=>'active'
-            ]);
-    }
-    // 【内容】【广告】返回-列表-数据
-    public function get_item_list_for_event_datatable($post_data)
-    {
-        $me = Auth::guard("atom")->user();
-        $query = ZY_Item::select('*')->withTrashed()
-            ->with(['owner','creator'])
-            ->where(['owner_id'=>100,'item_category'=>100,'item_type'=>33]);
-
-        if(!empty($post_data['name'])) $query->where('name', 'like', "%{$post_data['name']}%");
-        if(!empty($post_data['title'])) $query->where('title', 'like', "%{$post_data['title']}%");
-        if(!empty($post_data['tag'])) $query->where('tag', 'like', "%{$post_data['tag']}%");
-
-        $total = $query->count();
-
-        $draw  = isset($post_data['draw'])  ? $post_data['draw']  : 1;
-        $skip  = isset($post_data['start'])  ? $post_data['start']  : 0;
-        $limit = isset($post_data['length']) ? $post_data['length'] : 20;
-
-        if(isset($post_data['order']))
-        {
-            $columns = $post_data['columns'];
-            $order = $post_data['order'][0];
-            $order_column = $order['column'];
-            $order_dir = $order['dir'];
-
-            $field = $columns[$order_column]["data"];
-            $query->orderBy($field, $order_dir);
-        }
-        else $query->orderBy("updated_at", "desc");
-
-        if($limit == -1) $list = $query->get();
-        else $list = $query->skip($skip)->take($limit)->get();
-
-        foreach ($list as $k => $v)
-        {
-            $list[$k]->encode_id = encode($v->id);
-            $list[$k]->description = replace_blank($v->description);
-        }
-//        dd($list->toArray());
-        return datatable_response($list, $draw, $total);
-    }
-
-
-    // 【内容】【广告】返回-列表-视图
-    public function view_item_list_for_conception($post_data)
-    {
-        return view(env('TEMPLATE_ATOM_ADMIN').'entrance.item.item-list-for-conception')
-            ->with([
-                'sidebar_item_active'=>'active',
-                'sidebar_item_list_for_conception_active'=>'active'
-            ]);
-    }
-    // 【内容】【广告】返回-列表-数据
-    public function get_item_list_for_conception_datatable($post_data)
-    {
-        $me = Auth::guard("atom")->user();
-        $query = ZY_Item::select('*')->withTrashed()
-            ->with(['owner','creator'])
-            ->where(['owner_id'=>100,'item_category'=>100,'item_type'=>91]);
-
-        if(!empty($post_data['name'])) $query->where('name', 'like', "%{$post_data['name']}%");
-        if(!empty($post_data['title'])) $query->where('title', 'like', "%{$post_data['title']}%");
-        if(!empty($post_data['tag'])) $query->where('tag', 'like', "%{$post_data['tag']}%");
-
-        $total = $query->count();
-
-        $draw  = isset($post_data['draw'])  ? $post_data['draw']  : 1;
-        $skip  = isset($post_data['start'])  ? $post_data['start']  : 0;
-        $limit = isset($post_data['length']) ? $post_data['length'] : 20;
-
-        if(isset($post_data['order']))
-        {
-            $columns = $post_data['columns'];
-            $order = $post_data['order'][0];
-            $order_column = $order['column'];
-            $order_dir = $order['dir'];
-
-            $field = $columns[$order_column]["data"];
-            $query->orderBy($field, $order_dir);
-        }
-        else $query->orderBy("updated_at", "desc");
-
-        if($limit == -1) $list = $query->get();
-        else $list = $query->skip($skip)->take($limit)->get();
-
-        foreach ($list as $k => $v)
-        {
-            $list[$k]->encode_id = encode($v->id);
-            $list[$k]->description = replace_blank($v->description);
-        }
-//        dd($list->toArray());
-        return datatable_response($list, $draw, $total);
-    }
 
 
 
