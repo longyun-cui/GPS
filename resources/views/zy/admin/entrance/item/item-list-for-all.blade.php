@@ -283,7 +283,7 @@
                         "orderable": false,
                         render: function(data, type, row, meta) {
 //                            return data;
-                            return '<a target="_blank" href="/item/'+row.title+'">'+data+'</a>';
+                            return '<a target="_blank" href="{{ url(env('DOMAIN_ZY_STAFF').'/item/') }}'+row.id+'">'+data+'</a>';
                         }
                     },
                     {
