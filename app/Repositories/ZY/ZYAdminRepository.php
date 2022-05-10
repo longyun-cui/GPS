@@ -1962,7 +1962,7 @@ class ZYAdminRepository {
 
             $staff[$val->true_name]['all'] = $query->get()->keyBy('day');
             $staff[$val->true_name]['dialog'] = $query->whereIn('item_result',[1,19])->get()->keyBy('day');
-            $staff[$val->true_name]['plus_wx'] = $query->where('item_result',19)->get()->keyBy('day');
+            $staff[$val->true_name]['wx'] = $query->where('item_result',19)->get()->keyBy('day');
         }
 
 

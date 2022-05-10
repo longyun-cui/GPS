@@ -24,8 +24,7 @@
             <div class="box-header with-border" style="margin:16px 0;">
                 <h3 class="box-title">总量统计</h3>
             </div>
-
-            {{--总访问量--}}
+            {{--总电话量--}}
             <div class="box-body">
                 <div class="row">
                     <div class="col-md-12">
@@ -33,21 +32,46 @@
                     </div>
                 </div>
             </div>
+            <div class="box-footer">
+            </div>
 
-            {{--首页访问量--}}
+        </div>
+        <!-- END PORTLET-->
+    </div>
+</div>
+
+
+{{--网站总流量统计--}}
+<div class="row">
+    <div class="col-md-12">
+        <!-- BEGIN PORTLET-->
+        <div class="box box-info">
+
+            <div class="box-header with-border" style="margin:16px 0;">
+                <h3 class="box-title">员工对比</h3>
+            </div>
+
+            {{--总电话量-对比--}}
             <div class="box-body">
                 <div class="row">
                     <div class="col-md-12">
-                        <div id="echart-comparison" style="width:100%;height:240px;"></div>
+                        <div id="echart-all-comparison" style="width:100%;height:240px;"></div>
                     </div>
                 </div>
             </div>
-
-            {{--简介--}}
-            <div class="box-body _none">
+            {{--通话量-对比--}}
+            <div class="box-body">
                 <div class="row">
                     <div class="col-md-12">
-                        <div id="echart-introduction" style="width:100%;height:240px;"></div>
+                        <div id="echart-dialog-comparison" style="width:100%;height:240px;"></div>
+                    </div>
+                </div>
+            </div>
+            {{--加微信-对比--}}
+            <div class="box-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div id="echart-wx-comparison" style="width:100%;height:240px;"></div>
                     </div>
                 </div>
             </div>
@@ -358,17 +382,27 @@ $(function() {
 
         // 对比
         var $staff_res = new Array();
+        $staff_res['all'] = new Array();
+        $staff_res['dialog'] = new Array();
+        $staff_res['wx'] = new Array();
         @foreach($staff as $key => $val)
-            $staff_res["{{ $key }}"] = new Array();
+            $staff_res['all']["{{ $key }}"] = new Array();
             $.each({!! $val['all'] !!},function(key,v){
-                $staff_res["{{ $key }}"][(v.day - 1)] = { value:v.count, name:v.day };
-    //            $all_res.push({ value:v.sum, name:v.date });
+                $staff_res['all']["{{ $key }}"][(v.day - 1)] = { value:v.count, name:v.day };
+            });
+            $staff_res['dialog']["{{ $key }}"] = new Array();
+            $.each({!! $val['dialog'] !!},function(key,v){
+                $staff_res['dialog']["{{ $key }}"][(v.day - 1)] = { value:v.count, name:v.day };
+            });
+            $staff_res['wx']["{{ $key }}"] = new Array();
+            $.each({!! $val['wx'] !!},function(key,v){
+                $staff_res['wx']["{{ $key }}"][(v.day - 1)] = { value:v.count, name:v.day };
             });
         @endforeach
 
-        var option_comparison = {
+        var option_all_comparison = {
                 title: {
-                    text: '电话量对比'
+                    text: '总电话量-对比'
                 },
                 tooltip : {
                     trigger: 'axis',
@@ -382,7 +416,7 @@ $(function() {
                 legend: {
                     data:[
                         @foreach($staff as $k => $v)
-                                @if (!$loop->last)
+                        @if (!$loop->last)
                             "{{ $k }}",
                         @else
                             "{{ $k }}"
@@ -408,9 +442,6 @@ $(function() {
                         axisLabel : { interval:0 },
                         data : [
                             1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31
-                            {{--@foreach($all as $v)--}}
-                            {{--@if (!$loop->last) '{{$v->date}}', @else '{{$v->date}}' @endif--}}
-                            {{--@endforeach--}}
                         ]
                     }
                 ],
@@ -420,7 +451,7 @@ $(function() {
                     }
                 ],
                 series : [
-                        @foreach($staff as $k => $v)
+                    @foreach($staff as $k => $v)
                     {
                         name:'{{ $k }}',
                         type:'line',
@@ -431,13 +462,153 @@ $(function() {
                             }
                         },
                         itemStyle : { normal: { label : { show: true } } },
-                        data: $staff_res["{{ $k }}"]
+                        data: $staff_res["all"]["{{ $k }}"]
                     },
                     @endforeach
                 ]
             };
-        var myChart_comparison = echarts.init(document.getElementById('echart-comparison'));
-        myChart_comparison.setOption(option_comparison);
+        var myChart_all_comparison = echarts.init(document.getElementById('echart-all-comparison'));
+        myChart_all_comparison.setOption(option_all_comparison);
+
+        var option_dialog_comparison = {
+            title: {
+                text: '通话量-对比'
+            },
+            tooltip : {
+                trigger: 'axis',
+                axisPointer: {
+                    type: 'line',
+                    label: {
+                        backgroundColor: '#6a7985'
+                    }
+                }
+            },
+            legend: {
+                data:[
+                    @foreach($staff as $k => $v)
+                    @if (!$loop->last)
+                        "{{ $k }}",
+                    @else
+                        "{{ $k }}"
+                    @endif
+                    @endforeach
+                ]
+            },
+            toolbox: {
+                feature: {
+                    saveAsImage: {}
+                }
+            },
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+            },
+            xAxis : [
+                {
+                    type : 'category',
+                    boundaryGap : false,
+                    axisLabel : { interval:0 },
+                    data : [
+                        1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31
+                    ]
+                }
+            ],
+            yAxis : [
+                {
+                    type : 'value'
+                }
+            ],
+            series : [
+                @foreach($staff as $k => $v)
+                {
+                    name:'{{ $k }}',
+                    type:'line',
+                    label: {
+                        normal: {
+                            show: true,
+                            position: 'top'
+                        }
+                    },
+                    itemStyle : { normal: { label : { show: true } } },
+                    data: $staff_res["dialog"]["{{ $k }}"]
+                },
+                @endforeach
+            ]
+        };
+        var myChart_dialog_comparison = echarts.init(document.getElementById('echart-dialog-comparison'));
+        myChart_dialog_comparison.setOption(option_dialog_comparison);
+
+        var option_wx_comparison = {
+            title: {
+                text: '加微信量-对比'
+            },
+            tooltip : {
+                trigger: 'axis',
+                axisPointer: {
+                    type: 'line',
+                    label: {
+                        backgroundColor: '#6a7985'
+                    }
+                }
+            },
+            legend: {
+                data:[
+                    @foreach($staff as $k => $v)
+                    @if (!$loop->last)
+                        "{{ $k }}",
+                    @else
+                        "{{ $k }}"
+                    @endif
+                    @endforeach
+                ]
+            },
+            toolbox: {
+                feature: {
+                    saveAsImage: {}
+                }
+            },
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+            },
+            xAxis : [
+                {
+                    type : 'category',
+                    boundaryGap : false,
+                    axisLabel : { interval:0 },
+                    data : [
+                        1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31
+                    ]
+                }
+            ],
+            yAxis : [
+                {
+                    type : 'value'
+                }
+            ],
+            series : [
+                @foreach($staff as $k => $v)
+                {
+                    name:'{{ $k }}',
+                    type:'line',
+                    label: {
+                        normal: {
+                            show: true,
+                            position: 'top'
+                        }
+                    },
+                    itemStyle : { normal: { label : { show: true } } },
+                    data: $staff_res["wx"]["{{ $k }}"]
+                },
+                @endforeach
+            ]
+        };
+        var myChart_wx_comparison = echarts.init(document.getElementById('echart-wx-comparison'));
+        myChart_wx_comparison.setOption(option_wx_comparison);
 
 
     });
