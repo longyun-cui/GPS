@@ -2,7 +2,7 @@
 
 
 @section('head_title')
-    @if(in_array(env('APP_ENV'),['local']))【A】@endif{{ $title_text or '任务编辑' }} - 兆益信息
+    @if(in_array(env('APP_ENV'),['local']))[l]@endif A.{{ $title_text or '任务编辑' }} - 兆益信息
 @endsection
 
 
@@ -42,7 +42,7 @@
                     <form action="" method="post" class="form-horizontal form-bordered" id="form-edit-info">
                         <div class="box-body">
 
-                            {{csrf_field()}}
+                            {{ csrf_field() }}
                             <input type="hidden" name="operate" value="{{ $operate or '' }}" readonly>
                             <input type="hidden" name="operate_id" value="{{ $operate_id or 0 }}" readonly>
                             {{--<input type="hidden" name="category" value="{{ $category or 'item' }}" readonly>--}}

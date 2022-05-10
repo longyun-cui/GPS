@@ -67,9 +67,25 @@ Route::group(['middleware' => ['zy.admin.login']], function () {
 
 
     /*
+     * 内容
+     */
+    Route::match(['get','post'], '/item/item-create', $controller.'@operate_item_item_create');
+    Route::match(['get','post'], '/item/item-edit', $controller.'@operate_item_item_edit');
+    Route::post('/item/item-delete', $controller.'@operate_item_item_delete');
+    Route::post('/item/item-restore', $controller.'@operate_item_item_restore');
+    Route::post('/item/item-delete-permanently', $controller.'@operate_item_item_delete_permanently');
+    Route::post('/item/item-publish', $controller.'@operate_item_item_publish');
+    Route::post('/item/item-complete', $controller.'@operate_item_item_complete');
+    Route::post('/item/item-remark-edit', $controller.'@operate_item_item_remark_edit');
+
+
+
+
+    /*
      * 任务管理
      */
     Route::match(['get','post'], '/item/task-list-import', $controller.'@operate_item_task_list_import');
+
     Route::match(['get','post'], '/item/task-create', $controller.'@operate_item_task_create');
     Route::match(['get','post'], '/item/task-edit', $controller.'@operate_item_task_edit');
     Route::post('/item/task-delete', $controller.'@operate_item_task_delete');
@@ -118,6 +134,7 @@ Route::group(['middleware' => ['zy.admin.login']], function () {
      * statistic
      */
     Route::match(['get','post'], '/statistic/statistic-index', $controller.'@view_statistic_index');
+    Route::match(['get','post'], '/statistic/statistic-user', $controller.'@view_statistic_user');
 
 
 });

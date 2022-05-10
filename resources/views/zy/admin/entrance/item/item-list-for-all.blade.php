@@ -22,6 +22,14 @@
 
                 <h3 class="box-title">内容列表</h3>
 
+                <div class="caption pull-right">
+                    <i class="icon-pin font-blue"></i>
+                    <span class="caption-subject font-blue sbold uppercase"></span>
+                    <a href="{{ url('/item/item-create') }}">
+                        <button type="button" onclick="" class="btn btn-success pull-right"><i class="fa fa-plus"></i> 添加内容</button>
+                    </a>
+                </div>
+
                 <div class="pull-right _none">
                     <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="" data-original-title="Collapse">
                         <i class="fa fa-minus"></i>
@@ -41,17 +49,12 @@
 
                         <input type="text" class="form-control form-filter item-search-keyup" name="title" placeholder="标题" />
 
-                        <select class="form-control form-filter" name="owner" style="width:96px;">
-                            <option value ="-1">选择员工</option>
-                            @foreach($sales as $v)
-                                <option value ="{{ $v->id }}">{{ $v->true_name }}</option>
-                            @endforeach
-                        </select>
-
-                        <select class="form-control form-filter" name="finished" style="width:96px;">
+                        <select class="form-control form-filter" name="item_type" style="width:96px;">
                             <option value ="-1">全部</option>
-                            <option value ="0">待完成</option>
-                            <option value ="1">已完成</option>
+                            <option value ="11">产品</option>
+                            <option value ="41">基础知识</option>
+                            <option value ="42">沟通技能</option>
+                            <option value ="101">其他</option>
                         </select>
 
                         <button type="button" class="form-control btn btn-flat btn-success filter-submit" id="filter-submit">
@@ -68,8 +71,6 @@
                     <thead>
                         <tr role='row' class='heading'>
                             <th>ID</th>
-                            <th></th>
-                            <th></th>
                             <th></th>
                             <th></th>
                             <th></th>
@@ -208,15 +209,14 @@
                 "serverSide": true,
                 "searching": false,
                 "ajax": {
-                    'url': "{{ url('/item/task-list-for-all') }}",
+                    'url': "{{ url('/item/item-list-for-all') }}",
                     "type": 'POST',
                     "dataType" : 'json',
                     "data": function (d) {
                         d._token = $('meta[name="_token"]').attr('content');
                         d.keyword = $('input[name="keyword"]').val();
                         d.website = $('input[name="website"]').val();
-                        d.owner = $('select[name="owner"]').val();
-                        d.finished = $('select[name="finished"]').val();
+                        d.item_type = $('select[name="item_type"]').val();
 //                        d.nickname 	= $('input[name="nickname"]').val();
 //                        d.certificate_type_id = $('select[name="certificate_type_id"]').val();
 //                        d.certificate_state = $('select[name="certificate_state"]').val();
@@ -260,55 +260,30 @@
                         }
                     },
                     {
-                        "className": "text-left",
-                        "width": "64px",
-                        "title": "联系人",
-                        "data": "name",
-                        "orderable": false,
+                        "className": "font-12px",
+                        "width": "80px",
+                        "title": "类型",
+                        "data": "item_type",
+                        "orderable": true,
                         render: function(data, type, row, meta) {
-                            return data;
+                            if(data == 0) return '<small class="btn-xs bg-teal">未分配</small>';
+                            else if(data == 11) return '<small class="btn-xs bg-olive">产品</small>';
+                            else if(data == 41) return '<small class="btn-xs bg-purple">基础知识</small>';
+                            else if(data == 42) return '<small class="btn-xs bg-purple">沟通技巧</small>';
+                            else if(data == 99) return '<small class="btn-xs bg-yellow">公告</small>';
+                            else if(data == 101) return '<small class="btn-xs bg-teal">其他</small>';
+                            else return "有误";
                         }
                     },
                     {
                         "className": "text-left",
                         "width": "",
-                        "title": "公司",
-                        "data": "company",
+                        "title": "标题",
+                        "data": "title",
                         "orderable": false,
                         render: function(data, type, row, meta) {
-                            return data;
-                            if(row.item_category == 1)
-                            {
-                                return '<a target="_blank" href="/item/'+row.title+'">'+data+'</a>';
-                            }
-                            else if(row.item_category == 100)
-                            {
-                                return '<a target="_blank" href="/item/'+row.name+'">'+data+'</a>';
-                            }
-                            else
-                            {
-                                return '<a target="_blank" href="/item/'+row.title+'">'+data+'</a>';
-                            }
-                        }
-                    },
-                    {
-                        "className": "text-left",
-                        "width": "120px",
-                        "title": "电话",
-                        "data": "mobile",
-                        "orderable": false,
-                        render: function(data, type, row, meta) {
-                            return data;
-                        }
-                    },
-                    {
-                        "className": "text-left",
-                        "width": "64px",
-                        "title": "拥有者",
-                        "data": "owner_id",
-                        "orderable": false,
-                        render: function(data, type, row, meta) {
-                            return row.owner == null ? '未知' : '<a target="_blank" href="/user/'+row.owner.id+'">'+row.owner.username+'</a>';
+//                            return data;
+                            return '<a target="_blank" href="/item/'+row.title+'">'+data+'</a>';
                         }
                     },
                     {
@@ -406,7 +381,7 @@
                                 $html_able = '<a class="btn btn-xs btn-success item-admin-enable-submit" data-id="'+data+'">解禁</a>';
                             }
 
-                            if(row.is_me == 1 && row.active == 0)
+                            if(row.is_me == 1 && row.item_active == 0)
                             {
                                 $html_publish = '<a class="btn btn-xs bg-olive item-publish-submit" data-id="'+data+'">发布</a>';
                             }
@@ -504,5 +479,5 @@
         TableDatatablesAjax.init();
     });
 </script>
-@include(env('TEMPLATE_ZY_ADMIN').'entrance.item.task-script')
+@include(env('TEMPLATE_ZY_ADMIN').'entrance.item.item-script')
 @endsection

@@ -2,7 +2,7 @@
 
 
 @section('head_title')
-    {{ $title_text }}
+    @if(in_array(env('APP_ENV'),['local']))[l]@endif A.{{ $title_text or '编辑用户' }} - 管理员后台系统 - 兆益信息
 @endsection
 
 
@@ -12,7 +12,7 @@
 @section('description', '管理员系统-兆益信息')
 @section('breadcrumb')
     <li><a href="{{ url('/') }}"><i class="fa fa-home"></i>首页</a></li>
-    <li><a href="{{ url($list_link) }}"><i class="fa fa-list"></i>{{ $list_text or '内容列表' }}</a></li>
+    <li><a href="{{ url($list_link) }}"><i class="fa fa-list"></i>{{ $list_text or '用户列表' }}</a></li>
 @endsection
 @section('content')
 <div class="row">

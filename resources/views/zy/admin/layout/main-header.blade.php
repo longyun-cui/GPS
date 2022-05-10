@@ -26,12 +26,21 @@
                         <i class="fa fa-plus"></i>
                     </a>
                     <ul class="dropdown-menu">
+                        <li class="header">用户</li>
                         <li class="header">
                             <a href="{{ url('/user/user-create') }}">
                                 <i class="fa fa-plus text-red"></i> 添加用户
                             </a>
+                        </li>
+                        <li class="header">内容</li>
+                        <li class="header">
+                            <a href="{{ url('/item/item-create') }}">
+                                <i class="fa fa-plus text-red"></i> 添加内容
+                            </a>
+                        </li>
+                        <li class="header">
                             <a href="{{ url('/item/task-list-import') }}">
-                                <i class="fa fa-plus text-red"></i> 添加话单
+                                <i class="fa fa-plus text-red"></i> 导入话单
                             </a>
                         </li>
                         <li class="footer"><a href="#">See All Messages</a></li>

@@ -2,7 +2,7 @@
 
 
 @section('head_title')
-    @if(in_array(env('APP_ENV'),['local']))【A】@endif{{ $title_text or '全部用户' }} - 管理员后台系统 - 兆益信息
+    @if(in_array(env('APP_ENV'),['local']))[l]@endif A.{{ $title_text or '全部用户' }} - 管理员后台系统 - 兆益信息
 @endsection
 
 
@@ -501,7 +501,7 @@
                                 '<a class="btn btn-xs bg-maroon item-password-reset-submit" data-id="'+data+'">重置密码</a>'+
                                 '<a class="btn btn-xs bg-navy item-delete-submit" data-id="'+data+'" >删除</a>'+
 //                                '<a class="btn btn-xs bg-olive item-login-submit" data-id="'+data+'">登录</a>'+
-//                                '<a class="btn btn-xs bg-purple item-statistic-submit" data-id="'+data+'">流量统计</a>'+
+                                '<a class="btn btn-xs bg-purple item-statistic-link" data-id="'+data+'">统计</a>'+
                                 '';
                             return html;
                         }

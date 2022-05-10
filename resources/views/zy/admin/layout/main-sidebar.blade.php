@@ -84,16 +84,24 @@
 
             <li class="header">内容管理</li>
 
+            <li class="treeview {{ $menu_active_of_item_list_for_all or '' }}">
+                <a href="{{ url('/item/item-list-for-all')}}">
+                    <i class="fa fa-list text-red"></i>
+                    <span>全部内容</span>
+                </a>
+            </li>
             <li class="treeview {{ $menu_active_of_task_list_for_all or '' }}">
                 <a href="{{ url('/item/task-list-for-all')}}">
                     <i class="fa fa-list text-red"></i>
                     <span>任务列表</span>
                 </a>
+            </li>
+            {{--<li class="treeview {{ $menu_active_of_task_list_for_finished or '' }}">--}}
                 {{--<a href="{{ url('/item/task-list-for-finished')}}">--}}
                     {{--<i class="fa fa-list text-red"></i>--}}
                     {{--<span>已完成任务</span>--}}
                 {{--</a>--}}
-            </li>
+            {{--</li>--}}
 
 
 

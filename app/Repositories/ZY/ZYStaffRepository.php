@@ -2081,6 +2081,7 @@ class ZYStaffRepository {
         $last_month_month = date('m',strtotime('last month'));
 
 
+        // 电话量
         $query = ZY_TASK::select(
             DB::raw("DATE(FROM_UNIXTIME(created_at)) as date"),
             DB::raw("DATE_FORMAT(FROM_UNIXTIME(completed_at),'%Y-%m') as month"),
@@ -2100,7 +2101,7 @@ class ZYStaffRepository {
 
 
 
-        // 打开设备类型【占比】
+        // 总转化率【占比】
         $all_rate = ZY_TASK::select('item_result',DB::raw('count(*) as count'))
             ->groupBy('item_result')
             ->where(['is_completed'=>1,'owner_id'=>$me_id])
@@ -2118,12 +2119,30 @@ class ZYStaffRepository {
         }
 
 
+        // 今日转化率【占比】
+        $today_rate = ZY_TASK::select('item_result',DB::raw('count(*) as count'))
+            ->groupBy('item_result')
+            ->where(['is_completed'=>1,'owner_id'=>$me_id])
+            ->whereDate(DB::raw("DATE(FROM_UNIXTIME(completed_at))"),date('Y-m-d'))
+            ->get();
+        foreach($today_rate as $k => $v)
+        {
+            if($v->item_result == 0) $today_rate[$k]->name = "未选择";
+            else if($v->item_result == 1) $today_rate[$k]->name = "通话";
+            else if($v->item_result == 19)  $today_rate[$k]->name = "加微信";
+            else if($v->item_result == 71)  $today_rate[$k]->name = "未接";
+            else if($v->item_result == 72)  $today_rate[$k]->name = "拒接";
+            else if($v->item_result == 51)  $today_rate[$k]->name = "打错了";
+            else if($v->item_result == 99)  $today_rate[$k]->name = "空号";
+            else $today_rate[$k]->name = "其他";
+        }
 
 
         $view_data["all"] = $all;
         $view_data["dialog"] = $dialog;
         $view_data["plus_wx"] = $plus_wx;
         $view_data["all_rate"] = $all_rate;
+        $view_data["today_rate"] = $today_rate;
 
         $view_blade = env('TEMPLATE_ZY_STAFF').'entrance.statistic.statistic-index';
         return view($view_blade)->with($view_data);

@@ -33,9 +33,9 @@
         });
 
         // 【数据分析】
-        $("#item-main-body").on('click', ".item-statistic-submit", function() {
+        $("#item-main-body").on('click', ".item-statistic-link", function() {
             var that = $(this);
-            window.open("/statistic/statistic-user?id="+that.attr('data-id'));
+            window.open("/statistic/statistic-user?user-id="+that.attr('data-id'));
 //            window.location.href = "/statistic/statistic-user?id="+that.attr('data-id');
         });
 

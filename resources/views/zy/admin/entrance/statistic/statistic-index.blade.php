@@ -2,7 +2,7 @@
 
 
 @section('head_title')
-    @if(in_array(env('APP_ENV'),['local']))【A】@endif{{ $head_title or '统计 - 管理员后台系统 - 兆益信息' }}
+    @if(in_array(env('APP_ENV'),['local']))[l]@endif A.{{ $head_title or '统计' }} - 管理员后台系统 - 兆益信息
 @endsection
 
 
@@ -77,7 +77,7 @@
                         <div id="echart-all-rate" style="width:100%;height:320px;"></div>
                     </div>
                     <div class="col-md-6">
-                        <div id="echart-system" style="width:100%;height:320px;"></div>
+                        <div id="echart-today-rate" style="width:100%;height:320px;"></div>
                     </div>
                 </div>
             </div>
@@ -113,20 +113,18 @@ $(function() {
 <script>
     $(function(){
 
-        // 网站总访问数
+        // 电话总量
         var $all_res = new Array();
         $.each({!! $all !!},function(key,v){
             $all_res[(v.day - 1)] = { value:v.count, name:v.day };
 //            $all_res.push({ value:v.sum, name:v.date });
         });
-
-        // 首页访问数
+        // 通话量
         var $dialog_res = new Array();
         $.each({!! $dialog !!},function(key,v){
             $dialog_res[(v.day - 1)] = { value:v.count, name:v.day };
         });
-
-        // 简介访问数
+        // 加微信量
         var $plus_wx_res = new Array();
         $.each({!! $plus_wx !!},function(key,v){
             $plus_wx_res[(v.day - 1)] = { value:v.count, name:v.day };
@@ -228,7 +226,10 @@ $(function() {
         var myChart_all = echarts.init(document.getElementById('echart-all'));
         myChart_all.setOption(option_all);
 
-        // 转化率
+
+
+
+        // 总转化率
         var option_all_rate = {
             title : {
                 text: '转化率',
@@ -244,7 +245,7 @@ $(function() {
                 x : 'left',
                 data: [
                     @foreach($all_rate as $v)
-                            @if (!$loop->last) '{{ $v->name }}', @else '{{ $v->name }}' @endif
+                        @if (!$loop->last) '{{ $v->name }}', @else '{{ $v->name }}' @endif
                     @endforeach
                 ]
             },
@@ -290,6 +291,69 @@ $(function() {
         };
         var myChart_all_rate = echarts.init(document.getElementById('echart-all-rate'));
         myChart_all_rate.setOption(option_all_rate);
+
+        // 今日转化率
+        var option_today_rate = {
+            title : {
+                text: '今日转化率',
+                subtext: '今日转化率',
+                x:'center'
+            },
+            tooltip : {
+                trigger: 'item',
+                formatter: "{a} <br/>{b} : {c} ({d}%)"
+            },
+            legend: {
+                orient : 'vertical',
+                x : 'left',
+                data: [
+                    @foreach($today_rate as $v)
+                        @if (!$loop->last) '{{ $v->name }}', @else '{{ $v->name }}' @endif
+                    @endforeach
+                ]
+            },
+            toolbox: {
+                show : true,
+                feature : {
+                    mark : {show: true},
+                    dataView : {show: true, readOnly: false},
+                    magicType : {
+                        show: true,
+                        type: ['pie', 'funnel'],
+                        option: {
+                            funnel: {
+                                x: '25%',
+                                width: '50%',
+                                funnelAlign: 'left',
+                                max: 1548
+                            }
+                        }
+                    },
+                    restore : {show: true},
+                    saveAsImage : {show: true}
+                }
+            },
+            calculable : true,
+            series : [
+                {
+                    name:'访问来源',
+                    type:'pie',
+                    radius : '55%',
+                    center: ['50%', '60%'],
+                    data: [
+                        @foreach($today_rate as $v)
+                            @if(!$loop->last)
+                                { value:'{{ $v->count }}', name:'{{ $v->name }}' },
+                            @else
+                                { value:'{{ $v->count }}', name:'{{ $v->name }}' }
+                            @endif
+                        @endforeach
+                    ]
+                }
+            ]
+        };
+        var myChart_today_rate = echarts.init(document.getElementById('echart-today-rate'));
+        myChart_today_rate.setOption(option_today_rate);
 
 
     });

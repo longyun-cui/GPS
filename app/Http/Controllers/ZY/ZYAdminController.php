@@ -219,6 +219,64 @@ class ZYAdminController extends Controller
 
 
     /*
+     *
+     */
+    // 【内容】添加
+    public function operate_item_item_create()
+    {
+        if(request()->isMethod('get')) return $this->repo->view_item_item_create();
+        else if (request()->isMethod('post')) return $this->repo->operate_item_item_save(request()->all());
+    }
+    // 【内容】编辑
+    public function operate_item_item_edit()
+    {
+        if(request()->isMethod('get')) return $this->repo->view_item_item_edit(request()->all());
+        else if (request()->isMethod('post')) return $this->repo->operate_item_item_save(request()->all());
+    }
+
+    // 【内容】获取-详情
+    public function operate_item_item_get()
+    {
+        return $this->repo->operate_item_item_get(request()->all());
+    }
+    // 【内容】删除
+    public function operate_item_item_delete()
+    {
+        return $this->repo->operate_item_item_delete(request()->all());
+    }
+    // 【内容】恢复
+    public function operate_item_item_restore()
+    {
+        return $this->repo->operate_item_item_restore(request()->all());
+    }
+    // 【内容】永久删除
+    public function operate_item_item_delete_permanently()
+    {
+        return $this->repo->operate_item_item_delete_permanently(request()->all());
+    }
+    // 【内容】发布
+    public function operate_item_item_publish()
+    {
+        return $this->repo->operate_item_item_publish(request()->all());
+    }
+    // 【内容】完成
+    public function operate_item_item_complete()
+    {
+        return $this->repo->operate_item_item_complete(request()->all());
+    }
+    // 【内容】启用
+    public function operate_item_item_enable()
+    {
+        return $this->repo->operate_item_item_enable(request()->all());
+    }
+    // 【内容】禁用
+    public function operate_item_item_disable()
+    {
+        return $this->repo->operate_item_item_disable(request()->all());
+    }
+
+
+    /*
      * 任务管理
      */
     // 【任务】导入
@@ -272,15 +330,15 @@ class ZYAdminController extends Controller
     {
         return $this->repo->operate_item_task_complete(request()->all());
     }
-    // 【任务】禁用
-    public function operate_item_task_disable()
-    {
-        return $this->repo->operate_item_admin_disable(request()->all());
-    }
     // 【任务】启用
     public function operate_item_task_enable()
     {
-        return $this->repo->operate_item_admin_enable(request()->all());
+        return $this->repo->operate_item_task_enable(request()->all());
+    }
+    // 【任务】禁用
+    public function operate_item_task_disable()
+    {
+        return $this->repo->operate_item_task_disable(request()->all());
     }
 
     // 【任务】备注编辑
