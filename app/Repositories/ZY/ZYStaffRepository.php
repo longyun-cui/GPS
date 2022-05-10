@@ -229,6 +229,13 @@ class ZYStaffRepository {
             $return['head_title'] = "产品";
             $return['menu_active_of_production'] = 'active';
         }
+        else if($item_list_type == 'training')
+        {
+            $item_query->where('item_type',41);
+
+            $return['head_title'] = "培训";
+            $return['menu_active_of_training'] = 'active';
+        }
         else if($item_list_type == 'notice')
         {
             $item_query->where('item_type',99);

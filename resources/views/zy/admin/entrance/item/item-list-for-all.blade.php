@@ -52,8 +52,8 @@
                         <select class="form-control form-filter" name="item_type" style="width:96px;">
                             <option value ="-1">全部</option>
                             <option value ="11">产品</option>
-                            <option value ="41">基础知识</option>
-                            <option value ="42">沟通技能</option>
+                            <option value ="41">培训</option>
+                            {{--<option value ="42">沟通技能</option>--}}
                             <option value ="101">其他</option>
                         </select>
 
@@ -266,10 +266,10 @@
                         "data": "item_type",
                         "orderable": true,
                         render: function(data, type, row, meta) {
-                            if(data == 0) return '<small class="btn-xs bg-teal">未分配</small>';
+                            if(data == 0) return '<small class="btn-xs bg-teal">未分类</small>';
                             else if(data == 11) return '<small class="btn-xs bg-olive">产品</small>';
-                            else if(data == 41) return '<small class="btn-xs bg-purple">基础知识</small>';
-                            else if(data == 42) return '<small class="btn-xs bg-purple">沟通技巧</small>';
+                            else if(data == 41) return '<small class="btn-xs bg-purple">培训</small>';
+//                            else if(data == 42) return '<small class="btn-xs bg-purple">沟通技巧</small>';
                             else if(data == 99) return '<small class="btn-xs bg-yellow">公告</small>';
                             else if(data == 101) return '<small class="btn-xs bg-teal">其他</small>';
                             else return "有误";
@@ -350,18 +350,11 @@
 
                             if(row.item_status == 1)
                             {
-                                if(data == 0) return '<small class="btn-xs bg-teal">待完成</small>';
-                                else if(data == 1) return '<small class="btn-xs bg-olive">通话</small>';
-                                else if(data == 19) return '<small class="btn-xs bg-purple">加微信</small>';
-                                else if(data == 71) return '<small class="btn-xs bg-yellow">未接</small>';
-                                else if(data == 72) return '<small class="btn-xs bg-yellow">拒接</small>';
-                                else if(data == 51) return '<small class="btn-xs bg-yellow">打错了</small>';
-                                else if(data == 99) return '<small class="btn-xs bg-yellow">空号</small>';
-                                else return "有误";
+                                return '<small class="btn-xs bg-olive">启用</small>';
                             }
                             else
                             {
-                                return '<small class="btn-xs btn-danger">已封禁</small>';
+                                return '<small class="btn-xs btn-danger">已禁用</small>';
                             }
                         }
                     },

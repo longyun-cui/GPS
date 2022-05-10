@@ -80,9 +80,9 @@
                                     <span class="radio">
                                         <label>
                                             @if($operate == 'edit' && $data->item_type == 41)
-                                                <input type="radio" name="item_type" value="41" checked="checked"> 基础知识
+                                                <input type="radio" name="item_type" value="41" checked="checked"> 培训
                                             @else
-                                                <input type="radio" name="item_type" value="41"> 基础知识
+                                                <input type="radio" name="item_type" value="41"> 培训
                                             @endif
                                         </label>
                                     </span>
@@ -90,21 +90,21 @@
                                 @endif
                             @endif
 
-                            @if(in_array($me->user_type, [0,1,11,21,22]))
-                                @if($operate == 'create' || ($operate == 'edit' && $data->item_type == 42))
-                                    <button type="button" class="btn">
-                                        <span class="radio">
-                                            <label>
-                                                @if($operate == 'edit' && $data->item_type == 42)
-                                                    <input type="radio" name="item_type" value=42 checked="checked"> 沟通技能
-                                                @else
-                                                    <input type="radio" name="item_type" value=42> 沟通技能
-                                                @endif
-                                            </label>
-                                        </span>
-                                    </button>
-                                @endif
-                            @endif
+                            {{--@if(in_array($me->user_type, [0,1,11,21,22]))--}}
+                                {{--@if($operate == 'create' || ($operate == 'edit' && $data->item_type == 42))--}}
+                                    {{--<button type="button" class="btn">--}}
+                                        {{--<span class="radio">--}}
+                                            {{--<label>--}}
+                                                {{--@if($operate == 'edit' && $data->item_type == 42)--}}
+                                                    {{--<input type="radio" name="item_type" value=42 checked="checked"> 沟通技能--}}
+                                                {{--@else--}}
+                                                    {{--<input type="radio" name="item_type" value=42> 沟通技能--}}
+                                                {{--@endif--}}
+                                            {{--</label>--}}
+                                        {{--</span>--}}
+                                    {{--</button>--}}
+                                {{--@endif--}}
+                            {{--@endif--}}
 
                             @if(in_array($me->user_type, [0,1,11,21,22]))
                                 @if($operate == 'create' || ($operate == 'edit' && $data->item_type == 101))

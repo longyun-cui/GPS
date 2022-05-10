@@ -26,10 +26,21 @@
 
             <div class="nav-tabs-custom">
                 <ul class="nav nav-tabs">
-                    <li class="{{ $menu_active_of_all or '' }}"><a href="/item/item-list?item-list-type=all" data-toggle="tab-">全部</a></li>
-                    <li class="{{ $menu_active_of_notice or '' }}"><a href="/item/item-list?item-list-type=notice" data-toggle="tab-">公告</a></li>
-                    <li class="{{ $menu_active_of_production or '' }}"><a href="/item/item-list?item-list-type=production" data-toggle="tab-">产品</a></li>
-                    <li class="{{ $menu_active_of_custom or '' }}"><a href="/item/item-list?item-list-type=custom" data-toggle="tab-">{{ $custom_menu_title or '' }}</a></li>
+                    <li class="{{ $menu_active_of_all or '' }}">
+                        <a href="{{ url('/item/item-list?item-list-type=all') }}" data-toggle="tab-">全部</a>
+                    </li>
+                    <li class="{{ $menu_active_of_notice or '' }}">
+                        <a href="{{ url('/item/item-list?item-list-type=notice') }}" data-toggle="tab-">公告</a>
+                    </li>
+                    <li class="{{ $menu_active_of_production or '' }}">
+                        <a href="{{ url('/item/item-list?item-list-type=production') }}" data-toggle="tab-">产品</a>
+                    </li>
+                    <li class="{{ $menu_active_of_training or '' }}">
+                        <a href="{{ url('/item/item-list?item-list-type=training') }}" data-toggle="tab-">培训</a>
+                    </li>
+                    <li class="{{ $menu_active_of_custom or '' }}">
+                        <a href="{{ url('/item/item-list?item-list-type=custom') }}" data-toggle="tab-">{{ $custom_menu_title or '' }}</a>
+                    </li>
                 </ul>
                 <div class="tab-content" style="width:100%; padding:10px 0;float:left;">
                     <div class="active tab-pane" id="all">
