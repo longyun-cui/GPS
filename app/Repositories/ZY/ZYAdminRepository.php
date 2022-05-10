@@ -1944,6 +1944,27 @@ class ZYAdminRepository {
         $last_month_year = date('Y',strtotime('last month'));
         $last_month_month = date('m',strtotime('last month'));
 
+        $staff = [];
+        $sales = ZY_User::select('id','true_name')->where('user_category',11)->whereIn('user_type',[88])->get();
+        foreach($sales as $key => $val)
+        {
+            $query = ZY_TASK::select(
+                DB::raw("DATE(FROM_UNIXTIME(created_at)) as date"),
+                DB::raw("DATE_FORMAT(FROM_UNIXTIME(completed_at),'%Y-%m') as month"),
+                DB::raw("DATE_FORMAT(FROM_UNIXTIME(completed_at),'%c') as month_0"),
+                DB::raw("DATE_FORMAT(FROM_UNIXTIME(completed_at),'%e') as day"),
+                DB::raw('count(*) as count')
+            )
+                ->groupBy(DB::raw("DATE(FROM_UNIXTIME(completed_at))"))
+                ->whereYear(DB::raw("DATE(FROM_UNIXTIME(completed_at))"),$this_month_year)
+                ->whereMonth(DB::raw("DATE(FROM_UNIXTIME(completed_at))"),$this_month_month)
+                ->where(['is_completed'=>1,'owner_id'=>$val->id]);
+
+            $staff[$val->true_name]['all'] = $query->get()->keyBy('day');
+            $staff[$val->true_name]['dialog'] = $query->whereIn('item_result',[1,19])->get()->keyBy('day');
+            $staff[$val->true_name]['plus_wx'] = $query->where('item_result',19)->get()->keyBy('day');
+        }
+
 
         $query = ZY_TASK::select(
             DB::raw("DATE(FROM_UNIXTIME(created_at)) as date"),
@@ -2001,6 +2022,7 @@ class ZYAdminRepository {
         }
 
 
+        $view_data["staff"] = $staff;
         $view_data["all"] = $all;
         $view_data["dialog"] = $dialog;
         $view_data["plus_wx"] = $plus_wx;

@@ -35,10 +35,10 @@
             </div>
 
             {{--首页访问量--}}
-            <div class="box-body _none">
+            <div class="box-body">
                 <div class="row">
                     <div class="col-md-12">
-                        <div id="echart-root" style="width:100%;height:240px;"></div>
+                        <div id="echart-comparison" style="width:100%;height:240px;"></div>
                     </div>
                 </div>
             </div>
@@ -228,7 +228,6 @@ $(function() {
 
 
 
-
         // 总转化率
         var option_all_rate = {
             title : {
@@ -354,6 +353,91 @@ $(function() {
         };
         var myChart_today_rate = echarts.init(document.getElementById('echart-today-rate'));
         myChart_today_rate.setOption(option_today_rate);
+
+
+
+        // 对比
+        var $staff_res = new Array();
+        @foreach($staff as $key => $val)
+            $staff_res["{{ $key }}"] = new Array();
+            $.each({!! $val['all'] !!},function(key,v){
+                $staff_res["{{ $key }}"][(v.day - 1)] = { value:v.count, name:v.day };
+    //            $all_res.push({ value:v.sum, name:v.date });
+            });
+        @endforeach
+
+        var option_comparison = {
+                title: {
+                    text: '电话量对比'
+                },
+                tooltip : {
+                    trigger: 'axis',
+                    axisPointer: {
+                        type: 'line',
+                        label: {
+                            backgroundColor: '#6a7985'
+                        }
+                    }
+                },
+                legend: {
+                    data:[
+                        @foreach($staff as $k => $v)
+                                @if (!$loop->last)
+                            "{{ $k }}",
+                        @else
+                            "{{ $k }}"
+                        @endif
+                        @endforeach
+                    ]
+                },
+                toolbox: {
+                    feature: {
+                        saveAsImage: {}
+                    }
+                },
+                grid: {
+                    left: '3%',
+                    right: '4%',
+                    bottom: '3%',
+                    containLabel: true
+                },
+                xAxis : [
+                    {
+                        type : 'category',
+                        boundaryGap : false,
+                        axisLabel : { interval:0 },
+                        data : [
+                            1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31
+                            {{--@foreach($all as $v)--}}
+                            {{--@if (!$loop->last) '{{$v->date}}', @else '{{$v->date}}' @endif--}}
+                            {{--@endforeach--}}
+                        ]
+                    }
+                ],
+                yAxis : [
+                    {
+                        type : 'value'
+                    }
+                ],
+                series : [
+                        @foreach($staff as $k => $v)
+                    {
+                        name:'{{ $k }}',
+                        type:'line',
+                        label: {
+                            normal: {
+                                show: true,
+                                position: 'top'
+                            }
+                        },
+                        itemStyle : { normal: { label : { show: true } } },
+                        data: $staff_res["{{ $k }}"]
+                    },
+                    @endforeach
+                ]
+            };
+        var myChart_comparison = echarts.init(document.getElementById('echart-comparison'));
+        myChart_comparison.setOption(option_comparison);
 
 
     });

@@ -73,6 +73,7 @@
                             <th></th>
                             <th></th>
                             <th></th>
+                            <th></th>
                             <th>操作</th>
                         </tr>
                     </thead>
@@ -311,11 +312,21 @@
                     {
                         "className": "text-left",
                         "width": "80px",
-                        "title": "姓名",
+                        "title": "用户名",
                         "data": "id",
                         "orderable": false,
                         render: function(data, type, row, meta) {
                             return '<a target="_blank" href="/user/'+data+'">'+row.username+'</a>';
+                        }
+                    },
+                    {
+                        "className": "text-left",
+                        "width": "80px",
+                        "title": "真实姓名",
+                        "data": "id",
+                        "orderable": false,
+                        render: function(data, type, row, meta) {
+                            return '<a target="_blank" href="/user/'+data+'">'+row.true_name+'</a>';
                         }
                     },
                     {

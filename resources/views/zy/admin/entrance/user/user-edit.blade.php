@@ -144,9 +144,9 @@
 
                 {{--用户名--}}
                 <div class="form-group">
-                    <label class="control-label col-md-2"><sup class="text-red">*</sup> 用户名</label>
+                    <label class="control-label col-md-2"><sup class="text-red">*</sup> 真实姓名</label>
                     <div class="col-md-8 ">
-                        <input type="text" class="form-control" name="username" placeholder="用户名" value="{{ $data->username or '' }}">
+                        <input type="text" class="form-control" name="true_name" placeholder="用户名" value="{{ $data->true_name or '' }}">
                     </div>
                 </div>
                 {{--手机--}}
