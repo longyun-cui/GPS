@@ -2094,7 +2094,7 @@ class ZYAdminRepository {
         }
 
 
-        $view_data["head_title"] = $user->true_name.'的工作统计';
+        $view_data["head_title"] = '【'.$user->true_name.'】的工作统计';
         $view_data["all"] = $all;
         $view_data["dialog"] = $dialog;
         $view_data["plus_wx"] = $plus_wx;
