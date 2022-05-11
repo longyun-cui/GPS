@@ -65,7 +65,7 @@
 
 
 
-.info-tags { display:inline-block; padding:0 5px; margin-right:2px; height:20px; line-height:20px; font-size:12px; border-radius:2px; background:#fff; }
+.info-tags { display:inline-block; padding:0 5px; margin-right:2px; height:20px; line-height:20px; font-size:12px; border-radius:2px; }
 .info-tags.text-default { color:#888888; border-color:#f2f2f2; background-color:#f2f2f2; }
 .info-tags.text-danger { color:#dd4b39; border-color:#dd4b39; }
 .info-tags.text-success { color:#00a65a; border-color:#00a65a; }

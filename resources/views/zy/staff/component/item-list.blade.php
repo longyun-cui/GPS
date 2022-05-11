@@ -54,9 +54,17 @@
                         {{--@endif--}}
 
                         {{--广告--}}
-                        @if($item->is_published == 88)
-                            <span class="info-tags text-default pull-left-">广告</span>
+                        @if($item->item_type == 1)
+                        @elseif($item->item_type == 11)
+                            <span class="info-tags text-default- bg-olive pull-left-">产品</span>
+                        @elseif($item->item_type == 41)
+                            <span class="info-tags text-default- bg-blue pull-left-">培训</span>
+                        @elseif($item->item_type == 99)
+                            <span class="info-tags text-default- bg-red pull-left-">公告</span>
+                        @else
+                            {{--<span class="info-tags text-default pull-left-">其他</span>--}}
                         @endif
+
 
                         {{----}}
                         <a href="{{ url('/user/'.$item->owner->id) }}" style="color:#ff7676;font-size:13px;">
