@@ -217,7 +217,7 @@ class ZYStaffRepository {
         }
         else if($item_list_type == 'all')
         {
-            $item_query->whereIn('item_type',[1,21,41,42,99,101]);
+//            $item_query->whereIn('item_type',[1,11,21,41,42,99,101]);
 
             $return['head_title'] = "全部内容";
             $return['menu_active_of_all'] = 'active';
