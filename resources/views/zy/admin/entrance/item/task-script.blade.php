@@ -30,21 +30,21 @@
 
         // 【下载二维码】
         $("#item-main-body").on('click', ".item-download-qr-code-submit", function() {
-            var that = $(this);
-            window.open("/download/qr-code?type=item&id="+that.attr('data-id'));
+            var $that = $(this);
+            window.open("/download/qr-code?type=item&id="+$that.attr('data-id'));
         });
 
         // 【数据分析】
         $("#item-main-body").on('click', ".item-statistic-submit", function() {
-            var that = $(this);
-            window.open("/statistic/statistic-item?id="+that.attr('data-id'));
-//            window.location.href = "/admin/statistic/statistic-item?id="+that.attr('data-id');
+            var $that = $(this);
+            window.open("/statistic/statistic-item?id="+$that.attr('data-id'));
+//            window.location.href = "/admin/statistic/statistic-item?id="+$that.attr('data-id');
         });
 
         // 【编辑】
         $("#item-main-body").on('click', ".item-edit-link", function() {
-            var that = $(this);
-            window.location.href = "/item/item-edit?id="+that.attr('data-id');
+            var $that = $(this);
+            window.location.href = "/item/item-edit?id="+$that.attr('data-id');
         });
 
 
@@ -134,17 +134,17 @@
 
         // 内容【获取详情】
         $("#item-main-body").on('click', ".item-detail-show", function() {
-            var that = $(this);
+            var $that = $(this);
             var $data = new Object();
             $.ajax({
                 type:"post",
                 dataType:'json',
                 async:false,
-                url: "{{ url('/admin/item/item-get') }}",
+                url: "{{ url('/item/task-get') }}",
                 data: {
                     _token: $('meta[name="_token"]').attr('content'),
                     operate:"item-get",
-                    id:that.attr('data-id')
+                    id: $that.attr('data-id')
                 },
                 success:function(data){
                     if(!data.success) layer.msg(data.msg);
@@ -154,9 +154,9 @@
                     }
                 }
             });
-            $('input[name=id]').val(that.attr('data-id'));
-            $('.item-user-id').html(that.attr('data-user-id'));
-            $('.item-username').html(that.attr('data-username'));
+            $('input[name=id]').val($that.attr('data-id'));
+            $('.item-user-id').html($that.attr('data-user-id'));
+            $('.item-username').html($that.attr('data-username'));
             $('.item-title').html($data.title);
             $('.item-content').html($data.content);
             if($data.attachment_name)
@@ -170,17 +170,17 @@
 
         // 内容【删除】
         $("#item-main-body").on('click', ".item-admin-delete-submit", function() {
-            var that = $(this);
+            var $that = $(this);
             layer.msg('确定要"删除"么？', {
                 time: 0
                 ,btn: ['确定', '取消']
                 ,yes: function(index){
                     $.post(
-                        "{{ url('/item/task-delete') }}",
+                        "{{ url('/item/task-admin-delete') }}",
                         {
                             _token: $('meta[name="_token"]').attr('content'),
-                            operate: "item-delete",
-                            id:that.attr('data-id')
+                            operate: "item-admin-delete",
+                            id: $that.attr('data-id')
                         },
                         function(data){
                             layer.close(index);
@@ -197,17 +197,17 @@
 
         // 内容【恢复】
         $("#item-main-body").on('click', ".item-admin-restore-submit", function() {
-            var that = $(this);
+            var $that = $(this);
             layer.msg('确定要"恢复"么？', {
                 time: 0
                 ,btn: ['确定', '取消']
                 ,yes: function(index){
                     $.post(
-                        "{{ url('/admin/item/item-restore') }}",
+                        "{{ url('/item/item-admin-restore') }}",
                         {
                             _token: $('meta[name="_token"]').attr('content'),
                             operate: "item-restore",
-                            id:that.attr('data-id')
+                            id: $that.attr('data-id')
                         },
                         function(data){
                             layer.close(index);
@@ -224,17 +224,17 @@
 
         // 内容【永久删除】
         $("#item-main-body").on('click', ".item-admin-delete-permanently-submit", function() {
-            var that = $(this);
+            var $that = $(this);
             layer.msg('确定要"永久删除"么？', {
                 time: 0
                 ,btn: ['确定', '取消']
                 ,yes: function(index){
                     $.post(
-                        "{{ url('/admin/item/item-delete-permanently') }}",
+                        "{{ url('/item/item-delete-permanently') }}",
                         {
                             _token: $('meta[name="_token"]').attr('content'),
                             operate: "item-delete-permanently",
-                            id:that.attr('data-id')
+                            id: $that.attr('data-id')
                         },
                         function(data){
                             layer.close(index);
@@ -251,17 +251,17 @@
 
         // 内容【推送】
         $("#item-main-body").on('click', ".item-publish-submit", function() {
-            var that = $(this);
+            var $that = $(this);
             layer.msg('确定要"发布"么？', {
                 time: 0
                 ,btn: ['确定', '取消']
                 ,yes: function(index){
                     $.post(
-                        "{{ url('/admin/item/item-publish') }}",
+                        "{{ url('/item/item-publish') }}",
                         {
                             _token: $('meta[name="_token"]').attr('content'),
                             operate: "item-publish",
-                            id:that.attr('data-id')
+                            id: $that.attr('data-id')
                         },
                         function(data){
                             layer.close(index);
@@ -277,9 +277,68 @@
             });
         });
 
+
+        // 【启用】
+        $("#item-main-body").on('click', ".item-admin-enable-submit", function() {
+            var $that = $(this);
+            layer.msg('确定"封禁"？', {
+                time: 0
+                ,btn: ['确定', '取消']
+                ,yes: function(index){
+                    $.post(
+                        "{{ url('/item/item-admin-enable') }}",
+                        {
+                            _token: $('meta[name="_token"]').attr('content'),
+                            operate: "item-admin-enable",
+                            id: $that.attr('data-id')
+                        },
+                        function(data){
+                            layer.close(index);
+                            if(!data.success) layer.msg(data.msg);
+                            else
+                            {
+                                $('#datatable_ajax').DataTable().ajax.reload(null,false);
+                            }
+                        },
+                        'json'
+                    );
+                }
+            });
+        });
+        // 【禁用】
+        $("#item-main-body").on('click', ".item-admin-disable-submit", function() {
+            var $that = $(this);
+            layer.msg('确定"解禁"？', {
+                time: 0
+                ,btn: ['确定', '取消']
+                ,yes: function(index){
+                    $.post(
+                        "{{ url('/item/item-admin-disable') }}",
+                        {
+                            _token: $('meta[name="_token"]').attr('content'),
+                            operate: "item-admin-disable",
+                            id: $that.attr('data-id')
+                        },
+                        function(data){
+                            layer.close(index);
+                            if(!data.success) layer.msg(data.msg);
+                            else
+                            {
+                                $('#datatable_ajax').DataTable().ajax.reload(null,false);
+                            }
+                        },
+                        'json'
+                    );
+                }
+            });
+        });
+
+
+
+
         // 内容【设置贴片广告】
         $("#item-main-body").on('click', ".item-ad-set-submit", function() {
-            var that = $(this);
+            var $that = $(this);
             layer.msg('确定要"设置"么，原有广告将被替换？', {
                 time: 0
                 ,btn: ['确定', '取消']
@@ -289,7 +348,7 @@
                         {
                             _token: $('meta[name="_token"]').attr('content'),
                             operate: "item-ad-set",
-                            id:that.attr('data-id')
+                            id: $that.attr('data-id')
                         },
                         function(data){
                             layer.close(index);
@@ -307,7 +366,7 @@
 
         // 内容【取消贴片广告】
         $("#item-main-body").on('click', ".item-ad-cancel-submit", function() {
-            var that = $(this);
+            var $that = $(this);
             layer.msg('确定要"取消"么？', {
                 time: 0
                 ,btn: ['确定', '取消']
@@ -317,7 +376,7 @@
                         {
                             _token: $('meta[name="_token"]').attr('content'),
                             operate: "item-ad-cancel",
-                            id:that.attr('data-id')
+                            id: $that.attr('data-id')
                         },
                         function(data){
                             layer.close(index);
@@ -334,62 +393,6 @@
         });
 
 
-
-
-        // 【启用】
-        $("#item-main-body").on('click', ".item-admin-enable-submit", function() {
-            var that = $(this);
-            layer.msg('确定"封禁"？', {
-                time: 0
-                ,btn: ['确定', '取消']
-                ,yes: function(index){
-                    $.post(
-                        "{{ url('/admin/item/item-admin-enable') }}",
-                        {
-                            _token: $('meta[name="_token"]').attr('content'),
-                            operate: "item-admin-enable",
-                            id:that.attr('data-id')
-                        },
-                        function(data){
-                            layer.close(index);
-                            if(!data.success) layer.msg(data.msg);
-                            else
-                            {
-                                $('#datatable_ajax').DataTable().ajax.reload(null,false);
-                            }
-                        },
-                        'json'
-                    );
-                }
-            });
-        });
-        // 【禁用】
-        $("#item-main-body").on('click', ".item-admin-disable-submit", function() {
-            var that = $(this);
-            layer.msg('确定"解禁"？', {
-                time: 0
-                ,btn: ['确定', '取消']
-                ,yes: function(index){
-                    $.post(
-                        "{{ url('/admin/item/item-admin-disable') }}",
-                        {
-                            _token: $('meta[name="_token"]').attr('content'),
-                            operate: "item-admin-disable",
-                            id:that.attr('data-id')
-                        },
-                        function(data){
-                            layer.close(index);
-                            if(!data.success) layer.msg(data.msg);
-                            else
-                            {
-                                $('#datatable_ajax').DataTable().ajax.reload(null,false);
-                            }
-                        },
-                        'json'
-                    );
-                }
-            });
-        });
 
     });
 </script>

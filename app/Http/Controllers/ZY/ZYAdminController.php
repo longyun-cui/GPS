@@ -239,6 +239,8 @@ class ZYAdminController extends Controller
     {
         return $this->repo->operate_item_item_get(request()->all());
     }
+
+
     // 【内容】删除
     public function operate_item_item_delete()
     {
@@ -254,6 +256,25 @@ class ZYAdminController extends Controller
     {
         return $this->repo->operate_item_item_delete_permanently(request()->all());
     }
+
+
+    // 【内容】批量-删除
+    public function operate_item_item_delete_bulk()
+    {
+        return $this->repo->operate_item_item_delete_bulk(request()->all());
+    }
+    // 【内容】批量-恢复
+    public function operate_item_item_restore_bulk()
+    {
+        return $this->repo->operate_item_item_restore_bulk(request()->all());
+    }
+    // 【内容】批量-彻底删除
+    public function operate_item_item_delete_permanently_bulk()
+    {
+        return $this->repo->operate_item_item_delete_permanently_bulk(request()->all());
+    }
+
+
     // 【内容】发布
     public function operate_item_item_publish()
     {
@@ -274,6 +295,17 @@ class ZYAdminController extends Controller
     {
         return $this->repo->operate_item_item_disable(request()->all());
     }
+    // 【内容】禁用
+    public function operate_item_item_operate_bulk()
+    {
+        return $this->repo->operate_item_item_operate_bulk(request()->all());
+    }
+
+
+
+
+
+
 
 
     /*

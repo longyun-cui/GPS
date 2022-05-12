@@ -2,7 +2,7 @@
 
 
 @section('head_title')
-    @if(in_array(env('APP_ENV'),['local']))[l]@endif A.{{ $title_text or '任务列表' }} - 兆益信息
+    @if(in_array(env('APP_ENV'),['local']))[l]@endif A.{{ $title_text or '全部内容' }} - 兆益信息
 @endsection
 
 
@@ -91,18 +91,19 @@
 
             <div class="box-footer">
                 <div class="row" style="margin:16px 0;">
-                    <div class="col-md-offset-0 col-md-4 col-sm-8 col-xs-12">
+                    <div class="col-md-offset-0 col-md-6 col-sm-9 col-xs-12">
                         {{--<button type="button" class="btn btn-primary"><i class="fa fa-check"></i> 提交</button>--}}
                         {{--<button type="button" onclick="history.go(-1);" class="btn btn-default">返回</button>--}}
                         <div class="input-group">
                             <span class="input-group-addon"><input type="checkbox" id="check-review-all"></span>
-                            <select name="bulk-operat-status" class="form-control form-filter">
-                                <option value ="0">请选择</option>
-                                <option value ="封禁">封禁</option>
+                            <select name="bulk-operate-status" class="form-control form-filter">
+                                <option value ="-1">请选择</option>
+                                <option value ="启用">启用</option>
+                                <option value ="禁用">禁用</option>
                                 <option value ="删除">删除</option>
                                 <option value ="永久删除">永久删除</option>
                             </select>
-                            <span class="input-group-addon btn btn-default" id="operat-bulk-submit"><i class="fa fa-check"></i> 批量操作</span>
+                            <span class="input-group-addon btn btn-default" id="operate-bulk-submit"><i class="fa fa-check"></i> 批量操作</span>
                             <span class="input-group-addon btn btn-default" id="delete-bulk-submit"><i class="fa fa-trash-o"></i> 批量删除</span>
                         </div>
                     </div>
@@ -367,11 +368,11 @@
 
                             if(row.item_status == 1)
                             {
-                                $html_able = '<a class="btn btn-xs btn-danger item-admin-disable-submit" data-id="'+data+'">封禁</a>';
+                                $html_able = '<a class="btn btn-xs btn-danger item-disable-submit" data-id="'+data+'">禁用</a>';
                             }
                             else
                             {
-                                $html_able = '<a class="btn btn-xs btn-success item-admin-enable-submit" data-id="'+data+'">解禁</a>';
+                                $html_able = '<a class="btn btn-xs btn-success item-enable-submit" data-id="'+data+'">启用</a>';
                             }
 
                             if(row.is_me == 1 && row.item_active == 0)
@@ -388,8 +389,8 @@
 //                                    '<a class="btn btn-xs" href="/item/edit?id='+data+'">编辑</a>'+
                                     '<a class="btn btn-xs btn-primary item-edit-link" data-id="'+data+'">编辑</a>'+
                                     $html_publish+
-                                    '<a class="btn btn-xs bg-navy item-admin-delete-submit" data-id="'+data+'">删除</a>'+
-//                                    '<a class="btn btn-xs bg-navy item-admin-delete-permanently-submit" data-id="'+data+'">永久删除</a>'+
+                                    '<a class="btn btn-xs bg-navy item-delete-submit" data-id="'+data+'">删除</a>'+
+//                                    '<a class="btn btn-xs bg-navy item-delete-permanently-submit" data-id="'+data+'">永久删除</a>'+
 //                                    '<a class="btn btn-xs bg-primary item-detail-show" data-id="'+data+'">查看详情</a>'+
 //                                    '<a class="btn btn-xs bg-olive item-download-qr-code-submit" data-id="'+data+'">下载二维码</a>'+
                                     '';

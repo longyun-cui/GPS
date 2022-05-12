@@ -65,7 +65,7 @@
                 $checked.push($(this).val());
             });
 
-            layer.msg('确定"批量审核"么', {
+            layer.msg('确定"批量操作"么', {
                 time: 0
                 ,btn: ['确定', '取消']
                 ,yes: function(index){
@@ -75,8 +75,8 @@
                         {
                             _token: $('meta[name="_token"]').attr('content'),
                             operate: "operate-bulk",
-                            bulk_keyword_id: $checked,
-                            bulk_keyword_status:$('select[name="bulk-operate-status"]').val()
+                            bulk_item_id: $checked,
+                            bulk_item_operate: $('select[name="bulk-operate-status"]').val()
                         },
                         function(data){
                             layer.close(index);
@@ -111,7 +111,7 @@
                         {
                             _token: $('meta[name="_token"]').attr('content'),
                             operate: "item-delete-bulk",
-                            bulk_keyword_id: $checked
+                            bulk_item_id: $checked
                         },
                         function(data){
                             layer.close(index);
@@ -169,18 +169,18 @@
         });
 
         // 内容【删除】
-        $("#item-main-body").on('click', ".item-admin-delete-submit", function() {
-            var that = $(this);
+        $("#item-main-body").on('click', ".item-delete-submit", function() {
+            var $that = $(this);
             layer.msg('确定要"删除"么？', {
                 time: 0
                 ,btn: ['确定', '取消']
                 ,yes: function(index){
                     $.post(
-                        "{{ url('/item/task-delete') }}",
+                        "{{ url('/item/item-delete') }}",
                         {
                             _token: $('meta[name="_token"]').attr('content'),
                             operate: "item-delete",
-                            id:that.attr('data-id')
+                            item_id: $that.attr('data-id')
                         },
                         function(data){
                             layer.close(index);
@@ -196,18 +196,18 @@
         });
 
         // 内容【恢复】
-        $("#item-main-body").on('click', ".item-admin-restore-submit", function() {
-            var that = $(this);
+        $("#item-main-body").on('click', ".item-restore-submit", function() {
+            var $that = $(this);
             layer.msg('确定要"恢复"么？', {
                 time: 0
                 ,btn: ['确定', '取消']
                 ,yes: function(index){
                     $.post(
-                        "{{ url('/admin/item/item-restore') }}",
+                        "{{ url('/item/item-restore') }}",
                         {
                             _token: $('meta[name="_token"]').attr('content'),
                             operate: "item-restore",
-                            id:that.attr('data-id')
+                            item_id: $that.attr('data-id')
                         },
                         function(data){
                             layer.close(index);
@@ -223,18 +223,18 @@
         });
 
         // 内容【永久删除】
-        $("#item-main-body").on('click', ".item-admin-delete-permanently-submit", function() {
-            var that = $(this);
+        $("#item-main-body").on('click', ".item-delete-permanently-submit", function() {
+            var $that = $(this);
             layer.msg('确定要"永久删除"么？', {
                 time: 0
                 ,btn: ['确定', '取消']
                 ,yes: function(index){
                     $.post(
-                        "{{ url('/admin/item/item-delete-permanently') }}",
+                        "{{ url('/item/item-delete-permanently') }}",
                         {
                             _token: $('meta[name="_token"]').attr('content'),
                             operate: "item-delete-permanently",
-                            id:that.attr('data-id')
+                            item_id: $that.attr('data-id')
                         },
                         function(data){
                             layer.close(index);
@@ -276,6 +276,64 @@
                 }
             });
         });
+
+        // 【启用】
+        $("#item-main-body").on('click', ".item-enable-submit", function() {
+            var $that = $(this);
+            layer.msg('确定"启用"？', {
+                time: 0
+                ,btn: ['确定', '取消']
+                ,yes: function(index){
+                    $.post(
+                        "{{ url('/item/item-enable') }}",
+                        {
+                            _token: $('meta[name="_token"]').attr('content'),
+                            operate: "item-enable",
+                            item_id: $that.attr('data-id')
+                        },
+                        function(data){
+                            layer.close(index);
+                            if(!data.success) layer.msg(data.msg);
+                            else
+                            {
+                                $('#datatable_ajax').DataTable().ajax.reload(null,false);
+                            }
+                        },
+                        'json'
+                    );
+                }
+            });
+        });
+        // 【禁用】
+        $("#item-main-body").on('click', ".item-disable-submit", function() {
+            var $that = $(this);
+            layer.msg('确定"禁用"？', {
+                time: 0
+                ,btn: ['确定', '取消']
+                ,yes: function(index){
+                    $.post(
+                        "{{ url('/item/item-disable') }}",
+                        {
+                            _token: $('meta[name="_token"]').attr('content'),
+                            operate: "item-disable",
+                            item_id: $that.attr('data-id')
+                        },
+                        function(data){
+                            layer.close(index);
+                            if(!data.success) layer.msg(data.msg);
+                            else
+                            {
+                                $('#datatable_ajax').DataTable().ajax.reload(null,false);
+                            }
+                        },
+                        'json'
+                    );
+                }
+            });
+        });
+
+
+
 
         // 内容【设置贴片广告】
         $("#item-main-body").on('click', ".item-ad-set-submit", function() {
@@ -335,61 +393,6 @@
 
 
 
-
-        // 【启用】
-        $("#item-main-body").on('click', ".item-admin-enable-submit", function() {
-            var that = $(this);
-            layer.msg('确定"封禁"？', {
-                time: 0
-                ,btn: ['确定', '取消']
-                ,yes: function(index){
-                    $.post(
-                        "{{ url('/admin/item/item-admin-enable') }}",
-                        {
-                            _token: $('meta[name="_token"]').attr('content'),
-                            operate: "item-admin-enable",
-                            id:that.attr('data-id')
-                        },
-                        function(data){
-                            layer.close(index);
-                            if(!data.success) layer.msg(data.msg);
-                            else
-                            {
-                                $('#datatable_ajax').DataTable().ajax.reload(null,false);
-                            }
-                        },
-                        'json'
-                    );
-                }
-            });
-        });
-        // 【禁用】
-        $("#item-main-body").on('click', ".item-admin-disable-submit", function() {
-            var that = $(this);
-            layer.msg('确定"解禁"？', {
-                time: 0
-                ,btn: ['确定', '取消']
-                ,yes: function(index){
-                    $.post(
-                        "{{ url('/admin/item/item-admin-disable') }}",
-                        {
-                            _token: $('meta[name="_token"]').attr('content'),
-                            operate: "item-admin-disable",
-                            id:that.attr('data-id')
-                        },
-                        function(data){
-                            layer.close(index);
-                            if(!data.success) layer.msg(data.msg);
-                            else
-                            {
-                                $('#datatable_ajax').DataTable().ajax.reload(null,false);
-                            }
-                        },
-                        'json'
-                    );
-                }
-            });
-        });
 
     });
 </script>

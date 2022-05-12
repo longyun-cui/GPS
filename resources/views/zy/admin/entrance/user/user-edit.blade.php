@@ -142,11 +142,11 @@
                 </div>
 
 
-                {{--用户名--}}
+                {{--真实姓名--}}
                 <div class="form-group">
                     <label class="control-label col-md-2"><sup class="text-red">*</sup> 真实姓名</label>
                     <div class="col-md-8 ">
-                        <input type="text" class="form-control" name="true_name" placeholder="用户名" value="{{ $data->true_name or '' }}">
+                        <input type="text" class="form-control" name="true_name" placeholder="真实姓名" value="{{ $data->true_name or '' }}">
                     </div>
                 </div>
                 {{--手机--}}

@@ -199,7 +199,7 @@ class ZYStaffRepository {
 
 //        $item_query = ZY_Item::with(['owner','creator','updater','completer']);
         $item_query = ZY_Item::with(['owner','creator']);
-//        $item_query->where(['item_status'=>1,'active'=>1]);
+        $item_query->where(['item_status'=>1]);
         $item_query->where(['item_category'=>11]);
 
 

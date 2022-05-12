@@ -90,14 +90,15 @@
 
             <div class="box-footer">
                 <div class="row" style="margin:16px 0;">
-                    <div class="col-md-offset-0 col-md-4 col-sm-8 col-xs-12">
+                    <div class="col-md-offset-0 col-md-6 col-sm-9 col-xs-12">
                         {{--<button type="button" class="btn btn-primary"><i class="fa fa-check"></i> 提交</button>--}}
                         {{--<button type="button" onclick="history.go(-1);" class="btn btn-default">返回</button>--}}
                         <div class="input-group">
                             <span class="input-group-addon"><input type="checkbox" id="check-review-all"></span>
                             <select name="bulk-operat-status" class="form-control form-filter">
-                                <option value ="0">请选择</option>
-                                <option value ="封禁">封禁</option>
+                                <option value ="-1">请选择</option>
+                                <option value ="启用">启用</option>
+                                <option value ="禁用">禁用</option>
                                 <option value ="删除">删除</option>
                                 <option value ="永久删除">永久删除</option>
                             </select>
@@ -399,11 +400,11 @@
 
                             if(row.item_status == 1)
                             {
-                                $html_able = '<a class="btn btn-xs btn-danger item-admin-disable-submit" data-id="'+data+'">封禁</a>';
+                                $html_able = '<a class="btn btn-xs btn-danger item-admin-disable-submit" data-id="'+data+'">禁用</a>';
                             }
                             else
                             {
-                                $html_able = '<a class="btn btn-xs btn-success item-admin-enable-submit" data-id="'+data+'">解禁</a>';
+                                $html_able = '<a class="btn btn-xs btn-success item-admin-enable-submit" data-id="'+data+'">启用</a>';
                             }
 
                             if(row.is_me == 1 && row.active == 0)

@@ -71,12 +71,26 @@ Route::group(['middleware' => ['zy.admin.login']], function () {
      */
     Route::match(['get','post'], '/item/item-create', $controller.'@operate_item_item_create');
     Route::match(['get','post'], '/item/item-edit', $controller.'@operate_item_item_edit');
+
     Route::post('/item/item-delete', $controller.'@operate_item_item_delete');
     Route::post('/item/item-restore', $controller.'@operate_item_item_restore');
     Route::post('/item/item-delete-permanently', $controller.'@operate_item_item_delete_permanently');
+
+    Route::post('/item/item-enable', $controller.'@operate_item_item_enable');
+    Route::post('/item/item-disable', $controller.'@operate_item_item_disable');
     Route::post('/item/item-publish', $controller.'@operate_item_item_publish');
     Route::post('/item/item-complete', $controller.'@operate_item_item_complete');
+
     Route::post('/item/item-remark-edit', $controller.'@operate_item_item_remark_edit');
+
+    // 批量操作
+    Route::post('/item/item-delete-bulk', $controller.'@operate_item_item_delete_bulk');
+    Route::post('/item/item-restore-bulk', $controller.'@operate_item_item_restore_bulk');
+    Route::post('/item/item-delete-permanently-bulk', $controller.'@operate_item_item_delete_permanently_bulk');
+
+    Route::post('/item/item-operate-bulk', $controller.'@operate_item_item_operate_bulk');
+    Route::post('/item/item-enable-bulk', $controller.'@operate_item_item_enable_bulk');
+    Route::post('/item/item-disable-bulk', $controller.'@operate_item_item_disable_bulk');
 
 
 
