@@ -1555,7 +1555,7 @@ class ZYStaffRepository {
             $item->custom = json_decode($item->custom);
             $item_array[0] = $item;
             $return['item_list'] = $item_array;
-            $item_html = view(env('TEMPLATE_ZY_STAFF').'component.item-list')->with($return)->__toString();
+            $item_html = view(env('TEMPLATE_ZY_STAFF').'component.item-list-for-task')->with($return)->__toString();
             return response_success(['item_html'=>$item_html]);
         }
         catch (Exception $e)
@@ -1763,6 +1763,24 @@ class ZYStaffRepository {
 
         // method A
         $item_html = view(env('TEMPLATE_ZY_STAFF').'component.item-list')->with($return)->__toString();
+//        // method B
+//        $item_html = view(env('TEMPLATE_ZY_STAFF').'component.item-list')->with($return)->render();
+//        // method C
+//        $view = view(env('TEMPLATE_ZY_STAFF').'component.item-list')->with($return);
+//        $item_html=response($view)->getContent();
+
+        return $item_html;
+    }
+
+    // 【内容】返回-内容-HTML
+    public function get_the_task_html($item)
+    {
+        $item->custom = json_decode($item->custom);
+        $item_array[0] = $item;
+        $return['item_list'] = $item_array;
+
+        // method A
+        $item_html = view(env('TEMPLATE_ZY_STAFF').'component.item-list-for-task')->with($return)->__toString();
 //        // method B
 //        $item_html = view(env('TEMPLATE_ZY_STAFF').'component.item-list')->with($return)->render();
 //        // method C
