@@ -1611,7 +1611,7 @@ class ZYStaffRepository {
             if(!$bool) throw new Exception("update--item-remark--fail");
             DB::commit();
 
-            $item_html = $this->get_the_item_html($item);
+            $item_html = $this->get_the_task_html($item);
             return response_success(['item_html'=>$item_html]);
         }
         catch (Exception $e)
