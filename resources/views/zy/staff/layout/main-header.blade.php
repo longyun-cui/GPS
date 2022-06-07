@@ -71,6 +71,14 @@
 
                 {{----}}
                 <li class="">
+                    <a href="{{ url('/statistic/statistic-index') }}" data-type="notification">
+                        <i class="fa fa-bar-chart"></i>
+                        {{--<span class="label label-success">公告</span>--}}
+                    </a>
+                </li>
+
+                {{----}}
+                <li class="">
                     <a href="{{ url('/item/item-list') }}" data-type="notification">
                         <i class="fa fa-file-text"></i>
                         {{--<span class="label label-success">公告</span>--}}
@@ -89,31 +97,36 @@
                             <!-- inner menu: contains the actual data -->
                             <ul class="menu">
                                 <li>
+                                    <a href="{{ url('/?task-list-type=finished') }}">
+                                        <i class="fa fa-check-square-o"></i> <span>已完成</span>
+                                    </a>
+                                </li>
+                                <li>
                                     <a href="{{ url('/?task-list-type=missed') }}">
                                         <i class="fa fa-circle-o"></i> <span>未接</span>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="{{ url('/?task-list-type=reject') }}">
-                                        <i class="fa fa-circle-o"></i> <span>拒接</span>
+                                        <i class="fa fa-remove"></i> <span>拒接</span>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="{{ url('/?task-list-type=added') }}">
-                                        <i class="fa fa-circle-o"></i> <span>已加微信</span>
+                                        <i class="fa fa-wechat"></i> <span>已加微信</span>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="{{ url('/?task-list-type=remark') }}">
-                                        <i class="fa fa-circle-o"></i> <span>有备注</span>
+                                        <i class="fa fa-pencil"></i> <span>有备注</span>
                                     </a>
                                 </li>
-                                <li class="header">统计</li>
-                                <li>
-                                    <a href="{{ url('/statistic/statistic-index') }}">
-                                        <i class="fa fa-circle-o"></i> <span>统计</span>
-                                    </a>
-                                </li>
+                                {{--<li class="header">统计</li>--}}
+                                {{--<li>--}}
+                                    {{--<a href="{{ url('/statistic/statistic-index') }}">--}}
+                                        {{--<i class="fa fa-circle-o"></i> <span>统计</span>--}}
+                                    {{--</a>--}}
+                                {{--</li>--}}
                             </ul>
                         </li>
                         {{--<li class="footer"><a href="#">View all</a></li>--}}
