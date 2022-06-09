@@ -1471,7 +1471,7 @@ class ZYAdminRepository {
         $id = $post_data["item_id"];
         if(intval($id) !== 0 && !$id) return response_error([],"参数[ID]有误！");
 
-        $item = Def_Item::withTrashed()->find($id);
+        $item = ZY_Item::withTrashed()->find($id);
         if(!$item) return response_error([],"该内容不存在，刷新页面重试！");
 
         $this->get_me();
@@ -2110,6 +2110,359 @@ class ZYAdminRepository {
             return response_fail([],$msg);
         }
     }
+
+
+
+
+
+
+    // 【任务】管理员-删除
+    public function operate_item_task_admin_delete($post_data)
+    {
+        $messages = [
+            'operate.required' => 'operate.required.',
+            'item_id.required' => 'item_id.required.',
+        ];
+        $v = Validator::make($post_data, [
+            'operate' => 'required',
+            'item_id' => 'required',
+        ], $messages);
+        if ($v->fails())
+        {
+            $messages = $v->errors();
+            return response_error([],$messages->first());
+        }
+
+        $operate = $post_data["operate"];
+        if($operate != 'task-admin-delete') return response_error([],"参数[operate]有误！");
+        $item_id = $post_data["item_id"];
+        if(intval($item_id) !== 0 && !$item_id) return response_error([],"参数[ID]有误！");
+
+        $item = ZY_Task::withTrashed()->find($item_id);
+        if(!$item) return response_error([],"该内容不存在，刷新页面重试！");
+
+        $this->get_me();
+        $me = $this->me;
+//        if(!in_array($me->user_type,[0,1,9,11,19])) return response_error([],"用户类型错误！");
+//        if($me->user_type == 19 && ($item->item_active != 0 || $item->creator_id != $me->id)) return response_error([],"你没有操作权限！");
+        if($item->creator_id != $me->id) return response_error([],"该内容不是你的，你不能操作！");
+
+        // 启动数据库事务
+        DB::beginTransaction();
+        try
+        {
+            $item->timestamps = false;
+            if($item->item_active == 0 && $item->owner_id != $me->id)
+            {
+                $item_copy = $item;
+
+                $item->timestamps = false;
+                $bool = $item->forceDelete();
+                if(!$bool) throw new Exception("item--delete--fail");
+                DB::commit();
+
+                $this->delete_the_item_files($item_copy);
+            }
+            else
+            {
+                $item->timestamps = false;
+//                $bool = $item->delete();  // 普通删除
+                $bool = $item->forceDelete();  // 永久删除
+                if(!$bool) throw new Exception("item--delete--fail");
+                DB::commit();
+            }
+
+            return response_success([]);
+        }
+        catch (Exception $e)
+        {
+            DB::rollback();
+            $msg = '操作失败，请重试！';
+            $msg = $e->getMessage();
+//            exit($e->getMessage());
+            return response_fail([],$msg);
+        }
+
+    }
+    // 【任务】管理员-恢复
+    public function operate_item_task_admin_restore($post_data)
+    {
+        $messages = [
+            'operate.required' => '参数有误！',
+            'item_id.required' => '请输入ID！',
+        ];
+        $v = Validator::make($post_data, [
+            'operate' => 'required',
+            'item_id' => 'required',
+        ], $messages);
+        if ($v->fails())
+        {
+            $messages = $v->errors();
+            return response_error([],$messages->first());
+        }
+
+        $operate = $post_data["operate"];
+        if($operate != 'task-restore-restore') return response_error([],"参数[operate]有误！");
+        $id = $post_data["item_id"];
+        if(intval($id) !== 0 && !$id) return response_error([],"参数[ID]有误！");
+
+        $item = ZY_Task::withTrashed()->find($id);
+        if(!$item) return response_error([],"该内容不存在，刷新页面重试！");
+
+        $this->get_me();
+        $me = $this->me;
+//        if(!in_array($me->user_type,[0,1,9,11])) return response_error([],"用户类型错误！");
+        if($item->owner_id != $me->id) return response_error([],"该内容不是你的，你不能操作！");
+
+        // 启动数据库事务
+        DB::beginTransaction();
+        try
+        {
+            $item->timestamps = false;
+            $bool = $item->restore();
+            if(!$bool) throw new Exception("item--restore--fail");
+            DB::commit();
+
+            return response_success([]);
+        }
+        catch (Exception $e)
+        {
+            DB::rollback();
+            $msg = '操作失败，请重试！';
+            $msg = $e->getMessage();
+//            exit($e->getMessage());
+            return response_fail([],$msg);
+        }
+
+    }
+    // 【任务】管理员-彻底删除
+    public function operate_item_task_admin_delete_permanently($post_data)
+    {
+        $messages = [
+            'operate.required' => 'operate.required.',
+            'item_id.required' => 'item_id.required.',
+        ];
+        $v = Validator::make($post_data, [
+            'operate' => 'required',
+            'item_id' => 'required',
+        ], $messages);
+        if ($v->fails())
+        {
+            $messages = $v->errors();
+            return response_error([],$messages->first());
+        }
+
+        $operate = $post_data["operate"];
+        if($operate != 'item-delete-permanently') return response_error([],"参数[operate]有误！");
+        $id = $post_data["item_id"];
+        if(intval($id) !== 0 && !$id) return response_error([],"参数[ID]有误！");
+
+        $item = ZY_Item::withTrashed()->find($id);
+        if(!$item) return response_error([],"该内容不存在，刷新页面重试！");
+
+        $this->get_me();
+        $me = $this->me;
+//        if(!in_array($me->user_type,[0,1,9,11,19])) return response_error([],"用户类型错误！");
+//        if($me->user_type == 19 && ($item->item_active != 0 || $item->creator_id != $me->id)) return response_error([],"你没有操作权限！");
+        if($item->owner_id != $me->id) return response_error([],"该内容不是你的，你不能操作！");
+
+        // 启动数据库事务
+        DB::beginTransaction();
+        try
+        {
+            if($id == $me->advertising_id)
+            {
+                $me->timestamps = false;
+                $me->advertising_id = 0;
+                $bool_0 = $me->save();
+                if(!$bool_0) throw new Exception("update--user--fail");
+            }
+
+            $item_copy = $item;
+
+            $bool = $item->forceDelete();
+            if(!$bool) throw new Exception("item--delete--fail");
+            DB::commit();
+
+            $this->delete_the_item_files($item_copy);
+
+            return response_success([]);
+        }
+        catch (Exception $e)
+        {
+            DB::rollback();
+            $msg = '操作失败，请重试！';
+            $msg = $e->getMessage();
+//            exit($e->getMessage());
+            return response_fail([],$msg);
+        }
+
+    }
+
+
+    // 【任务】管理员-批量-删除
+    public function operate_item_task_admin_delete_bulk($post_data)
+    {
+        $messages = [
+            'operate.required' => 'operate.required.',
+            'bulk_item_id.required' => 'bulk_item_id.required.',
+        ];
+        $v = Validator::make($post_data, [
+            'operate' => 'required',
+            'bulk_item_id' => 'required',
+        ], $messages);
+        if ($v->fails())
+        {
+            $messages = $v->errors();
+            return response_error([],$messages->first());
+        }
+
+        $operate = $post_data["operate"];
+        if($operate != 'task-admin-delete-bulk') return response_error([],"参数[operate]有误！");
+
+        $this->get_me();
+        $me = $this->me;
+//        if(!in_array($me->user_type,[0,1,9,11,19])) return response_error([],"用户类型错误！");
+//        if($me->user_type == 19 && ($item->item_active != 0 || $item->creator_id != $me->id)) return response_error([],"你没有操作权限！");
+//        if($item->owner_id != $me->id) return response_error([],"该内容不是你的，你不能操作！");
+
+        // 启动数据库事务
+        DB::beginTransaction();
+        try
+        {
+            $item_ids = $post_data["bulk_item_id"];
+            foreach($item_ids as $key => $item_id)
+            {
+                if(intval($item_id) !== 0 && !$item_id) return response_error([],"参数ID有误！");
+
+                $item = ZY_Task::withTrashed()->find($item_id);
+                if($item)
+                {
+                    $item->timestamps = false;
+//                    $bool = $item->delete();  // 普通删除
+                    $bool = $item->forceDelete();  // 永久删除
+                    if(!$bool) throw new Exception("delete--task--fail");
+                }
+                else throw new Exception("内容不存在，刷新页面试试！");
+            }
+
+            DB::commit();
+            return response_success([]);
+        }
+        catch (Exception $e)
+        {
+            DB::rollback();
+            $msg = '操作失败，请重试';
+            $msg = $e->getMessage();
+//            exit($e->getMessage());
+            return response_fail([],$msg);
+        }
+    }
+    // 【任务】管理员-批量-删除
+    public function operate_item_task_admin_restore_bulk($post_data)
+    {
+        $messages = [
+            'bulk_item_id.required' => 'bulk_item_id.required.',
+        ];
+        $v = Validator::make($post_data, [
+            'bulk_item_id' => 'required',
+        ], $messages);
+        if ($v->fails())
+        {
+            $messages = $v->errors();
+            return response_error([],$messages->first());
+        }
+
+        $this->get_me();
+        $me = $this->me;
+//        if(!in_array($me->user_type,[0,1,9,11,19])) return response_error([],"用户类型错误！");
+//        if($me->user_type == 19 && ($item->item_active != 0 || $item->creator_id != $me->id)) return response_error([],"你没有操作权限！");
+//        if($item->owner_id != $me->id) return response_error([],"该内容不是你的，你不能操作！");
+
+        // 启动数据库事务
+        DB::beginTransaction();
+        try
+        {
+            $item_ids = $post_data["bulk_item_id"];
+            foreach($item_ids as $key => $item_id)
+            {
+                if(intval($item_id) !== 0 && !$item_id) return response_error([],"参数ID有误！");
+
+                $item = ZY_Item::find($item_id);
+                if($item)
+                {
+                    $item->timestamps = false;
+                    $bool = $item->restore();
+                    if(!$bool) throw new Exception("item--restore--fail");
+                }
+                else throw new Exception("内容不存在，刷新页面试试！");
+            }
+
+            DB::commit();
+            return response_success([]);
+        }
+        catch (Exception $e)
+        {
+            DB::rollback();
+            $msg = '操作失败，请重试';
+            $msg = $e->getMessage();
+//            exit($e->getMessage());
+            return response_fail([],$msg);
+        }
+    }
+    // 【任务】管理员-批量-彻底删除
+    public function operate_item_task_admin_delete_permanently_bulk($post_data)
+    {
+        $messages = [
+            'bulk_item_id.required' => 'bulk_item_id.required.',
+        ];
+        $v = Validator::make($post_data, [
+            'bulk_item_id' => 'required',
+        ], $messages);
+        if ($v->fails())
+        {
+            $messages = $v->errors();
+            return response_error([],$messages->first());
+        }
+
+        $this->get_me();
+        $me = $this->me;
+//        if(!in_array($me->user_type,[0,1,9,11,19])) return response_error([],"用户类型错误！");
+//        if($me->user_type == 19 && ($item->item_active != 0 || $item->creator_id != $me->id)) return response_error([],"你没有操作权限！");
+//        if($item->owner_id != $me->id) return response_error([],"该内容不是你的，你不能操作！");
+
+        // 启动数据库事务
+        DB::beginTransaction();
+        try
+        {
+            $item_ids = $post_data["bulk_item_id"];
+            foreach($item_ids as $key => $item_id)
+            {
+                if(intval($item_id) !== 0 && !$item_id) return response_error([],"参数ID有误！");
+
+                $item = ZY_Item::find($item_id);
+                if($item)
+                {
+                    $bool = $item->forceDelete();
+                    if(!$bool) throw new Exception("delete--item--fail");
+                }
+                else throw new Exception("内容不存在，刷新页面试试！");
+            }
+
+            DB::commit();
+            return response_success([]);
+        }
+        catch (Exception $e)
+        {
+            DB::rollback();
+            $msg = '操作失败，请重试';
+            $msg = $e->getMessage();
+//            exit($e->getMessage());
+            return response_fail([],$msg);
+        }
+    }
+
+
 
 
 

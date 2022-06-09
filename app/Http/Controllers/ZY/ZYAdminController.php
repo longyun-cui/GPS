@@ -381,6 +381,44 @@ class ZYAdminController extends Controller
 
 
 
+    /*
+     * Task 任务
+     */
+    // 【任务】管理员-删除
+    public function operate_item_task_admin_delete()
+    {
+        return $this->repo->operate_item_task_admin_delete(request()->all());
+    }
+    // 【任务】管理员-恢复
+    public function operate_item_task_admin_restore()
+    {
+        return $this->repo->operate_item_task_admin_restore(request()->all());
+    }
+    // 【任务】管理员-永久删除
+    public function operate_item_task_admin_delete_permanently()
+    {
+        return $this->repo->operate_item_task_admin_delete_permanently(request()->all());
+    }
+
+
+    // 【任务】管理员-批量-删除
+    public function operate_item_task_admin_delete_bulk()
+    {
+        return $this->repo->operate_item_task_admin_delete_bulk(request()->all());
+    }
+    // 【任务】管理员-批量-恢复
+    public function operate_item_task_admin_restore_bulk()
+    {
+        return $this->repo->operate_item_task_admin_restore_bulk(request()->all());
+    }
+    // 【任务】管理员-批量-彻底删除
+    public function operate_item_task_admin_delete_permanently_bulk()
+    {
+        return $this->repo->operate_item_task_admin_delete_permanently_bulk(request()->all());
+    }
+
+
+
 
 
 

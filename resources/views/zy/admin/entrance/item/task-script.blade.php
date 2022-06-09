@@ -75,8 +75,8 @@
                         {
                             _token: $('meta[name="_token"]').attr('content'),
                             operate: "operate-bulk",
-                            bulk_keyword_id: $checked,
-                            bulk_keyword_status:$('select[name="bulk-operate-status"]').val()
+                            bulk_item_id: $checked,
+                            bulk_item_status:$('select[name="bulk-operate-status"]').val()
                         },
                         function(data){
                             layer.close(index);
@@ -107,11 +107,11 @@
                 ,yes: function(index){
 
                     $.post(
-                        "{{ url('/item/item-delete-bulk') }}",
+                        "{{ url('/item/task-admin-delete-bulk') }}",
                         {
                             _token: $('meta[name="_token"]').attr('content'),
-                            operate: "item-delete-bulk",
-                            bulk_keyword_id: $checked
+                            operate: "task-admin-delete-bulk",
+                            bulk_item_id: $checked
                         },
                         function(data){
                             layer.close(index);
@@ -168,7 +168,7 @@
 
         });
 
-        // 内容【删除】
+        // 内容【管理员-删除】
         $("#item-main-body").on('click', ".item-admin-delete-submit", function() {
             var $that = $(this);
             layer.msg('确定要"删除"么？', {
@@ -179,8 +179,8 @@
                         "{{ url('/item/task-admin-delete') }}",
                         {
                             _token: $('meta[name="_token"]').attr('content'),
-                            operate: "item-admin-delete",
-                            id: $that.attr('data-id')
+                            operate: "task-admin-delete",
+                            item_id: $that.attr('data-id')
                         },
                         function(data){
                             layer.close(index);
@@ -195,7 +195,7 @@
             });
         });
 
-        // 内容【恢复】
+        // 内容【管理员-恢复】
         $("#item-main-body").on('click', ".item-admin-restore-submit", function() {
             var $that = $(this);
             layer.msg('确定要"恢复"么？', {
@@ -206,8 +206,8 @@
                         "{{ url('/item/item-admin-restore') }}",
                         {
                             _token: $('meta[name="_token"]').attr('content'),
-                            operate: "item-restore",
-                            id: $that.attr('data-id')
+                            operate: "task-admin-restore",
+                            item_id: $that.attr('data-id')
                         },
                         function(data){
                             layer.close(index);
@@ -222,7 +222,7 @@
             });
         });
 
-        // 内容【永久删除】
+        // 内容【管理员-永久删除】
         $("#item-main-body").on('click', ".item-admin-delete-permanently-submit", function() {
             var $that = $(this);
             layer.msg('确定要"永久删除"么？', {
@@ -233,8 +233,8 @@
                         "{{ url('/item/item-delete-permanently') }}",
                         {
                             _token: $('meta[name="_token"]').attr('content'),
-                            operate: "item-delete-permanently",
-                            id: $that.attr('data-id')
+                            operate: "task-admin-delete-permanently",
+                            item_id: $that.attr('data-id')
                         },
                         function(data){
                             layer.close(index);
@@ -289,7 +289,7 @@
                         "{{ url('/item/item-admin-enable') }}",
                         {
                             _token: $('meta[name="_token"]').attr('content'),
-                            operate: "item-admin-enable",
+                            operate: "task-admin-enable",
                             id: $that.attr('data-id')
                         },
                         function(data){
@@ -316,7 +316,7 @@
                         "{{ url('/item/item-admin-disable') }}",
                         {
                             _token: $('meta[name="_token"]').attr('content'),
-                            operate: "item-admin-disable",
+                            operate: "task-admin-disable",
                             id: $that.attr('data-id')
                         },
                         function(data){

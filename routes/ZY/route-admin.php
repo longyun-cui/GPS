@@ -94,6 +94,17 @@ Route::group(['middleware' => ['zy.admin.login']], function () {
 
 
 
+    Route::post('/item/task-admin-delete', $controller.'@operate_item_task_admin_delete');
+    Route::post('/item/task-admin-restore', $controller.'@operate_item_task_admin_restore');
+    Route::post('/item/task-admin-delete-permanently', $controller.'@operate_item_task_admin_delete_permanently');
+
+    // 批量操作
+    Route::post('/item/task-admin-delete-bulk', $controller.'@operate_item_task_admin_delete_bulk');
+    Route::post('/item/task-admin-restore-bulk', $controller.'@operate_item_task_admin_restore_bulk');
+    Route::post('/item/task-admin-delete-permanently-bulk', $controller.'@operate_item_task_admin_delete_permanently_bulk');
+
+
+
 
     /*
      * 任务管理
