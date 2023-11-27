@@ -1,13 +1,15 @@
 @extends(env('TEMPLATE_ZY_SUPER').'layout.layout')
 
 
-@section('head_title','【S】全部用户 - 兆益信息')
+@section('head_title')
+    @if(in_array(env('APP_ENV'),['local'])){{ $local or '【l】' }}@endif【S】{{ $head_title or '全部用户' }} - 超级管理员后台系统 - 兆益信息
+@endsection
 
 
 
 
 @section('header','')
-@section('description','全部用户 - 超级管理员后台 - 兆益信息')
+@section('description','全部用户 - 超级管理员后台系统 - 兆益信息')
 @section('breadcrumb')
     <li><a href="{{url('/admin')}}"><i class="fa fa-dashboard"></i>首页</a></li>
     <li><a href="#"><i class="fa "></i>Here</a></li>
@@ -24,8 +26,8 @@
                 <div class="caption pull-right">
                     <i class="icon-pin font-blue"></i>
                     <span class="caption-subject font-blue sbold uppercase"></span>
-                    <a href="{{ url('/admin/user/user-create') }}">
-                        <button type="button" onclick="" class="btn btn-success pull-right"><i class="fa fa-plus"></i> 添加组织机构</button>
+                    <a href="{{ url('/user/user-create') }}">
+                        <button type="button" onclick="" class="btn btn-success pull-right"><i class="fa fa-plus"></i> 添加用户</button>
                     </a>
                 </div>
 
@@ -143,87 +145,6 @@
                             <div class="col-md-8 col-md-offset-2">
                                 <button type="button" class="btn btn-success" id="item-change-password-submit"><i class="fa fa-check"></i> 提交</button>
                                 <button type="button" class="btn btn-default" id="item-change-password-cancel">取消</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- END PORTLET-->
-            </div>
-        </div>
-    </div>
-</div>
-
-
-<div class="modal fade" id="modal-body">
-    <div class="col-md-8 col-md-offset-2" id="edit-ctn" style="margin-top:64px;margin-bottom:64px;background:#fff;">
-
-        <div class="row">
-            <div class="col-md-12">
-                <!-- BEGIN PORTLET-->
-                <div class="box- box-info- form-container">
-
-                    <div class="box-header with-border" style="margin:16px 0;">
-                        <h3 class="box-title">代理商充值</h3>
-                        <div class="box-tools pull-right">
-                        </div>
-                    </div>
-
-                    <form action="" method="post" class="form-horizontal form-bordered" id="form-edit-modal">
-                    <div class="box-body">
-
-                        {{csrf_field()}}
-                        <input type="hidden" name="operate" value="recharge" readonly>
-                        <input type="hidden" name="id" value="0" readonly>
-
-                        {{--类别--}}
-
-
-                        {{--用户ID--}}
-                        <div class="form-group">
-                            <label class="control-label col-md-2">用户ID</label>
-                            <div class="col-md-8 control-label" style="text-align:left;">
-                                <span class="recharge-user-id"></span>
-                            </div>
-                        </div>
-                        {{--用户名--}}
-                        <div class="form-group">
-                            <label class="control-label col-md-2">用户名</label>
-                            <div class="col-md-8 control-label" style="text-align:left;">
-                                <span class="recharge-username"></span>
-                            </div>
-                        </div>
-                        {{--真实姓名--}}
-                        <div class="form-group">
-                            <label class="control-label col-md-2">充值金额</label>
-                            <div class="col-md-8 ">
-                                <input type="text" class="form-control" name="recharge-amount" placeholder="充值金额" value="">
-                            </div>
-                        </div>
-                        {{--备注--}}
-                        <div class="form-group">
-                            <label class="control-label col-md-2">备注</label>
-                            <div class="col-md-8 ">
-                                {{--<input type="text" class="form-control" name="description" placeholder="描述" value="">--}}
-                                <textarea class="form-control" name="description" rows="3" cols="100%"></textarea>
-                            </div>
-                        </div>
-                        {{--说明--}}
-                        <div class="form-group">
-                            <label class="control-label col-md-2">说明</label>
-                            <div class="col-md-8 control-label" style="text-align:left;">
-                                <span class="">正数为充值，负数为退款，退款金额不能超过资金余额。</span>
-                            </div>
-                        </div>
-
-
-                    </div>
-                    </form>
-
-                    <div class="box-footer">
-                        <div class="row">
-                            <div class="col-md-8 col-md-offset-2">
-                                <button type="button" class="btn btn-success" id="item-recharge-submit"><i class="fa fa-check"></i> 提交</button>
-                                <button type="button" class="btn btn-default" id="item-recharge-cancel">取消</button>
                             </div>
                         </div>
                     </div>
@@ -463,7 +384,7 @@
                         }
                     },
                     {
-                        "width": "320px",
+                        "width": "440px",
                         "title": "操作",
                         "data": "id",
                         "orderable": false,
@@ -471,11 +392,11 @@
                             if(row.user_status == 1)
                             {
                                 $html_able =
-                                    '<a class="btn btn-xs btn-danger user-admin-disable-submit" data-id="'+data+'">封禁</a>';
+                                    '<a class="btn btn-xs btn-danger user-super-disable-submit" data-id="'+data+'">禁用</a>';
                             }
                             else
                             {
-                                $html_able = '<a class="btn btn-xs btn-success user-admin-enable-submit" data-id="'+data+'">解禁</a>';
+                                $html_able = '<a class="btn btn-xs btn-success user-super-enable-submit" data-id="'+data+'">启用</a>';
                             }
 
                             if(row.user_category == 1)
@@ -484,17 +405,19 @@
                             }
                             else
                             {
-                                $html_edit = '<a class="btn btn-xs btn-primary item-edit-submit" data-id="'+data+'">编辑</a>';
+                                $html_edit = '<a class="btn btn-xs btn-primary item-super-edit-submit" data-id="'+data+'">编辑</a>';
                             }
 
                             var html =
+                                $html_edit+
                                 $html_able+
 //                                '<a class="btn btn-xs item-download-qrcode-submit" data-id="'+value+'">下载二维码</a>'+
 //                                '<a class="btn btn-xs btn-primary item-recharge-show" data-id="'+data+'">充值/退款</a>'+
-                                $html_edit+
-                                '<a class="btn btn-xs bg-maroon item-change-password-show" data-id="'+data+'">修改密码</a>'+
-                                '<a class="btn btn-xs bg-navy item-delete-submit" data-id="'+data+'" >删除</a>'+
-                                '<a class="btn btn-xs bg-olive item-login-submit" data-id="'+data+'">登录</a>'+
+                                '<a class="btn btn-xs bg-maroon item-password-super-change-show" data-id="'+data+'">修改密码</a>'+
+                                '<a class="btn btn-xs bg-maroon item-password-super-reset-submit" data-id="'+data+'">重置密码</a>'+
+                                '<a class="btn btn-xs bg-olive item-admin-login-submit" data-id="'+data+'">管理员登录</a>'+
+                                '<a class="btn btn-xs bg-olive item-staff-login-submit" data-id="'+data+'">员工登录</a>'+
+                                '<a class="btn btn-xs bg-navy item-super-delete-submit" data-id="'+data+'" >删除</a>'+
                                 '<a class="btn btn-xs bg-purple item-statistic-submit" data-id="'+data+'">流量统计</a>'+
                                 '';
                             return html;

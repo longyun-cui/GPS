@@ -65,6 +65,21 @@
                 $checked.push($(this).val());
             });
 
+            if($checked.length == 0)
+            {
+                layer.msg("请先选择操作对象！");
+                return false;
+            }
+
+//            var $operate_set = new Array("启用","禁用","删除","彻底删除");
+            var $operate_set = ["启用","禁用","删除","彻底删除"];
+            var $operate_result = $('select[name="bulk-operate-status"]').val();
+            if($.inArray($operate_result, $operate_set) == -1)
+            {
+                layer.msg("请选择操作类型！");
+                return false;
+            }
+
             layer.msg('确定"批量操作"么', {
                 time: 0
                 ,btn: ['确定', '取消']
@@ -84,6 +99,7 @@
                             else
                             {
                                 $('#datatable_ajax').DataTable().ajax.reload(null,false);
+                                $("#check-review-all").prop('checked',false);
                             }
                         },
                         'json'
@@ -185,6 +201,7 @@
                         function(data){
                             layer.close(index);
                             if(!data.success) layer.msg(data.msg);
+                            else
                             {
                                 $('#datatable_ajax').DataTable().ajax.reload(null,false);
                             }
@@ -212,6 +229,7 @@
                         function(data){
                             layer.close(index);
                             if(!data.success) layer.msg(data.msg);
+                            else
                             {
                                 $('#datatable_ajax').DataTable().ajax.reload(null,false);
                             }
@@ -239,6 +257,7 @@
                         function(data){
                             layer.close(index);
                             if(!data.success) layer.msg(data.msg);
+                            else
                             {
                                 $('#datatable_ajax').DataTable().ajax.reload(null,false);
                             }

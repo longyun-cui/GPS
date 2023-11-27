@@ -2,7 +2,7 @@
 
 
 @section('head_title')
-    @if(in_array(env('APP_ENV'),['local']))(l)@endif{{ $title_text or '员工登陆' }} - 兆益信息
+    @if(in_array(env('APP_ENV'),['local'])){{ $local or '【l】' }}@endif{{ $title_text or '员工登陆' }} - 员工系统 - 兆益信息
 @endsection
 
 

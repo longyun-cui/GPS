@@ -36,72 +36,87 @@ Route::group(['middleware' => ['zy.admin.login']], function () {
 
 
     /*
-     * 用户管理
+     * 用户-员工管理
      */
     Route::match(['get','post'], '/user/user_select2_district', $controller.'@operate_user_select2_district');
     Route::match(['get','post'], '/user/user_select2_sales', $controller.'@operate_user_select2_sales');
 
-    Route::match(['get','post'], '/user/user-create', $controller.'@operate_user_user_create');
-    Route::match(['get','post'], '/user/user-edit', $controller.'@operate_user_user_edit');
-
-
-    Route::match(['get','post'], '/user/user-login', $controller.'@operate_user_user_login');
-
-
-    Route::match(['get','post'], '/user/user-list-for-all', $controller.'@view_user_list_for_all');
-    Route::match(['get','post'], '/user/user-list-for-individual', $controller.'@view_user_list_for_individual');
-    Route::match(['get','post'], '/user/user-list-for-doc', $controller.'@view_user_list_for_doc');
-    Route::match(['get','post'], '/user/user-list-for-org', $controller.'@view_user_list_for_org');
-    Route::match(['get','post'], '/user/user-list-for-sponsor', $controller.'@view_user_list_for_sponsor');
-
-
-
+    // 【用户-员工管理】创建 & 修改
     Route::match(['get','post'], '/user/staff-create', $controller.'@operate_user_staff_create');
     Route::match(['get','post'], '/user/staff-edit', $controller.'@operate_user_staff_edit');
+    // 【用户-员工管理】修改密码
+    Route::match(['get','post'], '/user/staff-password-admin-change', $controller.'@operate_user_staff_password_admin_change');
+    Route::match(['get','post'], '/user/staff-password-admin-reset', $controller.'@operate_user_staff_password_admin_reset');
+    Route::match(['get','post'], '/user/user-login', $controller.'@operate_user_user_login');
+    // 【用户-员工管理】删除 & 恢复 & 永久删除
+    Route::post('/user/staff-admin-delete', $controller.'@operate_user_staff_admin_delete');
+    Route::post('/user/staff-admin-restore', $controller.'@operate_user_staff_admin_restore');
+    Route::post('/user/staff-admin-delete-permanently', $controller.'@operate_user_staff_admin_delete_permanently');
+    // 【用户-员工管理】启用 & 禁用
+    Route::post('/user/staff-admin-enable', $controller.'@operate_user_staff_admin_enable');
+    Route::post('/user/staff-admin-disable', $controller.'@operate_user_staff_admin_disable');
+
+
+
+
+
     Route::match(['get','post'], '/user/staff-list', $controller.'@view_user_staff_list');
-    Route::post('/user/staff-delete', $controller.'@operate_user_staff_delete');
-    Route::post('/user/staff-restore', $controller.'@operate_user_staff_restore');
-    Route::post('/user/staff-delete-permanently', $controller.'@operate_user_staff_delete_permanently');
+    Route::match(['get','post'], '/user/staff-list-for-all', $controller.'@view_staff_list_for_all');
+
+
+
+
 
 
 
 
     /*
-     * 内容
+     * 内容管理
      */
     Route::match(['get','post'], '/item/item-create', $controller.'@operate_item_item_create');
     Route::match(['get','post'], '/item/item-edit', $controller.'@operate_item_item_edit');
-
+    // 【内容管理】删除 & 恢复 & 永久删除
     Route::post('/item/item-delete', $controller.'@operate_item_item_delete');
     Route::post('/item/item-restore', $controller.'@operate_item_item_restore');
     Route::post('/item/item-delete-permanently', $controller.'@operate_item_item_delete_permanently');
-
+    // 【内容管理】启用 & 禁用
     Route::post('/item/item-enable', $controller.'@operate_item_item_enable');
     Route::post('/item/item-disable', $controller.'@operate_item_item_disable');
+    // 【内容管理】发布
     Route::post('/item/item-publish', $controller.'@operate_item_item_publish');
+    // 【内容管理】完成 & 备注
     Route::post('/item/item-complete', $controller.'@operate_item_item_complete');
-
     Route::post('/item/item-remark-edit', $controller.'@operate_item_item_remark_edit');
 
-    // 批量操作
+    // 【内容管理】批量操作
+    Route::post('/item/item-operate-bulk', $controller.'@operate_item_item_operate_bulk');
+    // 【内容管理】批量操作 - 删除 & 恢复 & 永久删除
     Route::post('/item/item-delete-bulk', $controller.'@operate_item_item_delete_bulk');
     Route::post('/item/item-restore-bulk', $controller.'@operate_item_item_restore_bulk');
     Route::post('/item/item-delete-permanently-bulk', $controller.'@operate_item_item_delete_permanently_bulk');
-
-    Route::post('/item/item-operate-bulk', $controller.'@operate_item_item_operate_bulk');
+    // 【内容管理】批量操作 - 启用 & 禁用
     Route::post('/item/item-enable-bulk', $controller.'@operate_item_item_enable_bulk');
     Route::post('/item/item-disable-bulk', $controller.'@operate_item_item_disable_bulk');
 
 
 
+
+    /*
+     * 任务管理
+     */
+    // 【任务管理】删除 & 恢复 & 永久删除
     Route::post('/item/task-admin-delete', $controller.'@operate_item_task_admin_delete');
     Route::post('/item/task-admin-restore', $controller.'@operate_item_task_admin_restore');
     Route::post('/item/task-admin-delete-permanently', $controller.'@operate_item_task_admin_delete_permanently');
-
-    // 批量操作
+    // 【任务管理】启用 & 禁用
+    Route::post('/item/task-admin-enable', $controller.'@operate_item_task_admin_enable');
+    Route::post('/item/task-admin-disable', $controller.'@operate_item_task_admin_disable');
+    // 【任务管理】批量操作
+    Route::post('/item/task-admin-operate-bulk', $controller.'@operate_item_task_admin_operate_bulk');
     Route::post('/item/task-admin-delete-bulk', $controller.'@operate_item_task_admin_delete_bulk');
     Route::post('/item/task-admin-restore-bulk', $controller.'@operate_item_task_admin_restore_bulk');
     Route::post('/item/task-admin-delete-permanently-bulk', $controller.'@operate_item_task_admin_delete_permanently_bulk');
+
 
 
 
@@ -127,30 +142,14 @@ Route::group(['middleware' => ['zy.admin.login']], function () {
 
 
 
-    Route::match(['get','post'], '/item/content-management', $controller.'@view_item_content_management');
-    Route::post('/item/content-edit', $controller.'@operate_item_content_edit');
-    Route::post('/item/content-get', $controller.'@operate_item_content_get');
-    Route::post('/item/content-delete', $controller.'@operate_item_content_delete');
-    Route::post('/item/content-enable', $controller.'@operate_item_content_enable');
-    Route::post('/item/content-disable', $controller.'@operate_item_content_disable');
-
 
     Route::match(['get','post'], '/item/item-list', $controller.'@view_item_list');
     Route::match(['get','post'], '/item/item-list-for-all', $controller.'@view_item_list_for_all');
-    Route::match(['get','post'], '/item/item-list-for-menu_type', $controller.'@view_item_list_for_menu_type');
-    Route::match(['get','post'], '/item/item-list-for-time_line', $controller.'@view_item_list_for_time_line');
-    Route::match(['get','post'], '/item/item-list-for-debase', $controller.'@view_item_list_for_debase');
 
     Route::match(['get','post'], '/item/task-list-for-all', $controller.'@view_task_list_for_all');
     Route::match(['get','post'], '/item/task-list-for-finished', $controller.'@view_task_list_for_finished');
 
 
-    Route::match(['get','post'], '/user/my-administrator-list', $controller.'@view_user_my_administrator_list');
-    Route::match(['get','post'], '/user/relation-administrator', $controller.'@operate_user_relation_administrator');
-    Route::match(['get','post'], '/user/administrator-relation-add', $controller.'@operate_user_administrator_relation_add');
-    Route::match(['get','post'], '/user/administrator-relation-add-bulk', $controller.'@operate_user_administrator_relation_add_bulk');
-
-    Route::match(['get','post'], '/user/administrator-relation-remove', $controller.'@operate_user_administrator_relation_remove');
 
 
 

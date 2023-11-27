@@ -47,7 +47,7 @@ class ZYAdminController extends Controller
 
             if($admin)
             {
-                if($admin->active == 1)
+                if($admin->user_status == 1)
                 {
                     $password = request()->get('password');
                     if(password_check($password,$admin->password))
@@ -57,11 +57,11 @@ class ZYAdminController extends Controller
                         else Auth::guard('zy_admin')->login($admin,true);
                         return response_success();
                     }
-                    else return response_error([],'账户or密码不正确 ');
+                    else return response_error([],'账户or密码不正确！');
                 }
-                else return response_error([],'账户尚未激活，请先去邮箱激活。');
+                else return response_error([],'账户已禁用！');
             }
-            else return response_error([],'账户不存在');
+            else return response_error([],'账户不存在！');
         }
     }
 
@@ -107,7 +107,8 @@ class ZYAdminController extends Controller
 
 
     /*
-     * USER 用户
+     * USER-STAFF 用户-员工管理
+     *
      */
     // 【用户】SELECT2 District
     public function operate_user_select2_sales()
@@ -115,24 +116,19 @@ class ZYAdminController extends Controller
         return $this->repo->operate_user_select2_sales(request()->all());
     }
 
-    // 【用户】添加
-    public function operate_user_user_create()
+    // 【用户-员工管理】添加
+    public function operate_user_staff_create()
     {
-        if(request()->isMethod('get')) return $this->repo->view_user_user_create();
-        else if (request()->isMethod('post')) return $this->repo->operate_user_user_save(request()->all());
+        if(request()->isMethod('get')) return $this->repo->view_user_staff_create();
+        else if (request()->isMethod('post')) return $this->repo->operate_user_staff_save(request()->all());
     }
-    // 【用户】编辑
-    public function operate_user_user_edit()
+    // 【用户-员工管理】编辑
+    public function operate_user_staff_edit()
     {
-        if(request()->isMethod('get')) return $this->repo->view_user_user_edit();
-        else if (request()->isMethod('post')) return $this->repo->operate_user_user_save(request()->all());
+        if(request()->isMethod('get')) return $this->repo->view_user_staff_edit();
+        else if (request()->isMethod('post')) return $this->repo->operate_user_staff_save(request()->all());
     }
 
-    // 【用户】修改-密码
-    public function operate_user_change_password()
-    {
-        return $this->repo->operate_user_change_password(request()->all());
-    }
 
     // 【用户】登录
     public function operate_user_user_login()
@@ -164,13 +160,56 @@ class ZYAdminController extends Controller
         else return response_error([]);
 
     }
-
-
-    // 【用户】【全部用户】返回-列表-视图
-    public function view_user_list_for_all()
+    // 【用户】修改-密码
+    public function operate_user_staff_password_admin_change()
     {
-        if(request()->isMethod('get')) return $this->repo->view_user_list_for_all(request()->all());
-        else if(request()->isMethod('post')) return $this->repo->get_user_list_for_all_datatable(request()->all());
+        return $this->repo->operate_user_staff_password_admin_change(request()->all());
+    }
+    // 【用户】修改-密码
+    public function operate_user_staff_password_admin_reset()
+    {
+        return $this->repo->operate_user_staff_password_admin_reset(request()->all());
+    }
+
+
+
+    // 【用户-员工管理】管理员-删除（）
+    public function operate_user_staff_admin_delete()
+    {
+        return $this->repo->operate_user_staff_admin_delete(request()->all());
+    }
+    // 【用户-员工管理】管理员-恢复
+    public function operate_user_staff_admin_restore()
+    {
+        return $this->repo->operate_user_staff_admin_restore(request()->all());
+    }
+    // 【用户-员工管理】管理员-永久删除
+    public function operate_user_staff_admin_delete_permanently()
+    {
+        return $this->repo->operate_user_staff_admin_delete_permanently(request()->all());
+    }
+
+
+
+    // 【用户-员工管理】启用
+    public function operate_user_staff_admin_enable()
+    {
+        return $this->repo->operate_user_staff_admin_enable(request()->all());
+    }
+    // 【用户-员工管理】禁用
+    public function operate_user_staff_admin_disable()
+    {
+        return $this->repo->operate_user_staff_admin_disable(request()->all());
+    }
+
+
+
+
+    // 【员工管理】【全部用户】返回-列表-视图
+    public function view_staff_list_for_all()
+    {
+        if(request()->isMethod('get')) return $this->repo->view_staff_list_for_all(request()->all());
+        else if(request()->isMethod('post')) return $this->repo->get_staff_list_for_all_datatable(request()->all());
     }
     // 【用户】【个人用户】返回-列表-视图
     public function view_user_list_for_individual()
@@ -199,28 +238,16 @@ class ZYAdminController extends Controller
 
 
     /*
-     * ITEM 内容
+     * ITEM 内容管理
      */
-    // 【内容】【全部】返回-列表-视图
+    // 【内容】返回-列表-视图（全部内容）
     public function view_item_list_for_all()
     {
         if(request()->isMethod('get')) return $this->repo->view_item_list_for_all(request()->all());
         else if(request()->isMethod('post')) return $this->repo->get_item_list_for_all_datatable(request()->all());
     }
-    // 【内容】【全部】返回-列表-视图
-    public function view_task_list_for_all()
-    {
-        if(request()->isMethod('get')) return $this->repo->view_task_list_for_all(request()->all());
-        else if(request()->isMethod('post')) return $this->repo->get_task_list_for_all_datatable(request()->all());
-    }
 
 
-
-
-
-    /*
-     *
-     */
     // 【内容】添加
     public function operate_item_item_create()
     {
@@ -273,6 +300,11 @@ class ZYAdminController extends Controller
     {
         return $this->repo->operate_item_item_delete_permanently_bulk(request()->all());
     }
+    // 【内容】批量-操作
+    public function operate_item_item_operate_bulk()
+    {
+        return $this->repo->operate_item_item_operate_bulk(request()->all());
+    }
 
 
     // 【内容】发布
@@ -295,11 +327,6 @@ class ZYAdminController extends Controller
     {
         return $this->repo->operate_item_item_disable(request()->all());
     }
-    // 【内容】禁用
-    public function operate_item_item_operate_bulk()
-    {
-        return $this->repo->operate_item_item_operate_bulk(request()->all());
-    }
 
 
 
@@ -316,6 +343,13 @@ class ZYAdminController extends Controller
     {
         if(request()->isMethod('get')) return $this->repo->view_item_task_list_import();
         else if (request()->isMethod('post')) return $this->repo->operate_item_task_list_import_save(request()->all());
+    }
+
+    // 【任务】返回-列表-视图（全部任务）
+    public function view_task_list_for_all()
+    {
+        if(request()->isMethod('get')) return $this->repo->view_task_list_for_all(request()->all());
+        else if(request()->isMethod('post')) return $this->repo->get_task_list_for_all_datatable(request()->all());
     }
 
 
@@ -382,36 +416,51 @@ class ZYAdminController extends Controller
 
 
     /*
-     * Task 任务
+     * Task 任务管理
      */
-    // 【任务】管理员-删除
+    // 【任务管理】管理员-删除
     public function operate_item_task_admin_delete()
     {
         return $this->repo->operate_item_task_admin_delete(request()->all());
     }
-    // 【任务】管理员-恢复
+    // 【任务管理】管理员-恢复
     public function operate_item_task_admin_restore()
     {
         return $this->repo->operate_item_task_admin_restore(request()->all());
     }
-    // 【任务】管理员-永久删除
+    // 【任务管理】管理员-永久删除
     public function operate_item_task_admin_delete_permanently()
     {
         return $this->repo->operate_item_task_admin_delete_permanently(request()->all());
     }
+    // 【任务管理】管理员-启用
+    public function operate_item_task_admin_enable()
+    {
+        return $this->repo->operate_item_task_admin_enable(request()->all());
+    }
+    // 【任务管理】管理员-禁用
+    public function operate_item_task_admin_disable()
+    {
+        return $this->repo->operate_item_task_admin_disable(request()->all());
+    }
 
 
-    // 【任务】管理员-批量-删除
+    // 【任务管理】管理员-批量-操作
+    public function operate_item_task_admin_operate_bulk()
+    {
+        return $this->repo->operate_item_task_admin_operate_bulk(request()->all());
+    }
+    // 【任务管理】管理员-批量-删除
     public function operate_item_task_admin_delete_bulk()
     {
         return $this->repo->operate_item_task_admin_delete_bulk(request()->all());
     }
-    // 【任务】管理员-批量-恢复
+    // 【任务管理】管理员-批量-恢复
     public function operate_item_task_admin_restore_bulk()
     {
         return $this->repo->operate_item_task_admin_restore_bulk(request()->all());
     }
-    // 【任务】管理员-批量-彻底删除
+    // 【任务管理】管理员-批量-彻底删除
     public function operate_item_task_admin_delete_permanently_bulk()
     {
         return $this->repo->operate_item_task_admin_delete_permanently_bulk(request()->all());

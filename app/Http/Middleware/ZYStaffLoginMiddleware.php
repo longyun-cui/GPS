@@ -28,7 +28,14 @@ class ZYStaffLoginMiddleware
         }
         else
         {
+
             $zy_staff = Auth::guard('zy_staff')->user();
+            // 判断用户是否被封禁
+            if($zy_staff->user_status != 1)
+            {
+                Auth::guard('zy_staff')->logout();
+                return redirect('/login');
+            }
             view()->share('me_staff', $zy_staff);
         }
         return $next($request);

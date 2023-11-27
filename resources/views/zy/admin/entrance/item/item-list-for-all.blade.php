@@ -2,7 +2,7 @@
 
 
 @section('head_title')
-    @if(in_array(env('APP_ENV'),['local']))[l]@endif A.{{ $title_text or '全部内容' }} - 兆益信息
+    @if(in_array(env('APP_ENV'),['local'])){{ $local or '【l】' }}@endif{{ $title_text or '全部内容' }} - 管理员后台系统 - 兆益信息
 @endsection
 
 
@@ -97,7 +97,7 @@
                         <div class="input-group">
                             <span class="input-group-addon"><input type="checkbox" id="check-review-all"></span>
                             <select name="bulk-operate-status" class="form-control form-filter">
-                                <option value ="-1">请选择</option>
+                                <option value ="-1">请选择操作类型</option>
                                 <option value ="启用">启用</option>
                                 <option value ="禁用">禁用</option>
                                 <option value ="删除">删除</option>
@@ -388,7 +388,7 @@
                                     $html_able+
 //                                    '<a class="btn btn-xs" href="/item/edit?id='+data+'">编辑</a>'+
                                     '<a class="btn btn-xs btn-primary item-edit-link" data-id="'+data+'">编辑</a>'+
-                                    $html_publish+
+//                                    $html_publish+
                                     '<a class="btn btn-xs bg-navy item-delete-submit" data-id="'+data+'">删除</a>'+
 //                                    '<a class="btn btn-xs bg-navy item-delete-permanently-submit" data-id="'+data+'">永久删除</a>'+
 //                                    '<a class="btn btn-xs bg-primary item-detail-show" data-id="'+data+'">查看详情</a>'+

@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\ZY\ZY_User;
+
 return [
 
     /*
@@ -50,6 +52,20 @@ return [
             'driver' => 'token',
             'provider' => 'users',
         ],
+
+
+
+
+        'gps_admin' => [
+            'driver' => 'session',
+            'provider' => 'gps_admins',
+        ],
+        'gps_user' => [
+            'driver' => 'session',
+            'provider' => 'gps_users',
+        ],
+
+
 
 
         'zy_user' => [
@@ -105,25 +121,45 @@ return [
         // ],
 
 
-        'zy_users' => [
+
+
+        'gps_supers' => [
             'driver' => 'eloquent',
-            'model' => App\Models\ZY\ZY_User::class,
+            'model' => App\Models\GPS\GPS_User::class,
         ],
+        'gps_admins' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\GPS\GPS_User::class,
+        ],
+        'gps_users' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\GPS\GPS_User::class,
+        ],
+        'gps_staffs' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\GPS\GPS_User::class,
+        ],
+
+
+
 
         'zy_supers' => [
             'driver' => 'eloquent',
             'model' => App\Models\ZY\ZY_User::class,
         ],
-
         'zy_admins' => [
             'driver' => 'eloquent',
             'model' => App\Models\ZY\ZY_User::class,
         ],
-
+        'zy_users' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\ZY\ZY_User::class,
+        ],
         'zy_staffs' => [
             'driver' => 'eloquent',
             'model' => App\Models\ZY\ZY_User::class,
         ],
+
 
     ],
 

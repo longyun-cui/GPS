@@ -3,6 +3,8 @@ namespace App\Models\ZY;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+use DB;
+
 class ZY_Task extends Model
 {
     use SoftDeletes;
@@ -125,4 +127,18 @@ class ZY_Task extends Model
     {
         return $this->morphToMany('App\Models\Tag', 'taggable');
     }
+
+
+
+
+    /**
+     * 自定义更新
+     */
+//    public function update_batch_in($setColumn,$setValue,$whereColumn,$whereValue)
+//    {
+//        $sql ="UPDATE ".$this->table." SET ".$setColumn." = ".$setValue." WHERE ".$whereColumn." = ".$whereValue;
+//        return DB::update(DB::raw($sql);
+//    }
+    
+    
 }

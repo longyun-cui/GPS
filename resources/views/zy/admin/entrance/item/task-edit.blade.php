@@ -2,14 +2,8 @@
 
 
 @section('head_title')
-    @if(in_array(env('APP_ENV'),['local']))[l]@endif A.{{ $title_text or '任务编辑' }} - 兆益信息
+    @if(in_array(env('APP_ENV'),['local'])){{ $local or '【l】' }}@endif{{ $a or 'A.' }}{{ $title_text or '任务编辑' }} - 管理员后台系统 - 兆益信息
 @endsection
-
-
-@section('meta_title')@endsection
-@section('meta_author')@endsection
-@section('meta_description')@endsection
-@section('meta_keywords')@endsection
 
 
 

@@ -2,7 +2,7 @@
 
 
 @section('head_title')
-    @if(in_array(env('APP_ENV'),['local']))[l]@endif A.{{ $title_text or '任务列表' }} - 兆益信息
+    @if(in_array(env('APP_ENV'),['local'])){{ $local or '【l】' }}@endif{{ $title_text or '任务列表' }} - 管理员后台系统 - 兆益信息
 @endsection
 
 
@@ -78,6 +78,7 @@
                             <th></th>
                             <th></th>
                             <th></th>
+                            <th></th>
                             <th>操作</th>
                         </tr>
                     </thead>
@@ -95,12 +96,12 @@
                         {{--<button type="button" onclick="history.go(-1);" class="btn btn-default">返回</button>--}}
                         <div class="input-group">
                             <span class="input-group-addon"><input type="checkbox" id="check-review-all"></span>
-                            <select name="bulk-operat-status" class="form-control form-filter">
-                                <option value ="-1">请选择</option>
+                            <select name="bulk-operate-status" class="form-control form-filter">
+                                <option value ="-1">请选择操作类型</option>
                                 <option value ="启用">启用</option>
                                 <option value ="禁用">禁用</option>
                                 <option value ="删除">删除</option>
-                                <option value ="永久删除">永久删除</option>
+                                <option value ="彻底删除">彻底删除</option>
                             </select>
                             <span class="input-group-addon btn btn-default" id="operate-bulk-submit"><i class="fa fa-check"></i> 批量操作</span>
                             <span class="input-group-addon btn btn-default" id="delete-bulk-submit"><i class="fa fa-trash-o"></i> 批量删除</span>
@@ -110,7 +111,7 @@
             </div>
 
 
-            <div class="box-footer">
+            <div class="box-footer _none">
                 <div class="row" style="margin:16px 0;">
                     <div class="col-md-offset-0 col-md-9">
                         <button type="button" onclick="" class="btn btn-primary _none"><i class="fa fa-check"></i> 提交</button>
@@ -324,7 +325,7 @@
                     },
                     {
                         "className": "font-12px",
-                        "width": "112px",
+                        "width": "120px",
                         "title": "创建时间",
                         "data": 'created_at',
                         "orderable": true,
@@ -337,14 +338,14 @@
                             var $hour = ('00'+$date.getHours()).slice(-2);
                             var $minute = ('00'+$date.getMinutes()).slice(-2);
                             var $second = ('00'+$date.getSeconds()).slice(-2);
-                            return $year+'-'+$month+'-'+$day;
-//                            return $year+'-'+$month+'-'+$day+'&nbsp;'+$hour+':'+$minute;
+                            // return $year+'-'+$month+'-'+$day;
+                           return $year+'-'+$month+'-'+$day+'&nbsp;'+$hour+':'+$minute;
 //                            return $year+'-'+$month+'-'+$day+'&nbsp;&nbsp;'+$hour+':'+$minute+':'+$second;
                         }
                     },
                     {
                         "className": "font-12px",
-                        "width": "112px",
+                        "width": "120px",
                         "title": "修改时间",
                         "data": 'updated_at',
                         "orderable": true,
@@ -363,9 +364,35 @@
                         }
                     },
                     {
-                        "width": "64px",
+                        "width": "60px",
+                        "title": "完成",
+                        "data": "is_completed",
+                        "orderable": false,
+                        render: function(data, type, row, meta) {
+                            if(data == 0)
+                            {
+                                return '<small class="btn-xs bg-teal">待完成</small>';
+                            }
+                            else if(data == 1)
+                            {
+                                if(row.item_result == 0) return '<small class="btn-xs bg-olive">已完成</small>';
+                                else if(row.item_result == 1) return '<small class="btn-xs bg-olive">通话</small>';
+                                else if(row.item_result == 19) return '<small class="btn-xs bg-purple">加微信</small>';
+                                else if(row.item_result == 71) return '<small class="btn-xs bg-yellow">未接</small>';
+                                else if(row.item_result == 72) return '<small class="btn-xs bg-yellow">拒接</small>';
+                                else if(row.item_result == 51) return '<small class="btn-xs bg-yellow">打错了</small>';
+                                else if(row.item_result == 99) return '<small class="btn-xs bg-yellow">空号</small>';
+                                else return "有误";
+                            }
+                            else
+                            {
+                            }
+                        }
+                    },
+                    {
+                        "width": "60px",
                         "title": "状态",
-                        "data": "item_result",
+                        "data": "item_status",
                         "orderable": false,
                         render: function(data, type, row, meta) {
 //                            return data;
@@ -376,23 +403,16 @@
 
                             if(row.item_status == 1)
                             {
-                                if(data == 0) return '<small class="btn-xs bg-teal">待完成</small>';
-                                else if(data == 1) return '<small class="btn-xs bg-olive">通话</small>';
-                                else if(data == 19) return '<small class="btn-xs bg-purple">加微信</small>';
-                                else if(data == 71) return '<small class="btn-xs bg-yellow">未接</small>';
-                                else if(data == 72) return '<small class="btn-xs bg-yellow">拒接</small>';
-                                else if(data == 51) return '<small class="btn-xs bg-yellow">打错了</small>';
-                                else if(data == 99) return '<small class="btn-xs bg-yellow">空号</small>';
-                                else return "有误";
+                                return '<small class="btn-xs btn-success">启用</small>';
                             }
                             else
                             {
-                                return '<small class="btn-xs btn-danger">已封禁</small>';
+                                return '<small class="btn-xs btn-danger">禁用</small>';
                             }
                         }
                     },
                     {
-                        "width": "240px",
+                        "width": "144px",
                         "title": "操作",
                         "data": 'id',
                         "orderable": false,
@@ -416,13 +436,22 @@
                                 $html_publish = '<a class="btn btn-xs btn-default disabled" data-id="'+data+'">发布</a>';
                             }
 
+                            if(row.deleted_at == null)
+                            {
+                                $html_delete = '<a class="btn btn-xs bg-black item-admin-delete-submit" data-id="'+data+'">删除</a>';
+                            }
+                            else
+                            {
+                                $html_delete = '<a class="btn btn-xs bg-grey item-admin-restore-submit" data-id="'+data+'">恢复</a>';
+                            }
+
                             var html =
                                     $html_able+
 //                                    '<a class="btn btn-xs" href="/item/edit?id='+data+'">编辑</a>'+
 //                                    '<a class="btn btn-xs btn-primary item-edit-link-" data-id="'+data+'">编辑</a>'+
 //                                    $html_publish+
-                                    '<a class="btn btn-xs bg-navy item-admin-delete-submit" data-id="'+data+'">删除</a>'+
-//                                    '<a class="btn btn-xs bg-navy item-admin-delete-permanently-submit" data-id="'+data+'">永久删除</a>'+
+                                    $html_delete+
+//                                    '<a class="btn btn-xs bg-navy item-admin-delete-permanently-submit" data-id="'+data+'">彻底删除</a>'+
 //                                    '<a class="btn btn-xs bg-primary item-detail-show" data-id="'+data+'">查看详情</a>'+
 //                                    '<a class="btn btn-xs bg-olive item-download-qr-code-submit" data-id="'+data+'">下载二维码</a>'+
                                     '';

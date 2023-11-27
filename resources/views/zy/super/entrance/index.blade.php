@@ -1,7 +1,9 @@
 @extends(env('TEMPLATE_ZY_SUPER').'layout.layout')
 
 
-@section('head_title','【S】兆益信息')
+@section('head_title')
+    @if(in_array(env('APP_ENV'),['local'])){{ $local or '【l】' }}@endif【S】{{ $head_title or '首页' }} - 超级管理员后台系统 - 兆益信息
+@endsection
 
 
 

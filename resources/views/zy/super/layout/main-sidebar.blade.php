@@ -63,16 +63,6 @@
                     <i class="fa fa-user"></i><span>全部用户</span>
                 </a>
             </li>
-            <li class="treeview {{ $menu_active_of_user_list_for_individual or '' }}">
-                <a href="{{ url('/user/user-list-for-individual') }}">
-                    <i class="fa fa-user"></i><span>个人</span>
-                </a>
-            </li>
-            <li class="treeview {{ $menu_active_of_user_list_for_org or '' }}">
-                <a href="{{ url('/user/user-list-for-org') }}">
-                    <i class="fa fa-user"></i><span>组织</span>
-                </a>
-            </li>
 
 
 

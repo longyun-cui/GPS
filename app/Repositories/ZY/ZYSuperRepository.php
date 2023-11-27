@@ -68,16 +68,26 @@ class ZYSuperRepository {
      * 用户基本信息
      */
     // 【基本信息】返回视图
-    public function view_info_index()
+    public function view_my_profile_info_index()
     {
-        $me = Auth::guard('admin')->user();
-        return view(env('TEMPLATE_ZY_SUPER').'entrance.info.index')->with(['data'=>$me]);
+        $this->get_me();
+        $me = $this->me;
+
+        $return['data'] = $me;
+
+        $view_blade = env('TEMPLATE_ZY_SUPER').'entrance.my-account.my-profile-info-index';
+        return view($view_blade)->with($return);
     }
     // 【基本信息】返回-编辑-视图
-    public function view_info_edit()
+    public function view_my_profile_info_edit()
     {
-        $me = Auth::guard('admin')->user();
-        return view(env('TEMPLATE_ZY_SUPER').'entrance.info.edit')->with(['data'=>$me]);
+        $this->get_me();
+        $me = $this->me;
+
+        $return['data'] = $me;
+
+        $view_blade = env('TEMPLATE_ZY_ADMIN').'entrance.my-account.my-profile-info-edit';
+        return view($view_blade)->with($return);
     }
     // 【基本信息】保存数据
     public function operate_info_save($post_data)

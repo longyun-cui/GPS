@@ -2,7 +2,7 @@
 
 
 @section('head_title')
-    @if(in_array(env('APP_ENV'),['local']))(l)@endif{{ $head_title or '编辑基本资料 - 员工系统 - 兆益信息' }}
+    @if(in_array(env('APP_ENV'),['local'])){{ $local or '【l】' }}@endif{{ $head_title or '编辑基本资料' }} - 员工系统 - 兆益信息
 @endsection
 @section('meta_author')@endsection
 @section('meta_title')@endsection
@@ -16,7 +16,7 @@
     {{--@include(env('TEMPLATE_ZY_STAFF').'component.sidebar.sidebar-root')--}}
 @endsection
 @section('header','')
-@section('description','组织管理 - 朝鲜族组织活动平台 - 如未科技')
+@section('description','编辑基本资料 - 员工系统 - 兆益信息')
 @section('breadcrumb')
 @endsection
 @section('content')

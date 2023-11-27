@@ -51,7 +51,7 @@ class ZYStaffController extends Controller
             {
                 if($user->deleted_at == null)
                 {
-                    if($user->active == 1)
+                    if($user->user_status == 1)
                     {
                         $password = request()->get('password');
                         if(password_check($password,$user->password))
@@ -63,7 +63,7 @@ class ZYStaffController extends Controller
                         }
                         else return response_error([],'账户or密码不正确！');
                     }
-                    else return response_error([],'账户尚未激活，请先去邮箱激活！');
+                    else return response_error([],'账户已禁用！');
                 }
                 else return response_error([],'账户已删除！');
             }

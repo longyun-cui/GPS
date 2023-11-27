@@ -57,8 +57,11 @@ Route::group(['domain'=>'super.'.env('DOMAIN_ROOT'), 'namespace'=>'Super'], func
 /*
  * GPS
  */
-Route::group(['prefix'=>'gps', 'namespace'=>'GPS'], function () {
+Route::group(['domain'=>'gps.'.env('DOMAIN_ROOT'), 'namespace'=>'GPS'], function () {
     require(__DIR__ . '/GPS/route.php');
+});
+Route::group(['domain'=>'gps.'.env('DOMAIN_ROOT'), 'prefix'=>'admin', 'namespace'=>'GPS'], function () {
+    require(__DIR__ . '/GPS/route-admin.php');
 });
 
 
@@ -73,7 +76,7 @@ Route::group(['prefix'=>'ui', 'namespace'=>'UI'], function () {
 /*
  * TESTING 测试
  */
-Route::group(['prefix'=>'testing', 'namespace'=>'Testing'], function () {
+Route::group(['domain'=>'test.'.env('DOMAIN_ROOT'), 'namespace'=>'Testing'], function () {
     require(__DIR__ . '/Testing/route.php');
 });
 
@@ -81,7 +84,7 @@ Route::group(['prefix'=>'testing', 'namespace'=>'Testing'], function () {
 /*
  * Developing 开发中
  */
-Route::group(['prefix'=>'developing', 'namespace'=>'Developing'], function () {
+Route::group(['domain'=>'dev.'.env('DOMAIN_ROOT'), 'namespace'=>'Developing'], function () {
     require(__DIR__ . '/Developing/route.php');
 
 });

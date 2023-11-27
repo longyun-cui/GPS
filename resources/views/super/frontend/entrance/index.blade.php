@@ -1,7 +1,7 @@
 @extends(env('TEMPLATE_SUPER_FRONT').'layout.layout')
 
 
-@section('head_title','【G】navigation')
+@section('head_title','navigation')
 
 
 

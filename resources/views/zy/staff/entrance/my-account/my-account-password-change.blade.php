@@ -2,7 +2,7 @@
 
 
 @section('head_title')
-    @if(in_array(env('APP_ENV'),['local']))(l)@endif{{ $head_title or '修改密码 - 员工系统 - 兆益信息' }}
+    @if(in_array(env('APP_ENV'),['local'])){{ $local or '【l】' }}@endif{{ $head_title or '修改密码' }} - 员工系统 - 兆益信息
 @endsection
 @section('meta_author')@endsection
 @section('meta_title')@endsection

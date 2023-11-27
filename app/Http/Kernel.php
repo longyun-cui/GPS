@@ -65,9 +65,14 @@ class Kernel extends HttpKernel
         'login' => \App\Http\Middleware\LoginMiddleware::class,
         'login.turn' => \App\Http\Middleware\TurnToLoginMiddleware::class,
 
-        'zy.user.login' => \App\Http\Middleware\ZYUserLoginMiddleware::class,
+        'gps.super.login' => \App\Http\Middleware\GPS\GPSSuperLoginMiddleware::class,
+        'gps.admin.login' => \App\Http\Middleware\GPS\GPSAdminLoginMiddleware::class,
+        'gps.user.login' => \App\Http\Middleware\GPS\GPSUserLoginMiddleware::class,
+        'gps.staff.login' => \App\Http\Middleware\GPS\GPSStaffLoginMiddleware::class,
+
         'zy.super.login' => \App\Http\Middleware\ZYSuperLoginMiddleware::class,
         'zy.admin.login' => \App\Http\Middleware\ZYAdminLoginMiddleware::class,
+        'zy.user.login' => \App\Http\Middleware\ZYUserLoginMiddleware::class,
         'zy.staff.login' => \App\Http\Middleware\ZYStaffLoginMiddleware::class,
     ];
 }

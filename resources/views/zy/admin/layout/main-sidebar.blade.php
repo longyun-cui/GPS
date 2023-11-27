@@ -56,11 +56,11 @@
 
 
             {{--用户管理--}}
-            <li class="header">用户管理</li>
+            <li class="header">员工管理</li>
 
-            <li class="treeview {{ $sidebar_user_all_list_active or '' }}">
-                <a href="{{ url('/user/user-list-for-all') }}">
-                    <i class="fa fa-user"></i><span>全部用户</span>
+            <li class="treeview {{ $sidebar_staff_all_list_active or '' }}">
+                <a href="{{ url('/user/staff-list-for-all') }}">
+                    <i class="fa fa-user"></i><span>全部员工</span>
                 </a>
             </li>
             {{--<li class="treeview {{ $sidebar_user_list_for_individual_active or '' }}">--}}

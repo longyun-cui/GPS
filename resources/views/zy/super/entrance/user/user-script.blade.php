@@ -28,21 +28,21 @@
 
         // 【下载二维码】
         $("#item-main-body").on('click', ".item-download-qr-code-submit", function() {
-            var that = $(this);
-            window.open("/download/qr-code?type=user&id="+that.attr('data-id'));
+            var $that = $(this);
+            window.open("/download/qr-code?type=user&id="+$that.attr('data-id'));
         });
 
         // 【数据分析】
         $("#item-main-body").on('click', ".item-statistic-submit", function() {
-            var that = $(this);
-            window.open("/statistic/statistic-user?id="+that.attr('data-id'));
-//            window.location.href = "/admin/statistic/statistic-user?id="+that.attr('data-id');
+            var $that = $(this);
+            window.open("/statistic/statistic-user?id="+$that.attr('data-id'));
+//            window.location.href = "/admin/statistic/statistic-user?id="+$that.attr('data-id');
         });
 
         // 【编辑】
         $("#item-main-body").on('click', ".item-edit-submit", function() {
-            var that = $(this);
-            window.location.href = "/user/user-edit?id="+that.attr('data-id');
+            var $that = $(this);
+            window.location.href = "/user/user-edit?id="+$that.attr('data-id');
         });
 
 
@@ -50,8 +50,8 @@
 
         // 显示【修改密码】
         $("#item-main-body").on('click', ".item-change-password-show", function() {
-            var that = $(this);
-            $('input[name=id]').val(that.attr('data-id'));
+            var $that = $(this);
+            $('input[name=id]').val($that.attr('data-id'));
             $('input[name=user-password]').val('');
             $('input[name=user-password-confirm]').val('');
             $('#modal-password-body').modal('show');
@@ -65,7 +65,7 @@
         });
         // 【修改密码】提交
         $("#modal-password-body").on('click', "#item-change-password-submit", function() {
-            var that = $(this);
+            var $that = $(this);
             layer.msg('确定"修改"么', {
                 time: 0
                 ,btn: ['确定', '取消']
@@ -92,63 +92,16 @@
 
 
 
-        // 显示【充值】
-        $("#item-main-body").on('click', ".item-recharge-show", function() {
-            var that = $(this);
-            $('input[name=id]').val(that.attr('data-id'));
-            $('.recharge-user-id').html(that.attr('data-id'));
-            $('.recharge-username').html(that.attr('data-name'));
-            $('#modal-body').modal('show');
-        });
-        // 【充值】取消
-        $("#modal-body").on('click', "#item-recharge-cancel", function() {
-            $('.recharge-user-id').html('');
-            $('.recharge-username').html('');
-            $('#modal-body').modal('hide');
-        });
-        // 【充值】提交
-        $("#modal-body").on('click', "#item-recharge-submit", function() {
-            var that = $(this);
-            layer.msg('确定"充值"么', {
-                time: 0
-                ,btn: ['确定', '取消']
-                ,yes: function(index){
-                    var options = {
-                        url: "{{ url('/user/agent-recharge') }}",
-                        type: "post",
-                        dataType: "json",
-                        // target: "#div2",
-                        success: function (data) {
-                            if(!data.success) layer.msg(data.msg);
-                            else
-                            {
-                                layer.msg(data.msg);
-                                location.reload();
-                            }
-                        }
-                    };
-                    $("#form-edit-modal").ajaxSubmit(options);
-                }
-            });
-        });
-
-
-
-
-
-
-
-
 
 
         // 【登录】
         $("#item-main-body").on('click', ".item-login-submit", function() {
-            var that = $(this);
+            var $that = $(this);
             $.post(
                 "{{ url('/user/user-login') }}",
                 {
                     _token: $('meta[name="_token"]').attr('content'),
-                    user_id:that.attr('data-id')
+                    user_id: $that.attr('data-id')
                 },
                 function(data){
                     if(!data.success) layer.msg(data.msg);
@@ -163,16 +116,16 @@
                 'json'
             );
         });
-        // 【登录】
-        $("#item-main-body").on('click', ".item-doc-login-submit", function() {
-            var that = $(this);
+        // 【管理员登录】
+        $("#item-main-body").on('click', ".item-admin-login-submit", function() {
+            var $that = $(this);
             $.post(
-                "{{ url('/admin/user/user-login') }}",
+                "{{ url('/user/user-admin-login') }}",
                 {
                     _token: $('meta[name="_token"]').attr('content'),
-                    user_id:that.attr('data-id'),
-                    admin_id:that.attr('data-id'),
-                    type:'doc'
+                    user_id: $that.attr('data-id'),
+                    admin_id: $that.attr('data-id'),
+                    type:'admin'
                 },
                 function(data){
                     if(!data.success) layer.msg(data.msg);
@@ -180,7 +133,30 @@
                     {
                         console.log(data);
                         var temp_window=window.open();
-                        temp_window.location = "{{ env('DOMAIN_DOC') }}/home";
+                        temp_window.location = "{{ env('DOMAIN_ZY_ADMIN') }}/";
+                    }
+                },
+                'json'
+            );
+        });
+        // 【员工登录】
+        $("#item-main-body").on('click', ".item-staff-login-submit", function() {
+            var $that = $(this);
+            $.post(
+                "{{ url('/user/user-staff-login') }}",
+                {
+                    _token: $('meta[name="_token"]').attr('content'),
+                    user_id: $that.attr('data-id'),
+                    admin_id: $that.attr('data-id'),
+                    type:'staff'
+                },
+                function(data){
+                    if(!data.success) layer.msg(data.msg);
+                    else
+                    {
+                        console.log(data);
+                        var temp_window=window.open();
+                        temp_window.location = "{{ env('DOMAIN_ZY_STAFF') }}/home";
                     }
                 },
                 'json'
@@ -191,24 +167,26 @@
 
 
         // 【删除】
-        $("#item-main-body").on('click', ".item-delete-submit", function() {
-            var that = $(this);
+        $("#item-main-body").on('click', ".item-super-delete-submit", function() {
+            var $that = $(this);
             layer.msg('确定"删除"么?', {
                 time: 0
                 ,btn: ['确定', '取消']
                 ,yes: function(index){
                     $.post(
-                        "{{ url('/admin/user/agent-delete') }}",
+                        "{{ url('/user/staff-super-delete') }}",
                         {
                             _token: $('meta[name="_token"]').attr('content'),
-                            id:that.attr('data-id')
+                            operate: "staff-super-enable",
+                            user_id: $that.attr('data-id')
                         },
                         function(data){
                             if(!data.success) layer.msg(data.msg);
                             else
                             {
                                 layer.msg("操作完成");
-                                location.reload();
+                                $('#datatable_ajax').DataTable().ajax.reload(null,false);
+//                                location.reload();
                             }
                         },
                         'json'
@@ -217,22 +195,19 @@
             });
         });
 
-
-
-
         // 【启用】
-        $("#item-main-body").on('click', ".user-admin-enable-submit", function() {
-            var that = $(this);
+        $("#item-main-body").on('click', ".user-super-enable-submit", function() {
+            var $that = $(this);
             layer.msg('确定"封禁"？', {
                 time: 0
                 ,btn: ['确定', '取消']
                 ,yes: function(index){
                     $.post(
-                        "{{ url('/admin/user/user-admin-enable') }}",
+                        "{{ url('/user/staff-super-enable') }}",
                         {
                             _token: $('meta[name="_token"]').attr('content'),
-                            operate: "user-admin-enable",
-                            id:that.attr('data-id')
+                            operate: "staff-super-enable",
+                            user_id: $that.attr('data-id')
                         },
                         function(data){
                             layer.close(index);
@@ -248,18 +223,18 @@
             });
         });
         // 【禁用】
-        $("#item-main-body").on('click', ".user-admin-disable-submit", function() {
-            var that = $(this);
+        $("#item-main-body").on('click', ".user-super-disable-submit", function() {
+            var $that = $(this);
             layer.msg('确定"解封"？', {
                 time: 0
                 ,btn: ['确定', '取消']
                 ,yes: function(index){
                     $.post(
-                        "{{ url('/admin/user/user-admin-disable') }}",
+                        "{{ url('/user/staff-super-disable') }}",
                         {
                             _token: $('meta[name="_token"]').attr('content'),
-                            operate: "user-admin-disable",
-                            id:that.attr('data-id')
+                            operate: "staff-super-disable",
+                            user_id: $that.attr('data-id')
                         },
                         function(data){
                             layer.close(index);
