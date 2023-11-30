@@ -48,7 +48,7 @@ class GPSAdminRepository {
             $me = $this->me;
             if($me->birth_day)
             {
-                $diff = date_diff(date_create($me->birth_day),now());
+                $diff = time_diff($me->birth_day);
                 $this->me->diff = $diff;
             }
             view()->share('me',$this->me);
@@ -71,15 +71,10 @@ class GPSAdminRepository {
         $this->get_me();
         $me = $this->me;
 //        dd($me->toArray());
-        $birth_year = date('Y',strtotime($me->birth_day));
-        $diff = date_diff(date_create($me->birth_day),date_create('2023-01-01'));
-//        dd(date_create($me->birth_date));
-        var_dump($me->birth_day);
-        var_dump($birth_year);
-        var_dump($diff->format('%a'));
-        var_dump($diff->format('%Y'));
-        var_dump($birth_year + $diff->format('%Y'));
-//        dd(0);
+
+
+
+        $view_blade = env('TEMPLATE_GPS_ADMIN').'entrance.index';
         $view_blade = env('TEMPLATE_GPS_ADMIN').'entrance.index';
         return view($view_blade);
     }

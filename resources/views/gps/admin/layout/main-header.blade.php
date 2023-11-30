@@ -203,7 +203,7 @@
                             <img src="/AdminLTE/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
                         @endif
                         <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                        <span class="hidden-xs">{{ $me->username or '' }} (第{{ $me->diff->format('%a') + 1 }}天)</span>
+                        <span class="hidden-xs">{{ $me->username or '' }}</span>
                     </a>
                     <ul class="dropdown-menu">
                         <!-- The user image in the menu -->
@@ -214,13 +214,12 @@
                                 <img src="/AdminLTE/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
                             @endif
 
-                            <p>
-                                {{ $me->username or '' }}
-                                @if(!empty($me->birth_day))
-                                    <p>{{ $me->diff->format('%Y') }}岁.{{ $me->diff->format('%m') }}个月.{{ $me->diff->format('%d') + 1 }}天</p>
-                                @endif
-                            </p>
-                            <p>{{ "第".intval(date('W'))."周" }} - {{ "第".(date('z') + 1)."天" }}</p>
+                            <p>{{ $me->username or '' }}</p>
+                            @if(!empty($me->birth_day))
+                                <p>{{ $me->diff['year'] }}岁{{ $me->diff['month'] }}个月{{ $me->diff['day'] }}天</p>
+                                <p>{{ $me->diff['year'] }}岁{{ $me->diff['this_day'] }}天</p>
+                            @endif
+                            <p>{{ "今年第".intval(date('W'))."周" }} - {{ "第".(date('z') + 1)."天" }}</p>
                             <p></p>
                         </li>
                         <!-- Menu Body -->
@@ -249,6 +248,54 @@
                         </li>
                     </ul>
                 </li>
+
+                <!-- Add Menu -->
+                <li class="dropdown tasks-menu add-menu">
+                    <!-- Menu toggle button -->
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="fa fa-calendar"></i>
+                        <span class="hidden-xs">第{{ $me->diff['total'] + 1 }}天</span>
+                    </a>
+                    <ul class="dropdown-menu">
+
+                        <li class="header">人生</li>
+                        <li class="header">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-plus text-red"></i>
+                                {{ $me->diff['year'] }}岁{{ $me->diff['month'] }}个月{{ $me->diff['day'] }}天
+                            </a>
+                        </li>
+                        <li class="header">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-plus text-red"></i>
+                                {{ $me->diff['year'] }}岁{{ $me->diff['this_day'] }}天
+                            </a>
+                        </li>
+
+                        <li class="header">今年</li>
+                        <li class="header">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-calendar text-green"></i>
+                                {{ "今年第".intval(date('W'))."周 星期".(date('w')+1) }}
+                            </a>
+                        </li>
+                        <li class="header">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-calendar-check-o text-green"></i>
+                                {{ "今年第".(date('z') + 1)."天" }}
+                            </a>
+                        </li>
+                        <li class="header">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-calendar-minus-o text-red"></i>
+                                {{ "今年还剩".($me->diff['this_year_day'] - date('z')) }}天
+                            </a>
+                        </li>
+
+                        <li class="footer"><a href="javascript:void(0);">更多</a></li>
+                    </ul>
+                </li>
+
                 <!-- Control Sidebar Toggle Button -->
                 <li>
                     <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>

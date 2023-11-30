@@ -112,6 +112,38 @@ if(!function_exists('date_show'))
         return date("Y-m-j",$stamp);
     }
 }
+// 处理数据 返回 Data Show
+if(!function_exists('time_diff'))
+{
+    function time_diff($date1, $date2 = null)
+    {
+        if(!$date2) $date2 = date("Y-m-d");
+
+        $date1_year = date('Y',strtotime($date1));
+        $date2_year = date('Y',strtotime($date2));
+
+        $diff = date_diff(date_create($date1),date_create($date2));
+
+        $return['total'] = $diff_total = $diff->format('%a'); // 总天数差
+
+        $return['year'] = $diff_year = $diff->format('%y'); // 总年数差
+        $return['month'] = $diff_month = $diff->format('%m'); // 当年月份数差
+        $return['day'] = $diff_day = $diff->format('%d'); // 当年当月天数差
+
+        $this_date = ($date1_year + $diff_year).'-'.date('m-d',strtotime($date1)); // 当年日期
+        $diff_this = date_diff(date_create($this_date),date_create($date2)); // 当年日期差
+        $return['this_day'] = $diff_this->format('%a'); // 当年天数差
+
+        $diff_this_year = date_diff(date_create($date2_year."-1-1"),date_create($date2_year."-12-31"));
+        $return['this_year_day'] = $diff_this_year->format('%a'); // 当年天数差
+
+
+        return $return;
+    }
+}
+
+
+
 
 if(!function_exists('return_interval_unix'))
 {
