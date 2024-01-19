@@ -55,22 +55,19 @@
             </li>
 
 
-            {{--用户管理--}}
-            <li class="header">员工管理</li>
+            {{--AdminLTE--}}
+            <li class="header">AdminLTE</li>
 
-            @if(in_array($me->user_type,[0,1,9,11,21,22]))
-            <li class="treeview {{ $menu_active_of_staff_list_for_all or '' }}">
-                <a href="{{ url('/user/staff-list-for-all') }}">
+            <li class="treeview {{ $menu_active_of__for_ or '' }}">
+                <a target="_blank" href="{{ url('/adminLte/index2.html') }}">
                     <i class="fa fa-user text-blue"></i>
-                    <span>员工列表</span>
+                    <span>index2</span>
                 </a>
             </li>
-            @endif
-
-            <li class="treeview {{ $menu_active_of_driver_list_for_all or '' }}">
-                <a href="{{ url('/user/driver-list-for-all') }}">
+            <li class="treeview {{ $menu_active_of__for_ or '' }}">
+                <a target="_blank" href="{{ url('/adminLte/pages/UI/icons.html') }}">
                     <i class="fa fa-user text-blue"></i>
-                    <span>驾驶员列表</span>
+                    <span>Icons</span>
                 </a>
             </li>
 
@@ -90,18 +87,6 @@
                 <a href="{{ url('/item/car-list-for-all')}}">
                     <i class="fa fa-truck text-green"></i>
                     <span>车辆列表</span>
-                </a>
-            </li>
-            <li class="treeview {{ $menu_active_of_route_list_for_all or '' }}">
-                <a href="{{ url('/item/route-list-for-all')}}">
-                    <i class="fa fa-map text-green"></i>
-                    <span>线路列表</span>
-                </a>
-            </li>
-            <li class="treeview {{ $menu_active_of_pricing_list_for_all or '' }}">
-                <a href="{{ url('/item/pricing-list-for-all')}}">
-                    <i class="fa fa-rmb text-green"></i>
-                    <span>定价列表</span>
                 </a>
             </li>
 

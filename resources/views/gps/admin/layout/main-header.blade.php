@@ -2,12 +2,13 @@
 <header class="main-header">
 
     <!-- Logo -->
-    <a href="{{url('/')}}" class="logo">
+    <a href="{{url('/')}}" class="logo hidden-xs">
         <!-- mini logo for sidebar mini 50x50 pixels -->
         <span class="logo-mini"><b>A</b></span>
         <!-- logo for regular state and mobile devices -->
-        <span class="logo-lg"><b>admin</b></span>
+        <span class="logo-lg"><b>admin</b>stage</span>
     </a>
+
 
     <!-- Header Navbar -->
     <nav class="navbar navbar-static-top" role="navigation">
@@ -15,6 +16,25 @@
         <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
             <span class="sr-only">Toggle navigation</span>
         </a>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
+                <li><a href="#">Link</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">Separated link</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">One more separated link</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
         <!-- Navbar Right Menu -->
         <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
@@ -215,11 +235,6 @@
                             @endif
 
                             <p>{{ $me->username or '' }}</p>
-                            @if(!empty($me->birth_day))
-                                <p>{{ $me->diff['year'] }}岁{{ $me->diff['month'] }}个月{{ $me->diff['day'] }}天</p>
-                                <p>{{ $me->diff['year'] }}岁{{ $me->diff['this_day'] }}天</p>
-                            @endif
-                            <p>{{ "今年第".intval(date('W'))."周" }} - {{ "第".(date('z') + 1)."天" }}</p>
                             <p></p>
                         </li>
                         <!-- Menu Body -->
@@ -276,7 +291,7 @@
                         <li class="header">
                             <a href="javascript:void(0);">
                                 <i class="fa fa-calendar text-green"></i>
-                                {{ "今年第".intval(date('W'))."周 星期".(date('w')+1) }}
+                                {{ "今年第".intval(date('W'))."周 星期".(date('N')) }}
                             </a>
                         </li>
                         <li class="header">

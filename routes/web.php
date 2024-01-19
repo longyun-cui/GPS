@@ -93,11 +93,13 @@ Route::group(['domain'=>'dev.'.env('DOMAIN_ROOT'), 'namespace'=>'Developing'], f
 
 
 /*
- * zy 兆益信息
+ * GH 桂花
  */
-Route::group(['domain'=>'zy.co.'.env('DOMAIN_ROOT'), 'namespace'=>'ZY'], function () {
-    require(__DIR__ . '/ZY/route.php');
+Route::group(['domain'=>'gh.'.env('DOMAIN_ROOT'), 'namespace'=>'GH'], function () {
+    require(__DIR__ . '/GH/gh-route-web.php');
 });
+
+
 
 
 /*

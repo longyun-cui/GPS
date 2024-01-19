@@ -8,10 +8,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <link rel="shortcut icon" type="image/ico" href="{{ env('GPS_FAVICON') }}">
-    <link rel="shortcut icon" type="image/png" href="{{ env('GPS_FAVICON') }}">
-    <link rel="icon" sizes="16x16 32x32 64x64" href="{{ env('GPS_FAVICON') }}">
-    <link rel="icon" type="image/png" sizes="196x196" href="{{ env('GPS_FAVICON') }}">
+    <link rel="shortcut icon" type="image/ico" href="{{ env('FAVICON_GPS') }}">
+    <link rel="shortcut icon" type="image/png" href="{{ env('FAVICON_GPS') }}">
+    <link rel="icon" sizes="16x16 32x32 64x64" href="{{ env('FAVICON_GPS') }}">
+    <link rel="icon" type="image/png" sizes="196x196" href="{{ env('FAVICON_GPS') }}">
 
     <title>@yield('head_title')</title>
     <meta name="_token" content="{{ csrf_token() }}"/>
@@ -43,12 +43,24 @@ scratch. This page gets rid of all links and provides the needed markup only.
           apply the skin class to the body tag so the changes take effect.
     -->
     {{--<link rel="stylesheet" href="/AdminLTE/dist/css/skins/skin-blue.min.css">--}}
-    <link rel="stylesheet" href="{{ asset('/AdminLTE/dist/css/skins/skin-blue.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('/AdminLTE/dist/css/skins/_all-skins.min.css') }}">
+{{--    <link rel="stylesheet" href="{{ asset('/AdminLTE/dist/css/skins/skin-black.min.css') }}">--}}
+{{--    <link rel="stylesheet" href="{{ asset('/AdminLTE/dist/css/skins/skin-black-light.min.css') }}">--}}
+{{--    <link rel="stylesheet" href="{{ asset('/AdminLTE/dist/css/skins/skin-red.min.css') }}">--}}
+{{--    <link rel="stylesheet" href="{{ asset('/AdminLTE/dist/css/skins/skin-red-light.min.css') }}">--}}
+{{--    <link rel="stylesheet" href="{{ asset('/AdminLTE/dist/css/skins/skin-yellow.min.css') }}">--}}
+{{--    <link rel="stylesheet" href="{{ asset('/AdminLTE/dist/css/skins/skin-yellow-light.min.css') }}">--}}
+{{--    <link rel="stylesheet" href="{{ asset('/AdminLTE/dist/css/skins/skin-blue.min.css') }}">--}}
+{{--    <link rel="stylesheet" href="{{ asset('/AdminLTE/dist/css/skins/skin-blue-light.min.css') }}">--}}
+{{--    <link rel="stylesheet" href="{{ asset('/AdminLTE/dist/css/skins/skin-green.min.css') }}">--}}
+{{--    <link rel="stylesheet" href="{{ asset('/AdminLTE/dist/css/skins/skin-green-light.min.css') }}">--}}
+{{--    <link rel="stylesheet" href="{{ asset('/AdminLTE/dist/css/skins/skin-purple.min.css') }}">--}}
+{{--    <link rel="stylesheet" href="{{ asset('/AdminLTE/dist/css/skins/skin-purple-light.min.css') }}">--}}
 
     {{--<link rel="stylesheet" href="/AdminLTE/plugins/iCheck/all.css">--}}
     <link rel="stylesheet" href="{{ asset('/AdminLTE/plugins/iCheck/all.css') }}">
-    {{--<link rel="stylesheet" href="https://cdn.bootcss.com/iCheck/1.0.2/skins/all.css">--}}
     {{--<link rel="stylesheet" href="{{ asset('/resource/component/css/iCheck-1.0.2-skins-all.css') }}">--}}
+
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -56,6 +68,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
     {{--<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>--}}
     {{--<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>--}}
     {{--<![endif]-->--}}
+
+
     {{--<link href="https://cdn.bootcss.com/bootstrap-modal/2.2.6/css/bootstrap-modal.min.css" rel="stylesheet">--}}
 
 
@@ -63,38 +77,43 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <link rel="stylesheet" href="{{ asset('/resource/component/css/jquery.dataTables-1.13.1.min.css') }}">
     <link rel="stylesheet" href="{{ asset('/resource/component/css/fixedColumns.dataTables.min.css') }}">
 
-    {{--<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap-fileinput/4.4.8/css/fileinput.min.css">--}}
     <link rel="stylesheet" href="{{ asset('/resource/component/css/fileinput-4.4.8.min.css') }}">
     <link rel="stylesheet" href="{{ asset('/resource/component/css/fileinput-only.css') }}">
 
-    {{--<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css">--}}
-    {{--<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">--}}
     <link rel="stylesheet" href="{{ asset('/resource/component/css/bootstrap-datetimepicker-4.17.47.min.css') }}">
     <link rel="stylesheet" href="{{ asset('/resource/component/css/bootstrap-datepicker-1.9.0.min.css') }}">
 
-    {{--<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap-switch/3.3.4/css/bootstrap3/bootstrap-switch.min.css">--}}
     <link rel="stylesheet" href="{{ asset('/resource/component/css/bootstrap-switch-3.3.4.min.css') }}">
 
-    {{--<link rel="stylesheet" href="https://cdn.bootcss.com/Swiper/4.2.2/css/swiper.min.css">--}}
     <link rel="stylesheet" href="{{ asset('/resource/component/css/swiper-4.2.2.min.css') }}">
 
-    {{--<link rel="stylesheet" href="https://cdn.bootcss.com/lightcase/2.5.0/css/lightcase.min.css">--}}
     <link rel="stylesheet" href="{{ asset('/resource/component/css/lightcase-2.5.0.min.css') }}">
 
-    {{--<link rel="stylesheet" href="https://cdn.bootcss.com/select2/4.0.5/css/select2.min.css">--}}
     <link rel="stylesheet" href="{{ asset('/lib/css/select2-4.0.5.min.css') }}">
+
+
+    <!-- Morris chart -->
+    <link rel="stylesheet" href="/AdminLTE/plugins/morris/morris.css">
+    <!-- jvectormap -->
+    <link rel="stylesheet" href="/AdminLTE/plugins/jvectormap/jquery-jvectormap-1.2.2.css">
+    <!-- Date Picker -->
+    <link rel="stylesheet" href="/AdminLTE/plugins/datepicker/datepicker3.css">
+    <!-- Daterange picker -->
+    <link rel="stylesheet" href="/AdminLTE/plugins/daterangepicker/daterangepicker.css">
+    <!-- bootstrap wysihtml5 - text editor -->
+    <link rel="stylesheet" href="/AdminLTE/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
 
 
     <link rel="stylesheet" href="{{ asset('/resource/common/css/common.css') }}" media="all" />
     <link rel="stylesheet" href="{{ asset('/resource/common/css/AdminLTE/index.css') }}">
 
+    {{--layout-style--}}
+    @include(env('TEMPLATE_GPS_ADMIN').'layout.layout-style')
+
     @yield('css')
     @yield('style')
     @yield('custom-css')
     @yield('custom-style')
-
-    {{--layout-style--}}
-    @include(env('TEMPLATE_GPS_ADMIN').'layout.layout-style')
 
 </head>
 <!--
@@ -117,7 +136,7 @@ desired effect
 |               | sidebar-mini                            |
 |---------------------------------------------------------|
 -->
-<body class="hold-transition skin-blue sidebar-mini sidebar-collapse">
+<body class="hold-transition skin-black sidebar-mini sidebar-collapse- layout-top-nav- fixed">
 <div class="wrapper">
 
 
@@ -146,41 +165,57 @@ desired effect
 {{--<script src="/AdminLTE/plugins/jQuery/jquery-2.2.3.min.js"></script>--}}
 <script src="{{ asset('/AdminLTE/plugins/jQuery/jquery-2.2.3.min.js') }}"></script>
 
-{{--<!-- Bootstrap 3.3.6 -->--}}
+
+{{--<!-- jQuery UI 1.11.4 -->--}}
+{{--<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>--}}
+<script src="{{ asset('/resource/component/js/jquery-ui-1.12.1.min.js') }}"></script>
+
+
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+{{--<script>--}}
+{{--    $.widget.bridge('uibutton', $.ui.button);--}}
+{{--</script>--}}
+
+
+<!-- Bootstrap 3.3.6 -->
 {{--<script src="/AdminLTE/bootstrap/js/bootstrap.min.js"></script>--}}
 <script src="{{ asset('/AdminLTE/bootstrap/js/bootstrap.min.js') }}"></script>
 
-{{--<!-- AdminLTE App -->--}}
-{{--<script src="/AdminLTE/dist/js/app.min.js"></script>--}}
-<script src="{{ asset('/AdminLTE/dist/js/app.min.js') }}"></script>
-
-<script src="{{ asset('AdminLTE/plugins/datatables/jquery.dataTables.min.js') }}"></script>
-<script src="{{ asset('AdminLTE/plugins/datatables/dataTables.bootstrap.min.js') }}"></script>
+{{--<script src="{{ asset('/AdminLTE/plugins/datatables/jquery.dataTables.min.js') }}"></script>--}}
+{{--<script src="{{ asset('/AdminLTE/plugins/datatables/dataTables.bootstrap.min.js') }}"></script>--}}
 <script src="{{ asset('/resource/component/js/jquery.dataTables-1.13.1.min.js') }}"></script>
 <script src="{{ asset('/resource/component/js/dataTables.fixedColumns.min.js') }}"></script>
 
-{{--<script src="https://cdn.bootcss.com/iCheck/1.0.2/icheck.min.js"></script>--}}
+{{--<script src="https://cdn.bootcss.com/bootstrap-modal/2.2.6/js/bootstrap-mosdal.min.js"></script>--}}
+
+<!-- Morris.js charts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+<script src="/AdminLTE/plugins/morris/morris.min.js"></script>
+<!-- Sparkline -->
+<script src="/AdminLTE/plugins/sparkline/jquery.sparkline.min.js"></script>
+<!-- jvectormap -->
+<script src="/AdminLTE/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
+<script src="/AdminLTE/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+<!-- jQuery Knob Chart -->
+<script src="/AdminLTE/plugins/knob/jquery.knob.js"></script>
+<!-- daterangepicker -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
+<script src="/AdminLTE/plugins/daterangepicker/daterangepicker.js"></script>
+<!-- Bootstrap WYSIHTML5 -->
+<script src="/AdminLTE/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
+<!-- Slimscroll -->
+<script src="/AdminLTE/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+
 {{--<script src="{{ asset('/resource/component/js/icheck-1.0.2.min.js') }}"></script>--}}
 {{--<script src="/AdminLTE/plugins/iCheck/icheck.min.js"></script>--}}
 <script src="{{ asset('/AdminLTE/plugins/iCheck/icheck.min.js') }}"></script>
 
-{{--<script src="https://cdn.bootcss.com/jqueryui/1.12.1/jquery-ui.min.js"></script>--}}
-<script src="{{ asset('/resource/component/js/jquery-ui-1.12.1.min.js') }}"></script>
 
-{{--<script src="https://cdn.bootcss.com/bootstrap-modal/2.2.6/js/bootstrap-modal.min.js"></script>--}}
-
-
-<script src="{{ asset('/resource/component/js/layer-3.5.1/layer.js') }}"></script>
-
-
-{{--<script src="https://cdn.bootcss.com/bootstrap-fileinput/4.4.8/js/fileinput.min.js"></script>--}}
 <script src="{{ asset('/resource/component/js/fileinput-4.4.8.min.js') }}"></script>
 <script src="{{ asset('/resource/component/js/fileinput-only-1.js') }}"></script>
 
-{{--<script src="https://cdn.bootcss.com/jquery.form/4.2.2/jquery.form.min.js"></script>--}}
 <script src="{{ asset('/resource/component/js/jquery.form-4.2.2.min.js') }}"></script>
 
-{{--<script src="https://cdn.bootcss.com/moment.js/2.19.0/moment.min.js"></script>--}}
 <script src="{{ asset('/resource/component/js/moment-2.19.0.min.js') }}"></script>
 <script src="{{ asset('/resource/component/js/moment-2.19.0-locale-zh-cn.js') }}"></script>
 <script src="{{ asset('/resource/component/js/moment-2.19.0-locale-ko.js') }}"></script>
@@ -188,24 +223,35 @@ desired effect
 {{--<script src="https://cdn.bootcss.com/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>--}}
 {{--<script src="https://cdn.bootcdn.net/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>--}}
 <script src="{{ asset('/resource/component/js/bootstrap-datetimepicker-4.17.47.min.js') }}"></script>
-<script src="{{ asset('/resource/component/js/bootstrap-datetimepicker.zh-CN.js') }}" charset="UTF-8"></script>
+{{--<script src="{{ asset('/resource/component/js/bootstrap-datetimepicker.zh-CN.js') }}" charset="UTF-8"></script>--}}
 <script src="{{ asset('/resource/component/js/bootstrap-datepicker-1.9.0.min.js') }}"></script>
 <script src="{{ asset('/resource/component/js/bootstrap-datepicker-1.9.0.zh-CN.min.js') }}"></script>
 
-{{--<script src="https://cdn.bootcss.com/bootstrap-switch/3.3.4/js/bootstrap-switch.min.js"></script>--}}
 <script src="{{ asset('/resource/component/js/bootstrap-switch-3.3.4.min.js') }}"></script>
 
-{{--<script src="https://cdn.bootcss.com/lightcase/2.5.0/js/lightcase.min.js"></script>--}}
 <script src="{{ asset('/resource/component/js/lightcase-2.5.0.min.js') }}"></script>
 
-{{--<script src="https://cdn.bootcss.com/Swiper/4.2.2/js/swiper.min.js"></script>--}}
 <script src="{{ asset('/resource/component/js/swiper-4.2.2.min.js') }}"></script>
 
-{{--<script src="https://cdn.bootcss.com/select2/4.0.5/js/select2.min.js"></script>--}}
 <script src="{{ asset('/resource/component/js/select2-4.0.5.min.js') }}"></script>
 
-{{--<script src="{{ asset('/resource/component/js/echarts-3.7.2.min.js') }}"></script>--}}
 <script src="{{ asset('/resource/component/js/echarts-5.4.1.min.js') }}"></script>
+
+<script src="{{ asset('/resource/component/js/layer-3.5.1/layer.js') }}"></script>
+
+
+{{--<!-- AdminLTE App -->--}}
+{{--<script src="/AdminLTE/dist/js/app.min.js"></script>--}}
+<script src="{{ asset('/AdminLTE/dist/js/app.min.js') }}"></script>
+
+<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+{{--<script src="/AdminLTE/dist/js/pages/dashboard.js"></script>--}}
+{{--<script src="/AdminLTE/dist/js/pages/dashboard2.js"></script>--}}
+<script src="{{ asset('/resource/component/js/pages/dashboard.js') }}"></script>
+{{--<script src="{{ asset('/resource/component/js/pages/dashboard2.js') }s}"></script>--}}
+
+<!-- AdminLTE for demo purposes -->
+<script src="/AdminLTE/dist/js/demo.js"></script>
 
 
 @yield('js')

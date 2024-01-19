@@ -48,7 +48,7 @@ class ZY_User extends Authenticatable
     // 所属代理商
     function ext()
     {
-        return $this->hasOne('App\Models\ZY\ZY_UserExt','user_id','id');
+        return $this->hasOne('App\Models\ZY\GH_UserExt','user_id','id');
     }
 
 

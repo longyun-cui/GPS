@@ -59,18 +59,18 @@ class ZY_UserExt extends Authenticatable
 
     function user()
     {
-        return $this->belongsTo('App\Models\ZY\ZY_User','user_id','id');
+        return $this->belongsTo('App\Models\ZY\GH_User','user_id','id');
     }
     // 所属代理商
     function parent()
     {
-        return $this->belongsTo('App\Models\ZY\ZY_User','parent_id','id');
+        return $this->belongsTo('App\Models\ZY\GH_User','parent_id','id');
     }
 
     // 名下代理商
     function children()
     {
-        return $this->hasMany('App\Models\ZY\ZY_User','parent_id','id');
+        return $this->hasMany('App\Models\ZY\GH_User','parent_id','id');
     }
 
 

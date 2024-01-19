@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\GPS\Def;
+
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;

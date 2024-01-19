@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\ZY\ZY_User;
+use App\Models\ZY\GH_User;
 
 return [
 
@@ -63,6 +63,18 @@ return [
         'gps_user' => [
             'driver' => 'session',
             'provider' => 'gps_users',
+        ],
+
+
+
+
+        'gh_web_user' => [
+            'driver' => 'session',
+            'provider' => 'gh_web_users',
+        ],
+        'gh_web_admin' => [
+            'driver' => 'session',
+            'provider' => 'gh_web_admins',
         ],
 
 
@@ -138,6 +150,18 @@ return [
         'gps_staffs' => [
             'driver' => 'eloquent',
             'model' => App\Models\GPS\GPS_User::class,
+        ],
+
+
+
+
+        'gh_web_admins' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\GH\GH_Admin::class,
+        ],
+        'gh_web_users' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\GH\GH_User::class,
         ],
 
 

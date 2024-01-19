@@ -2,8 +2,7 @@
 
 
 @section('head_title')
-    @if(in_array(env('APP_ENV'),['local','dev'])){{ $local or 'L.' }}@endif
-    {{ $title_text or '首页' }} - GPS
+    {{ $title_text or 'GPS/Admin' }}
 @endsection
 
 
@@ -17,6 +16,800 @@
 @section('content')
 <div class="full-container">
 
+
+    {{--待办事--}}
+    <div class="row">
+
+        {{--待办事--}}
+        <section class="col-lg-6 connectedSortable ui-sortable">
+
+            <!-- TO DO List -->
+            <div class="box box-primary">
+                <div class="box-header">
+                    <i class="ion ion-clipboard"></i>
+
+                    <h3 class="box-title">To Do List</h3>
+
+                    <div class="box-tools pull-right">
+                        <ul class="pagination pagination-sm inline">
+                            <li><a href="#">&laquo;</a></li>
+                            <li><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">&raquo;</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <ul class="todo-list">
+                        <li>
+                            <!-- drag handle -->
+                            <span class="handle">
+                                <i class="fa fa-ellipsis-v"></i>
+                                <i class="fa fa-ellipsis-v"></i>
+                              </span>
+                            <!-- checkbox -->
+
+                            <input type="checkbox" value="" class="minimal-red">
+                            <!-- todo text -->
+                            <span class="text">Design a nice theme</span>
+                            <!-- Emphasis label -->
+                            <small class="label label-danger"><i class="fa fa-clock-o"></i> 2 mins</small>
+                            <!-- General tools such as edit or delete-->
+                            <div class="tools">
+                                <i class="fa fa-edit"></i>
+                                <i class="fa fa-trash-o"></i>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="handle">
+                                <i class="fa fa-ellipsis-v"></i>
+                                <i class="fa fa-ellipsis-v"></i>
+                            </span>
+                            <input type="checkbox" value="" class="minimal">
+                            <span class="text">Make the theme responsive</span>
+                            <small class="label label-info"><i class="fa fa-clock-o"></i> 4 hours</small>
+                            <div class="tools">
+                                <i class="fa fa-edit"></i>
+                                <i class="fa fa-trash-o"></i>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="handle">
+                                <i class="fa fa-ellipsis-v"></i>
+                                <i class="fa fa-ellipsis-v"></i>
+                            </span>
+                            <input type="checkbox" value="" class="minimal">
+                            <span class="text">Let theme shine like a star</span>
+                            <small class="label label-warning"><i class="fa fa-clock-o"></i> 1 day</small>
+                            <div class="tools">
+                                <i class="fa fa-edit"></i>
+                                <i class="fa fa-trash-o"></i>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="handle">
+                                <i class="fa fa-ellipsis-v"></i>
+                                <i class="fa fa-ellipsis-v"></i>
+                            </span>
+                            <input type="checkbox" value="" class="minimal">
+                            <span class="text">Let theme shine like a star</span>
+                            <small class="label label-success"><i class="fa fa-clock-o"></i> 3 days</small>
+                            <div class="tools">
+                                <i class="fa fa-edit"></i>
+                                <i class="fa fa-trash-o"></i>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="handle">
+                                <i class="fa fa-ellipsis-v"></i>
+                                <i class="fa fa-ellipsis-v"></i>
+                            </span>
+                            <input type="checkbox" value="" class="minimal">
+                            <span class="text">Check your messages and notifications</span>
+                            <small class="label label-primary"><i class="fa fa-clock-o"></i> 1 week</small>
+                            <div class="tools">
+                                <i class="fa fa-edit"></i>
+                                <i class="fa fa-trash-o"></i>
+                            </div>
+                        </li>
+                        <li>
+                      <span class="handle">
+                        <i class="fa fa-ellipsis-v"></i>
+                        <i class="fa fa-ellipsis-v"></i>
+                      </span>
+                            <input type="checkbox" value="" class="minimal">
+                            <span class="text">Let theme shine like a star</span>
+                            <small class="label label-default"><i class="fa fa-clock-o"></i> 1 month</small>
+                            <div class="tools">
+                                <i class="fa fa-edit"></i>
+                                <i class="fa fa-trash-o"></i>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.box-body -->
+                <div class="box-footer clearfix no-border">
+                    <button type="button" class="btn btn-default pull-right"><i class="fa fa-plus"></i> Add item</button>
+                </div>
+            </div>
+        </section>
+
+        {{--年龄--}}
+        <div class="col-xs-12 col-sm-6 col-md-3">
+            <div class="box box-success box-solid">
+                <div class="box-header with-border">
+                    <h3 class="box-title comprehensive-month-title">时间</h3>
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <ul class="nav nav-stacked">
+                        <li class="">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-user text-red margin-right-4px"></i>
+                                <span>第{{ $me->diff['total'] + 1 }}天</span>
+                                <span class="pull-right"><b class="badge bg-green">1</b></span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-clock-o text-red margin-right-4px"></i>
+                                <span>{{ $me->diff['year'] }}岁·{{ $me->diff['month'] }}个月·{{ $me->diff['day'] }}天</span>
+                                <span class="pull-right"><b class="badge bg-aqua">2</b></span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-calendar text-green margin-right-4px"></i>
+                                <span>{{ "今年·第".intval(date('W'))."周·星期".(date('N')) }}</span>
+                                <span class="pull-right"><b class="badge bg-blue">3</b></span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-calendar-check-o text-green margin-right-4px"></i>
+                                <span>{{ "今年·第".(date('z') + 1)."天" }}</span>
+                                <span class="pull-right"><b class="badge bg-orange">4</b></span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-calendar-minus-o text-red margin-right-4px"></i>
+                                <span>{{ "今年·还剩".($me->diff['this_year_day'] - date('z')) }}天</span>
+                                <span class="pull-right"><b class="badge bg-red">5</b></span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    {{--导航--}}
+    <div class="row">
+
+
+        <div class="col-xs-12 col-sm-6 col-md-3">
+            <div class="box box-success box-solid">
+                <div class="box-header with-border">
+                    <h3 class="box-title comprehensive-month-title">服务器</h3>
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <ul class="nav nav-stacked">
+                        <li class="">
+                            <a target="_blank" href="https://ecs.console.aliyun.com/#/server/i-bp10lxdukyo9gnku1t5a/detail?regionId=cn-hangzhou">
+                                【ECS】Hangzhou <span class="pull-right"><b class="badge bg-green">1</b></span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a target="_blank" href="https://ecs.console.aliyun.com/#/server/i-j6cgq48vcu8aj97enzhz/detail?regionId=cn-hongkong">
+                                【ECS】HK <span class="pull-right"><b class="badge bg-aqua">2</b></span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a target="_blank" href="http://116.62.214.223/public/ppma/index.php">
+                                【phpMyAdmin】Hangzhou <span class="pull-right"><b class="badge bg-orange">3</b></span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a target="_blank" href="http://47.52.149.252/phpMyAdmin/">
+                                【phpMyAdmin】HK <span class="pull-right"><b class="badge bg-red">4</b></span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-6 col-md-3">
+            <div class="box box-success box-solid">
+                <div class="box-header with-border">
+                    <h3 class="box-title comprehensive-month-title">LOOKWIT</h3>
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <ul class="nav nav-stacked">
+                        <li class="">
+                            <a target="_blank" href="javascript:void(0);">
+                                【local】 <span class="pull-right"><b class="badge bg-green">1</b></span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a target="_blank" href="javascript:void(0);">
+                                【local】 <span class="pull-right"><b class="badge bg-orange">2</b></span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a target="_blank" href="javascript:void(0);">
+                                【local】 <span class="pull-right"><b class="badge bg-aqua">3</b></span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a target="_blank" href="javascript:void(0);">
+                                【local】 <span class="pull-right"><b class="badge bg-red">4</b></span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-6 col-md-3">
+            <div class="box box-success box-solid">
+                <div class="box-header with-border">
+                    <h3 class="box-title comprehensive-month-title">RUWEI</h3>
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <ul class="nav nav-stacked">
+                        <li class="">
+                            <a target="_blank" href="javascript:void(0);">
+                                【local】 <span class="pull-right"><b class="badge bg-green">1</b></span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a target="_blank" href="javascript:void(0);">
+                                【local】 <span class="pull-right"><b class="badge bg-orange">2</b></span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a target="_blank" href="javascript:void(0);">
+                                【local】 <span class="pull-right"><b class="badge bg-aqua">3</b></span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a target="_blank" href="javascript:void(0);">
+                                【local】 <span class="pull-right"><b class="badge bg-red">4</b></span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-6 col-md-3">
+            <div class="box box-success box-solid">
+                <div class="box-header with-border">
+                    <h3 class="box-title comprehensive-month-title">K-ORG</h3>
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <ul class="nav nav-stacked">
+                        <li class="">
+                            <a target="_blank" href="javascript:void(0);">
+                                【local】 <span class="pull-right"><b class="badge bg-green">1</b></span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a target="_blank" href="javascript:void(0);">
+                                【local】 <span class="pull-right"><b class="badge bg-orange">2</b></span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a target="_blank" href="javascript:void(0);">
+                                【local】 <span class="pull-right"><b class="badge bg-aqua">3</b></span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a target="_blank" href="javascript:void(0);">
+                                【local】 <span class="pull-right"><b class="badge bg-red">4</b></span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-6 col-md-3">
+            <div class="box box-warning box-solid">
+                <div class="box-header with-border">
+                    <h3 class="box-title comprehensive-month-title">豫好物流</h3>
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <ul class="nav nav-stacked">
+                        <li class="">
+                            <a target="_blank" href="http://super.local-yuhao.com/user/user-list-for-all">
+                                【local】Super.员工列表 <span class="pull-right"><b class="badge bg-orange">2</b></span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a target="_blank" href="http://admin.local-yuhao.com/item/order-list-for-all">
+                                【local】订单列表 <span class="pull-right"><b class="badge bg-green">1</b></span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a target="_blank" href="http://super.yuhaowuliu.cn/item/record-list-for-all">
+                                【ON】Super.记录列表 <span class="pull-right"><b class="badge bg-aqua">3</b></span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a target="_blank" href="http://admin.yuhaowuliu.cn/item/order-list-for-all">
+                                【ON】订单列表 <span class="pull-right"><b class="badge bg-red">4</b></span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-6 col-md-3">
+            <div class="box box-warning box-solid">
+                <div class="box-header with-border">
+                    <h3 class="box-title comprehensive-month-title">DK董凯</h3>
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <ul class="nav nav-stacked">
+                        <li class="">
+                            <a target="_blank" href="http://super.local-dongkai.com/user/user-list-for-all">
+                                【local】Super.员工列表 <span class="pull-right"><b class="badge bg-green">1</b></span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a target="_blank" href="http://admin.local-dongkai.com/item/order-list-for-all">
+                                【local】Admin.工单列表 <span class="pull-right"><b class="badge bg-orange">2</b></span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a target="_blank" href="http://super.dk.chaos01.cn/user/user-list-for-all">
+                                【ON】Super.员工列表 <span class="pull-right"><b class="badge bg-aqua">3</b></span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a target="_blank" href="http://admin.dk.chaos01.cn/item/order-list-for-all">
+                                【ON】Admin.工单列表 <span class="pull-right"><b class="badge bg-red">4</b></span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-6 col-md-3">
+            <div class="box box-warning box-solid">
+                <div class="box-header with-border">
+                    <h3 class="box-title comprehensive-month-title">ZY兆益信息</h3>
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <ul class="nav nav-stacked">
+                        <li class="">
+                            <a target="_blank" href="http://super.zy.gps.com/">
+                                【local】Super <span class="pull-right"><b class="badge bg-green">1</b></span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a target="_blank" href="http://admin.zy.gps.com/">
+                                【local】Admin <span class="pull-right"><b class="badge bg-orange">2</b></span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a target="_blank" href="http://staff.zy.gps.com/">
+                                【local】Staff  <span class="pull-right"><b class="badge bg-aqua">3</b></span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a target="_blank" href="http://super.zy.chaos01.cn/">
+                                【ON】Super <span class="pull-right"><b class="badge bg-red">4</b></span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a target="_blank" href="http://admin.zy.chaos01.cn/">
+                                【ON】Admin <span class="pull-right"><b class="badge bg-purple">5</b></span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a target="_blank" href="http://staff.zy.chaos01.cn/">
+                                【ON】Staff <span class="pull-right"><b class="badge bg-maroon">6</b></span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a target="_blank" href="https://lxcrm.weiwenjia.com/">
+                                励销云 - 工作台 <span class="pull-right"><b class="badge bg-fuchsia">7</b></span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    {{--导航 Tools--}}
+    <div class="row">
+
+        <div class="col-xs-12 col-sm-6 col-md-3">
+            <div class="box box-danger box-solid">
+                <div class="box-header with-border">
+                    <h3 class="box-title comprehensive-month-title">tools</h3>
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <ul class="nav nav-stacked">
+                        <li class="">
+                            <a target="_blank" href="http://tool.chinaz.com/">
+                                站长工具 <span class="pull-right"><b class="badge bg-green">1</b></span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a target="_blank" href="http://www.bejson.com/">
+                                Json验证 <span class="pull-right"><b class="badge bg-orange">2</b></span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a target="_blank" href="http://tool.oschina.net/encrypt?type=2">
+                                在线加密解密 <span class="pull-right"><b class="badge bg-aqua">3</b></span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a target="_blank" href="http://www.atool.org/timestamp.php">
+                                时间戳 <span class="pull-right"><b class="badge bg-red">4</b></span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a target="_blank" href="http://pandao.github.io/editor.md/">
+                                markdown(github) <span class="pull-right"><b class="badge bg-red">4</b></span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a target="_blank" href="">
+                                <span class="pull-right"><b class="badge bg-red">4</b></span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-6 col-md-3">
+            <div class="box box-danger box-solid">
+                <div class="box-header with-border">
+                    <h3 class="box-title comprehensive-month-title">tools</h3>
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <ul class="nav nav-stacked">
+                        <li class="">
+                            <a target="_blank" href="https://tool.chinaz.com/tools/pagecolor.aspx">
+                                网页颜色选择器 - 站长工具 <span class="pull-right"><b class="badge bg-red">4</b></span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a target="_blank" href="https://xingzhengquhua.bmcx.com/">
+                                行政区划 - 行政区划代码查询 <span class="pull-right"><b class="badge bg-red">4</b></span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a target="_blank" href="https://szjrzzwdxje.bmcx.com/">
+                                数字金额转中文大写金额 <span class="pull-right"><b class="badge bg-red">4</b></span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a target="_blank" href="http://www.topdf.cn/">
+                                pdf转换成Word转换器 <span class="pull-right"><b class="badge bg-red">4</b></span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a target="_blank" href="https://jinaconvert.com/cn/">
+                                在线图片转换器 <span class="pull-right"><b class="badge bg-red">4</b></span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a target="_blank" href="http://www.zuohaotu.com/image-to-ico.aspx">
+                                免费在线图片转ICO图标 <span class="pull-right"><b class="badge bg-red">4</b></span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-6 col-md-3">
+            <div class="box box-danger box-solid">
+                <div class="box-header with-border">
+                    <h3 class="box-title comprehensive-month-title">tools</h3>
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <ul class="nav nav-stacked">
+                        <li class="">
+                            <a target="_blank" href="">
+                                 <span class="pull-right"><b class="badge bg-green">1</b></span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a target="_blank" href="">
+                                 <span class="pull-right"><b class="badge bg-orange">2</b></span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a target="_blank" href="">
+                                 <span class="pull-right"><b class="badge bg-aqua">3</b></span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a target="_blank" href="">
+                                 <span class="pull-right"><b class="badge bg-red">4</b></span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a target="_blank" href="">
+                                 <span class="pull-right"><b class="badge bg-purple">5</b></span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a target="_blank" href="">
+                                <span class="pull-right"><b class="badge bg-maroon">6</b></span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <a target="_blank" class="margin btn btn-xs bg-maroon" href="https://cloudconvert.com/">cloudconvert WebP转图片</a>
+    <a target="_blank" class="margin btn btn-xs bg-maroon" href="http://isparta.github.io/">isparta WebP转图片</a>
+    <a target="_blank" class="margin btn btn-xs bg-maroon" href="https://processon.com/">免费在线作图ProcessOn</a>
+    <a target="_blank" class="margin btn btn-xs bg-maroon" href="http://www.faviconico.org">在线转icon</a>
+
+
+
+    {{--导航--}}
+    <div class="row">
+
+        <div class="col-md-12">
+            <div class="box box-info">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Latest Orders</h3>
+
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                        </button>
+                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                    </div>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <div class="table-responsive">
+                        <table class="table no-margin">
+                            <thead>
+                            <tr>
+                                <th>项目</th>
+                                <th>链接</th>
+                                <th>Status</th>
+                                <th>Popularity</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td><a href="javascript:void(0);">GPS</a></td>
+                                <td>Call of Duty IV</td>
+                                <td><span class="label label-success">Shipped</span></td>
+                                <td>
+                                    <div class="sparkbar" data-color="#00a65a" data-height="20">90,80,90,-70,61,-83,63</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="pages/examples/invoice.html">豫好物流</a></td>
+                                <td><a href="javascript:void(0);">GPS</a></td>
+                                <td><span class="label label-warning">Pending</span></td>
+                                <td>
+                                    <div class="sparkbar" data-color="#f39c12" data-height="20">90,80,-90,70,61,-83,68</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="pages/examples/invoice.html">董凯</a></td>
+                                <td>iPhone 6 Plus</td>
+                                <td><span class="label label-danger">Delivered</span></td>
+                                <td>
+                                    <div class="sparkbar" data-color="#f56954" data-height="20">90,-80,90,70,-61,83,63</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="pages/examples/invoice.html">OR7429</a></td>
+                                <td>Samsung Smart TV</td>
+                                <td><span class="label label-info">Processing</span></td>
+                                <td>
+                                    <div class="sparkbar" data-color="#00c0ef" data-height="20">90,80,-90,70,-61,83,63</div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.table-responsive -->
+                </div>
+                <!-- /.box-body -->
+                <div class="box-footer clearfix">
+                    <a href="javascript:void(0)" class="btn btn-sm btn-info btn-flat pull-left">Place New Order</a>
+                    <a href="javascript:void(0)" class="btn btn-sm btn-default btn-flat pull-right">View All Orders</a>
+                </div>
+                <!-- /.box-footer -->
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+
+    {{--工具--}}
+    <div class="row">
+
+
+        <section class="col-lg-6">
+            <!-- iCheck -->
+            <div class="box box-success">
+                <div class="box-header">
+                    <h3 class="box-title">iCheck - Checkbox &amp; Radio Inputs</h3>
+                </div>
+                <div class="box-body">
+                    <!-- Minimal style -->
+
+                    <!-- checkbox -->
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" class="minimal" checked>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="minimal">
+                        </label>
+                        <label>
+                            <input type="checkbox" class="minimal" disabled>
+                            Minimal skin checkbox
+                        </label>
+                    </div>
+
+                    <!-- radio -->
+                    <div class="form-group">
+                        <label>
+                            <input type="radio" name="r1" class="minimal" checked>
+                        </label>
+                        <label>
+                            <input type="radio" name="r1" class="minimal">
+                        </label>
+                        <label>
+                            <input type="radio" name="r1" class="minimal" disabled>
+                            Minimal skin radio
+                        </label>
+                    </div>
+
+                    <!-- Minimal red style -->
+
+                    <!-- checkbox -->
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" class="minimal-red" checked>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="minimal-red">
+                        </label>
+                        <label>
+                            <input type="checkbox" class="minimal-red" disabled>
+                            Minimal red skin checkbox
+                        </label>
+                    </div>
+
+                    <!-- radio -->
+                    <div class="form-group">
+                        <label>
+                            <input type="radio" name="r2" class="minimal-red" checked>
+                        </label>
+                        <label>
+                            <input type="radio" name="r2" class="minimal-red">
+                        </label>
+                        <label>
+                            <input type="radio" name="r2" class="minimal-red" disabled>
+                            Minimal red skin radio
+                        </label>
+                    </div>
+
+                    <!-- Minimal red style -->
+
+                    <!-- checkbox -->
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" class="flat-red" checked>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="flat-red">
+                        </label>
+                        <label>
+                            <input type="checkbox" class="flat-red" disabled>
+                            Flat green skin checkbox
+                        </label>
+                    </div>
+
+                    <!-- radio -->
+                    <div class="form-group">
+                        <label>
+                            <input type="radio" name="r3" class="flat-red" checked>
+                        </label>
+                        <label>
+                            <input type="radio" name="r3" class="flat-red">
+                        </label>
+                        <label>
+                            <input type="radio" name="r3" class="flat-red" disabled>
+                            Flat green skin radio
+                        </label>
+                    </div>
+                </div>
+                <!-- /.box-body -->
+                <div class="box-footer">
+                    Many more skins available. <a href="http://fronteed.com/iCheck/">Documentation</a>
+                </div>
+            </div>
+
+        </section>
+
+
+
+
+    </div>
+
+
+    {{--导航--}}
     <div class="row">
         <div class="col-md-12">
             <!-- BEGIN PORTLET-->
@@ -29,8 +822,6 @@
                 </div>
                 <div class="box-body">
                     <div>
-                        <a target="_blank" class="margin btn btn-xs bg-black" href="https://ecs.console.aliyun.com/#/server/i-bp10lxdukyo9gnku1t5a/detail?regionId=cn-hangzhou">ECS-HZ</a>
-                        <a target="_blank" class="margin btn btn-xs bg-maroon" href="http://116.62.214.223/public/ppma/index.php">HZ-phpMyAdmin</a>
                         <a target="_blank" class="margin btn btn-xs btn-success" href="http://lookwit.com">Lookwit</a>
                         <a target="_blank" class="margin btn btn-xs btn-success" href="http://gps.lookwit.com/admin/">GPS</a>
                         <a target="_blank" class="margin btn btn-xs btn-success" href="http://super.lookwit.com/admin/">SUPER</a>
@@ -41,8 +832,6 @@
                         <a target="_blank" class="margin btn btn-xs btn-success" href="http://k-org.cn">K-ORG</a>
                     </div>
                     <div>
-                        <a target="_blank" class="margin btn btn-xs bg-black" href="https://ecs.console.aliyun.com/#/server/i-j6cgq48vcu8aj97enzhz/detail?regionId=cn-hongkong">ECS-HK</a>
-                        <a target="_blank" class="margin btn btn-xs bg-maroon" href="http://47.52.149.252/phpMyAdmin/">HK-phpMyAdmin</a>
                         <a target="_blank" class="margin btn btn-xs btn-primary" href="http://ruwei.com">Lookwit</a>
                         <a target="_blank" class="margin btn btn-xs btn-primary" href="http://gps.ruwei.com/admin/">GPS</a>
                         <a target="_blank" class="margin btn btn-xs btn-primary" href="http://super.ruwei.com/admin/">SUPER</a>
@@ -361,15 +1150,6 @@
                 </div>
 
                 <div class="box-body">
-                    <a target="_blank" class="margin btn btn-xs bg-maroon" href="http://tool.chinaz.com/">站长工具</a>
-                    <a target="_blank" class="margin btn btn-xs btn-success" href="http://www.bejson.com/">Json验证</a>
-                    <a target="_blank" class="margin btn btn-xs bg-maroon" href="http://tool.oschina.net/encrypt?type=2">在线加密解密</a>
-                    <a target="_blank" class="margin btn btn-xs btn-success" href="http://www.atool.org/timestamp.php">时间戳</a>
-                    <a target="_blank" class="margin btn btn-xs bg-maroon" href="http://pandao.github.io/editor.md/">markdown(github)</a>
-                    <a target="_blank" class="margin btn btn-xs bg-maroon" href="https://cloudconvert.com/">cloudconvert WebP转图片</a>
-                    <a target="_blank" class="margin btn btn-xs bg-maroon" href="http://isparta.github.io/">isparta WebP转图片</a>
-                    <a target="_blank" class="margin btn btn-xs bg-maroon" href="https://processon.com/">免费在线作图ProcessOn</a>
-                    <a target="_blank" class="margin btn btn-xs bg-maroon" href="http://www.faviconico.org">在线转icon</a>
                 </div>
 
                 {{--Documents--}}
