@@ -226,6 +226,12 @@
                                 【phpMyAdmin】HK <span class="pull-right"><b class="badge bg-red">4</b></span>
                             </a>
                         </li>
+                        <li class="">
+                            <a target="_blank" href="https://dc.console.aliyun.com/#/domain-list/all">
+                                【Domain】 <span class="pull-right"><b class="badge bg-purple">5</b></span>
+                            </a>
+                        </li>
+
                     </ul>
                 </div>
             </div>
