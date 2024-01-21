@@ -75,8 +75,8 @@ class GHWebAdminController extends Controller
                         $remember = request()->get('remember');
                         if($remember) Auth::guard('gh_web_admin')->login($admin,false);
                         else Auth::guard('gh_web_admin')->login($admin,false);
-                        Auth::guard('gh_web_admin')->user()->admin_token = $token;
-                        Auth::guard('gh_web_admin')->user()->save();
+//                        Auth::guard('gh_web_admin')->user()->admin_token = $token;
+//                        Auth::guard('gh_web_admin')->user()->save();
                         return response_success();
                     }
                     else return response_error([],'账户or密码不正确！');
