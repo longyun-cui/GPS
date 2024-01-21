@@ -62,7 +62,7 @@ class GHWebAdminController extends Controller
 //            $admin = SuperAdministrator::whereEmail($email)->first();
 
             $mobile = request()->get('mobile');
-            $admin = DK_User::whereMobile($mobile)->first();
+            $admin = GH_User::whereMobile($mobile)->first();
 
             if($admin)
             {
@@ -90,17 +90,17 @@ class GHWebAdminController extends Controller
     // 退出
     public function logout()
     {
-        Auth::guard('gh_web_admin')->user()->admin_token = '';
-        Auth::guard('gh_web_admin')->user()->save();
+//        Auth::guard('gh_web_admin')->user()->admin_token = '';
+//        Auth::guard('gh_web_admin')->user()->save();
         Auth::guard('gh_web_admin')->logout();
-        return redirect('/login');
+        return redirect('/admin/login');
     }
 
     // 退出
     public function logout_without_token()
     {
         Auth::guard('gh_web_admin')->logout();
-        return redirect('/login');
+        return redirect('/admin/login');
     }
 
 
