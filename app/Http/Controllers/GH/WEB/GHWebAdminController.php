@@ -62,7 +62,7 @@ class GHWebAdminController extends Controller
 //            $admin = SuperAdministrator::whereEmail($email)->first();
 
             $mobile = request()->get('mobile');
-            $admin = GH_User::whereMobile($mobile)->first();
+            $admin = GH_Admin::whereMobile($mobile)->first();
 
             if($admin)
             {

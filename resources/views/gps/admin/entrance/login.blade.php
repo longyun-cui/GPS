@@ -2,7 +2,8 @@
 
 
 @section('head_title')
-    @if(in_array(env('APP_ENV'),['local'])){{ $local or '【l】' }}@endif{{ $title_text or '管理员登陆' }} - {{ config('info.info.short_name') }}
+{{--    @if(in_array(env('APP_ENV'),['local'])){{ $local or '【l】' }}@endif--}}
+    {{ $title_text or '管理员登陆' }} - {{ config('info.info.short_name') }}
 @endsection
 
 

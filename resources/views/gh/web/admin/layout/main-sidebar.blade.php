@@ -92,7 +92,7 @@
             <li class="treeview {{ $menu_active_of_project_list_for_all or '' }} _none1">
                 <a href="{{ url('/item/project-list-for-all')}}">
                     <i class="fa fa-cube text-green"></i>
-                    <span>项目列表</span>
+                    <span>目录列表</span>
                 </a>
             </li>
             @endif
@@ -101,7 +101,7 @@
             <li class="treeview {{ $menu_active_of_product_list_for_all or '' }}">
                 <a href="{{ url('/admin/item/product-list-for-all')}}">
                     <i class="fa fa-file-text text-yellow"></i>
-                    <span>工单列表</span>
+                    <span>产品列表</span>
                 </a>
             </li>
             @endif

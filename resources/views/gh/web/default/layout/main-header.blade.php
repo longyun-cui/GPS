@@ -61,7 +61,7 @@
         </div>
 
         <!-- Navbar Right Menu -->
-        <div class="navbar-custom-menu _none-">
+        <div class="navbar-custom-menu _none">
             <ul class="nav navbar-nav">
 
                 <!-- Add Menu -->
@@ -76,33 +76,6 @@
                         <li class="header">
                             <a href="{{ url('/user/staff-create') }}">
                                 <i class="fa fa-plus text-red"></i> 添加员工
-                            </a>
-                        </li>
-                        <li class="header">
-                            <a href="{{ url('/user/driver-create') }}">
-                                <i class="fa fa-plus text-red"></i> 添加驾驶员
-                            </a>
-                        </li>
-
-                        <li class="header">业务</li>
-                        <li class="header">
-                            <a href="{{ url('/user/client-create') }}">
-                                <i class="fa fa-plus text-green"></i> 添加客户
-                            </a>
-                        </li>
-                        <li class="header">
-                            <a href="{{ url('/item/car-create') }}">
-                                <i class="fa fa-plus text-green"></i> 添加车辆
-                            </a>
-                        </li>
-                        <li class="header">
-                            <a href="{{ url('/item/route-create') }}">
-                                <i class="fa fa-plus text-green"></i> 添加线路
-                            </a>
-                        </li>
-                        <li class="header">
-                            <a href="{{ url('/item/pricing-create') }}">
-                                <i class="fa fa-plus text-green"></i> 添加定价
                             </a>
                         </li>
 
