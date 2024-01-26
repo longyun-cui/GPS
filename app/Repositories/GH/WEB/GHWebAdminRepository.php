@@ -5766,19 +5766,11 @@ class GHWebAdminRepository {
         $project_id = $item->project_id;
         $client_phone = $item->client_phone;
 
-        $is_repeat = GH_Product::where(['project_id'=>$project_id,'client_phone'=>$client_phone])
-            ->where('id','<>',$id)->where('is_published','>',0)->count("*");
-
         // 启动数据库事务
         DB::beginTransaction();
         try
         {
-            if($item->inspected_status == 1)
-            {
-                $item->inspected_status = 9;
-            }
 
-            $item->is_repeat = $is_repeat;
             $item->is_published = 1;
             $item->published_at = time();
             $bool = $item->save();

@@ -28,6 +28,10 @@
     </div>
     <div class="box-body">
 
+        <a href="javascript:void(0)" class="product-title">
+            {{ $item->title or 'TITLE' }}
+        </a>
+
         <p>I took this photo this morning. What do you guys think?</p>
         <button type="button" class="btn btn-default btn-xs"><i class="fa fa-share"></i> Share</button>
         <button type="button" class="btn btn-default btn-xs"><i class="fa fa-thumbs-o-up"></i> Like</button>

@@ -442,7 +442,7 @@
                     });
 
                     $.post(
-                        "{{ url('/item/product-publish') }}",
+                        "{{ url('/admin/item/product-publish') }}",
                         {
                             _token: $('meta[name="_token"]').attr('content'),
                             operate: "product-publish",

@@ -825,7 +825,7 @@
                         }
                     },
                     {
-                        "title": "工单状态",
+                        "title": "状态",
                         "className": "",
                         "width": "72px",
                         "data": "id",
@@ -859,10 +859,7 @@
                             }
                             else
                             {
-                                if(row.is_completed == 1)
-                                {
-                                    return '<small class="btn-xs bg-olive">已结束</small>';
-                                }
+                                return '<small class="btn-xs bg-olive">已发布</small>';
                             }
 
                         }
@@ -1572,8 +1569,7 @@
 //            TableDatatablesAjax_record.init();
 //        });
 </script>
-@include(env('TEMPLATE_GH_WEB_ADMIN').'entrance.item.product-script')
-{{--@include(env('TEMPLATE_GH_WEB_ADMIN').'entrance.item.product-script-for-info')--}}
+@include(env('TEMPLATE_GH_WEB_ADMIN').'entrance.item.product-list-script')
 
 @include(env('TEMPLATE_GH_WEB_ADMIN').'component.product-create-script')
 @endsection

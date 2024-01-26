@@ -73,7 +73,7 @@ class GHWebDefRepository {
 //        $me = $this->me;
 ////        dd($me->toArray());
 
-        $item_list = GH_Product::select('*')->orderBy('id','desc')->get();
+        $item_list = GH_Product::select('*')->where(['is_published'=>1])->orderBy('id','desc')->get();
         $return_data['item_list'] = $item_list;
 
         $view_blade = env('TEMPLATE_GH_WEB_DEF').'entrance.index';

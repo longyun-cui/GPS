@@ -351,11 +351,48 @@
     {{--导航--}}
     <div class="row">
 
+        {{--GH 桂花--}}
+        <div class="col-xs-12 col-sm-6 col-md-3">
+            <div class="box box-warning box-solid">
+                <div class="box-header with-border">
+                    <h3 class="box-title comprehensive-month-title">GH 桂花</h3>
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <ul class="nav nav-stacked">
+                        <li class="">
+                            <a target="_blank" href="http://gh.gps.com/">
+                                【l】首页 <span class="pull-right"><b class="badge bg-green">1</b></span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a target="_blank" href="http://gh.gps.com/admin/item/product-list-for-all">
+                                【l】Admin.产品列表 <span class="pull-right"><b class="badge bg-orange">2</b></span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a target="_blank" href="http://gh.chaos01.cn/">
+                                【ON】首页 <span class="pull-right"><b class="badge bg-aqua">3</b></span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a target="_blank" href="http://gh.chaos01.cn/admin/item/product-list-for-all">
+                                【ON】Admin.产品列表 <span class="pull-right"><b class="badge bg-red">4</b></span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
         {{--DK 董凯--}}
         <div class="col-xs-12 col-sm-6 col-md-3">
             <div class="box box-warning box-solid">
                 <div class="box-header with-border">
-                    <h3 class="box-title comprehensive-month-title">DK董凯</h3>
+                    <h3 class="box-title comprehensive-month-title">DK 董凯</h3>
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                         </button>
