@@ -704,9 +704,9 @@
 @endsection
 @section('custom-style')
 <style>
-    .tableArea table { min-width:1380px; }
-    /*.tableArea table { width:100% !important; min-width:1380px; }*/
-    /*.tableArea table tr th, .tableArea table tr td { white-space:nowrap; }*/
+    /*.tableArea table { min-width:1380px; }*/
+    .tableArea table { width:100% !important; min-width:1380px; }
+    .tableArea table tr th, .tableArea table tr td { white-space:nowrap; }
 
     .datatable-search-row .input-group .date-picker-btn { width:30px; }
     .table-hover>tbody>tr:hover td { background-color: #bbccff; }
@@ -868,40 +868,13 @@
                         }
                     },
                     {
-                        "title": "创建人",
-                        "data": "creator_id",
+                        "title": "标题",
+                        "data": "title",
                         "className": "",
-                        "width": "80px",
+                        "width": "240px",
                         "orderable": false,
                         render: function(data, type, row, meta) {
-                            return row.creator == null ? '未知' : '<a href="javascript:void(0);">'+row.creator.username+'</a>';
-                        }
-                    },
-                    {
-                        "title": "发布时间",
-                        "data": 'published_at',
-                        "className": "",
-                        "width": "120px",
-                        "orderable": true,
-                        "orderSequence": ["desc", "asc"],
-                        render: function(data, type, row, meta) {
-//                            return data;
-                            if(!data) return '';
-                            var $date = new Date(data*1000);
-                            var $year = $date.getFullYear();
-                            var $month = ('00'+($date.getMonth()+1)).slice(-2);
-                            var $day = ('00'+($date.getDate())).slice(-2);
-                            var $hour = ('00'+$date.getHours()).slice(-2);
-                            var $minute = ('00'+$date.getMinutes()).slice(-2);
-                            var $second = ('00'+$date.getSeconds()).slice(-2);
-
-//                            return $year+'-'+$month+'-'+$day;
-//                            return $year+'-'+$month+'-'+$day+'&nbsp;'+$hour+':'+$minute;
-//                            return $year+'-'+$month+'-'+$day+'&nbsp;&nbsp;'+$hour+':'+$minute+':'+$second;
-
-                            var $currentYear = new Date().getFullYear();
-                            if($year == $currentYear) return $month+'-'+$day+'&nbsp;'+$hour+':'+$minute+':'+$second;
-                            else return $year+'-'+$month+'-'+$day+'&nbsp;'+$hour+':'+$minute+':'+$second;
+                            return data == null ? '--' : '<a href="javascript:void(0);">'+data+'</a>';
                         }
                     },
                     {
@@ -949,6 +922,28 @@
                         }
                     },
                     {
+                        "title": "起批量",
+                        "data": "wholesale_amount",
+                        "className": "",
+                        "width": "100px",
+                        "orderable": false,
+                        "fnCreatedCell": function (nTd, data, row, iRow, iCol) {
+                            if(row.is_completed != 1 && row.item_status != 97)
+                            {
+                                $(nTd).addClass('modal-show-for-info-text-set');
+                                $(nTd).attr('data-id',row.id).attr('data-name','起批量');
+                                $(nTd).attr('data-key','wholesale_amount').attr('data-value',data);
+                                $(nTd).attr('data-column-name','起批量');
+                                $(nTd).attr('data-text-type','text');
+                                if(data) $(nTd).attr('data-operate-type','edit');
+                                else $(nTd).attr('data-operate-type','add');
+                            }
+                        },
+                        render: function(data, type, row, meta) {
+                            return data;
+                        }
+                    },
+                    {
                         "title": "描述",
                         "data": "description",
                         "className": "",
@@ -973,10 +968,20 @@
                         }
                     },
                     {
+                        "title": "创建人",
+                        "data": "creator_id",
+                        "className": "",
+                        "width": "80px",
+                        "orderable": false,
+                        render: function(data, type, row, meta) {
+                            return row.creator == null ? '未知' : '<a href="javascript:void(0);">'+row.creator.username+'</a>';
+                        }
+                    },
+                    {
                         "title": "创建时间",
                         "data": 'created_at',
                         "className": "",
-                        "width": "100px",
+                        "width": "120px",
                         "orderable": false,
                         "orderSequence": ["desc", "asc"],
                         render: function(data, type, row, meta) {

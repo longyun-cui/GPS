@@ -15,7 +15,7 @@
         </span>
         <span class="product-description">
             <span class="label label-warning pull-right-">
-                {{ $item->wholesale_price or '' }}/{{ $item->wholesale_amount or '' }}起批
+                {{ $item->wholesale_price or '' }}元 /{{ $item->wholesale_amount or '' }}件 起批
             </span>
         </span>
     </div>
