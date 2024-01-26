@@ -345,6 +345,60 @@
             </div>
         </div>
 
+    </div>
+
+
+    {{--导航--}}
+    <div class="row">
+
+        {{--DK 董凯--}}
+        <div class="col-xs-12 col-sm-6 col-md-3">
+            <div class="box box-warning box-solid">
+                <div class="box-header with-border">
+                    <h3 class="box-title comprehensive-month-title">DK董凯</h3>
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <ul class="nav nav-stacked">
+                        <li class="">
+                            <a target="_blank" href="http://super.local-dongkai.com/user/user-list-for-all">
+                                【l】Super.员工列表 <span class="pull-right"><b class="badge bg-green">1</b></span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a target="_blank" href="http://admin.local-dongkai.com/item/order-list-for-all">
+                                【l】Admin.工单列表 <span class="pull-right"><b class="badge bg-orange">2</b></span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a target="_blank" href="http://client.local-dongkai.com/item/order-list-for-all">
+                                【l】Client.工单列表 <span class="pull-right"><b class="badge bg-orange">2</b></span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a target="_blank" href="http://super.dk.chaos01.cn/user/user-list-for-all">
+                                【ON】Super.员工列表 <span class="pull-right"><b class="badge bg-aqua">3</b></span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a target="_blank" href="http://admin.dk.chaos01.cn/item/order-list-for-all">
+                                【ON】Admin.工单列表 <span class="pull-right"><b class="badge bg-red">4</b></span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a target="_blank" href="http://client.dk.chaos01.cn/item/order-list-for-all">
+                                【ON】Client.工单列表 <span class="pull-right"><b class="badge bg-red">4</b></span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        {{--豫好物流--}}
         <div class="col-xs-12 col-sm-6 col-md-3">
             <div class="box box-warning box-solid">
                 <div class="box-header with-border">
@@ -381,42 +435,7 @@
             </div>
         </div>
 
-        <div class="col-xs-12 col-sm-6 col-md-3">
-            <div class="box box-warning box-solid">
-                <div class="box-header with-border">
-                    <h3 class="box-title comprehensive-month-title">DK董凯</h3>
-                    <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                        </button>
-                    </div>
-                </div>
-                <div class="box-body">
-                    <ul class="nav nav-stacked">
-                        <li class="">
-                            <a target="_blank" href="http://super.local-dongkai.com/user/user-list-for-all">
-                                【local】Super.员工列表 <span class="pull-right"><b class="badge bg-green">1</b></span>
-                            </a>
-                        </li>
-                        <li class="">
-                            <a target="_blank" href="http://admin.local-dongkai.com/item/order-list-for-all">
-                                【local】Admin.工单列表 <span class="pull-right"><b class="badge bg-orange">2</b></span>
-                            </a>
-                        </li>
-                        <li class="">
-                            <a target="_blank" href="http://super.dk.chaos01.cn/user/user-list-for-all">
-                                【ON】Super.员工列表 <span class="pull-right"><b class="badge bg-aqua">3</b></span>
-                            </a>
-                        </li>
-                        <li class="">
-                            <a target="_blank" href="http://admin.dk.chaos01.cn/item/order-list-for-all">
-                                【ON】Admin.工单列表 <span class="pull-right"><b class="badge bg-red">4</b></span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
+        {{--ZY兆益信息--}}
         <div class="col-xs-12 col-sm-6 col-md-3">
             <div class="box box-warning box-solid">
                 <div class="box-header with-border">
@@ -579,32 +598,32 @@
                     <ul class="nav nav-stacked">
                         <li class="">
                             <a target="_blank" href="">
-                                 <span class="pull-right"><b class="badge bg-green">1</b></span>
+                                 1<span class="pull-right"><b class="badge bg-green">1</b></span>
                             </a>
                         </li>
                         <li class="">
                             <a target="_blank" href="">
-                                 <span class="pull-right"><b class="badge bg-orange">2</b></span>
+                                 2<span class="pull-right"><b class="badge bg-orange">2</b></span>
                             </a>
                         </li>
                         <li class="">
                             <a target="_blank" href="">
-                                 <span class="pull-right"><b class="badge bg-aqua">3</b></span>
+                                 3<span class="pull-right"><b class="badge bg-aqua">3</b></span>
                             </a>
                         </li>
                         <li class="">
                             <a target="_blank" href="">
-                                 <span class="pull-right"><b class="badge bg-red">4</b></span>
+                                 4<span class="pull-right"><b class="badge bg-red">4</b></span>
                             </a>
                         </li>
                         <li class="">
                             <a target="_blank" href="">
-                                 <span class="pull-right"><b class="badge bg-purple">5</b></span>
+                                 5<span class="pull-right"><b class="badge bg-purple">5</b></span>
                             </a>
                         </li>
                         <li class="">
                             <a target="_blank" href="">
-                                <span class="pull-right"><b class="badge bg-maroon">6</b></span>
+                                6<span class="pull-right"><b class="badge bg-maroon">6</b></span>
                             </a>
                         </li>
                     </ul>
