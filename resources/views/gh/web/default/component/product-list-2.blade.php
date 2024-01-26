@@ -18,7 +18,7 @@
     </div>
     <!-- /.box-header -->
     <div class="box-body" style="padding:0;">
-        <img class="img-responsive pad-" src="/custom/gh/images/slider/1.jpg" alt="Photo">
+        <img src="{{ url(env('DOMAIN_CDN').'/'.$item->cover_pic) }}" alt="Product Image">
 
         {{--            <p>I took this photo this morning. What do you guys think?</p>--}}
         {{--            <span class="label label-warning pull-right">$1800</span>--}}
@@ -32,7 +32,9 @@
         <button type="button" class="btn btn-default btn-xs"><i class="fa fa-share"></i> Share</button>
         <button type="button" class="btn btn-default btn-xs"><i class="fa fa-thumbs-o-up"></i> Like</button>
 {{--        <span class="pull-right text-muted">127 likes - 3 comments</span>--}}
-        <span class="label label-warning pull-right">$1800</span>
+        <span class="label label-warning pull-right">
+                {{ $item->wholesale_price or '' }}元 /{{ $item->wholesale_amount or '' }}件 起批
+        </span>
     </div>
 </div>
 @endforeach
