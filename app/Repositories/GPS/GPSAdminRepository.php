@@ -339,8 +339,10 @@ class GPSAdminRepository {
         if($operate == 'create') // 添加 ( $id==0，添加一个新用户 )
         {
             $mine = new GPS_Menu;
-            $post_data["menu_category"] = 21;
             $post_data["active"] = 1;
+            $post_data["menu_category"] = 9;
+            $post_data["menu_type"] = 21;
+            $post_data["owner_id"] = 9;
             $post_data["creator_id"] = $me->id;
         }
         else if($operate == 'edit') // 编辑
@@ -484,6 +486,7 @@ class GPSAdminRepository {
 
         $query = GPS_Menu::select('*')
 //            ->selectAdd(DB::Raw("FROM_UNIXTIME(assign_time, '%Y-%m-%d') as assign_date"))
+            ->where(['menu_category'=>9,'menu_type'=>21])
             ->with(['creator','owner']);
 //            ->whereIn('user_category',[11])
 //            ->whereIn('user_type',[0,1,9,11,19,21,22,41,61,88]);
@@ -492,7 +495,6 @@ class GPSAdminRepository {
 //                'members'=>function ($query) { $query->where('usergroup','Agent2'); },
 //                'fans'=>function ($query) { $query->rderwhere('usergroup','Service'); }
 //            ]);
-//            ->where(['userstatus'=>'正常','status'=>1])
 //            ->whereIn('usergroup',['Agent','Agent2']);
 
 //        $me->load(['subordinate_er' => function ($query) {
@@ -546,11 +548,11 @@ class GPSAdminRepository {
     // 【待办事-项目】Select2
     public function operate_admin_todo_select2_menu($post_data)
     {
-        $query =GPS_Menu::select(['id','name as text'])->where(['menu_category'=>21]);
+        $query =GPS_Menu::select(['id','name as text'])->where(['menu_category'=>9,'menu_type'=>21]);
         if(!empty($post_data['keyword']))
         {
             $keyword = "%{$post_data['keyword']}%";
-            $query->where('username','like',"%$keyword%");
+            $query->where('name','like',"%$keyword%");
         }
 
 //        if(!empty($post_data['type']))
@@ -670,7 +672,9 @@ class GPSAdminRepository {
         {
             $mine = new GPS_Item;
             $post_data["active"] = 1;
-            $post_data["item_category"] = 21;
+            $post_data["item_category"] = 9;
+            $post_data["item_type"] = 21;
+            $post_data["owner_id"] = 9;
             $post_data["creator_id"] = $me->id;
         }
         else if($operate == 'edit') // 编辑
@@ -785,7 +789,7 @@ class GPSAdminRepository {
 
         $query = GPS_Item::select('*')
             ->with(['menu_er'=>function($query) { $query->select('id','name','updated_at'); }])
-            ->where(['item_category'=>21]);
+            ->where(['item_category'=>9,'item_type'=>21]);
         $item_list = $query->orderBy('id','desc')->get();
 
         foreach ($item_list as $k => $v)

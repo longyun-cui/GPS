@@ -122,7 +122,7 @@ body {
 @media (max-width: 767px) {
   .fixed .content-wrapper,
   .fixed .right-side {
-    padding-top: 100px;
+    padding-top: 50px;
   }
 }
 .fixed.layout-boxed .wrapper {
@@ -405,7 +405,7 @@ a:focus {
     display: block;
     position: absolute;
     top: 0;
-    right: 40px;
+    right: 2px;
   }
 }
 /*
@@ -429,7 +429,7 @@ a:focus {
 @media (max-width: 767px) {
   .main-sidebar,
   .left-side {
-    padding-top: 100px;
+    padding-top: 50px;
   }
 }
 @media (max-width: 767px) {
@@ -721,7 +721,7 @@ a:focus {
 }
 @media (max-width: 768px) {
   .control-sidebar {
-    padding-top: 100px;
+    padding-top: 50px;
   }
 }
 .control-sidebar > .tab-content {

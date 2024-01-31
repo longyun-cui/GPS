@@ -13,8 +13,8 @@ class GPS_Menu extends Model
         'owner_active',
         'owner_id', 'creator_id', 'user_id', 'admin_id', 'belong_id', 'source_id', 'object_id', 'p_id', 'parent_id',
         'menu_id', 'item_id',
-        'name', 'title', 'subtitle', 'description', 'content', 'remark', 'custom', 'custom2', 'custom3',
-        'link_url', 'cover_pic', 'attachment_name', 'attachment_src', 'tag',
+        'name', 'title', 'subtitle', 'description', 'content', 'remark', 'tag', 'custom', 'custom2', 'custom3',
+        'link_url', 'cover_pic', 'attachment_name', 'attachment_src',
         'time_type', 'time_point', 'start_time', 'end_time',
         'visit_num', 'share_num', 'favor_num', 'comment_num',
         'published_at'
