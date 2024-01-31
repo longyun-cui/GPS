@@ -25,6 +25,11 @@ class GPSIndexController extends Controller
     {
         return $this->repo->root();
     }
+    // 导航
+    public function view_404()
+    {
+        return $this->repo->view_404();
+    }
 
     // 导航
     public function navigation()

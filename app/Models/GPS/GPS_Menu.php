@@ -3,13 +3,13 @@ namespace App\Models\GPS;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class GPS_Item extends Model
+class GPS_Menu extends Model
 {
     use SoftDeletes;
     //
-    protected $table = "gps_item";
+    protected $table = "gps_menu";
     protected $fillable = [
-        'active', 'status', 'category', 'type', 'sort', 'item_active', 'item_status', 'item_category', 'item_type',
+        'active', 'status', 'category', 'type', 'sort', 'menu_active', 'menu_status', 'menu_category', 'menu_type',
         'owner_active',
         'owner_id', 'creator_id', 'user_id', 'admin_id', 'belong_id', 'source_id', 'object_id', 'p_id', 'parent_id',
         'menu_id', 'item_id',
@@ -22,11 +22,11 @@ class GPS_Item extends Model
     protected $dateFormat = 'U';
 
     protected $dates = ['created_at','updated_at','deleted_at'];
-    public function getDates()
-    {
-        return array(); // 原形返回；
-//        return array('created_at','updated_at','deleted_at');
-    }
+//    public function getDates()
+//    {
+////        return array(); // 原形返回；
+//        return array('created_at','updated_at');
+//    }
 
 
     // 拥有者
@@ -56,10 +56,10 @@ class GPS_Item extends Model
     }
 
 
-    // 用户
-    function menu_er()
+    // 其他人的
+    function todo_list()
     {
-        return $this->belongsTo('App\Models\GPS\GPS_Menu','menu_id','id');
+        return $this->hasMany('App\Models\GPS\GPS_Item','menu_id','id');
     }
 
 

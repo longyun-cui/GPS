@@ -247,8 +247,8 @@ desired effect
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 {{--<script src="/AdminLTE/dist/js/pages/dashboard.js"></script>--}}
 {{--<script src="/AdminLTE/dist/js/pages/dashboard2.js"></script>--}}
-<script src="{{ asset('/resource/component/js/pages/dashboard.js') }}"></script>
-{{--<script src="{{ asset('/resource/component/js/pages/dashboard2.js') }s}"></script>--}}
+{{--<script src="{{ asset('/resource/component/js/pages/dashboard.js') }}"></script>--}}
+{{--<script src="{{ asset('/resource/component/js/pages/dashboard2.js') }s}"></scripst>--}}
 
 <!-- AdminLTE for demo purposes -->
 <script src="/AdminLTE/dist/js/demo.js"></script>

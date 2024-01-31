@@ -21,6 +21,11 @@
         });
 
 
+        $('.select2-box').select2({
+            theme: 'classic'
+        });
+
+
         $('.time_picker').datetimepicker({
             locale: moment.locale('zh-cn'),
             format: "YYYY-MM-DD HH:mm",
@@ -53,10 +58,15 @@
 
 
 
-
         $('.lightcase-image').lightcase({
             maxWidth: 9999,
             maxHeight: 9999
+        });
+
+
+        $(".file-multiple-images").fileinput({
+            allowedFileExtensions : [ 'jpg', 'jpeg', 'png', 'gif' ],
+            showUpload: false
         });
 
 

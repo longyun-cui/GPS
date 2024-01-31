@@ -5,10 +5,10 @@
 
         'info' => [
             'website' => '',
-            'website_name' => "GH' Wardrobe",
+            'website_name' => 'LY\'导航',
 
-            'name' => "GH' Wardrobe",
-            'short_name' => "GH' Wardrobe",
+            'name' => 'LY\'导航',
+            'short_name' => 'LY\'导航',
             'description' => '',
             'slogan' => '便宜又省心的商贸',
             'brand' => '',

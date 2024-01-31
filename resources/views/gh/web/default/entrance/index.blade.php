@@ -2,14 +2,14 @@
 
 
 @section('head_title')
-    {{ $title_text or '桂花的衣橱' }}
+    {{ $title_text or "GH' Wardrobe" }}
 @endsection
 
 
 
 
 @section('header','')
-@section('description'){{ $title_text or '首页' }} - GPS系统@endsection
+@section('description'){{ $title_text or '首页' }} - {{ config('gh.info.info.name') }}@endsection
 @section('breadcrumb')
 {{--    <li><a href="{{ url('/') }}"><i class="fa fa-home"></i>首页</a></li>--}}
 @endsection

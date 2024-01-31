@@ -75,18 +75,24 @@
 
 
 
-            <li class="header">业务管理</li>
+            <li class="header">事</li>
 
-            <li class="treeview {{ $menu_active_of_client_list_for_all or '' }}">
-                <a href="{{ url('/user/client-list-for-all')}}">
+            <li class="treeview {{ $menu_active_of_todo_menu_list or '' }}">
+                <a href="{{ url('/admin/item/todo-menu-list')}}">
                     <i class="fa fa-user text-green"></i>
-                    <span>客户列表</span>
+                    <span>待办事-目录</span>
+                </a>
+            </li>
+            <li class="treeview {{ $menu_active_of_todo_item_list or '' }}">
+                <a href="{{ url('/admin/item/todo-item-list')}}">
+                    <i class="fa fa-user text-green"></i>
+                    <span>待办事-内容</span>
                 </a>
             </li>
             <li class="treeview {{ $menu_active_of_car_list_for_all or '' }}">
-                <a href="{{ url('/item/car-list-for-all')}}">
+                <a href="{{ url('/admin/item/calendar')}}">
                     <i class="fa fa-truck text-green"></i>
-                    <span>车辆列表</span>
+                    <span>日程</span>
                 </a>
             </li>
 

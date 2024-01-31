@@ -21,7 +21,7 @@ class GPSAdminLoginMiddleware
         {
             if($type == "turn")
             {
-                return redirect('/login');
+                return redirect('/admin/login');
             }
             else
             {

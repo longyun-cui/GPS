@@ -65,17 +65,19 @@ class Kernel extends HttpKernel
         'login' => \App\Http\Middleware\LoginMiddleware::class,
         'login.turn' => \App\Http\Middleware\TurnToLoginMiddleware::class,
 
+
+        'gps.user.login' => \App\Http\Middleware\GPS\GPSUserLoginMiddleware::class,
         'gps.super.login' => \App\Http\Middleware\GPS\GPSSuperLoginMiddleware::class,
         'gps.admin.login' => \App\Http\Middleware\GPS\GPSAdminLoginMiddleware::class,
-        'gps.user.login' => \App\Http\Middleware\GPS\GPSUserLoginMiddleware::class,
         'gps.staff.login' => \App\Http\Middleware\GPS\GPSStaffLoginMiddleware::class,
 
 
         'gh.web.admin.login' => \App\Http\Middleware\GH\GHWebAdminLoginMiddleware::class,
 
-        'zy.super.login' => \App\Http\Middleware\ZYSuperLoginMiddleware::class,
-        'zy.admin.login' => \App\Http\Middleware\ZYAdminLoginMiddleware::class,
-        'zy.user.login' => \App\Http\Middleware\ZYUserLoginMiddleware::class,
-        'zy.staff.login' => \App\Http\Middleware\ZYStaffLoginMiddleware::class,
+
+        'zy.super.login' => \App\Http\Middleware\ZY\ZYSuperLoginMiddleware::class,
+        'zy.admin.login' => \App\Http\Middleware\ZY\ZYAdminLoginMiddleware::class,
+        'zy.user.login' => \App\Http\Middleware\ZY\ZYUserLoginMiddleware::class,
+        'zy.staff.login' => \App\Http\Middleware\ZY\ZYStaffLoginMiddleware::class,
     ];
 }

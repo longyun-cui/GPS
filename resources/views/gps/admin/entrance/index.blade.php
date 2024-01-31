@@ -20,122 +20,6 @@
     {{--待办事--}}
     <div class="row">
 
-        {{--待办事--}}
-        <section class="col-lg-6 connectedSortable ui-sortable">
-
-            <!-- TO DO List -->
-            <div class="box box-primary">
-                <div class="box-header">
-                    <i class="ion ion-clipboard"></i>
-
-                    <h3 class="box-title">To Do List</h3>
-
-                    <div class="box-tools pull-right">
-                        <ul class="pagination pagination-sm inline">
-                            <li><a href="#">&laquo;</a></li>
-                            <li><a href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">&raquo;</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- /.box-header -->
-                <div class="box-body">
-                    <ul class="todo-list">
-                        <li>
-                            <!-- drag handle -->
-                            <span class="handle">
-                                <i class="fa fa-ellipsis-v"></i>
-                                <i class="fa fa-ellipsis-v"></i>
-                              </span>
-                            <!-- checkbox -->
-
-                            <input type="checkbox" value="" class="minimal-red">
-                            <!-- todo text -->
-                            <span class="text">Design a nice theme</span>
-                            <!-- Emphasis label -->
-                            <small class="label label-danger"><i class="fa fa-clock-o"></i> 2 mins</small>
-                            <!-- General tools such as edit or delete-->
-                            <div class="tools">
-                                <i class="fa fa-edit"></i>
-                                <i class="fa fa-trash-o"></i>
-                            </div>
-                        </li>
-                        <li>
-                            <span class="handle">
-                                <i class="fa fa-ellipsis-v"></i>
-                                <i class="fa fa-ellipsis-v"></i>
-                            </span>
-                            <input type="checkbox" value="" class="minimal">
-                            <span class="text">Make the theme responsive</span>
-                            <small class="label label-info"><i class="fa fa-clock-o"></i> 4 hours</small>
-                            <div class="tools">
-                                <i class="fa fa-edit"></i>
-                                <i class="fa fa-trash-o"></i>
-                            </div>
-                        </li>
-                        <li>
-                            <span class="handle">
-                                <i class="fa fa-ellipsis-v"></i>
-                                <i class="fa fa-ellipsis-v"></i>
-                            </span>
-                            <input type="checkbox" value="" class="minimal">
-                            <span class="text">Let theme shine like a star</span>
-                            <small class="label label-warning"><i class="fa fa-clock-o"></i> 1 day</small>
-                            <div class="tools">
-                                <i class="fa fa-edit"></i>
-                                <i class="fa fa-trash-o"></i>
-                            </div>
-                        </li>
-                        <li>
-                            <span class="handle">
-                                <i class="fa fa-ellipsis-v"></i>
-                                <i class="fa fa-ellipsis-v"></i>
-                            </span>
-                            <input type="checkbox" value="" class="minimal">
-                            <span class="text">Let theme shine like a star</span>
-                            <small class="label label-success"><i class="fa fa-clock-o"></i> 3 days</small>
-                            <div class="tools">
-                                <i class="fa fa-edit"></i>
-                                <i class="fa fa-trash-o"></i>
-                            </div>
-                        </li>
-                        <li>
-                            <span class="handle">
-                                <i class="fa fa-ellipsis-v"></i>
-                                <i class="fa fa-ellipsis-v"></i>
-                            </span>
-                            <input type="checkbox" value="" class="minimal">
-                            <span class="text">Check your messages and notifications</span>
-                            <small class="label label-primary"><i class="fa fa-clock-o"></i> 1 week</small>
-                            <div class="tools">
-                                <i class="fa fa-edit"></i>
-                                <i class="fa fa-trash-o"></i>
-                            </div>
-                        </li>
-                        <li>
-                      <span class="handle">
-                        <i class="fa fa-ellipsis-v"></i>
-                        <i class="fa fa-ellipsis-v"></i>
-                      </span>
-                            <input type="checkbox" value="" class="minimal">
-                            <span class="text">Let theme shine like a star</span>
-                            <small class="label label-default"><i class="fa fa-clock-o"></i> 1 month</small>
-                            <div class="tools">
-                                <i class="fa fa-edit"></i>
-                                <i class="fa fa-trash-o"></i>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-                <!-- /.box-body -->
-                <div class="box-footer clearfix no-border">
-                    <button type="button" class="btn btn-default pull-right"><i class="fa fa-plus"></i> Add item</button>
-                </div>
-            </div>
-        </section>
-
         {{--年龄--}}
         <div class="col-xs-12 col-sm-6 col-md-3">
             <div class="box box-success box-solid">
@@ -188,15 +72,9 @@
             </div>
         </div>
 
-    </div>
-
-
-    {{--导航--}}
-    <div class="row">
-
-
+        {{--阿里云--}}
         <div class="col-xs-12 col-sm-6 col-md-3">
-            <div class="box box-success box-solid">
+            <div class="box box-info box-solid">
                 <div class="box-header with-border">
                     <h3 class="box-title comprehensive-month-title">服务器</h3>
                     <div class="box-tools pull-right">
@@ -237,8 +115,108 @@
             </div>
         </div>
 
+        {{--阿里云--}}
         <div class="col-xs-12 col-sm-6 col-md-3">
-            <div class="box box-success box-solid">
+            <div class="box box-info box-solid">
+                <div class="box-header with-border">
+                    <h3 class="box-title comprehensive-month-title">tools</h3>
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <ul class="nav nav-stacked">
+                        <li class="">
+                            <a target="_blank" href="https://beian.aliyun.com/order/index.htm">
+                                阿里备案 <span class="pull-right"><b class="badge bg-green">1</b></span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a target="_blank" href="https://netcn.console.aliyun.com/core/domain/list">
+                                阿里域名 <span class="pull-right"><b class="badge bg-orange">2</b></span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a target="_blank" href="https://dysms.console.aliyun.com/dysms.htm">
+                                阿里短信 <span class="pull-right"><b class="badge bg-aqua">3</b></span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a target="_blank" href="https://market.aliyun.com/developer">
+                                阿里云·开发者工 <span class="pull-right"><b class="badge bg-red">4</b></span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a target="_blank" href="https://qiye.aliyun.com/">
+                                阿里企业邮箱 <span class="pull-right"><b class="badge bg-purple">5</b></span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a target="_blank" href="http://mail.163.com/">
+                                网易邮箱 <span class="pull-right"><b class="badge bg-maroon">6</b></span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        {{--微信开发--}}
+        <div class="col-xs-12 col-sm-6 col-md-3">
+            <div class="box box-info box-solid">
+                <div class="box-header with-border">
+                    <h3 class="box-title comprehensive-month-title">微信开发</h3>
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <ul class="nav nav-stacked">
+                        <li class="">
+                            <a target="_blank" href="https://open.weixin.qq.com/">
+                                微信·开放平台 <span class="pull-right"><b class="badge bg-green">1</b></span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a target="_blank" href="https://mp.weixin.qq.com/">
+                                微信·公众平台 <span class="pull-right"><b class="badge bg-orange">2</b></span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a target="_blank" href="https://mp.weixin.qq.com/wiki?t=resource/res_main">
+                                微信·公众号·开发文档 <span class="pull-right"><b class="badge bg-aqua">3</b></span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a target="_blank" href="https://open.weixin.qq.com/cgi-bin/showdocument?action=dir_list">
+                                微信·开放平台·开发文档 <span class="pull-right"><b class="badge bg-red">4</b></span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a target="_blank" href="https://mp.weixin.qq.com/debug/wxadoc/dev/">
+                                微信·小程序·开发文档 <span class="pull-right"><b class="badge bg-purple">5</b></span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a target="_blank" href="https://exmail.qq.com/cgi-bin/loginpage">
+                                腾讯企业邮箱 <span class="pull-right"><b class="badge bg-maroon">6</b></span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    {{--导航--}}
+    <div class="row">
+
+        <div class="col-xs-12 col-sm-6 col-md-3">
+            <div class="box box-danger box-solid">
                 <div class="box-header with-border">
                     <h3 class="box-title comprehensive-month-title">LOOKWIT</h3>
                     <div class="box-tools pull-right">
@@ -274,7 +252,7 @@
         </div>
 
         <div class="col-xs-12 col-sm-6 col-md-3">
-            <div class="box box-success box-solid">
+            <div class="box box-danger box-solid">
                 <div class="box-header with-border">
                     <h3 class="box-title comprehensive-month-title">RUWEI</h3>
                     <div class="box-tools pull-right">
@@ -310,7 +288,7 @@
         </div>
 
         <div class="col-xs-12 col-sm-6 col-md-3">
-            <div class="box box-success box-solid">
+            <div class="box box-danger box-solid">
                 <div class="box-header with-border">
                     <h3 class="box-title comprehensive-month-title">K-ORG</h3>
                     <div class="box-tools pull-right">
@@ -338,6 +316,52 @@
                         <li class="">
                             <a target="_blank" href="javascript:void(0);">
                                 【local】 <span class="pull-right"><b class="badge bg-red">4</b></span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-6 col-md-3">
+            <div class="box box-danger box-solid">
+                <div class="box-header with-border">
+                    <h3 class="box-title comprehensive-month-title">tools</h3>
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <ul class="nav nav-stacked">
+                        <li class="">
+                            <a target="_blank" href="">
+                                1<span class="pull-right"><b class="badge bg-green">1</b></span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a target="_blank" href="">
+                                2<span class="pull-right"><b class="badge bg-orange">2</b></span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a target="_blank" href="">
+                                3<span class="pull-right"><b class="badge bg-aqua">3</b></span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a target="_blank" href="">
+                                4<span class="pull-right"><b class="badge bg-red">4</b></span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a target="_blank" href="">
+                                5<span class="pull-right"><b class="badge bg-purple">5</b></span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a target="_blank" href="">
+                                6<span class="pull-right"><b class="badge bg-maroon">6</b></span>
                             </a>
                         </li>
                     </ul>

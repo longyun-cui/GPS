@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Middleware;
+namespace App\Http\Middleware\ZY;
 
 use Closure;
 use Illuminate\Contracts\Auth\Guard;
 use Auth, Response;
 
-class ZYSuperLoginMiddleware
+class ZYStaffLoginMiddleware
 {
     protected $auth;
 
@@ -17,7 +17,7 @@ class ZYSuperLoginMiddleware
 
     public function handle($request, Closure $next)
     {
-        if(!Auth::guard('zy_super')->check()) // 未登录
+        if(!Auth::guard('zy_staff')->check()) // 未登录
         {
             return redirect('/login');
 
@@ -28,8 +28,15 @@ class ZYSuperLoginMiddleware
         }
         else
         {
-            $zy_super = Auth::guard('zy_super')->user();
-            view()->share('me_super', $zy_super);
+
+            $zy_staff = Auth::guard('zy_staff')->user();
+            // 判断用户是否被封禁
+            if($zy_staff->user_status != 1)
+            {
+                Auth::guard('zy_staff')->logout();
+                return redirect('/login');
+            }
+            view()->share('me_staff', $zy_staff);
         }
         return $next($request);
     }

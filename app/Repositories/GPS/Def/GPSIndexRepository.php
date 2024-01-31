@@ -48,6 +48,14 @@ class GPSIndexRepository {
     }
 
 
+    // 返回（后台）主页视图
+    public function view_404()
+    {
+        $view_blade = env('TEMPLATE_GPS_DEF').'entrance.errors.404';
+        return view($view_blade);
+    }
+
+
 
 
     // contact

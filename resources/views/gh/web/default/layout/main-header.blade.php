@@ -19,11 +19,11 @@
             <a href="{{ url('/') }}">
                 <span class="logo-big hidden-xs">
                     <img src="/custom/gh/images/GH_1.png" class="img-icon" alt="Image">
-                    <b class="hidden-xs">桂花的衣柜</b>
+                    <b class="hidden-xs">{{ config('gh.info.info.name') }}</b>
                 </span>
                 <span class="logo-big visible-xs">
                     <img src="/custom/gh/images/GH_1.png" class="img-icon" alt="Image">
-                    <b class="">桂花的衣柜</b>
+                    <b class="">{{ config('gh.info.info.name') }}</b>
                 </span>
             </a>
         </div>

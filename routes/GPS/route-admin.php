@@ -35,6 +35,31 @@ Route::group(['middleware' => ['gps.admin.login:turn']], function () {
 
 
 
+    // 【待办事】
+
+    // 【待办事-目录】创建 & 修改
+    Route::match(['get','post'], '/item/todo-menu-create', $controller.'@operate_admin_todo_menu_create');
+    Route::match(['get','post'], '/item/todo-menu-edit', $controller.'@operate_admin_todo_menu_edit');
+    // 【待办事-目录】列表
+    Route::match(['get','post'], '/item/todo-menu-list', $controller.'@view_admin_todo_menu_list');
+
+
+    // 【待办事-内容】Select2
+    Route::match(['get','post'], '/item/todo-select2-menu', $controller.'@operate_admin_todo_select2_menu');
+    // 【待办事-内容】创建 & 修改
+    Route::match(['get','post'], '/item/todo-item-create', $controller.'@operate_admin_todo_item_create');
+    Route::match(['get','post'], '/item/todo-item-edit', $controller.'@operate_admin_todo_item_edit');
+    // 【待办事-内容】列表
+    Route::match(['get','post'], '/item/todo-item-list', $controller.'@view_admin_todo_item_list');
+    // 【待办事-内容】完成
+    Route::match(['get','post'], '/item/todo-delete', $controller.'@operate_admin_todo_delete');
+    Route::match(['get','post'], '/item/todo-done', $controller.'@operate_admin_todo_done');
+    Route::match(['get','post'], '/item/todo-undone', $controller.'@operate_admin_todo_undone');
+
+
+
+
+
     /*
      * 用户-员工管理
      */

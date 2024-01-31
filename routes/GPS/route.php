@@ -10,6 +10,7 @@ Route::group(['namespace'=>'Def'], function () {
     $controller = "GPSIndexController";
 
     Route::get('/', $controller.'@root');
+    Route::get('/404', $controller.'@view_404');
 
 
 

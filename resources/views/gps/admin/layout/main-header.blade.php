@@ -2,11 +2,11 @@
 <header class="main-header">
 
     <!-- Logo -->
-    <a href="{{url('/')}}" class="logo hidden-xs">
+    <a href="{{url('/admin')}}" class="logo hidden-xs">
         <!-- mini logo for sidebar mini 50x50 pixels -->
-        <span class="logo-mini"><b>A</b></span>
+        <span class="logo-mini"><b>GPS</b></span>
         <!-- logo for regular state and mobile devices -->
-        <span class="logo-lg"><b>admin</b>stage</span>
+        <span class="logo-lg"><b>GPS</b>stage</span>
     </a>
 
 
@@ -48,15 +48,15 @@
                     <ul class="dropdown-menu">
 
                         @if(in_array($me->user_type,[0,1,9,11,19,21,22]))
-                        <li class="header">员工</li>
+                        <li class="header">待办事</li>
                         <li class="header">
-                            <a href="{{ url('/user/staff-create') }}">
-                                <i class="fa fa-plus text-red"></i> 添加员工
+                            <a href="{{ url('/admin/item/todo-menu-create') }}">
+                                <i class="fa fa-plus text-red"></i> 添加待办-目录
                             </a>
                         </li>
                         <li class="header">
-                            <a href="{{ url('/user/driver-create') }}">
-                                <i class="fa fa-plus text-red"></i> 添加驾驶员
+                            <a href="{{ url('/admin/item/todo-item-create') }}">
+                                <i class="fa fa-plus text-red"></i> 添加待办-内容
                             </a>
                         </li>
                         @endif
@@ -71,16 +71,6 @@
                         <li class="header">
                             <a href="{{ url('/item/car-create') }}">
                                 <i class="fa fa-plus text-green"></i> 添加车辆
-                            </a>
-                        </li>
-                        <li class="header">
-                            <a href="{{ url('/item/route-create') }}">
-                                <i class="fa fa-plus text-green"></i> 添加线路
-                            </a>
-                        </li>
-                        <li class="header">
-                            <a href="{{ url('/item/pricing-create') }}">
-                                <i class="fa fa-plus text-green"></i> 添加定价
                             </a>
                         </li>
                         @endif
@@ -258,7 +248,7 @@
                                 <a href="{{ url('/admin/my-account/my-profile-info-index') }}" class="btn btn-default btn-flat">个人资料</a>
                             </div>
                             <div class="pull-right">
-                                <a href="{{ url('/logout') }}" class="btn btn-default btn-flat">退出</a>
+                                <a href="{{ url('/admin/logout') }}" class="btn btn-default btn-flat">退出</a>
                             </div>
                         </li>
                     </ul>

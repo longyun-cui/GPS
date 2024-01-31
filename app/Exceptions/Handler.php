@@ -57,13 +57,32 @@ class Handler extends ExceptionHandler
         {
             if (!($request->ajax() || $request->wantsJson()))
             {
-                $request_str = request()->path();
-                if(strpos($request_str, "admin/") === 0)
+
+                $url_str = request()->url();
+                $path_str = request()->path();
+
+                if(strpos($url_str, env('DOMAIN_GPS_DEF')) === 0)
                 {
-                    return redirect('/admin/404');
+//                    dd($path_str);
+//                    return redirect('/admin/404');
 //                    return response()->view('admin.errors.404');
+
+                    if(strpos($path_str, "admin/") === 0)
+                    {
+//                        return response()->view('gps.admin.entrance.errors.404');
+                        return redirect('/admin/404');
+
+                    }
+                    else
+                    {
+//                        return response()->view('gps.default.entrance.errors.404');
+                        return redirect('/404');
+                    }
+
                 }
                 else return response()->view('frontend.errors.404');
+
+
             }
         }
 

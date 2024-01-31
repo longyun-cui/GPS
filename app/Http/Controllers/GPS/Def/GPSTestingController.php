@@ -136,7 +136,9 @@ class GPSTestingController extends Controller
         echo "url()->current() ---- ".url()->current()."<br>";
         echo "url()->previous() ---- ".url()->previous()."<br><br>";
 
+
         echo "request()->url() ---- ".request()->url()."<br>";
+        echo "request()->path() ---- ".request()->path()."<br>";
         echo "request()->getRequestUri() ---- ".request()->getRequestUri()."<br><br>";
 
         echo '$_SERVER["PHP_SELF"] ---- '.$_SERVER['PHP_SELF']."<br>";
