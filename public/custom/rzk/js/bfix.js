@@ -25,46 +25,40 @@ document.writeln('.buy_link { /*width:226px; height:50px;*/opacity:0.01; display
 document.writeln('</style>');
 
 document.writeln('<div class="com_bottom">');
-document.writeln('   <div class="com_main">');
-document.writeln('  <div class="com_l">');
-document.writeln('  <ul>');
+document.writeln('<div class="com_main">');
+document.writeln('<div class="com_l">');
+document.writeln('<ul>');
 
-document.writeln(' <li><img src="/templets/default/image/zx.gif" alt=""/></li>');
+document.writeln('<li><img src="/custom/rzk/images/zx.gif" alt=""/></li>');
 /*document.writeln('<li><a href="https://tb.53kf.com/code/client/2a488203ed30386607efbce1a3f976a0/1"><img src="image/index/mfdh.png" alt=""/></a></li>');
 document.writeln('<li><a href="https://tb.53kf.com/code/client/2a488203ed30386607efbce1a3f976a0/1"><img src="image/index/qqzx.png" alt=""/></a></li>');
 document.writeln('<li><a href="https://tb.53kf.com/code/client/2a488203ed30386607efbce1a3f976a0/1"><img src="image/index/wxzx.png" alt=""/></a></li>');*/
 
 document.writeln('<div class="clear"></div>');
-document.writeln('    </ul>');
-  
+document.writeln('</ul>');
 
+document.writeln('</div>');
 
-document.writeln('    </div>');
-
-document.writeln('    <div class="com_c">');
-document.writeln('   <div class="com_ctop">');
+document.writeln('<div class="com_c">');
+document.writeln('<div class="com_ctop">');
 /*document.writeln('   你离成功仅差一个电话，立即咨询');*/
 
 document.writeln('</div>');
 
 
-
-
-document.writeln('    <div class="com_r">');
+document.writeln('<div class="com_r">');
 document.writeln('<div style="padding: -1px 10px 4px 7px; text-align:center;">');
-               
-                document.writeln('<a style="margin-right: 39px;" class="buy_link" href="https://tb.53kf.com/code/client/2a488203ed30386607efbce1a3f976a0/1">百龄足在线咨询点击</a>');
-             document.writeln('  <a class="buy_link" href="https://tb.53kf.com/code/client/2a488203ed30386607efbce1a3f976a0/1">百龄足免费电话图片</a>');
-           document.writeln(' </div>');
-document.writeln('    <div class="com_ra">');
-document.writeln('   <img class="com_rab"  id="com_rab" src="/templets/default/image/index/top.png" alt=""/>');
-document.writeln('    </div>');
+document.writeln('<a style="margin-right: 39px;" class="buy_link" href="javascript:void(0);">瑞足康在线咨询点击</a>');
+document.writeln('<a class="buy_link" href="https://tb.53kf.com/code/client/2a488203ed30386607efbce1a3f976a0/1">瑞足康免费电话图片</a>');
+document.writeln('</div>');
+document.writeln('<div class="com_ra">');
+document.writeln('<img class="com_rab" id="com_rab" src="/templets/default/image/index/top.png" alt=""/>');
+document.writeln('</div>');
 
 
-document.writeln('    </div>');
-
-document.writeln('  </div>');
-document.writeln('  </div>');
+document.writeln('</div>');
+document.writeln('</div>');
+document.writeln('</div>');
 
 
 
