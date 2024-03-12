@@ -1145,7 +1145,7 @@ img.zoom-img {
 /* Announcement Styles*/
 #announcement-section {
   position: relative;
-  background: url("../images/announcement-bg.jpg") center no-repeat;
+  background: url("/common/images/bg-announcement.jpg") center no-repeat;
   padding: 70px 0;
 }
 #announcement-section:after {

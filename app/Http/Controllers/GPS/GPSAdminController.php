@@ -90,6 +90,13 @@ class GPSAdminController extends Controller
         return $this->repo->view_admin_404();
     }
 
+    // 返回主页视图
+    public function view_admin_style()
+    {
+//        dd(1);
+        return $this->repo->view_admin_style();
+    }
+
 
 
 

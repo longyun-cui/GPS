@@ -327,7 +327,7 @@
 /*
     banner
 */
-.banner-container { position:relative; width:100%; margin-top:64px; }
+.banner-container { position:relative; width:100%; margin-top:0; }
 .banner-slider-container { margin-top:30%; }
 .banner-slider-box { position:absolute; top:0; bottom:0; left:0; right:0; padding:0; overflow:hidden; }
 .slide.slick-slide img { width:100%; object-fit:cover; }
@@ -541,7 +541,7 @@
 
 
 @media (max-width: 767px) {
-    .module-container { padding:40px 0; }
+    .module-container { padding:16px 8px; }
     .module-header-container { margin-bottom:8px; }
     .module-title-row { margin-bottom:12px; line-height:24px; }
     .module-subtitle-row { font-size:16px; }

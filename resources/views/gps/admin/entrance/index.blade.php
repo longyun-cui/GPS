@@ -106,7 +106,12 @@
                         </li>
                         <li class="">
                             <a target="_blank" href="https://dc.console.aliyun.com/#/domain-list/all">
-                                【Domain】 <span class="pull-right"><b class="badge bg-purple">5</b></span>
+                                【域名Domain】 <span class="pull-right"><b class="badge bg-purple">5</b></span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a target="_blank" href="https://dysms.console.aliyun.com/overview">
+                                【短信dysms】 <span class="pull-right"><b class="badge bg-maroon">6</b></span>
                             </a>
                         </li>
 
@@ -138,7 +143,7 @@
                             </a>
                         </li>
                         <li class="">
-                            <a target="_blank" href="https://dysms.console.aliyun.com/dysms.htm">
+                            <a target="_blank" href="https://dysms.console.aliyun.com/overview">
                                 阿里短信 <span class="pull-right"><b class="badge bg-aqua">3</b></span>
                             </a>
                         </li>
@@ -215,6 +220,7 @@
     {{--导航--}}
     <div class="row">
 
+        {{--lookwit--}}
         <div class="col-xs-12 col-sm-6 col-md-3">
             <div class="box box-danger box-solid">
                 <div class="box-header with-border">
@@ -227,23 +233,23 @@
                 <div class="box-body">
                     <ul class="nav nav-stacked">
                         <li class="">
-                            <a target="_blank" href="javascript:void(0);">
-                                【local】 <span class="pull-right"><b class="badge bg-green">1</b></span>
+                            <a target="_blank" href="http://super.lookwit.com/admin">
+                                【on】SUPER <span class="pull-right"><b class="badge bg-green">1</b></span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a target="_blank" href="http://atom.lookwit.com/admin">
+                                【on】ATOM <span class="pull-right"><b class="badge bg-orange">2</b></span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a target="_blank" href="http://doc.lookwit.com/home">
+                                【on】DOC <span class="pull-right"><b class="badge bg-aqua">3</b></span>
                             </a>
                         </li>
                         <li class="">
                             <a target="_blank" href="javascript:void(0);">
-                                【local】 <span class="pull-right"><b class="badge bg-orange">2</b></span>
-                            </a>
-                        </li>
-                        <li class="">
-                            <a target="_blank" href="javascript:void(0);">
-                                【local】 <span class="pull-right"><b class="badge bg-aqua">3</b></span>
-                            </a>
-                        </li>
-                        <li class="">
-                            <a target="_blank" href="javascript:void(0);">
-                                【local】 <span class="pull-right"><b class="badge bg-red">4</b></span>
+                                【on】 <span class="pull-right"><b class="badge bg-red">4</b></span>
                             </a>
                         </li>
                     </ul>
@@ -251,6 +257,7 @@
             </div>
         </div>
 
+        {{--ruwei--}}
         <div class="col-xs-12 col-sm-6 col-md-3">
             <div class="box box-danger box-solid">
                 <div class="box-header with-border">
@@ -263,18 +270,18 @@
                 <div class="box-body">
                     <ul class="nav nav-stacked">
                         <li class="">
-                            <a target="_blank" href="javascript:void(0);">
-                                【local】 <span class="pull-right"><b class="badge bg-green">1</b></span>
+                            <a target="_blank" href="http://super.ruwei.com/admin">
+                                【local】SUPER <span class="pull-right"><b class="badge bg-green">1</b></span>
                             </a>
                         </li>
                         <li class="">
-                            <a target="_blank" href="javascript:void(0);">
-                                【local】 <span class="pull-right"><b class="badge bg-orange">2</b></span>
+                            <a target="_blank" href="http://atom.ruwei.com/admin">
+                                【local】ATOM <span class="pull-right"><b class="badge bg-orange">2</b></span>
                             </a>
                         </li>
                         <li class="">
-                            <a target="_blank" href="javascript:void(0);">
-                                【local】 <span class="pull-right"><b class="badge bg-aqua">3</b></span>
+                            <a target="_blank" href="http://doc.ruwei.com/home">
+                                【local】DOC <span class="pull-right"><b class="badge bg-aqua">3</b></span>
                             </a>
                         </li>
                         <li class="">
@@ -287,6 +294,7 @@
             </div>
         </div>
 
+        {{--K-ORG--}}
         <div class="col-xs-12 col-sm-6 col-md-3">
             <div class="box box-danger box-solid">
                 <div class="box-header with-border">
@@ -299,23 +307,23 @@
                 <div class="box-body">
                     <ul class="nav nav-stacked">
                         <li class="">
-                            <a target="_blank" href="javascript:void(0);">
-                                【local】 <span class="pull-right"><b class="badge bg-green">1</b></span>
+                            <a target="_blank" href="http://www.k-org.com/">
+                                【local】首页 <span class="pull-right"><b class="badge bg-green">1</b></span>
                             </a>
                         </li>
                         <li class="">
-                            <a target="_blank" href="javascript:void(0);">
-                                【local】 <span class="pull-right"><b class="badge bg-orange">2</b></span>
+                            <a target="_blank" href="http://super.k-org.com/admin">
+                                【local】SUPER <span class="pull-right"><b class="badge bg-orange">2</b></span>
                             </a>
                         </li>
                         <li class="">
-                            <a target="_blank" href="javascript:void(0);">
-                                【local】 <span class="pull-right"><b class="badge bg-aqua">3</b></span>
+                            <a target="_blank" href="http://www.k-org.cn/">
+                                【ON】首页 <span class="pull-right"><b class="badge bg-aqua">3</b></span>
                             </a>
                         </li>
                         <li class="">
-                            <a target="_blank" href="javascript:void(0);">
-                                【local】 <span class="pull-right"><b class="badge bg-red">4</b></span>
+                            <a target="_blank" href="http://super.k-org.cn/admin">
+                                【ON】super <span class="pull-right"><b class="badge bg-red">4</b></span>
                             </a>
                         </li>
                     </ul>
@@ -323,6 +331,7 @@
             </div>
         </div>
 
+        {{--微信开发--}}
         <div class="col-xs-12 col-sm-6 col-md-3">
             <div class="box box-danger box-solid">
                 <div class="box-header with-border">
@@ -425,7 +434,7 @@
                 <div class="box-body">
                     <ul class="nav nav-stacked">
                         <li class="">
-                            <a target="_blank" href="http://super.local-dongkai.com/user/user-list-for-all">
+                            <a target="_blank" href="http://super.local-dongkai.com/user/staff-list-for-all">
                                 【l】Super.员工列表 <span class="pull-right"><b class="badge bg-green">1</b></span>
                             </a>
                         </li>
@@ -440,7 +449,7 @@
                             </a>
                         </li>
                         <li class="">
-                            <a target="_blank" href="http://super.dk.chaos01.cn/user/user-list-for-all">
+                            <a target="_blank" href="http://super.dk.chaos01.cn/user/staff-list-for-all">
                                 【ON】Super.员工列表 <span class="pull-right"><b class="badge bg-aqua">3</b></span>
                             </a>
                         </li>
@@ -551,20 +560,44 @@
     </div>
 
 
+    {{--头像--}}
     <div class="row">
 
-        <div class="col-md-4">
+        {{--头像1--}}
+        <div class="col-md-3">
             <!-- Widget: user widget style 1 -->
             <div class="box box-widget widget-user-2">
                 <!-- Add the bg color to the header using any of the bg-* classes -->
-                <div class="widget-user-header bg-yellow">
+                <div class="widget-user-header bg-primary">
                     <div class="widget-user-image">
-                        <img class="img-circle" src="/AdminLTE/dist/img/user2-160x160.jpg" alt="User Avatar">
+                        <img class="img-circle" src="/AdminLTE/dist/img/user1-128x128.jpg" alt="User Avatar">
                     </div>
                     <!-- /.widget-user-image -->
                     <h3 class="widget-user-username">Nadia Carmichael</h3>
                     <h5 class="widget-user-desc">Lead Developer</h5>
                 </div>
+
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-xs-6 col-sm-6 border-right">
+                            <div class="description-block">
+                                <h5 class="description-header">3,200</h5>
+                                <span class="description-text">SALES</span>
+                            </div>
+                            <!-- /.description-block -->
+                        </div>
+                        <div class="col-xs-6 col-sm-6 border-right">
+                            <div class="description-block">
+                                <h5 class="description-header">13,000</h5>
+                                <span class="description-text">FOLLOWERS</span>
+                            </div>
+                            <!-- /.description-block -->
+                        </div>
+                    </div>
+                    <!-- /.row -->
+
+                </div>
+
                 <div class="box-footer no-padding">
                     <ul class="nav nav-stacked">
                         <li><a href="#">Projects <span class="pull-right badge bg-blue">31</span></a></li>
@@ -577,7 +610,8 @@
             <!-- /.widget-user -->
         </div>
 
-        <div class="col-md-4">
+        {{--头像2--}}
+        <div class="col-md-3">
             <!-- Widget: user widget style 1 -->
             <div class="box box-widget widget-user">
                 <!-- Add the bg color to the header using any of the bg-* classes -->
@@ -586,7 +620,7 @@
                     <h5 class="widget-user-desc">Founder &amp; CEO</h5>
                 </div>
                 <div class="widget-user-image">
-                    <img class="img-circle" src="/AdminLTE/dist/img/user1-128x128.jpg" alt="User Avatar">
+                    <img class="img-circle" src="/AdminLTE/dist/img/user2-160x160.jpg" alt="User Avatar">
                 </div>
                 <div class="box-footer">
                     <div class="row">
@@ -617,11 +651,49 @@
                     </div>
                     <!-- /.row -->
                 </div>
+                <div class="box-footer no-padding padding-bottom-8px">
+                    <ul class="nav nav-stacked">
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-user text-orange"></i>
+                                黄会长
+{{--                                <span class="pull-right badge bg-aqua">5</span>--}}
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-phone text-danger"></i>
+                                17721364771
+{{--                                <span class="pull-right badge bg-green">12</span>--}}
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <strong><i class="fa fa-map-marker margin-r-5"></i></strong>
+                                Projects Software Engineer Software Engineer 昆山市 陆家镇 南圩路 陈巷农贸市场3楼
+{{--                                <span class="pull-right badge bg-blue">31</span>--}}
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+
+                                <span class="pull-left margin-2px label label-danger">UI Design</span>
+                                <span class="pull-left margin-2px label label-success">Coding</span>
+                                <span class="pull-left margin-2px label label-info">Javascript</span>
+                                <span class="pull-left margin-2px label label-warning">PHP</span>
+                                <span class="pull-left margin-2px label label-primary">Node.js</span>
+
+{{--                                <span class="pull-right badge bg-red">842</span>--}}
+                            </a>
+                        </li>
+                    </ul>
+                </div>
             </div>
             <!-- /.widget-user -->
         </div>
 
-        <div class="col-md-4">
+        {{--头像2 有背景图像--}}
+        <div class="col-md-3">
             <!-- Widget: user widget style 1 -->
             <div class="box box-widget widget-user">
                 <!-- Add the bg color to the header using any of the bg-* classes -->
@@ -660,11 +732,27 @@
                         <!-- /.col -->
                     </div>
                     <!-- /.row -->
+
+                </div>
+
+                <div class="box-body">
+                    <ul class="list-group list-group-unbordered">
+                        <li class="list-group-item">
+                            <b>Followers</b> <a class="pull-right">1,322</a>
+                        </li>
+                        <li class="list-group-item">
+                            <b>Following</b> <a class="pull-right">543</a>
+                        </li>
+                        <li class="list-group-item">
+                            <b>Friends</b> <a class="pull-right">13,287</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
             <!-- /.widget-user -->
         </div>
 
+        {{--微信开发--}}
         <div class="col-md-3">
 
             <!-- Profile Image -->
@@ -694,6 +782,9 @@
             </div>
             <!-- /.box -->
 
+        </div>
+
+        <div class="col-md-3">
             <!-- About Me Box -->
             <div class="box box-primary">
                 <div class="box-header with-border">
@@ -734,6 +825,54 @@
                 <!-- /.box-body -->
             </div>
             <!-- /.box -->
+        </div>
+
+        <div class="col-xs-12 col-sm-6 col-md-3"><div class="box box-solid">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Labels</h3>
+
+                    <div class="box-tools">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="box-body no-padding">
+                    <ul class="nav nav-pills nav-stacked">
+                        <li><a href="#"><i class="fa fa-circle-o text-red"></i> Important</a></li>
+                        <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> Promotions</a></li>
+                        <li><a href="#"><i class="fa fa-circle-o text-light-blue"></i> Social</a></li>
+                    </ul>
+                </div>
+                <!-- /.box-body -->
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-3">
+            <div class="box box-solid box-primary-">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Folders</h3>
+
+                    <div class="box-tools">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="box-body no-padding">
+                    <ul class="nav nav-pills nav-stacked">
+                        <li class="active">
+                            <a href="#">
+                                <i class="fa fa-inbox"></i> Inbox
+                                <span class="label label-primary pull-right">12</span>
+                            </a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-envelope-o"></i> Sent</a></li>
+                        <li><a href="#"><i class="fa fa-file-text-o"></i> Drafts</a></li>
+                        <li><a href="#"><i class="fa fa-filter"></i> Junk <span class="label label-warning pull-right">65</span></a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-trash-o"></i> Trash</a></li>
+                    </ul>
+                </div>
+                <!-- /.box-body -->
+            </div>
         </div>
 
     </div>
@@ -880,7 +1019,11 @@
             </div>
         </div>
 
+
     </div>
+
+
+
 
     <a target="_blank" class="margin btn btn-xs bg-maroon" href="https://cloudconvert.com/">cloudconvert WebP转图片</a>
     <a target="_blank" class="margin btn btn-xs bg-maroon" href="http://isparta.github.io/">isparta WebP转图片</a>
@@ -963,8 +1106,6 @@
         </div>
 
     </div>
-
-
 
 
 

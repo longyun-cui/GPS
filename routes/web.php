@@ -39,6 +39,8 @@ Route::group(['prefix'=>'common'], function () {
 });
 
 
+
+
 /*
  * 超级管理员
  */
@@ -58,10 +60,13 @@ Route::group(['domain'=>'super.'.env('DOMAIN_ROOT'), 'namespace'=>'Super'], func
  * GPS
  */
 Route::group(['domain'=>'gps.'.env('DOMAIN_ROOT'), 'namespace'=>'GPS'], function () {
-    require(__DIR__ . '/GPS/route.php');
+    require(__DIR__ . '/GPS/gps-route.php');
 });
 Route::group(['domain'=>'gps.'.env('DOMAIN_ROOT'), 'prefix'=>'admin', 'namespace'=>'GPS'], function () {
-    require(__DIR__ . '/GPS/route-admin.php');
+    require(__DIR__ . '/GPS/gps-route-admin.php');
+});
+Route::group(['domain'=>'gps.'.env('DOMAIN_ROOT'), 'prefix'=>'dev', 'namespace'=>'GPS'], function () {
+    require(__DIR__ . '/GPS/gps-route-dev.php');
 });
 
 
@@ -100,6 +105,19 @@ Route::group(['domain'=>'gh.'.env('DOMAIN_ROOT'), 'namespace'=>'GH'], function (
 });
 Route::group(['domain'=>'http://local-guihua.com', 'namespace'=>'GH'], function () {
     require(__DIR__ . '/GH/gh-route-web.php');
+});
+
+
+
+
+/*
+ * RZK 瑞足康
+ */
+Route::group(['domain'=>'rzk.'.env('DOMAIN_ROOT'), 'namespace'=>'RZK'], function () {
+    require(__DIR__ . '/RZK/rzk-route-web.php');
+});
+Route::group(['domain'=>'http://local-rzk.com', 'namespace'=>'RZK'], function () {
+    require(__DIR__ . '/RZK/rzk-route-web.php');
 });
 
 

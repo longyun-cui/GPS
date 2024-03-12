@@ -80,6 +80,14 @@ return [
 
 
 
+        'rzk_web_admin' => [
+            'driver' => 'session',
+            'provider' => 'rzk_web_admins',
+        ],
+
+
+
+
         'zy_user' => [
             'driver' => 'session',
             'provider' => 'zy_users',
@@ -155,13 +163,20 @@ return [
 
 
 
+        'gh_web_users' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\GH\GH_User::class,
+        ],
         'gh_web_admins' => [
             'driver' => 'eloquent',
             'model' => App\Models\GH\GH_Admin::class,
         ],
-        'gh_web_users' => [
+
+
+
+        'rzk_web_admins' => [
             'driver' => 'eloquent',
-            'model' => App\Models\GH\GH_User::class,
+            'model' => App\Models\RZK\RZK_Admin::class,
         ],
 
 

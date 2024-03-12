@@ -74,6 +74,8 @@ class Kernel extends HttpKernel
 
         'gh.web.admin.login' => \App\Http\Middleware\GH\GHWebAdminLoginMiddleware::class,
 
+        'rzk.web.admin.login' => \App\Http\Middleware\RZK\RZKWebAdminLoginMiddleware::class,
+
 
         'zy.super.login' => \App\Http\Middleware\ZY\ZYSuperLoginMiddleware::class,
         'zy.admin.login' => \App\Http\Middleware\ZY\ZYAdminLoginMiddleware::class,

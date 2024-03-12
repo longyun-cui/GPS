@@ -1,4 +1,4 @@
-<section  class="module-container text-center bg-dark" id="announcement-section">
+<section  class="module-container text-center bg-dark bg-announcement">
     <div class="container full-container">
 
         <header class="module-row module-header-container text-center">

@@ -8,7 +8,7 @@
  * -----------
  */
     .content { padding:0 !important; }
-    .content-wrapper { padding-top:25px !important; }
+    .content-wrapper { padding-top:50px !important; }
     .img-icon {
         width: 24px;
         height: 24px;
@@ -235,6 +235,21 @@
     .skin-black .pull-right .dropdown-menu {
         left:auto;
         right:0;
+    }
+
+    .bg-announcement:before {
+        content: " ";
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        display: inline-block;
+        background: rgba(240, 163, 74, 0.7);
+    }
+    .bg-announcement {
+        position: relative;
+        background: url("/common/images/bg-announcement.jpg") center;
     }
 
 </style>

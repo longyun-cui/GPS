@@ -73,9 +73,6 @@ class GPSAdminRepository {
         $me = $this->me;
 //        dd($me->toArray());
 
-
-
-        $view_blade = env('TEMPLATE_GPS_ADMIN').'entrance.index';
         $view_blade = env('TEMPLATE_GPS_ADMIN').'entrance.index';
         return view($view_blade);
     }
@@ -86,6 +83,20 @@ class GPSAdminRepository {
     {
         $this->get_me();
         $view_blade = env('TEMPLATE_GPS_ADMIN').'entrance.errors.404';
+        return view($view_blade);
+    }
+
+
+
+
+    // 主页
+    public function view_admin_style()
+    {
+        $this->get_me();
+        $me = $this->me;
+//        dd($me->toArray());
+
+        $view_blade = env('TEMPLATE_GPS_ADMIN').'entrance.style';
         return view($view_blade);
     }
 

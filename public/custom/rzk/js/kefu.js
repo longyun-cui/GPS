@@ -1,0 +1,13 @@
+document.writeln('<div class="zx">');
+document.writeln(' <div class="zx_box">');
+document.writeln(' <img src="/image/index/zx.png" alt=""/>');
+document.writeln(' <div class="zx_bb">');
+document.writeln('<a href="/contact" target="_self"><div class="zx_a" style="border-top:none;"><img src="/image/index/zx_a.png" alt=""/>免费领取资料</div></a>');
+document.writeln('<a href="/contact" target="_self"><div class="zx_a"><img src="/image/index/zx_c.png" alt=""/>QQ在线咨询</div></a>');
+document.writeln('<a href="/contact" target="_self"><div class="zx_a"><img src="/image/index/zx_e.png" alt=""/>开店成本咨询</div></a>');
+document.writeln('<a href="/contact" target="_self"><div class="zx_a"><img src="/image/index/zx_d.png" alt=""/>代理优势咨询</div></a>');
+document.writeln('<a href="/contact" target="_self"><div class="zx_a"><img src="/image/index/zx_f.png" alt=""/>门店利润分析</div></a>');
+document.writeln('<a href="/contact" target="_self"><div class="zx_a"><img src="/image/index/zx_b.png" alt=""/>优惠活动咨询</div></a>');
+document.writeln('</div>');
+document.writeln(' </div>');
+document.writeln(' </div>');

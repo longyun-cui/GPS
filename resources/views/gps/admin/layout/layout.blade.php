@@ -89,7 +89,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     <link rel="stylesheet" href="{{ asset('/resource/component/css/lightcase-2.5.0.min.css') }}">
 
-    <link rel="stylesheet" href="{{ asset('/lib/css/select2-4.0.5.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('/resource/component/css/select2-4.0.5.min.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('/resource/component/plugins/layui-v2.6.8/css/layui.css') }}">
 
 
     <!-- Morris chart -->
@@ -136,7 +138,7 @@ desired effect
 |               | sidebar-mini                            |
 |---------------------------------------------------------|
 -->
-<body class="hold-transition skin-black sidebar-mini sidebar-collapse- layout-top-nav- fixed">
+<body class="hold-transition- skin-black sidebar-mini sidebar-collapse- layout-top-nav- fixed">
 <div class="wrapper">
 
 
@@ -238,6 +240,7 @@ desired effect
 <script src="{{ asset('/resource/component/js/echarts-5.4.1.min.js') }}"></script>
 
 <script src="{{ asset('/resource/component/js/layer-3.5.1/layer.js') }}"></script>
+<script src="{{ asset('/resource/component/plugins/layui-v2.6.8/layui.js') }}"></script>
 
 
 {{--<!-- AdminLTE App -->--}}

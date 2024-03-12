@@ -14,7 +14,7 @@
 {{--    <li><a href="{{ url('/') }}"><i class="fa fa-home"></i>首页</a></li>--}}
 @endsection
 @section('content')
-<div class="container" style="margin-top:50px; padding-bottom:50px;">
+<div class="full-container">
 
     <div class="banner-container main-slider-wrapper clearfix margin-bottom-16px">
         <div class="banner-slider-container">
@@ -41,7 +41,8 @@
         </div>
     </div>
 
-    <div class="box box-primary">
+
+    <div class="box box-primary _none-">
         <div class="box-header with-border">
             <h3 class="box-title">最新产品</h3>
 
@@ -51,23 +52,35 @@
                 <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
             </div>
         </div>
-        <!-- /.box-header -->
         <div class="box-body">
             <ul class="products-list product-list-in-box">
                 @include(env('TEMPLATE_GH_WEB_DEF').'component.product-list', ['item_list'=>$item_list])
             </ul>
         </div>
-        <!-- /.box-body -->
         <div class="box-footer text-center">
             <a href="javascript:void(0)" class="uppercase">View All Products</a>
         </div>
-        <!-- /.box-footer -->
     </div>
 
 
-    @include(env('TEMPLATE_GH_WEB_DEF').'component.product-list-2', ['item_list'=>$item_list])
+    <div class="module-container text-center bg-light margin-bottom-16px">
+        <div class="container full-container">
 
-    @include(env('TEMPLATE_GH_WEB_DEF').'section.qr_code')
+            <header class="module-row module-header-container text-center">
+                <div class="wow slideInLeft module-title-row title-with-double-line title-lg" style="visibility: visible; animation-name: slideInLeft;"><b>最新产品</b></div>
+                <div class="wow slideInRight module-subtitle-row title-sm" style="visibility: visible; animation-name: slideInRight;"></div>
+            </header>
+            @include(env('TEMPLATE_GH_WEB_DEF').'component.product-list-2', ['item_list'=>$item_list])
+        </div>
+    </div>
+
+
+    <div class="module-container text-center bg-dark margin-bottom-16px">
+        @include(env('TEMPLATE_GH_WEB_DEF').'section.qr_code')
+    </div>
+
+
+
 
 </div>
 @endsection

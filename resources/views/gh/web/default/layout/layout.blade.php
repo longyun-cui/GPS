@@ -110,6 +110,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
     <link rel="stylesheet" href="{{ asset('/resource/common/css/common.css') }}" media="all" />
+    <link rel="stylesheet" href="{{ asset('/resource/common/css/frontend.css') }}" media="all" />
     <link rel="stylesheet" href="{{ asset('/resource/common/css/theme.css') }}" media="all" />
     <link rel="stylesheet" href="{{ asset('/resource/common/css/AdminLTE/index.css') }}">
 
