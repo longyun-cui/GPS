@@ -9,10 +9,10 @@ Route::get('/', function () {
 $controller = "GPSAdminController";
 
 // 不存在的域名
-Route::fallback(function(){
-    dd('not exist !');
-//    return response()->view(env('TEMPLATE_K_SUPER_ADMIN').'errors.404');
-});
+//Route::fallback(function(){
+//    dd('not exist !');
+////    return response()->view(env('TEMPLATE_K_SUPER_ADMIN').'errors.404');
+//});
 
 
 Route::match(['get','post'], 'login', $controller.'@login');
