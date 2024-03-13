@@ -22,10 +22,10 @@ Route::group(['namespace'=>'Dev'], function() {
     Route::group(['prefix'=>'ui'], function() {
 
         // 不存在的域名
-        Route::fallback(function() {
-            dd('[gps-route-dev-ui] domain not exist!');
-            // return response()->view(env('TEMPLATE_GPS_DEV').'errors.404');
-        });
+//        Route::fallback(function() {
+//            dd('[gps-route-dev-ui] domain not exist!');
+//            // return response()->view(env('TEMPLATE_GPS_DEV').'errors.404');
+//        });
 
         $controller = "GPSDevUIController";
 
