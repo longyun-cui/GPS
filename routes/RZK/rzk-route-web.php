@@ -32,7 +32,7 @@ Route::group(['namespace' => 'WEB'], function () {
  */
 Route::group(['prefix' => 'admin', 'namespace' => 'WEB'], function () {
 
-    $controller = "RZKWEBAdminController";
+    $controller = "RZKWebAdminController";
 
 //    // 不存在的域名
 //    Route::fallback(function() {
