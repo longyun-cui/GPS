@@ -50,7 +50,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'WEB'], function () {
      */
     Route::group(['middleware' => ['rzk.web.admin.login:turn']], function () {
 
-        $controller = 'RZKWEBAdminController';
+        $controller = 'RZKWebAdminController';
 
 
         Route::post('/is_only_me', $controller.'@check_is_only_me');
