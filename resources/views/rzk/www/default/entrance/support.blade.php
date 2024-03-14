@@ -67,8 +67,8 @@
         <div class="content_box bgcolor4 ">
             <div class="erji_box">
                 <h2 class="colorzt tacenter h2bg">门店运营系统</h2>
-                <h4>围绕“人货场”三个关键因素，目的是为了提高客流量、 <br/>客单价、转化率等指标，精细化运作，目的形成运营闭环，提高门店业绩</h4>
-                <h3 class="tacenter">五个统一</h3>
+                <h4 class="margin2">围绕“人货场”三个关键因素，目的是为了提高客流量、 <br/>客单价、转化率等指标，精细化运作，目的形成运营闭环，提高门店业绩</h4>
+                <h3 class="tacenter margin2">五个统一</h3>
                 <div class="sup_ty">
                     <div class="sup_fa">形象 <br/>统一</div>
                     <div class="sup_fb">产品<br/>统一</div>

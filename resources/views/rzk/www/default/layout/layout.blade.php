@@ -41,35 +41,35 @@
         <a href="/"><img src="/custom/rzk/logo.jpg" style="float:left;height:100%;"></a>
         <div class="zydhu" id="menu">
             <ul id="nav">
-                <li class="mainlevel">
+                <li class="mainlevel {{ $menu_index_active or '' }}">
                     <a href="/">首页</a>
                 </li>
-                <li class="mainlevel" >
+                <li class="mainlevel {{ $menu_about_active or '' }}" >
                     <a href="/about">集团实力</a>
                 </li>
-                <li class="mainlevel">
+                <li class="mainlevel {{ $menu_join_us_active or '' }}">
                     <a href="/join_us">诚邀合作</a>
                 </li>
-                <li class="mainlevel">
+                <li class="mainlevel {{ $menu_support_active or '' }}">
                     <a href="/support">运营指导</a>
                 </li>
-                <li class="mainlevel">
+                <li class="mainlevel {{ $menu_product_active or '' }}">
                     <a href="/product">产品服务</a>
                 </li>
                 <!--  <li class="mainlevel">
                    <a href="/Index/cases/index.html">成功案例</a>
                  </li> -->
-                <li class="mainlevel">
+                <li class="mainlevel {{ $menu_industry_active or '' }}">
                     <a href="/industry">产业基地</a>
                 </li>
-                <li class="mainlevel" id="mainlevel_01"><a href="/news/index">新闻资讯</a>
+                <li class="mainlevel {{ $menu_news_active or '' }}" id="mainlevel_01"><a href="/news/index">新闻资讯</a>
                     <ul class="sub_nav_01">
                         <span class="Triangle_con"></span>
                         <li><a href="/news/index">公司新闻</a></li>
                         <li><a href="/news/industry">行业资讯</a></li>
                     </ul>
                 </li>
-                <li class="mainlevel">
+                <li class="mainlevel {{ $menu_contact_active or '' }}">
                     <a href="/contact">联系我们</a>
                 </li>
             </ul>

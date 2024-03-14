@@ -385,9 +385,9 @@
     font-size: 16px;
     line-height: 2.5;
 }
-.content_boxky li:hover{border-color:#0ba198; }
-.content_boxky li:hover .kya{color:#fff;background:#0ba198; }
-.kyb:hover{color:#fff;background:#0ba198;}
+.content_boxky li:hover{border-color:#0ba198;border-color:#903030; }
+.content_boxky li:hover .kya{color:#fff;background:#0ba198;background:#903030; }
+.kyb:hover{color:#fff;background:#0ba198;background:#c08020;}
 .content_box13 p{
     color:#fff;
     letter-spacing: 2px;
@@ -616,11 +616,13 @@
     margin: 0 auto;
     border:1px solid #4DBCBB;
     border:1px solid #d6ad9b;
+    border:1px solid #903030;
     border-top:none;
 }
 .common_top {
     background: #4DBCBB;
     background: #d6ad9b;
+    background: #903030;
     height:40px;
     padding: 8px 0;
     text-indent: 20px;
@@ -723,15 +725,15 @@
 }
 .sup_box1 li{width: 30%;margin: 0 1.5%;}
 .sup_ts{margin: 0 auto;text-align: center;}
-.sup_ts li{width: 120px;height:120px;background: #595856;color:#fff;border-radius: 50%;font-size: 20px;line-height: 1.5;padding-top: 27px;display: inline-block;margin: 20px;}
-.sup_ts li:hover{background: #0ba198;}
+.sup_ts li{width: 120px;height:120px;background: #595856;color:#fff;border-radius: 50%;font-size: 20px;line-height: 1.5;padding-top: 32px;display: inline-block;margin: 20px;}
+.sup_ts li:hover{background: #0ba198;background: #903030;}
 .sup_ty{margin: 20px auto;width: 920px;}
 .sup_ty div{width: 150px;height:128px;background-size: 100% 100%;display: inline-block;font-size: 26px;color:#fff;padding-top: 26px;}
 .sup_fa{background: url("../image/index/supfa.png") no-repeat center;margin: 0 40px;}
 .sup_fb{background: url("../image/index/supfb.png") no-repeat center;margin: 0 40px;}
 .sup_fc{background: url("../image/index/supfc.png") no-repeat center;margin: 0 40px;}
-.sup_fd{background: url("../image/index/supfd.png") no-repeat center;margin: -25px 40px;}
-.sup_fe{background: url("../image/index/supfe.png") no-repeat center;margin: -25px 40px;}
+.sup_fd{background: url("../image/index/supfd.png") no-repeat center;margin: -25px 40px 0;}
+.sup_fe{background: url("../image/index/supfe.png") no-repeat center;margin: -25px 40px 0;}
 
 .article_box{
     width: 100%;
@@ -943,6 +945,7 @@
 .bgcolor4{background: #ebebeb;}
 .colorzt{
     color:#0ba198 !important;
+    color:#903030 !important;
 }
 .colorf{
     color:#fff;

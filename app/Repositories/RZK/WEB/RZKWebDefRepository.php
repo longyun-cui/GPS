@@ -93,6 +93,7 @@ class RZKWebDefRepository {
         $return_data['index_join_us'] = $item_list['index_join_us'];
         $return_data['index_support'] = $item_list['index_support'];
 
+        $return_data['menu_index_active'] = 'active';
         $view_blade = env('TEMPLATE_RZK_WEB_DEF').'entrance.index';
         return view($view_blade)->with($return_data);
     }
@@ -113,6 +114,7 @@ class RZKWebDefRepository {
         $return_data['intro'] = $item_list['intro'][0];
         $return_data['team_list'] = $item_list['about_team'];
 
+        $return_data['menu_about_active'] = 'active';
         $view_blade = env('TEMPLATE_RZK_WEB_DEF').'entrance.about';
         return view($view_blade)->with($return_data);
     }
@@ -123,6 +125,7 @@ class RZKWebDefRepository {
         $item_list = RZK_Item::select('*')->where(['item_status'=>1])->orderBy('id','desc')->get();
         $return_data['item_list'] = $item_list;
 
+        $return_data['menu_join_us_active'] = 'active';
         $view_blade = env('TEMPLATE_RZK_WEB_DEF').'entrance.join_us';
         return view($view_blade)->with($return_data);
     }
@@ -147,6 +150,7 @@ class RZKWebDefRepository {
         $return_data['support_operation_flow_ing'] = $item_list['support_operation_flow_ing'];
         $return_data['support_operation_flow_after'] = $item_list['support_operation_flow_after'];
 
+        $return_data['menu_support_active'] = 'active';
         $view_blade = env('TEMPLATE_RZK_WEB_DEF').'entrance.support';
         return view($view_blade)->with($return_data);
     }
@@ -166,6 +170,7 @@ class RZKWebDefRepository {
 
         $return_data['product_service'] = $item_list['product_service'];
 
+        $return_data['menu_product_active'] = 'active';
         $view_blade = env('TEMPLATE_RZK_WEB_DEF').'entrance.product';
         return view($view_blade)->with($return_data);
     }
@@ -185,6 +190,7 @@ class RZKWebDefRepository {
 
         $return_data['industrial_base'] = $item_list['industrial_base'][0];
 
+        $return_data['menu_industry_active'] = 'active';
         $view_blade = env('TEMPLATE_RZK_WEB_DEF').'entrance.industry';
         return view($view_blade)->with($return_data);
     }
@@ -195,6 +201,7 @@ class RZKWebDefRepository {
         $item_list = RZK_Item::select('*')->where(['item_status'=>1])->orderBy('id','desc')->get();
         $return_data['item_list'] = $item_list;
 
+        $return_data['menu_news_active'] = 'active';
         $view_blade = env('TEMPLATE_RZK_WEB_DEF').'entrance.news';
         return view($view_blade)->with($return_data);
     }
@@ -205,6 +212,7 @@ class RZKWebDefRepository {
         $item_list = RZK_Item::select('*')->where(['item_status'=>1])->orderBy('id','desc')->get();
         $return_data['item_list'] = $item_list;
 
+        $return_data['menu_news_active'] = 'active';
         $view_blade = env('TEMPLATE_RZK_WEB_DEF').'entrance.news';
         return view($view_blade)->with($return_data);
     }
@@ -215,6 +223,7 @@ class RZKWebDefRepository {
         $item_list = RZK_Item::select('*')->where(['item_status'=>1])->orderBy('id','desc')->get();
         $return_data['item_list'] = $item_list;
 
+        $return_data['menu_news_active'] = 'active';
         $view_blade = env('TEMPLATE_RZK_WEB_DEF').'entrance.news-detail';
         return view($view_blade)->with($return_data);
     }
@@ -225,6 +234,7 @@ class RZKWebDefRepository {
         $item_list = RZK_Item::select('*')->where(['item_status'=>1])->orderBy('id','desc')->get();
         $return_data['item_list'] = $item_list;
 
+        $return_data['menu_contact_active'] = 'active';
         $view_blade = env('TEMPLATE_RZK_WEB_DEF').'entrance.contact';
         return view($view_blade)->with($return_data);
     }
@@ -237,6 +247,7 @@ class RZKWebDefRepository {
 
         $return_data['item'] = $item;
 
+        $return_data['menu__active'] = 'active';
         $view_blade = env('TEMPLATE_RZK_WEB_DEF').'entrance.product-detail';
         return view($view_blade)->with($return_data);
     }
