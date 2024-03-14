@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
 
-    <link rel="shortcut icon" type="image/ico" href="{{ env('FAVICON_GH1') }}">
-    <link rel="shortcut icon" type="image/png" href="{{ env('FAVICON_GH1') }}">
-    <link rel="icon" sizes="16x16 32x32 64x64" href="{{ env('FAVICON_GH1') }}">
-    <link rel="icon" type="image/png" sizes="196x196" href="{{ env('FAVICON_GH1') }}">
+    <link rel="shortcut icon" type="image/ico" href="{{ env('FAVICON_RZK') }}">
+    <link rel="shortcut icon" type="image/png" href="{{ env('FAVICON_RZK') }}">
+    <link rel="icon" sizes="16x16 32x32 64x64" href="{{ env('FAVICON_RZK') }}">
+    <link rel="icon" type="image/png" sizes="196x196" href="{{ env('FAVICON_RZK') }}">
 
     <title>@yield('head_title')</title>
     <meta name="title" content="@yield('meta_title')" />
@@ -38,7 +38,7 @@
 <div class="zydhb" id="top">
     <div class="top"></div>
     <div class="w zydh">
-        <a href="index.html"><img src="/custom/rzk/images/logo.png" style="float:left;"></a>
+        <a href="/"><img src="/custom/rzk/logo.jpg" style="float:left;height:100%;"></a>
         <div class="zydhu" id="menu">
             <ul id="nav">
                 <li class="mainlevel">
@@ -94,7 +94,7 @@
 
 <!--手机导航 start-->
 <header class="header" id="top">
-    <a href="index.html" class="logo"><img src="/custom/rzk/images/logo.png" alt="瑞足康"></a>
+    <a href="/" class="logo"><img src="/custom/rzk/logo.jpg" alt="瑞足康"></a>
     <div id="dl-menu" class="dl-menuwrapper">
         <button id="dl-menu-button">Open Menu</button>
         <ul class="dl-menu">
@@ -254,11 +254,12 @@
             <div class="footd2d1">
                 <div class="footd2d1d">
                     <div class="footd2d1d2">全国客户服务热线：</div>
-                    <div class="footd2d1d1">400-622-0656</div>
+                    <div class="footd2d1d1">{{ config('rzk.info.info.company_400') }}</div>
                 </div>
-                <p>上海运营总部：上海青浦区汇龙路695号C栋8楼(叶迪大厦)<br>
-                    华东运营中心：江苏省昆山市花桥镇绿地大道231弄2号楼<br>
-                    西南运营中心：成都市高新区环球中心E1-1212
+                <p>
+                    四川总部：{{ config('rzk.info.info.company_address') }}<br>
+{{--                    华东运营中心：江苏省昆山市花桥镇绿地大道231弄2号楼<br>--}}
+{{--                    西南运营中心：成都市高新区环球中心E1-1212--}}
                 </p>
             </div>
             <div class="footd2d2">
@@ -291,8 +292,9 @@
             </div>
         </div>
         <div class="footd3">
-            ©2018 www.blz9.cn 上海瑞足康健康管理有限公司
-            <a href="https://beian.miit.gov.cn/" target="_self">沪ICP备18035853号-3</a> 站长统计 投资有风险，加盟需谨慎！
+            ©2000 www.rzk888.cn {{ config('rzk.info.info.company_name') }}
+            <a href="https://beian.miit.gov.cn/" target="_self">沪ICP备18035853号-3</a>
+{{--            站长统计 投资有风险，加盟需谨慎！--}}
         </div>
     </div>
 </div>

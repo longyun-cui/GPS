@@ -388,7 +388,7 @@ img:hover {
 @charset "UTF-8";
 /* header */
 .header{position:relative;height:50px;background:#fff;}
-.header .logo{display:block;width:130px;height:30px;padding:10px 0 0 10px;}
+.header .logo{display:block;width:60px;height:30px;padding:10px 0 0 10px;}
 .header .logo img{display:block;width:100%;}
 .header .search{position:absolute;top:0;right:35px;z-index:1000;display:block;width:50px;height:50px;text-indent:-9999em;background:url("/custom/rzk/images/icon-search.png.html") no-repeat center center;background-size:40%;}
 .header .search:hover{background-color:#0067d2;}
@@ -1772,7 +1772,7 @@ All this is done for any sub-level being entered.
 	position: relative;
     width: 100%;
     height: 790px;
-    background: url("/custom/rzk/images/bg4.png");
+    background: url("/custom/rzk/images/bg7.jpg");
     background-repeat: no-repeat;
     background-size: 100% 100%;
     padding-top: 80px;

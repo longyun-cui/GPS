@@ -13,9 +13,9 @@
 <!--banner start-->
 <div class="banner banner1" id="banner" >
 
-    <a href="index.html#" class="d1" style="background:url('/custom/rzk/images/banner2.jpg') center no-repeat;background-size:100% 100%;"></a>
-    <a href="index.html#" class="d1" style="background:url('/custom/rzk/images/banner3.jpg') center no-repeat;background-size:100% 100%;"></a>
-    <a href="index.html#" class="d1" style="background:url('/custom/rzk/images/banner.jpg') center no-repeat;background-size:100% 100%;"></a>
+    <a href="/" class="d1" style="background:url('/custom/rzk/images/banner4.jpg') center no-repeat;background-size:100% 100%;"></a>
+    <a href="/" class="d1" style="background:url('/custom/rzk/images/banner5.jpg') center no-repeat;background-size:100% 100%;"></a>
+    <a href="/" class="d1" style="background:url('/custom/rzk/images/banner6.jpg') center no-repeat;background-size:100% 100%;"></a>
 
     <div class="d2" id="banner_id">
         <ul>
@@ -97,28 +97,28 @@
                 <ul class="q clearfix">
                     <li class="li-1">
                         <b>
-                            <i id="productNumber_1" data-sum="300">10</i>
+                            <i id="productNumber_1" data-sum="280">10</i>
                             <sup>+</sup>
                         </b>
                         <p>覆盖城市</p>
                     </li>
                     <li class="li-2">
                         <b>
-                            <i id="productNumber_2" data-sum="3000">100</i>
+                            <i id="productNumber_2" data-sum="3500">100</i>
                             <sup>+</sup>
                         </b>
                         <p>品牌门店</p>
                     </li>
                     <li class="li-3">
                         <b>
-                            <i id="productNumber_3" data-sum="10000">1000</i>
+                            <i id="productNumber_3" data-sum="13000">1000</i>
                             <sup>+</sup>
                         </b>
                         <p>就业人数</p>
                     </li>
                     <li class="li-4">
                         <b>
-                            <i id="productNumber_4" data-sum="6500">1500</i>
+                            <i id="productNumber_4" data-sum="8000">1500</i>
                             <sup>万</sup>
                         </b>
                         <p>服务人次</p>
@@ -136,7 +136,7 @@
         </div>
         <div class="indexsp">
             <div class="indexspl">
-                <video src="http://www.blz9.com/blz.mp4" poster="/custom/rzk/images/p30.jpg" controls="controls">your browser does not support the video tag</video>
+                <video src="http://www.blz9.com/blz.mp4" poster="/custom/rzk/images/p39.jpg" controls="controls">your browser does not support the video tag</video>
             </div>
             <div class="indexspr">
                 <div class="sprd">
@@ -162,21 +162,47 @@
         <div class="d2t">产业联动-品牌实力保障</div>
         <div class="d2s"><div>瑞足康</div><div class="d2sz">4</div><div>大基地  + </div><div class="d2sz">3</div><div>大运营中心</div></div>
         <div class="d2p">
+
             <div class="d2p1">
-                <img src="/custom/rzk/images/p1.png" />
-                <img src="/custom/rzk/images/p2.png" />
-                <img src="/custom/rzk/images/p3.png" />
-                <img src="/custom/rzk/images/p4.png" />
+            @foreach($index_service as $item)
+            @if($loop->index < 4)
+                <img src="{{ url(env('DOMAIN_CDN').'/'.$item->cover_pic) }}" />
+            @endif
+            @endforeach
             </div>
+
             <div class="d2p2">
                 <div class="d2p21">
-                    <img src="/custom/rzk/images/p5.png" />
+                @foreach($index_service as $item)
+                @if($loop->index == 4)
+                    <img src="{{ url(env('DOMAIN_CDN').'/'.$item->cover_pic) }}" />
+                @endif
+                @endforeach
                 </div>
+
                 <div class="d2p22">
-                    <img src="/custom/rzk/images/p6.png" />
-                    <img src="/custom/rzk/images/p7.png" />
+                @foreach($index_service as $item)
+                @if($loop->index > 4 && $loop->index < 7)
+                    <img src="{{ url(env('DOMAIN_CDN').'/'.$item->cover_pic) }}" />
+                @endif
+                @endforeach
                 </div>
             </div>
+{{--            <div class="d2p1">--}}
+{{--                <img src="/custom/rzk/images/p1.png" />--}}
+{{--                <img src="/custom/rzk/images/p2.png" />--}}
+{{--                <img src="/custom/rzk/images/p3.png" />--}}
+{{--                <img src="/custom/rzk/images/p4.png" />--}}
+{{--            </div>--}}
+{{--            <div class="d2p2">--}}
+{{--                <div class="d2p21">--}}
+{{--                    <img src="/custom/rzk/images/p5.png" />--}}
+{{--                </div>--}}
+{{--                <div class="d2p22">--}}
+{{--                    <img src="/custom/rzk/images/p6.png" />--}}
+{{--                    <img src="/custom/rzk/images/p7.png" />--}}
+{{--                </div>--}}
+{{--            </div>--}}
         </div>
     </div>
 </div>
@@ -187,110 +213,22 @@
         <div class="d2t" style="color: #fff;">多元项目-全面覆盖社区养生市场</div>
         <div class="d2s"><div>瑞足康</div><div class="d2sz">8</div><div>大主题养生服务</div></div>
         <div class="d3s">
+            @foreach($index_service as $item)
             <div class="box">
-                <img src="/custom/rzk/images/p8.png">
+                <img src="{{ url(env('DOMAIN_CDN').'/'.$item->cover_pic) }}">
                 <ul class="icon">
-                    <li><a href="index.html#">足浴足疗</a></li>
+                    <li><a href="javascript:void(0);">{{ $item->title or 'TITLE' }}</a></li>
                     <!--li><a href="#"><i class="fa fa-search"></i></a></li-->
                     <!--li><a href="#"><i class="fa fa-link"></i></a></li-->
                 </ul>
                 <div class="box-content">
                     <!--h3 class="title">Kristiana</h3-->
-                    <span class="post">采用中国传统医术和刀法相结合<br>
-            传承中药配方修护各种足部问题</span>
+                    <span class="post">
+                        {{ $item->description or 'description' }}
+                    </span>
                 </div>
             </div>
-            <div class="box">
-                <img src="/custom/rzk/images/p9.png">
-                <ul class="icon">
-                    <li><a href="index.html#">足部修复</a></li>
-                    <!--li><a href="#"><i class="fa fa-search"></i></a></li-->
-                    <!--li><a href="#"><i class="fa fa-link"></i></a></li-->
-                </ul>
-                <div class="box-content">
-                    <!--h3 class="title">Kristiana</h3-->
-                    <span class="post">采用中国传统医术和刀法相结合<br>
-            传承中药配方修护各种足部问题</span>
-                </div>
-            </div>
-            <div class="box">
-                <img src="/custom/rzk/images/p10.png">
-                <ul class="icon">
-                    <li><a href="index.html#">中药熏蒸</a></li>
-                    <!--li><a href="#"><i class="fa fa-search"></i></a></li-->
-                    <!--li><a href="#"><i class="fa fa-link"></i></a></li-->
-                </ul>
-                <div class="box-content">
-                    <!--h3 class="title">Kristiana</h3-->
-                    <span class="post">蒸汽与皮肤接触，使毛孔扩张<br>
-            排除毒素 促进血液循环</span>
-                </div>
-            </div>
-            <div class="box">
-                <img src="/custom/rzk/images/p11.png">
-                <ul class="icon">
-                    <li><a href="index.html#">经典艾灸</a></li>
-                    <!--li><a href="#"><i class="fa fa-search"></i></a></li-->
-                    <!--li><a href="#"><i class="fa fa-link"></i></a></li-->
-                </ul>
-                <div class="box-content">
-                    <!--h3 class="title">Kristiana</h3-->
-                    <span class="post">特艾条热刺激穴位及特定部位<br>
-            经气活力，经脉通畅，理疗防病</span>
-                </div>
-            </div>
-            <div class="box">
-                <img src="/custom/rzk/images/p12.png">
-                <ul class="icon">
-                    <li><a href="index.html#">深度理疗</a></li>
-                    <!--li><a href="#"><i class="fa fa-search"></i></a></li-->
-                    <!--li><a href="#"><i class="fa fa-link"></i></a></li-->
-                </ul>
-                <div class="box-content">
-                    <!--h3 class="title">Kristiana</h3-->
-                    <span class="post">颈肩调理、肠胃调理、腰腿疼痛<br>
-            三高调理、静脉曲张等深度理疗</span>
-                </div>
-            </div>
-            <div class="box">
-                <img src="/custom/rzk/images/p13.png">
-                <ul class="icon">
-                    <li><a href="index.html#">古法采耳</a></li>
-                    <!--li><a href="#"><i class="fa fa-search"></i></a></li-->
-                    <!--li><a href="#"><i class="fa fa-link"></i></a></li-->
-                </ul>
-                <div class="box-content">
-                    <!--h3 class="title">Kristiana</h3-->
-                    <span class="post">专业的工具，专业的采耳手法<br>
-            带给人们独特的体验</span>
-                </div>
-            </div>
-            <div class="box">
-                <img src="/custom/rzk/images/p14.png">
-                <ul class="icon">
-                    <li><a href="index.html#">特色头疗</a></li>
-                    <!--li><a href="#"><i class="fa fa-search"></i></a></li-->
-                    <!--li><a href="#"><i class="fa fa-link"></i></a></li-->
-                </ul>
-                <div class="box-content">
-                    <!--h3 class="title">Kristiana</h3-->
-                    <span class="post">专业头疗手法促进人体阳气上升<br>
-            从而疏经通络，活血养神</span>
-                </div>
-            </div>
-            <div class="box">
-                <img src="/custom/rzk/images/p15.png">
-                <ul class="icon">
-                    <li><a href="index.html#">科技养生</a></li>
-                    <!--li><a href="#"><i class="fa fa-search"></i></a></li-->
-                    <!--li><a href="#"><i class="fa fa-link"></i></a></li-->
-                </ul>
-                <div class="box-content">
-                    <!--h3 class="title">Kristiana</h3-->
-                    <span class="post">新养生科技融入传统养生门店<br>
-            更精准高效的科学养生疗法</span>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </div>
@@ -302,58 +240,21 @@
         <div class="d4s"><div>瑞足康立足大健康行业</div><div class="d4sz">21</div><div>载，以专业铸就品牌</div></div>
         <div class="d4d">
             <ul>
+                @foreach($index_join_us as $item)
                 <li>
-                    <!--div class="area-box">
-                      <img src="images/p161.png" />
-                      <span class="pulse delay-10"></span>
-                      <span class="pulse delay-09"></span>
-                      <span class="pulse delay-08"></span>
-                    </div-->
-                    <img src="/custom/rzk/images/p16.png" />
+{{--                    <div class="area-box">--}}
+{{--                        <img src="images/p161.png" />--}}
+{{--                        <span class="pulse delay-10"></span>--}}
+{{--                        <span class="pulse delay-09"></span>--}}
+{{--                        <span class="pulse delay-08"></span>--}}
+{{--                    </div>--}}
+                    <img src="{{ url(env('DOMAIN_CDN').'/'.$item->cover_pic) }}" />
                     <div class="d4dd">
-                        <p class="d4ddp1">正规品牌</p>
-                        <p class="d4ddp2">商务部特许经营备案品牌<br>全国超两千家品牌门店<br>实力品牌更靠谱！</p>
+                        <p class="d4ddp1">{{ $item->title or 'TITLE' }}</p>
+                        <p class="d4ddp2">{{ $item->description or 'description' }}</p>
                     </div>
                 </li>
-                <li>
-                    <!--div class="area-box">
-                      <img src="images/p171.png" />
-                      <span class="pulse delay-10"></span>
-                      <span class="pulse delay-09"></span>
-                      <span class="pulse delay-08"></span>
-                    </div-->
-                    <img src="/custom/rzk/images/p17.png" />
-                    <div class="d4dd">
-                        <p class="d4ddp1">无忧创业</p>
-                        <p class="d4ddp2">360°全方位全流程合作帮扶<br>帮您实现成功开店<br>无忧创业！</p>
-                    </div>
-                </li>
-                <li>
-                    <!--div class="area-box">
-                      <img src="images/p181.png" />
-                      <span class="pulse delay-10"></span>
-                      <span class="pulse delay-09"></span>
-                      <span class="pulse delay-08"></span>
-                    </div-->
-                    <img src="/custom/rzk/images/p18.png" />
-                    <div class="d4dd">
-                        <p class="d4ddp1">项目齐全</p>
-                        <p class="d4ddp2">八大主题数十款健康养生项目<br>全面覆盖所有消费人群<br>门店生意更火爆！</p>
-                    </div>
-                </li>
-                <li>
-                    <!--div class="area-box">
-                      <img src="images/p191.png" />
-                      <span class="pulse delay-10"></span>
-                      <span class="pulse delay-09"></span>
-                      <span class="pulse delay-08"></span>
-                    </div-->
-                    <img src="/custom/rzk/images/p19.png" />
-                    <div class="d4dd">
-                        <p class="d4ddp1">免费培训</p>
-                        <p class="d4ddp2">自有品牌商学院培训基地<br>提供免费全能型人才培训<br>助力门店可持续发展！</p>
-                    </div>
-                </li>
+                @endforeach
             </ul>
         </div>
     </div>
@@ -386,7 +287,7 @@
     </div>
 </div>
 <div class="mindexd5bg">
-    <img src="/custom/rzk/images/m1.png" alt="" />
+    <img src="/custom/rzk/images/m1.jpg" alt="" />
 </div>
 
 {{--全程帮扶--}}
@@ -399,21 +300,36 @@
             <div class="d6d2">
                 <div class="d6d21">
                     <ul>
-                        <li><img src="/custom/rzk/images/p20.png" /></li>
-                        <li><img src="/custom/rzk/images/p21.png" /></li>
-                        <li><img src="/custom/rzk/images/p22.png" /></li>
-                        <li><img src="/custom/rzk/images/p23.png" /></li>
+                        @foreach($index_support as $item)
+                            @if($loop->index < 4)
+                                <li><img src="{{ url(env('DOMAIN_CDN').'/'.$item->cover_pic) }}" /></li>
+                            @endif
+                        @endforeach
+{{--                        <li><img src="/custom/rzk/images/p20.png" /></li>--}}
+{{--                        <li><img src="/custom/rzk/images/p21.png" /></li>--}}
+{{--                        <li><img src="/custom/rzk/images/p22.png" /></li>--}}
+{{--                        <li><img src="/custom/rzk/images/p23.png" /></li>--}}
                     </ul>
                 </div>
                 <div class="d6d22">
-                    <img src="/custom/rzk/images/p24.png" />
+                    @foreach($index_support as $item)
+                        @if($loop->index == 4)
+                            <img src="{{ url(env('DOMAIN_CDN').'/'.$item->cover_pic) }}" />
+                        @endif
+                    @endforeach
+{{--                    <img src="/custom/rzk/images/p24.png" />--}}
                 </div>
                 <div class="d6d23">
                     <ul>
-                        <li><img src="/custom/rzk/images/p25.png" /></li>
-                        <li><img src="/custom/rzk/images/p26.png" /></li>
-                        <li><img src="/custom/rzk/images/p27.png" /></li>
-                        <li><img src="/custom/rzk/images/p28.png" /></li>
+                        @foreach($index_support as $item)
+                            @if($loop->index > 4 && $loop->index < 9)
+                                <li><img src="{{ url(env('DOMAIN_CDN').'/'.$item->cover_pic) }}" /></li>
+                            @endif
+                        @endforeach
+{{--                        <li><img src="/custom/rzk/images/p25.png" /></li>--}}
+{{--                        <li><img src="/custom/rzk/images/p26.png" /></li>--}}
+{{--                        <li><img src="/custom/rzk/images/p27.png" /></li>--}}
+{{--                        <li><img src="/custom/rzk/images/p28.png" /></li>--}}
                     </ul>
                 </div>
             </div>
@@ -427,13 +343,13 @@
         <div class="d2t" style="color: #fff;">百城千店-成功模式，轻松复制</div>
         <div class="d7d1">瑞足康3000+门店遍布全国为中国大健康事业腾飞助力</div>
         <div class="d7d">
-            <img src="/custom/rzk/images/p29.png" alt="瑞足康">
+            <img src="/custom/rzk/images/p29.jpg" alt="瑞足康">
         </div>
         <div class="d7s"><div>我们帮助了众多人创富成功 ，他们成功了，你同样也可以</div></div>
     </div>
 </div>
 <div class="mindexd7bg">
-    <img src="/custom/rzk/images/m2.png" alt="" />
+    <img src="/custom/rzk/images/m2.jpg" alt="" />
 </div>
 
 
@@ -452,7 +368,7 @@
                 <ul>
                     <li>
                         <a href="/custom/rzk/newsdetail/100.html">
-                            <img src="/custom/rzk/uploads/20221126/7c5a5ee1ad74e4a04b964ce00f4ebfee.png" alt='上海沐浴行业协会足道专业委员会二届三次秘书处会议圆满召开，瑞足康品牌于世才先生受聘为专委会执行秘书长' ></img>
+                            <img src="/custom/rzk/uploads/20211120/51e790717fbc8aa865e6d1b2c72bc097.jpg" alt='上海沐浴行业协会足道专业委员会二届三次秘书处会议圆满召开，瑞足康品牌于世才先生受聘为专委会执行秘书长' ></img>
                         </a>
                         <div class="zyxwd212">
                             <a href="/custom/rzk/newsdetail/100.html">
@@ -464,7 +380,7 @@
                     </li>
                     <li>
                         <a href="/custom/rzk/newsdetail/99.html">
-                            <img src="/custom/rzk/uploads/20221124/3d90293b92f8dd0eaa7e4c667c4d0863.png" alt='上海沐浴行业协会足道专业委员会二届二次理事会成功召开' ></img>
+                            <img src="/custom/rzk/uploads/20211120/51e790717fbc8aa865e6d1b2c72bc097.jpg" alt='上海沐浴行业协会足道专业委员会二届二次理事会成功召开' ></img>
                         </a>
                         <div class="zyxwd212">
                             <a href="/custom/rzk/newsdetail/99.html">
@@ -498,7 +414,7 @@
                 <ul>
                     <li>
                         <a href="/custom/rzk/newsdetail/95.html">
-                            <img src="/custom/rzk/images/p30.jpg" alt='秋天是足疗养生的黄金时期！'></img>
+                            <img src="/custom/rzk/uploads/20211120/51e790717fbc8aa865e6d1b2c72bc097.jpg" alt='秋天是足疗养生的黄金时期！'></img>
                         </a>
                         <div class="zyxwd212">
                             <a href="/custom/rzk/newsdetail/95.html">
@@ -510,7 +426,7 @@
                     </li>
                     <li>
                         <a href="/custom/rzk/newsdetail/91.html">
-                            <img src="/custom/rzk/uploads/20211107/001180467496f0fe84fabbba2aa5406b.png" alt='瑞足康足疗让你爱上它' ></img>
+                            <img src="/custom/rzk/uploads/20211120/51e790717fbc8aa865e6d1b2c72bc097.jpg" alt='瑞足康足疗让你爱上它' ></img>
                         </a>
                         <div class="zyxwd212">
                             <a href="/custom/rzk/newsdetail/91.html">
@@ -522,7 +438,7 @@
                     </li>
                     <li>
                         <a href="/custom/rzk/newsdetail/86.html">
-                            <img src="/custom/rzk/uploads/20211107/af0fe903e840038b151d3f6a4d1becfc.png" alt='加盟上海瑞足康不只是客人满满' ></img>
+                            <img src="/custom/rzk/uploads/20211120/51e790717fbc8aa865e6d1b2c72bc097.jpg" alt='加盟上海瑞足康不只是客人满满' ></img>
                         </a>
                         <div class="zyxwd212">
                             <a href="/custom/rzk/newsdetail/86.html">

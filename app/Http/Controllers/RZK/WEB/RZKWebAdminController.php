@@ -170,6 +170,35 @@ class RZKWebAdminController extends Controller
     }
 
 
+    // 【页面】删除
+    public function operate_item_page_delete()
+    {
+        return $this->repo->operate_item_page_delete(request()->all());
+    }
+    // 【页面】恢复
+    public function operate_item_page_restore()
+    {
+        return $this->repo->operate_item_page_restore(request()->all());
+    }
+    // 【模块】永久删除
+    public function operate_item_page_delete_permanently()
+    {
+        return $this->repo->operate_item_page_delete_permanently(request()->all());
+    }
+
+
+    // 【页面】启用
+    public function operate_item_page_enable()
+    {
+        return $this->repo->operate_item_page_enable(request()->all());
+    }
+    // 【页面】禁用
+    public function operate_item_page_disable()
+    {
+        return $this->repo->operate_item_page_disable(request()->all());
+    }
+
+
 
 
 

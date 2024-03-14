@@ -241,9 +241,110 @@ class RZKWebAdminRepository {
 
 
 
+
     /*
      * ITEM 页面管理
      */
+    // 【页面】返回-列表-视图
+    public function view_item_page_list($post_data)
+    {
+        $this->get_me();
+        $me = $this->me;
+
+
+        $view_data['menu_active_of_page_list'] = 'active menu-open';
+
+        $view_blade = env('TEMPLATE_RZK_WEB_ADMIN').'entrance.item.page-list';
+        return view($view_blade)->with($view_data);
+    }
+    // 【页面】返回-列表-数据
+    public function get_item_page_list_datatable($post_data)
+    {
+        $this->get_me();
+        $me = $this->me;
+
+        $query = RZK_Item::select('*')
+            ->with(['creator','owner'])
+            ->where(['item_category'=>9,'item_type'=>9]);
+
+
+        if(!empty($post_data['id'])) $query->where('id', $post_data['id']);
+        if(!empty($post_data['remark'])) $query->where('remark', 'like', "%{$post_data['remark']}%");
+        if(!empty($post_data['description'])) $query->where('description', 'like', "%{$post_data['description']}%");
+        if(!empty($post_data['keyword'])) $query->where('content', 'like', "%{$post_data['keyword']}%");
+        if(!empty($post_data['username'])) $query->where('username', 'like', "%{$post_data['username']}%");
+
+
+        // 是否+V
+        if(!empty($post_data['is_wx']))
+        {
+            if(!in_array($post_data['is_wx'],[-1]))
+            {
+                $query->where('is_wx', $post_data['is_wx']);
+            }
+        }
+
+        // 审核状态
+        if(!empty($post_data['inspected_status']))
+        {
+            $inspected_status = $post_data['inspected_status'];
+            if(in_array($inspected_status,['待发布','待审核','已审核']))
+            {
+                if($inspected_status == '待发布')
+                {
+                    $query->where('is_published', 0);
+                }
+                else if($inspected_status == '待审核')
+                {
+                    $query->where('is_published', 1)->whereIn('inspected_status', [0,9]);
+                }
+                else if($inspected_status == '已审核') $query->where('inspected_status', 1);
+            }
+        }
+        // 审核结果
+        if(!empty($post_data['inspected_result']))
+        {
+            $inspected_result = $post_data['inspected_result'];
+            if(in_array($inspected_result,config('info.inspected_result')))
+            {
+                $query->where('inspected_result', $inspected_result);
+            }
+        }
+
+
+        $total = $query->count();
+
+        $draw  = isset($post_data['draw'])  ? $post_data['draw']  : 1;
+        $skip  = isset($post_data['start'])  ? $post_data['start']  : 0;
+        $limit = isset($post_data['length']) ? $post_data['length'] : 20;
+
+        if(isset($post_data['product']))
+        {
+            $columns = $post_data['columns'];
+            $product = $post_data['product'][0];
+            $product_column = $product['column'];
+            $product_dir = $product['dir'];
+
+            $field = $columns[$product_column]["data"];
+            $query->orderBy($field, $product_dir);
+        }
+        else $query->orderBy("id", "asc");
+
+        if($limit == -1) $list = $query->get();
+        else $list = $query->skip($skip)->take($limit)->get();
+
+        foreach ($list as $k => $v)
+        {
+//            $list[$k]->encode_id = encode($v->id);
+
+            if($v->owner_id == $me->id) $list[$k]->is_me = 1;
+            else $list[$k]->is_me = 0;
+
+        }
+//        dd($list->toArray());
+        return datatable_response($list, $draw, $total);
+    }
+
     // 【页面】返回-添加-视图
     public function view_item_page_create()
     {
@@ -530,105 +631,325 @@ class RZKWebAdminRepository {
 
     }
 
-
-    // 【页面】返回-列表-视图
-    public function view_item_page_list($post_data)
+    // 【页面】删除
+    public function operate_item_page_delete($post_data)
     {
+        $messages = [
+            'operate.required' => 'operate.required.',
+            'item_id.required' => 'item_id.required.',
+        ];
+        $v = Validator::make($post_data, [
+            'operate' => 'required',
+            'item_id' => 'required',
+        ], $messages);
+        if ($v->fails())
+        {
+            $messages = $v->errors();
+            return response_error([],$messages->first());
+        }
+
+        $operate = $post_data["operate"];
+        if($operate != 'item-delete') return response_error([],"参数[operate]有误！");
+        $item_id = $post_data["item_id"];
+        if(intval($item_id) !== 0 && !$item_id) return response_error([],"参数[ID]有误！");
+
+        $item = RZK_Item::withTrashed()->find($item_id);
+        if(!$item) return response_error([],"该【内容】不存在，刷新页面重试！");
+
         $this->get_me();
         $me = $this->me;
 
+        // 判断操作权限
+        if(!in_array($me->user_type,[0,1,9,11,19,81,82,88])) return response_error([],"用户类型错误！");
+//        if($me->user_type == 19 && ($item->item_active != 0 || $item->creator_id != $me->id)) return response_error([],"你没有操作权限！");
+        if(in_array($me->user_type,[81,82,88]))
+        {
+            if($item->creator_id != $me->id) return response_error([],"你没有操作权限！");
+        }
 
-        $view_data['menu_active_of_page_list'] = 'active menu-open';
+        // 启动数据库事务
+        DB::beginTransaction();
+        try
+        {
+            $item->timestamps = false;
+            if($item->is_published == 0 && $item->creator_id == $me->id)
+            {
+                $item_copy = $item;
 
-        $view_blade = env('TEMPLATE_RZK_WEB_ADMIN').'entrance.item.page-list';
-        return view($view_blade)->with($view_data);
+                $item->timestamps = false;
+//                $bool = $item->forceDelete();  // 永久删除
+                $bool = $item->delete();  // 普通删除
+                if(!$bool) throw new Exception("module--delete--fail");
+                else
+                {
+                    $record = new RZK_Record;
+
+                    $record_data["ip"] = Get_IP();
+                    $record_data["record_object"] = 21;
+                    $record_data["record_category"] = 11;
+                    $record_data["record_type"] = 1;
+                    $record_data["creator_id"] = $me->id;
+                    $record_data["product_id"] = $item_id;
+                    $record_data["operate_object"] = 71;
+                    $record_data["operate_category"] = 101;
+                    $record_data["operate_type"] = 1;
+
+                    $bool_1 = $record->fill($record_data)->save();
+                    if(!$bool_1) throw new Exception("insert--record--fail");
+                }
+
+                DB::commit();
+                $this->delete_the_item_files($item_copy);
+            }
+            else
+            {
+                $item->timestamps = false;
+                $bool = $item->delete();  // 普通删除
+//                $bool = $item->forceDelete();  // 永久删除
+                if(!$bool) throw new Exception("page--delete--fail");
+                else
+                {
+                    $record = new RZK_Record;
+
+                    $record_data["ip"] = Get_IP();
+                    $record_data["record_object"] = 21;
+                    $record_data["record_category"] = 11;
+                    $record_data["record_type"] = 1;
+                    $record_data["creator_id"] = $me->id;
+                    $record_data["product_id"] = $item_id;
+                    $record_data["operate_object"] = 71;
+                    $record_data["operate_category"] = 101;
+                    $record_data["operate_type"] = 1;
+
+                    $bool_1 = $record->fill($record_data)->save();
+                    if(!$bool_1) throw new Exception("insert--record--fail");
+                }
+
+                DB::commit();
+            }
+
+            return response_success([]);
+        }
+        catch (Exception $e)
+        {
+            DB::rollback();
+            $msg = '操作失败，请重试！';
+            $msg = $e->getMessage();
+//            exit($e->getMessage());
+            return response_fail([],$msg);
+        }
+
     }
-    // 【页面】返回-列表-数据
-    public function get_item_page_list_datatable($post_data)
+    // 【页面】恢复
+    public function operate_item_page_restore($post_data)
     {
+        $messages = [
+            'operate.required' => 'operate.required.',
+            'item_id.required' => 'operate.required.',
+        ];
+        $v = Validator::make($post_data, [
+            'operate' => 'required',
+            'item_id' => 'required',
+        ], $messages);
+        if ($v->fails())
+        {
+            $messages = $v->errors();
+            return response_error([],$messages->first());
+        }
+
+        $operate = $post_data["operate"];
+        if($operate != 'item-restore') return response_error([],"参数【operate】有误！");
+        $id = $post_data["item_id"];
+        if(intval($id) !== 0 && !$id) return response_error([],"参数【ID】有误！");
+
+        $item = RZK_Item::withTrashed()->find($id);
+        if(!$item) return response_error([],"该【内容】不存在，刷新页面重试！");
+
         $this->get_me();
         $me = $this->me;
 
-        $query = RZK_Item::select('*')
-            ->with(['creator','owner'])
-            ->where(['item_category'=>9,'item_type'=>9]);
+        // 判断用户操作权限
+        if(!in_array($me->user_type,[0,1,9,11,19])) return response_error([],"你没有操作权限！");
+//        if($item->creator_id != $me->id) return response_error([],"你没有该内容的操作权限！");
 
-
-        if(!empty($post_data['id'])) $query->where('id', $post_data['id']);
-        if(!empty($post_data['remark'])) $query->where('remark', 'like', "%{$post_data['remark']}%");
-        if(!empty($post_data['description'])) $query->where('description', 'like', "%{$post_data['description']}%");
-        if(!empty($post_data['keyword'])) $query->where('content', 'like', "%{$post_data['keyword']}%");
-        if(!empty($post_data['username'])) $query->where('username', 'like', "%{$post_data['username']}%");
-
-
-        // 是否+V
-        if(!empty($post_data['is_wx']))
+        // 启动数据库事务
+        DB::beginTransaction();
+        try
         {
-            if(!in_array($post_data['is_wx'],[-1]))
-            {
-                $query->where('is_wx', $post_data['is_wx']);
-            }
+            $item->timestamps = false;
+            $bool = $item->restore();
+            if(!$bool) throw new Exception("page--restore--fail");
+
+            DB::commit();
+            return response_success([]);
+        }
+        catch (Exception $e)
+        {
+            DB::rollback();
+            $msg = '操作失败，请重试！';
+            $msg = $e->getMessage();
+//            exit($e->getMessage());
+            return response_fail([],$msg);
         }
 
-        // 审核状态
-        if(!empty($post_data['inspected_status']))
+    }
+    // 【页面】彻底删除
+    public function operate_item_page_delete_permanently($post_data)
+    {
+        $messages = [
+            'operate.required' => 'operate.required.',
+            'item_id.required' => 'item_id.required.',
+        ];
+        $v = Validator::make($post_data, [
+            'operate' => 'required',
+            'item_id' => 'required',
+        ], $messages);
+        if ($v->fails())
         {
-            $inspected_status = $post_data['inspected_status'];
-            if(in_array($inspected_status,['待发布','待审核','已审核']))
-            {
-                if($inspected_status == '待发布')
-                {
-                    $query->where('is_published', 0);
-                }
-                else if($inspected_status == '待审核')
-                {
-                    $query->where('is_published', 1)->whereIn('inspected_status', [0,9]);
-                }
-                else if($inspected_status == '已审核') $query->where('inspected_status', 1);
-            }
-        }
-        // 审核结果
-        if(!empty($post_data['inspected_result']))
-        {
-            $inspected_result = $post_data['inspected_result'];
-            if(in_array($inspected_result,config('info.inspected_result')))
-            {
-                $query->where('inspected_result', $inspected_result);
-            }
+            $messages = $v->errors();
+            return response_error([],$messages->first());
         }
 
+        $operate = $post_data["operate"];
+        if($operate != 'item-delete-permanently') return response_error([],"参数【operate】有误！");
+        $id = $post_data["item_id"];
+        if(intval($id) !== 0 && !$id) return response_error([],"参数【ID】有误！");
 
-        $total = $query->count();
+        $item = RZK_Item::withTrashed()->find($id);
+        if(!$item) return response_error([],"该【内容】不存在，刷新页面重试！");
 
-        $draw  = isset($post_data['draw'])  ? $post_data['draw']  : 1;
-        $skip  = isset($post_data['start'])  ? $post_data['start']  : 0;
-        $limit = isset($post_data['length']) ? $post_data['length'] : 20;
+        $this->get_me();
+        $me = $this->me;
 
-        if(isset($post_data['product']))
+        // 判断用户操作权限
+        if(!in_array($me->user_type,[0,1,9,11,19])) return response_error([],"你没有操作权限！");
+//        if($me->user_type == 19 && ($item->item_active != 0 || $item->creator_id != $me->id)) return response_error([],"你没有操作权限！");
+//        if($item->creator_id != $me->id) return response_error([],"你没有该内容的操作权限！");
+
+        // 启动数据库事务
+        DB::beginTransaction();
+        try
         {
-            $columns = $post_data['columns'];
-            $product = $post_data['product'][0];
-            $product_column = $product['column'];
-            $product_dir = $product['dir'];
+            $item_copy = $item;
 
-            $field = $columns[$product_column]["data"];
-            $query->orderBy($field, $product_dir);
+            $bool = $item->forceDelete();
+            if(!$bool) throw new Exception("page--delete--fail");
+
+            DB::commit();
+            return response_success([]);
         }
-        else $query->orderBy("id", "asc");
-
-        if($limit == -1) $list = $query->get();
-        else $list = $query->skip($skip)->take($limit)->get();
-
-        foreach ($list as $k => $v)
+        catch (Exception $e)
         {
-//            $list[$k]->encode_id = encode($v->id);
-
-            if($v->owner_id == $me->id) $list[$k]->is_me = 1;
-            else $list[$k]->is_me = 0;
-
+            DB::rollback();
+            $msg = '操作失败，请重试！';
+            $msg = $e->getMessage();
+//            exit($e->getMessage());
+            return response_fail([],$msg);
         }
-//        dd($list->toArray());
-        return datatable_response($list, $draw, $total);
+
+    }
+
+    // 【页面】启用
+    public function operate_item_page_enable($post_data)
+    {
+        $messages = [
+            'operate.required' => 'operate.required.',
+            'item_id.required' => 'item_id.required.',
+        ];
+        $v = Validator::make($post_data, [
+            'operate' => 'required',
+            'item_id' => 'required',
+        ], $messages);
+        if ($v->fails())
+        {
+            $messages = $v->errors();
+            return response_error([],$messages->first());
+        }
+
+        $operate = $post_data["operate"];
+        if($operate != 'item-enable') return response_error([],"参数【operate】有误！");
+        $id = $post_data["item_id"];
+        if(intval($id) !== 0 && !$id) return response_error([],"参数【ID】有误！");
+
+        $item = RZK_Item::find($id);
+        if(!$item) return response_error([],"该【内容】不存在，刷新页面重试！");
+
+        $this->get_me();
+        $me = $this->me;
+        if(!in_array($me->user_type,[0,1,9,11])) return response_error([],"你没有操作权限！");
+
+        // 启动数据库事务
+        DB::beginTransaction();
+        try
+        {
+            $item->item_status = 1;
+            $item->timestamps = false;
+            $bool = $item->save();
+            if(!$bool) throw new Exception("update--page--fail");
+
+            DB::commit();
+            return response_success([]);
+        }
+        catch (Exception $e)
+        {
+            DB::rollback();
+            $msg = '操作失败，请重试！';
+            $msg = $e->getMessage();
+//            exit($e->getMessage());
+            return response_fail([],$msg);
+        }
+
+    }
+    // 【页面】禁用
+    public function operate_item_page_disable($post_data)
+    {
+        $messages = [
+            'operate.required' => 'operate.required.',
+            'item_id.required' => 'item_id.required.',
+        ];
+        $v = Validator::make($post_data, [
+            'operate' => 'required',
+            'item_id' => 'required',
+        ], $messages);
+        if ($v->fails())
+        {
+            $messages = $v->errors();
+            return response_error([],$messages->first());
+        }
+
+        $operate = $post_data["operate"];
+        if($operate != 'item-disable') return response_error([],"参数【operate】有误！");
+        $id = $post_data["item_id"];
+        if(intval($id) !== 0 && !$id) return response_error([],"参数【ID】有误！");
+
+        $item = RZK_Item::find($id);
+        if(!$item) return response_error([],"该【内容】不存在，刷新页面重试！");
+
+        $this->get_me();
+        $me = $this->me;
+        if(!in_array($me->user_type,[0,1,9,11])) return response_error([],"你没有操作权限！");
+
+        // 启动数据库事务
+        DB::beginTransaction();
+        try
+        {
+            $item->item_status = 9;
+            $item->timestamps = false;
+            $bool = $item->save();
+            if(!$bool) throw new Exception("update--page--fail");
+
+            DB::commit();
+            return response_success([]);
+        }
+        catch (Exception $e)
+        {
+            DB::rollback();
+            $msg = '操作失败，请重试！';
+            $msg = $e->getMessage();
+//            exit($e->getMessage());
+            return response_fail([],$msg);
+        }
+
     }
 
 

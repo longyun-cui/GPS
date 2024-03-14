@@ -34,11 +34,11 @@ Route::group(['prefix' => 'admin', 'namespace' => 'WEB'], function () {
 
     $controller = "RZKWebAdminController";
 
-//    // 不存在的域名
-//    Route::fallback(function() {
-////        dd('not exist !');
-//         return response()->view(env('TEMPLATE_RZK_WEB_ADMIN').'entrance.errors.404');
-//    });
+    // 不存在的域名
+    Route::fallback(function() {
+//        dd('not exist !');
+         return response()->view(env('TEMPLATE_RZK_WEB_ADMIN').'entrance.errors.404');
+    });
 
     Route::match(['get','post'], 'login', $controller.'@login');
     Route::match(['get','post'], 'logout', $controller.'@logout');

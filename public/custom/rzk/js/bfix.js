@@ -41,7 +41,7 @@ document.writeln('</div>');
 
 document.writeln('<div class="com_c">');
 document.writeln('<div class="com_ctop">');
-/*document.writeln('   你离成功仅差一个电话，立即咨询');*/
+/*document.writeln('你离成功仅差一个电话，立即咨询');*/
 
 document.writeln('</div>');
 

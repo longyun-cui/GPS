@@ -170,42 +170,48 @@
                 <p>瑞足康品牌养生门店提供9大专业服务</p>
             </div>
             <ul>
-                <li>
-                    <img src="/custom/rzk/image/index/product5-01.png" alt="">
-                    <p>足道</p>
-                </li>
-                <li>
-                    <img src="/custom/rzk/image/index/product5-02.png" alt="">
-                    <p>中医穴位推拿</p>
-                </li>
-                <li>
-                    <img src="/custom/rzk/image/index/product5-03.png" alt="">
-                    <p>拔罐</p>
-                </li>
-                <li>
-                    <img src="/custom/rzk/image/index/product5-04.png" alt="">
-                    <p>刮痧</p>
-                </li>
-                <li>
-                    <img src="/custom/rzk/image/index/product5-05.png" alt="">
-                    <p>采耳</p>
-                </li>
-                <li>
-                    <img src="/custom/rzk/image/index/product5-06.png" alt="">
-                    <p>精修脚</p>
-                </li>
-                <li>
-                    <img src="/custom/rzk/image/index/product5-07.png" alt="">
-                    <p>艾灸调理</p>
-                </li>
-                <li>
-                    <img src="/custom/rzk/image/index/product5-08.png" alt="">
-                    <p>疼痛调理</p>
-                </li>
-                <li>
-                    <img src="/custom/rzk/image/index/product5-09.png" alt="">
-                    <p>亚健康调理</p>
-                </li>
+                @foreach($product_service as $item)
+                    <li>
+                        <img src="{{ url(env('DOMAIN_CDN').'/'.$item->cover_pic) }}" alt="">
+                        <p>{{ $item->title or 'TITLE' }}</p>
+                    </li>
+                @endforeach
+{{--                <li>--}}
+{{--                    <img src="/custom/rzk/image/index/product5-01.png" alt="">--}}
+{{--                    <p>足道</p>--}}
+{{--                </li>--}}
+{{--                <li>--}}
+{{--                    <img src="/custom/rzk/image/index/product5-02.png" alt="">--}}
+{{--                    <p>中医穴位推拿</p>--}}
+{{--                </li>--}}
+{{--                <li>--}}
+{{--                    <img src="/custom/rzk/image/index/product5-03.png" alt="">--}}
+{{--                    <p>拔罐</p>--}}
+{{--                </li>--}}
+{{--                <li>--}}
+{{--                    <img src="/custom/rzk/image/index/product5-04.png" alt="">--}}
+{{--                    <p>刮痧</p>--}}
+{{--                </li>--}}
+{{--                <li>--}}
+{{--                    <img src="/custom/rzk/image/index/product5-05.png" alt="">--}}
+{{--                    <p>采耳</p>--}}
+{{--                </li>--}}
+{{--                <li>--}}
+{{--                    <img src="/custom/rzk/image/index/product5-06.png" alt="">--}}
+{{--                    <p>精修脚</p>--}}
+{{--                </li>--}}
+{{--                <li>--}}
+{{--                    <img src="/custom/rzk/image/index/product5-07.png" alt="">--}}
+{{--                    <p>艾灸调理</p>--}}
+{{--                </li>--}}
+{{--                <li>--}}
+{{--                    <img src="/custom/rzk/image/index/product5-08.png" alt="">--}}
+{{--                    <p>疼痛调理</p>--}}
+{{--                </li>--}}
+{{--                <li>--}}
+{{--                    <img src="/custom/rzk/image/index/product5-09.png" alt="">--}}
+{{--                    <p>亚健康调理</p>--}}
+{{--                </li>--}}
             </ul>
         </div>
     </div>

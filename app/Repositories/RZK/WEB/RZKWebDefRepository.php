@@ -78,8 +78,20 @@ class RZKWebDefRepository {
     // 主页
     public function view_index()
     {
-        $item_list = RZK_Item::select('*')->where(['item_status'=>1])->orderBy('id','desc')->get();
-        $return_data['item_list'] = $item_list;
+        $item_list = RZK_Item::select('*')
+            ->where(['item_status'=>1])
+            ->where('item_sign','<>','')
+            ->whereNotNull('item_sign')
+            ->orderBy('id','asc')
+            ->get();
+        $item_list = $item_list->groupBy('item_sign');
+//        dd($item_list->toArray());
+//        $return_data['item_list'] = $item_list;
+
+        $return_data['index_industry_intro'] = $item_list['index_industry_intro'];
+        $return_data['index_service'] = $item_list['index_service'];
+        $return_data['index_join_us'] = $item_list['index_join_us'];
+        $return_data['index_support'] = $item_list['index_support'];
 
         $view_blade = env('TEMPLATE_RZK_WEB_DEF').'entrance.index';
         return view($view_blade)->with($return_data);
@@ -88,8 +100,18 @@ class RZKWebDefRepository {
     // 关于我们
     public function view_about()
     {
-        $item_list = RZK_Item::select('*')->where(['item_status'=>1])->orderBy('id','desc')->get();
-        $return_data['item_list'] = $item_list;
+        $item_list = RZK_Item::select('*')
+            ->where(['item_status'=>1])
+            ->where('item_sign','<>','')
+            ->whereNotNull('item_sign')
+            ->orderBy('id','asc')
+            ->get();
+
+        $item_list = $item_list->groupBy('item_sign');
+//        dd($item_list);
+
+        $return_data['intro'] = $item_list['intro'][0];
+        $return_data['team_list'] = $item_list['about_team'];
 
         $view_blade = env('TEMPLATE_RZK_WEB_DEF').'entrance.about';
         return view($view_blade)->with($return_data);
@@ -108,8 +130,22 @@ class RZKWebDefRepository {
     // 运营支持
     public function view_support()
     {
-        $item_list = RZK_Item::select('*')->where(['item_status'=>1])->orderBy('id','desc')->get();
-        $return_data['item_list'] = $item_list;
+        $item_list = RZK_Item::select('*')
+            ->where(['item_status'=>1])
+            ->where('item_sign','<>','')
+            ->whereNotNull('item_sign')
+            ->orderBy('id','asc')
+            ->get();
+        $item_list = $item_list->groupBy('item_sign');
+//        dd($item_list->toArray());
+//        $return_data['item_list'] = $item_list;
+
+//        $return_data['support_system'] = $item_list['support_system'][0];
+        $return_data['support_industry_chain'] = $item_list['support_industry_chain'];
+        $return_data['support_operation_flow'] = $item_list['support_operation_flow'];
+        $return_data['support_operation_flow_before'] = $item_list['support_operation_flow_before'];
+        $return_data['support_operation_flow_ing'] = $item_list['support_operation_flow_ing'];
+        $return_data['support_operation_flow_after'] = $item_list['support_operation_flow_after'];
 
         $view_blade = env('TEMPLATE_RZK_WEB_DEF').'entrance.support';
         return view($view_blade)->with($return_data);
@@ -118,8 +154,17 @@ class RZKWebDefRepository {
     // 产品服务
     public function view_product()
     {
-        $item_list = RZK_Item::select('*')->where(['item_status'=>1])->orderBy('id','desc')->get();
-        $return_data['item_list'] = $item_list;
+        $item_list = RZK_Item::select('*')
+            ->where(['item_status'=>1])
+            ->where('item_sign','<>','')
+            ->whereNotNull('item_sign')
+            ->orderBy('id','asc')
+            ->get();
+        $item_list = $item_list->groupBy('item_sign');
+//        dd($item_list->toArray());
+//        $return_data['item_list'] = $item_list;
+
+        $return_data['product_service'] = $item_list['product_service'];
 
         $view_blade = env('TEMPLATE_RZK_WEB_DEF').'entrance.product';
         return view($view_blade)->with($return_data);
@@ -128,8 +173,17 @@ class RZKWebDefRepository {
     // 产业基地
     public function view_industry()
     {
-        $item_list = RZK_Item::select('*')->where(['item_status'=>1])->orderBy('id','desc')->get();
-        $return_data['item_list'] = $item_list;
+        $item_list = RZK_Item::select('*')
+            ->where(['item_status'=>1])
+            ->where('item_sign','<>','')
+            ->whereNotNull('item_sign')
+            ->orderBy('id','asc')
+            ->get();
+        $item_list = $item_list->groupBy('item_sign');
+//        dd($item_list->toArray());
+//        $return_data['item_list'] = $item_list;
+
+        $return_data['industrial_base'] = $item_list['industrial_base'][0];
 
         $view_blade = env('TEMPLATE_RZK_WEB_DEF').'entrance.industry';
         return view($view_blade)->with($return_data);

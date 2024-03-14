@@ -433,6 +433,7 @@
     border-radius: 10px 10px 0 0;
     background: #0ba198;
     background: #d6ad9b;
+    background: rgba(144, 48, 48, 1);
 }
 .ly_box{
     background: #eee;
@@ -443,6 +444,7 @@
     margin-left: 2%;
     background: #0ba198;
     background: #d6ad9b;
+    background: rgba(144, 48, 48, 1);
     color: #fff;
     text-align: left;
     padding: 10px 40px;
@@ -485,6 +487,7 @@
 }
 .ly_table input[type=text]{
     width: 80%;
+    height:24px;
 }
 .ly_table select{
     width: 80%;
@@ -540,6 +543,7 @@
     border-radius: 0 0 10px 10px;
     background: #0ba198;
     background: #d6ad9b;
+    background: rgba(144, 48, 48, 1);
 }
 .user_info_btn {
     width: 92%;
