@@ -144,7 +144,7 @@
                     <p class="spr2">+</p>
                 </div>
 
-                <p class="spr3">瑞足康21年不忘初心   实力铸就辉煌-品牌成就未来</p><hr>
+                <p class="spr3">瑞足康24年不忘初心   实力铸就辉煌-品牌成就未来</p><hr>
                 <p class="spr4">上海瑞足康健康管理有限公司是是一家集健康产品研发和生产，养生技术研究，养
                     生连锁品牌经营，以及门店技术和管理人才培训为一体的综合性产业化企业，全国
                     运营总部位于上海，分别在江苏昆山和四川成都组建了两大品牌运营中心，旗下拥
@@ -159,12 +159,12 @@
 {{--产业基地--}}
 <div class="indexd2bg">
     <div class="w indexd2">
-        <div class="d2t">产业联动-品牌实力保障</div>
+        <div class="d2t">集团产业-品牌实力保障</div>
         <div class="d2s"><div>瑞足康</div><div class="d2sz">4</div><div>大基地  + </div><div class="d2sz">3</div><div>大运营中心</div></div>
         <div class="d2p">
 
             <div class="d2p1">
-            @foreach($index_service as $item)
+            @foreach($index_industry_intro as $item)
             @if($loop->index < 4)
                 <img src="{{ url(env('DOMAIN_CDN').'/'.$item->cover_pic) }}" />
             @endif
@@ -173,7 +173,7 @@
 
             <div class="d2p2">
                 <div class="d2p21">
-                @foreach($index_service as $item)
+                @foreach($index_industry_intro as $item)
                 @if($loop->index == 4)
                     <img src="{{ url(env('DOMAIN_CDN').'/'.$item->cover_pic) }}" />
                 @endif
@@ -181,7 +181,7 @@
                 </div>
 
                 <div class="d2p22">
-                @foreach($index_service as $item)
+                @foreach($index_industry_intro as $item)
                 @if($loop->index > 4 && $loop->index < 7)
                     <img src="{{ url(env('DOMAIN_CDN').'/'.$item->cover_pic) }}" />
                 @endif
@@ -237,7 +237,7 @@
 <div class="indexd4bg">
     <div class="w indexd4">
         <div class="d2t">加盟创业 - 只选可信赖品牌</div>
-        <div class="d4s"><div>瑞足康立足大健康行业</div><div class="d4sz">21</div><div>载，以专业铸就品牌</div></div>
+        <div class="d4s"><div>瑞足康立足大健康行业</div><div class="d4sz">24</div><div>载，以专业铸就品牌</div></div>
         <div class="d4d">
             <ul>
                 @foreach($index_join_us as $item)
