@@ -110,7 +110,7 @@
                 <ul class="dl-submenu">
                     <li class="dl-back"><a href="/">返回上一级</a></li>
                     <li><a href="/news/index">公司新闻</a></li>
-                    <li><a href="/news/hangye">行业资讯</a></li>s
+                    <li><a href="/news/hangye">行业资讯</a></li>
                 </ul>
             </li>
             <li><a href="/contact">联系我们</a></li>

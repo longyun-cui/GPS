@@ -436,17 +436,20 @@ img:hover {
 	right:0;
 	cursor: pointer;
 	outline: none;
-	background: #4DBCBB url("/custom/rzk/images/menu-button-bg.png") no-repeat center center;
+	/*background: #4DBCBB url("/custom/rzk/images/menu-button-bg.png") no-repeat center center;*/
+	background: #c58c3c url("/custom/rzk/images/menu-button-bg.png") no-repeat center center;
 	background-size: 50%;
 }
 
 .dl-menuwrapper button:hover ,
 .dl-menuwrapper button.dl-active {
 	background-color: #4DBCBB;
+	background-color: #903030;
 }
 
 .dl-menuwrapper ul {
 	background: #4DBCBB;
+	background: #903030;
 }
 
 .dl-menuwrapper ul {
