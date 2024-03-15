@@ -286,10 +286,29 @@
         // 【启用】
         $("#item-main-body").on('click', ".item-enable-submit", function() {
             var $that = $(this);
-            layer.msg('确定"启用"？', {
-                time: 0
-                ,btn: ['确定', '取消']
-                ,yes: function(index){
+            // layer.msg('确定"启用"？', {
+            //     time: 0
+            //     ,btn: ['确定', '取消']
+            //     ,yes: function(index){
+            //         // post
+            //     }
+            // });
+
+            var $index = layer.load(1, {
+                shade: [0.3, '#fff'],
+                content: '<span class="loadtip">处理中</span>',
+                success: function (layer) {
+                    layer.find('.layui-layer-content').css({
+                        'padding-top': '40px',
+                        'width': '100px',
+                    });
+                    layer.find('.loadtip').css({
+                        'font-size':'20px',
+                        'margin-left':'-18px'
+                    });
+                }
+            });
+
                     $.post(
                         "{{ url('/admin/item/module-enable') }}",
                         {
@@ -298,7 +317,8 @@
                             item_id: $that.attr('data-id')
                         },
                         function(data){
-                            layer.close(index);
+                            // layer.close(index);
+                            layer.closeAll('loading');
                             if(!data.success) layer.msg(data.msg);
                             else
                             {
@@ -307,16 +327,33 @@
                         },
                         'json'
                     );
-                }
-            });
         });
         // 【禁用】
         $("#item-main-body").on('click', ".item-disable-submit", function() {
             var $that = $(this);
-            layer.msg('确定"禁用"？', {
-                time: 0
-                ,btn: ['确定', '取消']
-                ,yes: function(index){
+            // layer.msg('确定"禁用"？', {
+            //     time: 0
+            //     ,btn: ['确定', '取消']
+            //     ,yes: function(index){
+            //         // post
+            //     }
+            // });
+
+            var $index = layer.load(1, {
+                shade: [0.3, '#fff'],
+                content: '<span class="loadtip">处理中</span>',
+                success: function (layer) {
+                    layer.find('.layui-layer-content').css({
+                        'padding-top': '40px',
+                        'width': '100px',
+                    });
+                    layer.find('.loadtip').css({
+                        'font-size':'20px',
+                        'margin-left':'-18px'
+                    });
+                }
+            });
+
                     $.post(
                         "{{ url('/admin/item/module-disable') }}",
                         {
@@ -325,7 +362,8 @@
                             item_id: $that.attr('data-id')
                         },
                         function(data){
-                            layer.close(index);
+                            // layer.close(index);
+                            layer.closeAll('loading');
                             if(!data.success) layer.msg(data.msg);
                             else
                             {
@@ -334,8 +372,7 @@
                         },
                         'json'
                     );
-                }
-            });
+
         });
 
 
