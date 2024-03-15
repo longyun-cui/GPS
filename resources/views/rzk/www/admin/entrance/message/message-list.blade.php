@@ -324,7 +324,8 @@
                         "width": "120px",
                         "orderable": false,
                         render: function(data, type, row, meta) {
-                            return data;
+                            // return data;
+                            return '<a target="_blank" href="https://www.ip138.com/iplookup.asp?action=2&ip='+data+'">'+data+'</a>';
                         }
                     },
                     {
