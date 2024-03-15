@@ -12,7 +12,7 @@
 
 @section('content')
 <div class="item active">
-    <img src="../image/index/news.jpg" alt="">
+    <img src="/custom/rzk/image/index/news.jpg" alt="">
 </div>
 
 {{--<!--content start-->--}}
