@@ -2054,6 +2054,17 @@ All this is done for any sub-level being entered.
     font-size: 13px;
 }
 .zyxwp1 a {
+	height: 63px;
+	display: -webkit-box;
+	overflow: hidden;
+	/*text-overflow: -o-ellipsis-lastline;*/
+	text-overflow: ellipsis;
+	line-clamp: 3;
+	-webkit-line-clamp: 3;
+	-webkit-box-orient: vertical;
+	font-size: 13px;
+}
+.zyxwp1 a {
     color: #6a6a6a!important;
 }
 .zyxwd22 {
