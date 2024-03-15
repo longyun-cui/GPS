@@ -19,7 +19,7 @@
 <div class="common_main">
     <div class="common_container">
         <div class="common_top">
-            当前位置：<a href="/">主页</a> > <a href="/news">新闻中心</a> >
+            当前位置：<a href="/">主页</a> > <a href="/news/index">新闻中心</a> >
         </div>
 
         <div class="common_c_left">
