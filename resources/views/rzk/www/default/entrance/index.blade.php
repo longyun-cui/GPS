@@ -343,7 +343,7 @@
         <div class="d2t" style="color: #fff;">百城千店-成功模式，轻松复制</div>
         <div class="d7d1">瑞足康3000+门店遍布全国为中国大健康事业腾飞助力</div>
         <div class="d7d">
-            <img src="/custom/rzk/images/p29.jpg" alt="瑞足康">
+            <img src="/custom/rzk/images/pc-2.jpg" alt="瑞足康">
         </div>
         <div class="d7s"><div>我们帮助了众多人创富成功 ，他们成功了，你同样也可以</div></div>
     </div>

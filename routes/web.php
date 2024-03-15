@@ -103,7 +103,10 @@ Route::group(['domain'=>'dev.'.env('DOMAIN_ROOT'), 'namespace'=>'Developing'], f
 Route::group(['domain'=>'gh.'.env('DOMAIN_ROOT'), 'namespace'=>'GH'], function () {
     require(__DIR__ . '/GH/gh-route-web.php');
 });
-Route::group(['domain'=>'http://local-guihua.com', 'namespace'=>'GH'], function () {
+Route::group(['domain'=>env('DOMAIN_GH_WEB'), 'namespace'=>'GH'], function () {
+    require(__DIR__ . '/GH/gh-route-web.php');
+});
+Route::group(['domain'=>env('DOMAIN_GH_WWW'), 'namespace'=>'GH'], function () {
     require(__DIR__ . '/GH/gh-route-web.php');
 });
 
