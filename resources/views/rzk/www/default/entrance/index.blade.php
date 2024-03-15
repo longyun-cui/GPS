@@ -136,7 +136,7 @@
         </div>
         <div class="indexsp">
             <div class="indexspl">
-                <video src="http://www.blz9.com/blz.mp4" poster="/custom/rzk/images/p39.jpg" controls="controls">your browser does not support the video tag</video>
+                <video src="/custom/rzk/video/intro.mp4" poster="/custom/rzk/images/p39.jpg" controls="controls">your browser does not support the video tag</video>
             </div>
             <div class="indexspr">
                 <div class="sprd">
