@@ -2042,27 +2042,31 @@ All this is done for any sub-level being entered.
     word-break: break-all;
     display: block;
 }
+.zyxwp { font-size: 14px; }
 .zyxwp1 {
-    height: 63px;
 	display: -webkit-box;
     overflow: hidden;
 	/*text-overflow: -o-ellipsis-lastline;*/
     text-overflow: ellipsis;
-	line-clamp: 3;
-    -webkit-line-clamp: 3;
+	/*line-clamp: 2;*/
+    -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
+	/*height: 60px;*/
     font-size: 13px;
+	line-height: 20px;
 }
 .zyxwp1 a {
-	height: 63px;
+	/*white-space: nowrap;*/
 	display: -webkit-box;
 	overflow: hidden;
 	/*text-overflow: -o-ellipsis-lastline;*/
 	text-overflow: ellipsis;
-	line-clamp: 3;
-	-webkit-line-clamp: 3;
+	/*line-clamp: 2;*/
+	-webkit-line-clamp: 2;
 	-webkit-box-orient: vertical;
+	/*height: 60px;*/
 	font-size: 13px;
+	line-height: 20px;
 }
 .zyxwp1 a {
     color: #6a6a6a!important;
