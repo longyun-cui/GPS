@@ -98,15 +98,15 @@
     <div id="dl-menu" class="dl-menuwrapper">
         <button id="dl-menu-button">Open Menu</button>
         <ul class="dl-menu">
-            <li><a href="index.html">首页</a></li>
+            <li><a href="/">首页</a></li>
             <li><a href="/about">集团介绍</a></li>
-            <li><a href="/joinus">诚邀合作</a></li>
+            <li><a href="/join_us">诚邀合作</a></li>
             <li><a href="/support">运营指导</a></li>
             <li><a href="/product">产品/服务</a></li>
             <!-- <li><a href="/Index/cases/index.html">成功案例</a></li> -->
             <li><a href="/industry">产业基地</a></li>
             <li>
-                <a href="Line.html">新闻资讯</a>
+                <a href="/news/index">新闻资讯</a>
                 <ul class="dl-submenu">
                     <li class="dl-back"><a href="/">返回上一级</a></li>
                     <li><a href="/news/index">公司新闻</a></li>
