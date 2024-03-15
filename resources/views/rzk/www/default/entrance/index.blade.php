@@ -378,7 +378,7 @@
                             </a>
                             <hr>
                             <p class="zyxwp1"><a href="/news-detail?id={{ $item->id }}">{{ $item->description or '' }}</a></p>
-                            <p class="zyxwp">{{ date('Y-m-d', $item->created_at) }}</p>
+                            <p class="zyxwp">{{ $item->created_at->format('Y-m-d') }}</p>
                         </div>
                     </li>
                     @endif
@@ -405,7 +405,7 @@
                                 </a>
                                 <hr>
                                 <p class="zyxwp1"><a href="/news-detail?id={{ $item->id }}">{{ $item->description or '' }}</a></p>
-                                <p class="zyxwp">{{ date('Y-m-d', $item->created_at) }}</p>
+                                <p class="zyxwp">{{ $item->created_at->format('Y-m-d') }}</p>
                             </div>
                         </li>
                     @endif

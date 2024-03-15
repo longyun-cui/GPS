@@ -40,14 +40,14 @@
                 </div>
                 <div class="article_box_detail">
                     <h4>
-                        <a href="/custom/rzk/newsdetail/100.html" title="{{ $item->title or 'TITLE' }}">
+                        <a href="/news-detail?id={{ $item->id or 0 }}" title="{{ $item->title or 'TITLE' }}">
                             {{ $item->title or 'TITLE' }}
                         </a>
                     </h4>
                     <p>
                         {{ $item->description or '' }}
                     </p>
-                    <p class="time">{{ date('Y-m-d', $item->created_at) }}</p>
+                    <p class="time">{{ $item->created_at->format('Y-m-d') }}</p>
                 </div>
                 <div class="clear"></div>
             </div>
