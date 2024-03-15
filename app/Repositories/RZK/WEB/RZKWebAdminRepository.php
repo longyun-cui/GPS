@@ -3,7 +3,7 @@ namespace App\Repositories\RZK\WEB;
 
 use App\Models\RZK\RZK_Admin;
 use App\Models\RZK\RZK_Item;
-use App\Models\RZK\RZK_Product;
+use App\Models\RZK\RZK_Message;
 use App\Models\RZK\RZK_Record;
 
 use App\Repositories\Common\CommonRepository;
@@ -265,7 +265,7 @@ class RZKWebAdminRepository {
 
         $query = RZK_Item::select('*')
             ->with(['creator','owner'])
-            ->where(['item_category'=>9,'item_type'=>9]);
+            ->where(['active'=>1, 'item_category'=>9, 'item_type'=>9]);
 
 
         if(!empty($post_data['id'])) $query->where('id', $post_data['id']);
@@ -999,7 +999,7 @@ class RZKWebAdminRepository {
 
         $query = RZK_Item::select('*')
             ->with(['creator','owner'])
-            ->where(['item_category'=>9, 'item_type'=>10]);
+            ->where(['active'=>1, 'item_category'=>9, 'item_type'=>10]);
 
 
         if(!empty($post_data['id'])) $query->where('id', $post_data['id']);
@@ -2941,6 +2941,104 @@ class RZKWebAdminRepository {
 
 
 
+
+    /*
+     * Message 留言管理
+     */
+    // 【留言】返回-列表-视图
+    public function view_message_message_list($post_data)
+    {
+        $this->get_me();
+        $me = $this->me;
+
+
+        $view_data['menu_active_of_message_list'] = 'active menu-open';
+
+        $view_blade = env('TEMPLATE_RZK_WEB_ADMIN').'entrance.message.message-list';
+        return view($view_blade)->with($view_data);
+    }
+    // 【留言】返回-列表-数据
+    public function get_message_message_list_datatable($post_data)
+    {
+        $this->get_me();
+        $me = $this->me;
+
+        $query = RZK_Message::select('*')
+            ->with([])
+            ->where(['active'=>1]);
+
+
+        if(!empty($post_data['id'])) $query->where('id', $post_data['id']);
+        if(!empty($post_data['remark'])) $query->where('remark', 'like', "%{$post_data['remark']}%");
+        if(!empty($post_data['description'])) $query->where('description', 'like', "%{$post_data['description']}%");
+        if(!empty($post_data['keyword'])) $query->where('content', 'like', "%{$post_data['keyword']}%");
+        if(!empty($post_data['username'])) $query->where('username', 'like', "%{$post_data['username']}%");
+
+
+        // 是否+V
+        if(!empty($post_data['is_wx']))
+        {
+            if(!in_array($post_data['is_wx'],[-1]))
+            {
+                $query->where('is_wx', $post_data['is_wx']);
+            }
+        }
+
+        // 审核状态
+        if(!empty($post_data['inspected_status']))
+        {
+            $inspected_status = $post_data['inspected_status'];
+            if(in_array($inspected_status,['待发布','待审核','已审核']))
+            {
+                if($inspected_status == '待发布')
+                {
+                    $query->where('is_published', 0);
+                }
+                else if($inspected_status == '待审核')
+                {
+                    $query->where('is_published', 1)->whereIn('inspected_status', [0,9]);
+                }
+                else if($inspected_status == '已审核') $query->where('inspected_status', 1);
+            }
+        }
+        // 审核结果
+        if(!empty($post_data['inspected_result']))
+        {
+            $inspected_result = $post_data['inspected_result'];
+            if(in_array($inspected_result,config('info.inspected_result')))
+            {
+                $query->where('inspected_result', $inspected_result);
+            }
+        }
+
+
+        $total = $query->count();
+
+        $draw  = isset($post_data['draw'])  ? $post_data['draw']  : 1;
+        $skip  = isset($post_data['start'])  ? $post_data['start']  : 0;
+        $limit = isset($post_data['length']) ? $post_data['length'] : 20;
+
+        if(isset($post_data['product']))
+        {
+            $columns = $post_data['columns'];
+            $product = $post_data['product'][0];
+            $product_column = $product['column'];
+            $product_dir = $product['dir'];
+
+            $field = $columns[$product_column]["data"];
+            $query->orderBy($field, $product_dir);
+        }
+        else $query->orderBy("id", "desc");
+
+        if($limit == -1) $list = $query->get();
+        else $list = $query->skip($skip)->take($limit)->get();
+
+        foreach ($list as $k => $v)
+        {
+        }
+//        dd($list->toArray());
+        return datatable_response($list, $draw, $total);
+    }
 
 
 

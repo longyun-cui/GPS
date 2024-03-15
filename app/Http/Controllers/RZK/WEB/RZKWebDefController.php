@@ -155,7 +155,7 @@ class RZKWebDefController extends Controller
     // 联系我们
     public function operate_message_leave()
     {
-        return $this->repo->operate_message_leave();
+        return $this->repo->operate_message_leave(request()->all());
     }
 
 

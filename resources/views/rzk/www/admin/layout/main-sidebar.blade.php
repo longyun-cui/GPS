@@ -82,8 +82,19 @@
 
             <li class="treeview {{ $menu_active_of_article_list or '' }}">
                 <a href="{{ url('/admin/item/article-list') }}">
-                    <i class="fa fa-newspaper-o text-orange"></i>
+                    <i class="fa fa-newspaper-o text-aqua"></i>
                     <span>文章列表</span>
+                </a>
+            </li>
+
+
+            {{--留言管理--}}
+            <li class="header">留言管理</li>
+
+            <li class="treeview {{ $menu_active_of_message_list or '' }}">
+                <a href="{{ url('/admin/message/message-list') }}">
+                    <i class="fa  fa-commenting-o text-orange"></i>
+                    <span>留言列表</span>
                 </a>
             </li>
 

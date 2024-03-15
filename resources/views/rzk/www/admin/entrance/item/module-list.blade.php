@@ -11,7 +11,7 @@
 @section('header','')
 @section('description')页面列表 - 管理员后台系统 - {{ config('rzk.info.info.short_name') }}@endsection
 @section('breadcrumb')
-    <li><a href="{{ url('/') }}"><i class="fa fa-home"></i>首页</a></li>
+    <li><a href="{{ url('/admin') }}"><i class="fa fa-home"></i>首页</a></li>
 @endsection
 @section('content')
 <div class="row">
@@ -81,7 +81,7 @@
             </div>
 
 
-            <div class="box-footer">
+            <div class="box-footer _none">
                 <div class="row" style="margin:16px 0;">
                     <div class="col-md-offset-0 col-md-6 col-sm-9 col-xs-12">
                         {{--<button type="button" class="btn btn-primary"><i class="fa fa-check"></i> 提交</button>--}}

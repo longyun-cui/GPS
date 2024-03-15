@@ -368,7 +368,7 @@
                 <ul>
                     <li>
                         <a href="/custom/rzk/newsdetail/100.html">
-                            <img src="/custom/rzk/uploads/20211120/51e790717fbc8aa865e6d1b2c72bc097.jpg" alt='上海沐浴行业协会足道专业委员会二届三次秘书处会议圆满召开，瑞足康品牌于世才先生受聘为专委会执行秘书长' ></img>
+                            <img src="http://www.blz9.cn/uploads/20221126/7c5a5ee1ad74e4a04b964ce00f4ebfee.png" alt="上海沐浴行业协会足道专业委员会二届三次秘书处会议圆满召开，百龄足品牌于世才先生受聘为专委会执行秘书长">
                         </a>
                         <div class="zyxwd212">
                             <a href="/custom/rzk/newsdetail/100.html">

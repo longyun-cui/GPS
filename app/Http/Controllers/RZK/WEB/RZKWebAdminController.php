@@ -149,6 +149,12 @@ class RZKWebAdminController extends Controller
     /*
      * ITEM 内容管理
      */
+    // 【页面】返回-列表-视图
+    public function view_item_page_list()
+    {
+        if(request()->isMethod('get')) return $this->repo->view_item_page_list(request()->all());
+        else if(request()->isMethod('post')) return $this->repo->get_item_page_list_datatable(request()->all());
+    }
 
     // 【页面】添加
     public function operate_item_page_create()
@@ -162,13 +168,6 @@ class RZKWebAdminController extends Controller
         if(request()->isMethod('get')) return $this->repo->view_item_page_edit(request()->all());
         else if (request()->isMethod('post')) return $this->repo->operate_item_page_save(request()->all());
     }
-    // 【页面】返回-列表-视图（全部任务）
-    public function view_item_page_list()
-    {
-        if(request()->isMethod('get')) return $this->repo->view_item_page_list(request()->all());
-        else if(request()->isMethod('post')) return $this->repo->get_item_page_list_datatable(request()->all());
-    }
-
 
     // 【页面】删除
     public function operate_item_page_delete()
@@ -185,7 +184,6 @@ class RZKWebAdminController extends Controller
     {
         return $this->repo->operate_item_page_delete_permanently(request()->all());
     }
-
 
     // 【页面】启用
     public function operate_item_page_enable()
@@ -206,6 +204,12 @@ class RZKWebAdminController extends Controller
     /*
      * ITEM 模块管理
      */
+    // 【模块】返回-列表-视图
+    public function view_item_module_list()
+    {
+        if(request()->isMethod('get')) return $this->repo->view_item_module_list(request()->all());
+        else if(request()->isMethod('post')) return $this->repo->get_item_module_list_datatable(request()->all());
+    }
 
     // 【模块】添加
     public function operate_item_module_create()
@@ -219,13 +223,6 @@ class RZKWebAdminController extends Controller
         if(request()->isMethod('get')) return $this->repo->view_item_module_edit(request()->all());
         else if (request()->isMethod('post')) return $this->repo->operate_item_module_save(request()->all());
     }
-    // 【模块】返回-列表-视图（全部任务）
-    public function view_item_module_list()
-    {
-        if(request()->isMethod('get')) return $this->repo->view_item_module_list(request()->all());
-        else if(request()->isMethod('post')) return $this->repo->get_item_module_list_datatable(request()->all());
-    }
-
 
     // 【模块】删除
     public function operate_item_module_delete()
@@ -264,13 +261,12 @@ class RZKWebAdminController extends Controller
     /*
      * 文章管理
      */
-    // 【文章】返回-列表-视图（全部任务）
+    // 【文章】返回-列表-视图
     public function view_item_article_list()
     {
         if(request()->isMethod('get')) return $this->repo->view_item_article_list(request()->all());
         else if(request()->isMethod('post')) return $this->repo->get_item_article_list_datatable(request()->all());
     }
-
 
     // 【文章】添加
     public function operate_item_article_create()
@@ -284,7 +280,6 @@ class RZKWebAdminController extends Controller
         if(request()->isMethod('get')) return $this->repo->view_item_article_edit();
         else if (request()->isMethod('post')) return $this->repo->operate_item_article_save(request()->all());
     }
-
 
     // 【文章】获取-详情
     public function operate_item_article_get()
@@ -302,7 +297,6 @@ class RZKWebAdminController extends Controller
         return $this->repo->operate_item_article_get_attachment_html(request()->all());
     }
 
-
     // 【文章】删除
     public function operate_item_article_delete()
     {
@@ -319,7 +313,6 @@ class RZKWebAdminController extends Controller
         return $this->repo->operate_item_article_delete_permanently(request()->all());
     }
 
-
     // 【文章】启用
     public function operate_item_article_enable()
     {
@@ -330,7 +323,6 @@ class RZKWebAdminController extends Controller
     {
         return $this->repo->operate_item_article_disable(request()->all());
     }
-
 
     // 【文章】发布
     public function operate_item_article_publish()
@@ -361,6 +353,22 @@ class RZKWebAdminController extends Controller
     public function operate_item_article_inspect()
     {
         return $this->repo->operate_item_article_inspect(request()->all());
+    }
+
+
+
+
+
+
+
+    /*
+     * 留言管理
+     */
+    // 【留言】返回-列表-视图
+    public function view_message_message_list()
+    {
+        if(request()->isMethod('get')) return $this->repo->view_message_message_list(request()->all());
+        else if(request()->isMethod('post')) return $this->repo->get_message_message_list_datatable(request()->all());
     }
 
 

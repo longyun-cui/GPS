@@ -61,7 +61,7 @@
 
 @section('custom-js')
     <script type="text/javascript" src="/custom/rzk/js/kefu.js"></script>
-    <script type="text/javascript" src="/custom/rzk/js/bfix.js"></script>
+{{--    <script type="text/javascript" src="/custom/rzk/js/bfix.js"></script>--}}
     <script type="text/javascript" src="/custom/rzk/js/index.js"></script>
 {{--    <script type="text/javascript" src="http://api.map.baidu.com/api?key=&v=1.0&services=true"></script>--}}
     <script type="text/javascript" src="https://api.map.baidu.com/api?v=1.0&&type=webgl&ak=Df3yD2fVHWtuq7vcidZbupdgyfVvRC3e"></script>

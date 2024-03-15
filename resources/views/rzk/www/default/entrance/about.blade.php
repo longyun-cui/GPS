@@ -150,7 +150,7 @@
 
 @section('custom-js')
     <script type="text/javascript" src="/custom/rzk/js/kefu.js"></script>
-    <script type="text/javascript" src="/custom/rzk/js/bfix.js"></script>
+{{--    <script type="text/javascript" src="/custom/rzk/js/bfix.js"></script>--}}
     <script type="text/javascript" src="/custom/rzk/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="/custom/rzk/js/index.js"></script>
 @endsection

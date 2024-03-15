@@ -108,7 +108,7 @@ class RZK_Item extends Model
     // 多对多 关联的目录
     function menus()
     {
-        return $this->belongsToMany('App\Models\RZK\RZK_Menu','pivot_menu_item','item_id','menu_id');
+        return $this->belongsToMany('App\Models\RZK\RZK_Menu','rzk_pivot_menu_item','item_id','menu_id');
     }
 
 

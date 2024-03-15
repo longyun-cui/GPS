@@ -9,7 +9,7 @@
 
 
 @section('header','')
-@section('description')新闻列表 - 管理员后台系统 - {{ config('rzk.info.info.short_name') }}@endsection
+@section('description')页面列表 - 管理员后台系统 - {{ config('rzk.info.info.short_name') }}@endsection
 @section('breadcrumb')
     <li><a href="{{ url('/admin') }}"><i class="fa fa-home"></i>首页</a></li>
 @endsection
@@ -25,8 +25,8 @@
                 <div class="caption pull-right">
                     <i class="icon-pin font-blue"></i>
                     <span class="caption-subject font-blue sbold uppercase"></span>
-                    <a href="{{ url('/admin/item/article-create') }}">
-                        <button type="button" onclick="" class="btn btn-success pull-right"><i class="fa fa-plus"></i> 添加内容</button>
+                    <a href="{{ url('/admin/item/page-create') }}">
+                        <button type="button" onclick="" class="btn btn-success pull-right"><i class="fa fa-plus"></i> 添加页面</button>
                     </a>
                 </div>
 
@@ -47,15 +47,15 @@
                 <div class="row col-md-12 datatable-search-row">
                     <div class="input-group">
 
-                        <input type="text" class="form-control form-filter item-search-keyup" name="title" placeholder="标题" />
+                        <input type="text" class="form-control form-filter item-search-keyup" name="mobile" placeholder="电话" />
 
-                        <select class="form-control form-filter" name="item_type" style="width:96px;">
-                            <option value ="-1">全部</option>
-                            <option value ="11">产品</option>
-                            <option value ="41">培训</option>
-                            {{--<option value ="42">沟通技能</option>--}}
-                            <option value ="101">其他</option>
-                        </select>
+{{--                        <select class="form-control form-filter" name="item_type" style="width:96px;">--}}
+{{--                            <option value ="-1">全部</option>--}}
+{{--                            <option value ="11">产品</option>--}}
+{{--                            <option value ="41">培训</option>--}}
+{{--                            --}}{{--<option value ="42">沟通技能</option>--}}
+{{--                            <option value ="101">其他</option>--}}
+{{--                        </select>--}}
 
                         <button type="button" class="form-control btn btn-flat btn-success filter-submit" id="filter-submit">
                             <i class="fa fa-search"></i> 搜索
@@ -193,7 +193,7 @@
 @endsection
 @section('custom-style')
     <style>
-        .tableArea table { width:100% !important; min-width:1200px; }
+        .tableArea table { width:100% !important; }
         .tableArea table tr th,
         .tableArea table tr td { white-space:nowrap; }
     </style>
@@ -215,7 +215,7 @@
                 "serverSide": true,
                 "searching": false,
                 "ajax": {
-                    'url': "{{ url('/admin/item/article-list') }}",
+                    'url': "{{ url('/admin/message/message-list') }}",
                     "type": 'POST',
                     "dataType" : 'json',
                     "data": function (d) {
@@ -246,78 +246,93 @@
                     //     'orderable': false
                     // },
                     {
-                        "className": "",
-                        "width": "40px",
                         "title": "ID",
                         "data": "id",
+                        "className": "",
+                        "width": "60px",
                         "orderable": true,
                         render: function(data, type, row, meta) {
                             return data;
                         }
                     },
                     {
-                        "className": "font-12px",
-                        "width": "80px",
                         "title": "类型",
                         "data": "item_type",
-                        "orderable": true,
+                        "className": "",
+                        "width": "80px",
+                        "orderable": false,
                         render: function(data, type, row, meta) {
-                            if(data == 0) return '<small class="btn-xs bg-teal">未分类</small>';
-                            else if(data == 11) return '<small class="btn-xs bg-olive">产品</small>';
-                            else if(data == 41) return '<small class="btn-xs bg-purple">培训</small>';
-//                            else if(data == 42) return '<small class="btn-xs bg-purple">沟通技巧</small>';
-                            else if(data == 99) return '<small class="btn-xs bg-yellow">公告</small>';
-                            else if(data == 101) return '<small class="btn-xs bg-teal">其他</small>';
-                            else return "有误";
+                            return '<small class="btn-xs bg-purple">留言</small>';
                         }
                     },
                     {
-                        "className": "text-left",
-                        "width": "",
-                        "title": "标题",
-                        "data": "title",
+                        "title": "电话",
+                        "data": "mobile",
+                        "className": "",
+                        "width": "120px",
                         "orderable": false,
                         render: function(data, type, row, meta) {
 //                            return data;
-                            return '<a target="_blank" href="{{ url(env('DOMAIN_YH_STAFF').'/item/') }}'+row.id+'">'+data+'</a>';
+                            return '<a href="javascript:void(0);">'+data+'</a>';
                         }
                     },
                     {
-                        "className": "text-center",
-                        "width": "100px",
-                        "title": "发布者",
-                        "data": "creator_id",
+                        "title": "姓名",
+                        "data": "name",
+                        "className": "",
+                        "width": "120px",
                         "orderable": false,
                         render: function(data, type, row, meta) {
-                            return row.creator == null ? '未知' : '<a target="_blank" href="/user/'+row.creator.id+'">'+row.creator.username+'</a>';
+//                            return data;
+                            return '<a href="javascript:void(0);">'+data+'</a>';
                         }
                     },
                     {
-                        "className": "font-12px",
+                        "title": "城市",
+                        "data": "address",
+                        "className": "",
                         "width": "120px",
+                        "orderable": false,
+                        render: function(data, type, row, meta) {
+                           return data;
+                        }
+                    },
+                    {
+                        "title": "合伙人类型",
+                        "data": "subtitle",
+                        "className": "",
+                        "width": "120px",
+                        "orderable": false,
+                        render: function(data, type, row, meta) {
+                           return data;
+                        }
+                    },
+                    {
+                        "title": "留言",
+                        "data": "content",
+                        "className": "",
+                        "width": "",
+                        "orderable": false,
+                        render: function(data, type, row, meta) {
+                           return data;
+                        }
+                    },
+                    {
+                        "title": "IP",
+                        "data": "ip",
+                        "className": "",
+                        "width": "120px",
+                        "orderable": false,
+                        render: function(data, type, row, meta) {
+                            return data;
+                        }
+                    },
+                    {
                         "title": "创建时间",
                         "data": 'created_at',
-                        "orderable": true,
-                        render: function(data, type, row, meta) {
-//                            return data;
-                            var $date = new Date(data*1000);
-                            var $year = $date.getFullYear();
-                            var $month = ('00'+($date.getMonth()+1)).slice(-2);
-                            var $day = ('00'+($date.getDate())).slice(-2);
-                            var $hour = ('00'+$date.getHours()).slice(-2);
-                            var $minute = ('00'+$date.getMinutes()).slice(-2);
-                            var $second = ('00'+$date.getSeconds()).slice(-2);
-                            return $year+'-'+$month+'-'+$day;
-//                            return $year+'-'+$month+'-'+$day+'&nbsp;'+$hour+':'+$minute;
-//                            return $year+'-'+$month+'-'+$day+'&nbsp;&nbsp;'+$hour+':'+$minute+':'+$second;
-                        }
-                    },
-                    {
                         "className": "font-12px",
                         "width": "120px",
-                        "title": "修改时间",
-                        "data": 'updated_at',
-                        "orderable": true,
+                        "orderable": false,
                         render: function(data, type, row, meta) {
 //                            return data;
                             var $date = new Date(data*1000);
@@ -327,35 +342,16 @@
                             var $hour = ('00'+$date.getHours()).slice(-2);
                             var $minute = ('00'+$date.getMinutes()).slice(-2);
                             var $second = ('00'+$date.getSeconds()).slice(-2);
-//                            return $year+'-'+$month+'-'+$day;
+
+                            // return $year+'-'+$month+'-'+$day;
+                            // return $year+'-'+$month+'-'+$day+'&nbsp;'+$hour+':'+$minute;
+                            // return $year+'-'+$month+'-'+$day+'&nbsp;&nbsp;'+$hour+':'+$minute+':'+$second;
+
                             return $year+'-'+$month+'-'+$day+'&nbsp;'+$hour+':'+$minute;
-//                            return $year+'-'+$month+'-'+$day+'&nbsp;&nbsp;'+$hour+':'+$minute+':'+$second;
                         }
                     },
                     {
                         "width": "80px",
-                        "title": "状态",
-                        "data": "item_result",
-                        "orderable": false,
-                        render: function(data, type, row, meta) {
-//                            return data;
-                            if(row.deleted_at != null)
-                            {
-                                return '<small class="btn-xs bg-black">已删除</small>';
-                            }
-
-                            if(row.item_status == 1)
-                            {
-                                return '<small class="btn-xs bg-olive">启用</small>';
-                            }
-                            else
-                            {
-                                return '<small class="btn-xs btn-danger">已禁用</small>';
-                            }
-                        }
-                    },
-                    {
-                        "width": "160px",
                         "title": "操作",
                         "data": 'id',
                         "orderable": false,
@@ -380,11 +376,11 @@
                             }
 
                             var html =
-                                    $html_able+
+                                    // $html_able+
 //                                    '<a class="btn btn-xs" href="/item/edit?id='+data+'">编辑</a>'+
-                                    '<a class="btn btn-xs btn-primary item-edit-link" data-id="'+data+'">编辑</a>'+
+//                                     '<a class="btn btn-xs btn-primary item-edit-link" data-id="'+data+'">编辑</a>'+
 //                                    $html_publish+
-                                    '<a class="btn btn-xs bg-navy item-delete-submit" data-id="'+data+'">删除</a>'+
+//                                     '<a class="btn btn-xs bg-navy item-delete-submit" data-id="'+data+'">删除</a>'+
 //                                    '<a class="btn btn-xs bg-navy item-delete-permanently-submit" data-id="'+data+'">永久删除</a>'+
 //                                    '<a class="btn btn-xs bg-primary item-detail-show" data-id="'+data+'">查看详情</a>'+
 //                                    '<a class="btn btn-xs bg-olive item-download-qr-code-submit" data-id="'+data+'">下载二维码</a>'+
@@ -400,6 +396,7 @@
                     // this.api().column(1).nodes().each(function(cell, i) {
                     //     cell.innerHTML =  startIndex + i + 1;
                     // });
+
                 },
                 "language": { url: '/common/dataTableI18n' },
             });
@@ -428,5 +425,5 @@
         TableDatatablesAjax.init();
     });
 </script>
-@include(env('TEMPLATE_RZK_WEB_ADMIN').'entrance.item.article-list-script')
+@include(env('TEMPLATE_RZK_WEB_ADMIN').'entrance.item.page-list-script')
 @endsection

@@ -171,23 +171,24 @@
             <div class="ly_box_r">
                 <div class="ly_box_rt">郑重承诺：瑞足康互联网+社区养生创新品牌，<br/>尊重您的隐私，并承诺为您保密</div>
 
-                <form id="myform" method="post" action="/message-leave" onsubmit="return chkform();">
+                {{--<form id="myform" method="post" action="/message-leave" onsubmit="return chkform();">--}}
+                <form method="post" id="message-form-1">
                     <table border="0" class="ly_table taleft" cellspacing="0" cellpadding="0">
                         <tr height="50">
                             <td width="60">姓名</td>
                             <td width="330">
-                                <input type="text" value="" id="username" name="username" class="l_user" placeholder="请输入您的姓名"/>
+                                <input type="text" value="" name="name" class="l_user" placeholder="请输入您的姓名"/>
                             </td>
                             <td width="60">手机</td>
                             <td width="330">
                                 <input type="hidden" name="weburl" id="weburl" value="" />
-                                <input type="text" value="" class="l_pwd" id="mobile" name="mobile" placeholder="请输入您的电话"/>
+                                <input type="text" value="" class="l_pwd" name="mobile" placeholder="请输入您的电话"/>
                             </td>
                         </tr>
                         <tr height="50">
                             <td>类型</td>
                             <td>
-                                <select name="gw_class" id="lytype" name="lytype">
+                                <select name="type">
                                     <option value="">请选择类型</option>
                                     <option value="标准店合伙人">标准店合伙人</option>
                                     <option value="市级合伙人">市级合伙人</option>
@@ -196,26 +197,29 @@
                             </td>
                             <td>所在城市</td>
                             <td>
-                                <input type="text" value="" class="l_pwd" id="usercity" name="usercity" placeholder="请输入您所在的城市"/>
+                                <input type="text" value="" class="l_pwd" name="address" placeholder="请输入您所在的城市"/>
                             </td>
                         </tr>
                         <tr height="50">
                             <td colspan="6">
                                 <span style="display:inline-block;width: 60px;">留言</span>
-                                <textarea id="lynr" name="lynr" cols="30" rows="5" placeholder="请输入您想了解的内容"></textarea>
+                                <textarea name="content" cols="30" rows="5" placeholder="请输入您想了解的内容"></textarea>
                             </td>
                         </tr>
 
                         <tr height="60">
                             <td colspan="6"><span style="display:inline-block;width: 60px;"></span>
-                                <input type="submit" id="submitLy" value="提交" class="ly_table__btn"/>
+{{--                                <input type="submit" id="submitLy" value="提交" class="ly_table__btn"/>--}}
+                                <button type="button" class="btn btn-success ly_table__btn" id="leave-message-submit"><i class="fa fa-check"></i> 提交</button>
                             </td>
                         </tr>
                     </table>
                 </form>
 
                 <script>
-                    function chkform(){
+
+
+                    function chkform() {
                         if(document.getElementById("mobile").value=="" || document.getElementById("mobile").value.length<11){
                             alert('请正确输入您的联系电话！');
                             return false;
@@ -265,12 +269,14 @@
             <div class="footd2d2">
                 <div class="footd2d2l">立即咨询：</div>
                 <div class="footd2d2r">
-                    <form action="http://sem.blz9.com/Index/userly/addly" id="myform" method="post" onsubmit="return chkform1();">
-                        <input class="inp1" type="text" name="username" placeholder="您的姓名" />
-                        <input class="inp2" type="text" id="mobile1" name="mobile" placeholder="联系方式" />
+                    {{--<form action="http://sem.blz9.com/Index/userly/addly" id="myform1" method="post" onsubmit="return chkform1();">--}}
+                    <form method="post" id="message-form-2">
+                        <input class="inp1" type="text" name="name" placeholder="您的姓名" />
+                        <input class="inp2" type="text" name="mobile" placeholder="联系方式" />
                         <input type="hidden" name="weburl" id="weburl1" value="" />
                         <input type="hidden" name="lynr" value="" />
-                        <button>提交信息</button>
+{{--                        <button >提交信息</button>--}}
+                        <button type="button" class="btn btn-success" id="leave-message-submit-2"><i class="fa fa-check"></i> 提交信息</button>
                     </form>
                 </div>
             </div>
@@ -320,10 +326,11 @@
 
 </script>
 
+
 <!--  屏幕滚动效果  -->
 <script>
-    var number = 0
-    var gd = 0
+    var number = 0;
+    var gd = 0;
     //  向下滚动还是向下滚动
     var scrollFunc = function (e) {
         gd = e.wheelDelta;
@@ -335,55 +342,157 @@
     // window.onmousewheel = document.onmousewheel = scrollFunc; //IE/Opera/Chrome/Safari
 
     // scrop距离
-    var isScrolling = false //是否在滚动
-    listenAndScroll()
+    var isScrolling = false; //是否在滚动
+    listenAndScroll();
 
     // 无限滚动
     function listenAndScroll() {
         $(document).scroll(function () {
             var b = $(window).scrollTop();
-            if (isScrolling) {
+            if (isScrolling)
+            {
                 return
-            }//如果isScrolling为true就跳出去
-            isScrolling = true
-            var scrollGap = 790
+            }
+            //如果isScrolling为true就跳出去
+            isScrolling = true;
+            var scrollGap = 790;
             if (b > 0 && gd < 0) {
-                let isBlock = b % scrollGap === 0 //%取余 余为零
-                console.log(isBlock, b % scrollGap, b)
-                if (isBlock) {
+                let isBlock = b % scrollGap === 0; //%取余 余为零
+                console.log(isBlock, b % scrollGap, b);
+                if (isBlock)
+                {
                     return isScrolling = false//如果isBlock为true就跳出并isScrolling = false
                     //跳出之后终止语句
                 }
-                let pos = (Math.floor(b / scrollGap) + 1) * scrollGap
-                console.log(pos)
-                $("html").animate({
-                    scrollTop: pos
-                }, "slowly", function () {
-                    isScrolling = false;
-                });
+                let pos = (Math.floor(b / scrollGap) + 1) * scrollGap;
+                console.log(pos);
+                $("html").animate(
+                    {
+                        scrollTop: pos
+                    },
+                    "slowly",
+                    function () {
+                        isScrolling = false;
+                    }
+                );
 
             }
             else if (b > 0 && gd > 0) {
-                let isBlock2 = b % scrollGap === 0
-                // console.log(b,isBlock2,scrollGap)
-                if (isBlock2) return isScrolling = false
-                let pos2 = (Math.ceil(b / scrollGap) - 1) * scrollGap
-                console.log(pos2)
-                $("html").animate({
-                    scrollTop: pos2
-                }, "slowly", function () {
-                    isScrolling = false
-                });
+                let isBlock2 = b % scrollGap === 0;
+                // console.log(b,isBlock2,scrollGap);
+                if (isBlock2) return isScrolling = false;
+                let pos2 = (Math.ceil(b / scrollGap) - 1) * scrollGap;
+                console.log(pos2);
+                $("html").animate(
+                    {
+                        scrollTop: pos2
+                    },
+                    "slowly",
+                    function () {
+                        isScrolling = false;
+                    }
+                );
             }
             else {
-                isScrolling = false
+                isScrolling = false;
             }
         })
     }
+
 </script>
+
+
+<script>
+    $(function() {
+
+        // 留言
+        $("#leave-message-submit").on('click', function() {
+
+            var $form = $('#message-form-1');
+            var $name = $form.find('input[name="name"]');
+            var $mobile = $form.find('input[name="mobile"]');
+            var $address = $form.find('input[name="address"]');
+            var $content = $form.find('textarea[name="content"]');
+            var $type = $form.find('select[name="type"]').val();
+
+            if($mobile.val() == "" || $mobile.val().length != 11)
+            {
+                layer.msg('请正确输入您的联系电话！');
+                return false;
+            }
+
+            $.post(
+                "{{ url('/message-leave') }}",
+                {
+                    _token: $('meta[name="_token"]').attr('content'),
+                    operate: "message-leave",
+                    name: $name.val(),
+                    mobile: $mobile.val(),
+                    address: $address.val(),
+                    content: $content.val(),
+                    subtitle: $type
+                },
+                function(data){
+                    // layer.close(index);
+                    if(!data.success) layer.msg(data.msg);
+                    else
+                    {
+                        layer.msg(data.msg);
+                        $name.val('');
+                        $mobile.val('');
+                        $address.val('');
+                        $content.val('');
+                    }
+                },
+                'json'
+            );
+
+        });
+
+        // 留言（footer）
+        $("#leave-message-submit-2").on('click', function() {
+
+            var $form = $('#message-form-2');
+            var $name = $form.find('input[name="name"]');
+            var $mobile = $form.find('input[name="mobile"]');
+
+            if($mobile.val() == "" || $mobile.val().length != 11)
+            {
+                layer.msg('请正确输入您的联系电话！');
+                return false;
+            }
+
+            $.post(
+                "{{ url('/message-leave') }}",
+                {
+                    _token: $('meta[name="_token"]').attr('content'),
+                    operate: "message-leave",
+                    name: $name.val(),
+                    mobile: $mobile.val()
+                },
+                function(data){
+                    // layer.close(index);
+                    if(!data.success) layer.msg(data.msg);
+                    else
+                    {
+                        layer.msg(data.msg);
+                        $name.val('');
+                        $mobile.val('');
+                    }
+                },
+                'json'
+            );
+
+        });
+
+    });
+</script>
+
 
 <script type="text/javascript" src="/custom/rzk/js/modernizr.custom.js"></script>
 <script type="text/javascript" src="/custom/rzk/js/jquery.dlmenu.js"></script>
+<script src="{{ asset('/resource/component/js/jquery.form-4.2.2.min.js') }}"></script>
+<script src="{{ asset('/resource/component/js/layer-3.0.3.min.js') }}"></script>
 
 
 @yield('js')

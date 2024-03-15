@@ -11,7 +11,7 @@
 @section('header', '')
 @section('description')管理员系统 - {{ config('rzk.info.info.short_name') }}@endsection
 @section('breadcrumb')
-    <li><a href="{{ url('/') }}"><i class="fa fa-home"></i>首页</a></li>
+    <li><a href="{{ url('/admin') }}"><i class="fa fa-home"></i>首页</a></li>
     <li><a href="{{ url($list_link) }}"><i class="fa fa-list"></i>{{ $list_text or '内容列表' }}</a></li>
     <li><a href="#"><i class="fa "></i>Here</a></li>
 @endsection

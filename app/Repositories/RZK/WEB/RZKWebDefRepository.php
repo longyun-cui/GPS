@@ -1,11 +1,10 @@
 <?php
 namespace App\Repositories\RZK\WEB;
 
-use App\Models\GH\GH_Product;
-use App\Models\GPS\GPS_User;
-use App\Models\GPS\GPS_Item;
-
+use App\Models\RZK\RZK_Admin;
 use App\Models\RZK\RZK_Item;
+use App\Models\RZK\RZK_Message;
+
 use App\Repositories\Common\CommonRepository;
 
 use Response, Auth, Validator, DB, Exception, Cache, Blade, Carbon;
@@ -17,15 +16,15 @@ class RZKWebDefRepository {
     private $auth_check;
     private $me;
     private $me_admin;
-    private $modelUser;
+    private $modelAdmin;
     private $modelItem;
     private $view_blade_403;
     private $view_blade_404;
 
     public function __construct()
     {
-        $this->modelUser = new GPS_User;
-        $this->modelItem = new GPS_Item;
+        $this->modelAdmin = new RZK_Admin;
+        $this->modelItem = new RZK_Item;
 
         $this->view_blade_403 = env('TEMPLATE_RZK_WEB_DEF').'entrance.errors.403';
         $this->view_blade_404 = env('TEMPLATE_RZK_WEB_DEF').'entrance.errors.404';
@@ -456,6 +455,7 @@ class RZKWebDefRepository {
         try
         {
             $post_data['category'] = 1;
+            $post_data["ip"] = Get_IP();
             $mine = new RZK_Message;
             $bool = $mine->fill($post_data)->save();
             if(!$bool) throw new Exception("insert--message--fail");

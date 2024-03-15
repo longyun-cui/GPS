@@ -1162,7 +1162,9 @@
 }
 .tsService .t_title p:nth-child(1) {
   font-size: 50px;
+  font-size:36px;
   color: #0ba198;
+  color: #903030;
   line-height: 90px;
 }
 .tsService ul {
@@ -1336,7 +1338,7 @@
         padding-top: 20px;
     }
     .c_title p:nth-child(1),.tsService .t_title p:nth-child(1){
-        font-size: 26px;
+        font-size: 20px;
         line-height: 30px;
     }
     .c_title p:nth-child(2),.tsService .t_title p{

@@ -22,7 +22,7 @@ Route::group(['namespace' => 'WEB'], function () {
     Route::get('/news/industry', $controller.'@view_news_industry');
     Route::get('/news-detail', $controller.'@view_news_detail');
     Route::get('/contact', $controller.'@view_contact');
-    Route::get('/message-leave', $controller.'@operate_message_leave');
+    Route::post('/message-leave', $controller.'@operate_message_leave');
 
 });
 
@@ -66,14 +66,16 @@ Route::group(['prefix' => 'admin', 'namespace' => 'WEB'], function () {
         Route::match(['get','post'], '/my-account/my-password-change', $controller.'@operate_my_account_password_change');
 
 
+
+
         /*
          * 页面管理
          */
+        // 列表
+        Route::match(['get','post'], '/item/page-list', $controller.'@view_item_page_list');
         // 创建 & 修改
         Route::match(['get','post'], '/item/page-create', $controller.'@operate_item_page_create');
         Route::match(['get','post'], '/item/page-edit', $controller.'@operate_item_page_edit');
-        // 列表
-        Route::match(['get','post'], '/item/page-list', $controller.'@view_item_page_list');
         // 删除 & 恢复
         Route::post('/item/page-delete', $controller.'@operate_item_page_delete');
         Route::post('/item/page-restore', $controller.'@operate_item_page_restore');
@@ -96,11 +98,11 @@ Route::group(['prefix' => 'admin', 'namespace' => 'WEB'], function () {
         /*
          * 模块管理
          */
-        // 创建 & 修改
-        Route::match(['get','post'], '/item/module-create', $controller.'@operate_item_module_create');
-        Route::match(['get','post'], '/item/module-edit', $controller.'@operate_item_module_edit');
         // 列表
         Route::match(['get','post'], '/item/module-list', $controller.'@view_item_module_list');
+        // 创建 & 编辑
+        Route::match(['get','post'], '/item/module-create', $controller.'@operate_item_module_create');
+        Route::match(['get','post'], '/item/module-edit', $controller.'@operate_item_module_edit');
         // 删除 & 恢复
         Route::post('/item/module-delete', $controller.'@operate_item_module_delete');
         Route::post('/item/module-restore', $controller.'@operate_item_module_restore');
@@ -123,10 +125,11 @@ Route::group(['prefix' => 'admin', 'namespace' => 'WEB'], function () {
         /*
          * 文章管理
          */
-        Route::match(['get','post'], '/item/article-create', $controller.'@operate_item_article_create');
-        Route::match(['get','post'], '/item/article-edit', $controller.'@operate_item_article_edit');
         // 列表
         Route::match(['get','post'], '/item/article-list', $controller.'@view_item_article_list');
+        // 创建 & 编辑
+        Route::match(['get','post'], '/item/article-create', $controller.'@operate_item_article_create');
+        Route::match(['get','post'], '/item/article-edit', $controller.'@operate_item_article_edit');
         // 获取
         Route::match(['get','post'], '/item/article-get', $controller.'@operate_item_article_get');
         Route::match(['get','post'], '/item/article-get-html', $controller.'@operate_item_article_get_html');
@@ -146,6 +149,15 @@ Route::group(['prefix' => 'admin', 'namespace' => 'WEB'], function () {
         Route::post('/item/article-abandon', $controller.'@operate_item_article_abandon');
         Route::post('/item/article-reuse', $controller.'@operate_item_article_reuse');
         Route::post('/item/article-remark-edit', $controller.'@operate_item_article_remark_edit');
+
+
+
+
+        /*
+         * 留言管理
+         */
+        // 列表
+        Route::match(['get','post'], '/message/message-list', $controller.'@view_message_message_list');
 
 
     });
