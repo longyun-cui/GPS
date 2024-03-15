@@ -386,6 +386,7 @@
     font-size: 16px;
     line-height: 2.5;
 }
+.content_ky .kyb img {width:100%;}
 .content_boxky li:hover{border-color:#0ba198;border-color:#903030; }
 .content_boxky li:hover .kya{color:#fff;background:#0ba198;background:#903030; }
 .kyb:hover{color:#fff;background:#0ba198;background:#c08020;}
