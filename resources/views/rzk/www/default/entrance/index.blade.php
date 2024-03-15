@@ -377,7 +377,7 @@
                                 <b>{{ $item->title or '公司新闻' }}</b>
                             </a>
                             <hr>
-                            <p class="zyxwp1"><a href="/news-detail?id={{ $item->id }}">{{ $item->description or '' }}</a></p>
+                            <p class="zyxwp1"><a href="/news-detail?id={{ $item->id }}">{!! $item->description or '' !!}</a></p>
                             <p class="zyxwp">{{ date('Y-m-d', $item->updated_at) }}</p>
                         </div>
                     </li>
