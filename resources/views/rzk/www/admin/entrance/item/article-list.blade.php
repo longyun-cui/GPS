@@ -264,7 +264,7 @@
                         render: function(data, type, row, meta) {
                             if(data == 0) return '<small class="btn-xs bg-teal">未分类</small>';
                             else if(data == "news") return '<small class="btn-xs bg-olive">最新新闻</small>';
-                            else if(data == "industry") return '<small class="btn-xs bg-blue">产业动态</small>';
+                            else if(data == "news_industry") return '<small class="btn-xs bg-blue">产业动态</small>';
                             else if(data == 11) return '<small class="btn-xs bg-olive">产品</small>';
                             else if(data == 41) return '<small class="btn-xs bg-purple">培训</small>';
                             else if(data == 42) return '<small class="btn-xs bg-purple">沟通技巧</small>';
