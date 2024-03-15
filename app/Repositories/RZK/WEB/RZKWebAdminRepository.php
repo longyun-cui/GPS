@@ -978,12 +978,12 @@ class RZKWebAdminRepository {
         else $view_data['product_type'] = -1;
 
 
-        // 审核状态
-        if(!empty($post_data['inspected_status']))
+        // 模块类型
+        if(!empty($post_data['item_sign']))
         {
-            $view_data['inspected_status'] = $post_data['inspected_status'];
+            $view_data['item_sign'] = $post_data['item_sign'];
         }
-        else $view_data['inspected_status'] = -1;
+        else $view_data['item_sign'] = -1;
 
 
         $view_data['menu_active_of_module_list'] = 'active menu-open';

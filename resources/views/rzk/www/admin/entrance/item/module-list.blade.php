@@ -52,8 +52,8 @@
                         <select class="form-control form-filter" name="item_sign" style="width:96px;">
                             <option value ="-1">全部</option>
                             @foreach(config('rzk.info.module') as $k => $v)
-{{--                                <option value="{{ $k }}" @if($k == $item_sign) selected="selected" @endif>{{ $v }}</option>--}}
-                                <option value="{{ $k }}">{{ $v }}</option>
+                                <option value="{{ $k }}" @if($k == $item_sign) selected="selected" @endif>{{ $v }}</option>
+{{--                                <option value="{{ $k }}">{{ $v }}</option>--}}
                             @endforeach
                         </select>
 
@@ -426,45 +426,29 @@
                     //     cell.innerHTML =  startIndex + i + 1;
                     // });
 
-                    ajax_datatable.$('.tooltips').tooltip({placement: 'top', html: true});
-                    $("a.verify").click(function(event){
-                        event.preventDefault();
-                        var node = $(this);
-                        var tr = node.closest('tr');
-                        var nickname = tr.find('span.nickname').text();
-                        var cert_name = tr.find('span.certificate_type_name').text();
-                        var action = node.attr('data-action');
-                        var certificate_id = node.attr('data-id');
-                        var action_name = node.text();
+                    var $obj = new Object();
+                    if($('input[name="order-id"]').val())  $obj.order_id = $('input[name="order-id"]').val();
+                    if($('input[name="order-assign"]').val())  $obj.assign = $('input[name="order-assign"]').val();
+                    if($('select[name="item_sign"]').val() != "-1")  $obj.item_sign = $('select[name="item_sign"]').val();
 
-                        var tpl = "{{trans('labels.crc.verify_user_certificate_tpl')}}";
-                        layer.open({
-                            'title': '警告',
-                            content: tpl
-                                .replace('@action_name', action_name)
-                                .replace('@nickname', nickname)
-                                .replace('@certificate_type_name', cert_name),
-                            btn: ['Yes', 'No'],
-                            yes: function(index) {
-                                layer.close(index);
-                                $.post(
-                                    '/admin/medsci/certificate/user/verify',
-                                    {
-                                        action: action,
-                                        id: certificate_id,
-                                        _token: '{{csrf_token()}}'
-                                    },
-                                    function(json){
-                                        if(json['response_code'] == 'success') {
-                                            layer.msg('操作成功!', {time: 3500});
-                                            ajax_datatable.ajax.reload();
-                                        } else {
-                                            layer.alert(json['response_data'], {time: 10000});
-                                        }
-                                    }, 'json');
-                            }
-                        });
-                    });
+                    var $page_length = this.api().context[0]._iDisplayLength; // 当前每页显示多少
+                    if($page_length != 50) $obj.length = $page_length;
+                    var $page_start = this.api().context[0]._iDisplayStart; // 当前页开始
+                    var $pagination = ($page_start / $page_length) + 1; //得到页数值 比页码小1
+                    if($pagination > 1) $obj.page = $pagination;
+
+
+                    if(JSON.stringify($obj) != "{}")
+                    {
+                        var $url = url_build('',$obj);
+                        history.replaceState({page: 1}, "", $url);
+                    }
+                    else
+                    {
+                        $url = "{{ url('/item/order-list-for-all') }}";
+                        if(window.location.search) history.replaceState({page: 1}, "", $url);
+                    }
+
                 },
                 "language": { url: '/common/dataTableI18n' },
             });

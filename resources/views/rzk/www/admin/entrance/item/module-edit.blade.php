@@ -275,12 +275,11 @@
                     {
                         layer.msg(data.msg);
 
-                        location.href = "{{ url('/admin/item/module-list') }}";
+                        if($.getUrlParam('referrer')) location.href = decodeURIComponent($.getUrlParam('referrer'));
+                        else if(document.referrer) location.href = document.referrer;
+                        else location.href = "{{ url('/admin/item/module-list') }}";
 
-                        {{--if($.getUrlParam('referrer')) location.href = decodeURIComponent($.getUrlParam('referrer'));--}}
-                        {{--else if(document.referrer) location.shref = document.referrer;--}}
-                        {{--else location.href = "{{ url('/item/order-list-for-all') }}";--}}
-
+                        // location.href = "{{ url('/admin/item/module-list') }}";
                         // history.go(-1);
                     }
                 }
