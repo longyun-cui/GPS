@@ -59,52 +59,54 @@
 
             <div class="about_box about_lc">
                 <ul>
-                    <li>
-                        <div class="about_lc_img tacenter"><img src="/custom/rzk/image/index/about_lca.png" alt=""/></div>
-                        <div class="about_lc_txt taright">
-                            <h4>2002年</h4>
-                            <p>吉林力神集团成立于2002年，涉足生物制药、保健品制造、中医药产品研发及生产，经过多年积累，集团实力显著增长。</p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="about_lc_txt taleft">
-                            <h4 >2010年</h4>
-                            <p>建立原材料基地，形成原料产业链，汇聚上下游优势资源，进一步扩大市场版图。
-                            </p>
-                        </div>
-                        <div class="about_lc_img f-r"><img src="/custom/rzk/image/index/about_lcb.png" alt=""/></div>
-                    </li>
-                    <li>
-                        <div class="about_lc_img taright"><img src="/custom/rzk/image/index/about_lcc.png" alt=""/></div>
-                        <div class="about_lc_txt taright">
-                            <h4>2010年</h4>
-                            <p>建设现代化的总部基地，汇聚上下游优势资源，进一步扩大健康产业版图。</p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="about_lc_txt taleft">
-                            <h4>2012年</h4>
-                            <p>研发出全新中药配方，开发专利型中药泡脚和足部修护产品，在东北三省，开设中药泡脚连锁门店，取得巨大成功。</p>
-                        </div>
-                        <div class="about_lc_img f-r"><img src="/custom/rzk/image/index/about_lcd.png" alt=""/></div>
-                    </li>
-                    <li>
-                        <div class="about_lc_img taright"><img src="/custom/rzk/image/index/about_lce.png" alt=""/></div>
-                        <div class="about_lc_txt taright">
-                            <h4>2015年</h4>
-                            <p>建成吉林通化和湖北蕲春两大产业基地，硕果累累，成为大健康产业的代表性企业之一。</p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="about_lc_txt taleft">
-                            <h4 >2017年</h4>
-                            <p>集团成立互联网+大健康研发中心，以先进的互联网技术，成功探索出互联网+社区养生的运营模式。</p>
-                            <br/><br/>
-                            <h4 >2018年</h4>
-                            <p>响应国家政策，正式开放全国招商合作政策，进一步推动中国大健康产业发展，在全国范围内打造瑞足康品牌连锁门店</p>
-                        </div>
-                        <div class="about_lc_img f-r"><img src="/custom/rzk/image/index/about_lcf.png" alt=""/></div>
-                    </li>
+                    <img src="/custom/rzk/images/timeline.jpg" alt=""/>
+{{--                    <li>--}}
+{{--                        <div class="about_lc_img tacenter"><img src="/custom/rzk/images/timeline.jpg" alt=""/></div>--}}
+{{--                        <div class="about_lc_img tacenter"><img src="/custom/rzk/image/index/about_lca.png" alt=""/></div>--}}
+{{--                        <div class="about_lc_txt taright">--}}
+{{--                            <h4>2002年</h4>--}}
+{{--                            <p>吉林力神集团成立于2002年，涉足生物制药、保健品制造、中医药产品研发及生产，经过多年积累，集团实力显著增长。</p>--}}
+{{--                        </div>--}}
+{{--                    </li>--}}
+{{--                    <li>--}}
+{{--                        <div class="about_lc_txt taleft">--}}
+{{--                            <h4 >2010年</h4>--}}
+{{--                            <p>建立原材料基地，形成原料产业链，汇聚上下游优势资源，进一步扩大市场版图。--}}
+{{--                            </p>--}}
+{{--                        </div>--}}
+{{--                        <div class="about_lc_img f-r"><img src="/custom/rzk/image/index/about_lcb.png" alt=""/></div>--}}
+{{--                    </li>--}}
+{{--                    <li>--}}
+{{--                        <div class="about_lc_img taright"><img src="/custom/rzk/image/index/about_lcc.png" alt=""/></div>--}}
+{{--                        <div class="about_lc_txt taright">--}}
+{{--                            <h4>2010年</h4>--}}
+{{--                            <p>建设现代化的总部基地，汇聚上下游优势资源，进一步扩大健康产业版图。</p>--}}
+{{--                        </div>--}}
+{{--                    </li>--}}
+{{--                    <li>--}}
+{{--                        <div class="about_lc_txt taleft">--}}
+{{--                            <h4>2012年</h4>--}}
+{{--                            <p>研发出全新中药配方，开发专利型中药泡脚和足部修护产品，在东北三省，开设中药泡脚连锁门店，取得巨大成功。</p>--}}
+{{--                        </div>--}}
+{{--                        <div class="about_lc_img f-r"><img src="/custom/rzk/image/index/about_lcd.png" alt=""/></div>--}}
+{{--                    </li>--}}
+{{--                    <li>--}}
+{{--                        <div class="about_lc_img taright"><img src="/custom/rzk/image/index/about_lce.png" alt=""/></div>--}}
+{{--                        <div class="about_lc_txt taright">--}}
+{{--                            <h4>2015年</h4>--}}
+{{--                            <p>建成吉林通化和湖北蕲春两大产业基地，硕果累累，成为大健康产业的代表性企业之一。</p>--}}
+{{--                        </div>--}}
+{{--                    </li>--}}
+{{--                    <li>--}}
+{{--                        <div class="about_lc_txt taleft">--}}
+{{--                            <h4 >2017年</h4>--}}
+{{--                            <p>集团成立互联网+大健康研发中心，以先进的互联网技术，成功探索出互联网+社区养生的运营模式。</p>--}}
+{{--                            <br/><br/>--}}
+{{--                            <h4 >2018年</h4>--}}
+{{--                            <p>响应国家政策，正式开放全国招商合作政策，进一步推动中国大健康产业发展，在全国范围内打造瑞足康品牌连锁门店</p>--}}
+{{--                        </div>--}}
+{{--                        <div class="about_lc_img f-r"><img src="/custom/rzk/image/index/about_lcf.png" alt=""/></div>--}}
+{{--                    </li>--}}
                 </ul>
             </div>
 

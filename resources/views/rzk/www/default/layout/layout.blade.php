@@ -45,7 +45,7 @@
                     <a href="/">首页</a>
                 </li>
                 <li class="mainlevel {{ $menu_about_active or '' }}" >
-                    <a href="/about">集团实力</a>
+                    <a href="/about">集团介绍</a>
                 </li>
                 <li class="mainlevel {{ $menu_join_us_active or '' }}">
                     <a href="/join_us">诚邀合作</a>
@@ -99,7 +99,7 @@
         <button id="dl-menu-button">Open Menu</button>
         <ul class="dl-menu">
             <li><a href="index.html">首页</a></li>
-            <li><a href="/about">集团实力</a></li>
+            <li><a href="/about">集团介绍</a></li>
             <li><a href="/joinus">诚邀合作</a></li>
             <li><a href="/support">运营指导</a></li>
             <li><a href="/product">产品/服务</a></li>
