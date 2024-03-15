@@ -27,11 +27,11 @@ class RZK_Item extends Model
     protected $dateFormat = 'U';
 
     protected $dates = ['created_at','updated_at','deleted_at'];
-//    public function getDates()
-//    {
-////        return array(); // 原形返回；
+    public function getDates()
+    {
+        return array(); // 原形返回；
 //        return array('created_at','updated_at');
-//    }
+    }
 
 
     // 拥有者

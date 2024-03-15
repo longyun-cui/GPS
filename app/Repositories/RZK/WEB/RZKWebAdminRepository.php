@@ -1671,7 +1671,7 @@ class RZKWebAdminRepository {
 
         $query = RZK_Item::select('*')
             ->with(['creator','owner'])
-            ->where('item_category', 11);
+            ->where(['item_category'=>9, 'item_type'=>21]);
 
 
         if(!empty($post_data['id'])) $query->where('id', $post_data['id']);
@@ -1719,9 +1719,6 @@ class RZKWebAdminRepository {
                 $query->where('inspected_result', $inspected_result);
             }
         }
-
-
-
 
 
         $total = $query->count();

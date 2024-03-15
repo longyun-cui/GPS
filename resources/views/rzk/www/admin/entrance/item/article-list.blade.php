@@ -193,7 +193,7 @@
 @endsection
 @section('custom-style')
     <style>
-        .tableArea table { width:100% !important; min-width:1200px; }
+        .tableArea table { width:100% !important; }
         .tableArea table tr th,
         .tableArea table tr td { white-space:nowrap; }
     </style>
@@ -246,57 +246,59 @@
                     //     'orderable': false
                     // },
                     {
-                        "className": "",
-                        "width": "40px",
                         "title": "ID",
                         "data": "id",
+                        "className": "",
+                        "width": "60px",
                         "orderable": true,
                         render: function(data, type, row, meta) {
                             return data;
                         }
                     },
                     {
-                        "className": "font-12px",
-                        "width": "80px",
                         "title": "类型",
-                        "data": "item_type",
+                        "data": "item_sign",
+                        "className": "",
+                        "width": "100px",
                         "orderable": true,
                         render: function(data, type, row, meta) {
                             if(data == 0) return '<small class="btn-xs bg-teal">未分类</small>';
+                            else if(data == "news") return '<small class="btn-xs bg-olive">最新新闻</small>';
+                            else if(data == "industry") return '<small class="btn-xs bg-blue">产业动态</small>';
                             else if(data == 11) return '<small class="btn-xs bg-olive">产品</small>';
                             else if(data == 41) return '<small class="btn-xs bg-purple">培训</small>';
-//                            else if(data == 42) return '<small class="btn-xs bg-purple">沟通技巧</small>';
+                            else if(data == 42) return '<small class="btn-xs bg-purple">沟通技巧</small>';
                             else if(data == 99) return '<small class="btn-xs bg-yellow">公告</small>';
                             else if(data == 101) return '<small class="btn-xs bg-teal">其他</small>';
                             else return "有误";
                         }
                     },
                     {
-                        "className": "text-left",
-                        "width": "",
                         "title": "标题",
                         "data": "title",
+                        "className": "text-left",
+                        "width": "",
                         "orderable": false,
                         render: function(data, type, row, meta) {
 //                            return data;
-                            return '<a target="_blank" href="{{ url(env('DOMAIN_YH_STAFF').'/item/') }}'+row.id+'">'+data+'</a>';
+                            return '<a target="_blank" href="{{ url(env('DOMAIN_RZK_WWW').'/news-detail/') }}'+row.id+'">'+data+'</a>';
                         }
                     },
                     {
-                        "className": "text-center",
-                        "width": "100px",
                         "title": "发布者",
                         "data": "creator_id",
+                        "className": "",
+                        "width": "100px",
                         "orderable": false,
                         render: function(data, type, row, meta) {
                             return row.creator == null ? '未知' : '<a target="_blank" href="/user/'+row.creator.id+'">'+row.creator.username+'</a>';
                         }
                     },
                     {
-                        "className": "font-12px",
-                        "width": "120px",
                         "title": "创建时间",
                         "data": 'created_at',
+                        "className": "",
+                        "width": "120px",
                         "orderable": true,
                         render: function(data, type, row, meta) {
 //                            return data;
@@ -307,16 +309,19 @@
                             var $hour = ('00'+$date.getHours()).slice(-2);
                             var $minute = ('00'+$date.getMinutes()).slice(-2);
                             var $second = ('00'+$date.getSeconds()).slice(-2);
-                            return $year+'-'+$month+'-'+$day;
-//                            return $year+'-'+$month+'-'+$day+'&nbsp;'+$hour+':'+$minute;
-//                            return $year+'-'+$month+'-'+$day+'&nbsp;&nbsp;'+$hour+':'+$minute+':'+$second;
+
+                            // return $year+'-'+$month+'-'+$day;
+                            // return $year+'-'+$month+'-'+$day+'&nbsp;'+$hour+':'+$minute;
+                            // return $year+'-'+$month+'-'+$day+'&nbsp;&nbsp;'+$hour+':'+$minute+':'+$second;
+
+                            return $year+'-'+$month+'-'+$day+'&nbsp;'+$hour+':'+$minute;
                         }
                     },
                     {
-                        "className": "font-12px",
-                        "width": "120px",
                         "title": "修改时间",
                         "data": 'updated_at',
+                        "className": "",
+                        "width": "120px",
                         "orderable": true,
                         render: function(data, type, row, meta) {
 //                            return data;
@@ -327,15 +332,18 @@
                             var $hour = ('00'+$date.getHours()).slice(-2);
                             var $minute = ('00'+$date.getMinutes()).slice(-2);
                             var $second = ('00'+$date.getSeconds()).slice(-2);
-//                            return $year+'-'+$month+'-'+$day;
+
+                            // return $year+'-'+$month+'-'+$day;
+                            // return $year+'-'+$month+'-'+$day+'&nbsp;'+$hour+':'+$minute;
+                            // return $year+'-'+$month+'-'+$day+'&nbsp;&nbsp;'+$hour+':'+$minute+':'+$second;
+
                             return $year+'-'+$month+'-'+$day+'&nbsp;'+$hour+':'+$minute;
-//                            return $year+'-'+$month+'-'+$day+'&nbsp;&nbsp;'+$hour+':'+$minute+':'+$second;
                         }
                     },
                     {
-                        "width": "80px",
                         "title": "状态",
                         "data": "item_result",
+                        "width": "80px",
                         "orderable": false,
                         render: function(data, type, row, meta) {
 //                            return data;
@@ -355,9 +363,9 @@
                         }
                     },
                     {
-                        "width": "160px",
                         "title": "操作",
                         "data": 'id',
+                        "width": "160px",
                         "orderable": false,
                         render: function(data, type, row, meta) {
 

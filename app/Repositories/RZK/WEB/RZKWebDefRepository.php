@@ -78,7 +78,8 @@ class RZKWebDefRepository {
     public function view_index()
     {
         $item_list = RZK_Item::select('*')
-            ->where(['item_status'=>1])
+            ->where(['item_status'=>1,'item_category'=>9])
+            ->whereIn('item_type',[9,10,21])
             ->where('item_sign','<>','')
             ->whereNotNull('item_sign')
             ->orderBy('id','asc')
@@ -91,6 +92,8 @@ class RZKWebDefRepository {
         $return_data['index_service'] = $item_list['index_service'];
         $return_data['index_join_us'] = $item_list['index_join_us'];
         $return_data['index_support'] = $item_list['index_support'];
+        $return_data['index_news'] = $item_list['news']->sortByDesc('id');
+        $return_data['index_news_industry'] = $item_list['news_industry']->sortByDesc('id');
 
         $return_data['menu_index_active'] = 'active';
         $view_blade = env('TEMPLATE_RZK_WEB_DEF').'entrance.index';
@@ -101,7 +104,8 @@ class RZKWebDefRepository {
     public function view_about()
     {
         $item_list = RZK_Item::select('*')
-            ->where(['item_status'=>1])
+            ->where(['item_status'=>1,'item_category'=>9])
+            ->whereIn('item_type',[9,10])
             ->where('item_sign','<>','')
             ->whereNotNull('item_sign')
             ->orderBy('id','asc')
@@ -133,7 +137,8 @@ class RZKWebDefRepository {
     public function view_support()
     {
         $item_list = RZK_Item::select('*')
-            ->where(['item_status'=>1])
+            ->where(['item_status'=>1,'item_category'=>9])
+            ->whereIn('item_type',[9,10])
             ->where('item_sign','<>','')
             ->whereNotNull('item_sign')
             ->orderBy('id','asc')
@@ -158,7 +163,8 @@ class RZKWebDefRepository {
     public function view_product()
     {
         $item_list = RZK_Item::select('*')
-            ->where(['item_status'=>1])
+            ->where(['item_status'=>1,'item_category'=>9])
+            ->whereIn('item_type',[9,10])
             ->where('item_sign','<>','')
             ->whereNotNull('item_sign')
             ->orderBy('id','asc')
@@ -178,7 +184,8 @@ class RZKWebDefRepository {
     public function view_industry()
     {
         $item_list = RZK_Item::select('*')
-            ->where(['item_status'=>1])
+            ->where(['item_status'=>1,'item_category'=>9])
+            ->whereIn('item_type',[9,10])
             ->where('item_sign','<>','')
             ->whereNotNull('item_sign')
             ->orderBy('id','asc')
@@ -197,7 +204,11 @@ class RZKWebDefRepository {
     // 新闻动态
     public function view_news_index()
     {
-        $item_list = RZK_Item::select('*')->where(['item_status'=>1])->orderBy('id','desc')->get();
+        $item_list = RZK_Item::select('*')
+            ->where(['item_status'=>1,'item_category'=>9,'item_type'=>21])
+            ->where('item_sign','news')
+            ->orderBy('id','desc')
+            ->paginate(10);
         $return_data['item_list'] = $item_list;
 
         $return_data['menu_news_active'] = 'active';
@@ -208,7 +219,11 @@ class RZKWebDefRepository {
     // 新闻（行业）动态
     public function view_news_industry()
     {
-        $item_list = RZK_Item::select('*')->where(['item_status'=>1])->orderBy('id','desc')->get();
+        $item_list = RZK_Item::select('*')
+            ->where(['item_status'=>1,'item_category'=>9,'item_type'=>21])
+            ->where('item_sign','news_industry')
+            ->orderBy('id','desc')
+            ->paginate(10);
         $return_data['item_list'] = $item_list;
 
         $return_data['menu_news_active'] = 'active';
@@ -217,12 +232,11 @@ class RZKWebDefRepository {
     }
 
     // 新闻（行业）动态
-    public function view_news_detail()
+    public function view_news_detail($post_data)
     {
-        $item_list = RZK_Item::select('*')->where(['item_status'=>1])->orderBy('id','desc')->get();
-        $return_data['item_list'] = $item_list;
-
-        $return_data['menu_news_active'] = 'active';
+        $id = $post_data["id"];
+        $item = RZK_Item::select('*')->find($id);
+        $return_data['item'] = $item;
         $view_blade = env('TEMPLATE_RZK_WEB_DEF').'entrance.news-detail';
         return view($view_blade)->with($return_data);
     }

@@ -44,7 +44,7 @@
         // 【编辑】
         $("#item-main-body").on('click', ".item-edit-link", function() {
             var that = $(this);
-            window.location.href = "/admin/item/news-edit?item-id="+that.attr('data-id');
+            window.location.href = "/admin/item/article-edit?item-id="+that.attr('data-id');
         });
 
 

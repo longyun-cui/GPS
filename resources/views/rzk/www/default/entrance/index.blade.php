@@ -366,42 +366,23 @@
                 </div>
 
                 <ul>
+                    @foreach($index_news as $item)
+                    @if($loop->index < 3)
                     <li>
-                        <a href="/custom/rzk/newsdetail/100.html">
-                            <img src="http://www.blz9.cn/uploads/20221126/7c5a5ee1ad74e4a04b964ce00f4ebfee.png" alt="上海沐浴行业协会足道专业委员会二届三次秘书处会议圆满召开，百龄足品牌于世才先生受聘为专委会执行秘书长">
+                        <a href="/news-detail?id={{ $item->id }}">
+                            <img src="{{ url(env('DOMAIN_CDN').'/'.$item->cover_pic) }}" alt="{{ $item->title or '公司新闻' }}">
                         </a>
                         <div class="zyxwd212">
-                            <a href="/custom/rzk/newsdetail/100.html">
-                                <b>上海沐浴行业协会足道专业委员会二届三次秘</b>
-                            </a><hr>
-                            <p class="zyxwp1"><a href="/custom/rzk/newsdetail/100.html">2022年11月25日下午16:00，上海沐浴行业协会足道专业委员会二届三次秘书处会议在上海足霸天下...</a></p>
-                            <p class="zyxwp">2022-11-26</p>
+                            <a href="/news-detail?id={{ $item->id }}">
+                                <b>{{ $item->title or '公司新闻' }}</b>
+                            </a>
+                            <hr>
+                            <p class="zyxwp1"><a href="/news-detail?id={{ $item->id }}">{{ $item->description or '' }}</a></p>
+                            <p class="zyxwp">{{ date('Y-m-d', $item->updated_at) }}</p>
                         </div>
                     </li>
-                    <li>
-                        <a href="/custom/rzk/newsdetail/99.html">
-                            <img src="/custom/rzk/uploads/20211120/51e790717fbc8aa865e6d1b2c72bc097.jpg" alt='上海沐浴行业协会足道专业委员会二届二次理事会成功召开' ></img>
-                        </a>
-                        <div class="zyxwd212">
-                            <a href="/custom/rzk/newsdetail/99.html">
-                                <b>上海沐浴行业协会足道专业委员会二届二次理</b>
-                            </a><hr>
-                            <p class="zyxwp1"><a href="/custom/rzk/newsdetail/99.html">2022年11月23日，上海沐浴行业协会足道专业委员会二届二次理事会在瑞足康华东品牌运营中心顺利召开...</a></p>
-                            <p class="zyxwp">2022-11-24</p>
-                        </div>
-                    </li>
-                    <li>
-                        <a href="/custom/rzk/newsdetail/98.html">
-                            <img src="/custom/rzk/uploads/20211120/51e790717fbc8aa865e6d1b2c72bc097.jpg" alt='上海沐浴行业协会足道专业委员会二届一次副主任会议隆重召开' ></img>
-                        </a>
-                        <div class="zyxwd212">
-                            <a href="/custom/rzk/newsdetail/98.html">
-                                <b>上海沐浴行业协会足道专业委员会二届一次副</b>
-                            </a><hr>
-                            <p class="zyxwp1"><a href="/custom/rzk/newsdetail/98.html">2021年11月18日，上海沐浴行业协会足道专业委员会二届一次副主任会议在上海大桶大总部召开，参会人...</a></p>
-                            <p class="zyxwp">2021-11-20</p>
-                        </div>
-                    </li>
+                    @endif
+                    @endforeach
                 </ul>
             </div>
             <div class="zyxwd3">
@@ -412,42 +393,23 @@
                 </div>
 
                 <ul>
-                    <li>
-                        <a href="/custom/rzk/newsdetail/95.html">
-                            <img src="/custom/rzk/uploads/20211120/51e790717fbc8aa865e6d1b2c72bc097.jpg" alt='秋天是足疗养生的黄金时期！'></img>
-                        </a>
-                        <div class="zyxwd212">
-                            <a href="/custom/rzk/newsdetail/95.html">
-                                <b>秋天是足疗养生的黄金时期！</b>
-                            </a><hr>
-                            <p class="zyxwp1"><a href="/custom/rzk/newsdetail/95.html">秋天是足疗养生的黄金时期！秋天是养生的好时机，但养生不一定要通过吃东西来完成。它可以通过足疗。足疗有...</a></p>
-                            <p class="zyxwp">2021-05-29</p>
-                        </div>
-                    </li>
-                    <li>
-                        <a href="/custom/rzk/newsdetail/91.html">
-                            <img src="/custom/rzk/uploads/20211120/51e790717fbc8aa865e6d1b2c72bc097.jpg" alt='瑞足康足疗让你爱上它' ></img>
-                        </a>
-                        <div class="zyxwd212">
-                            <a href="/custom/rzk/newsdetail/91.html">
-                                <b>瑞足康足疗让你爱上它</b>
-                            </a><hr>
-                            <p class="zyxwp1"><a href="/custom/rzk/newsdetail/91.html">瑞足康足疗让你爱上它，足疗体验是好是坏。商家说的不算数。消费者的体验很重要。一位刚刚接受过几次足部护...</a></p>
-                            <p class="zyxwp">2021-11-07</p>
-                        </div>
-                    </li>
-                    <li>
-                        <a href="/custom/rzk/newsdetail/86.html">
-                            <img src="/custom/rzk/uploads/20211120/51e790717fbc8aa865e6d1b2c72bc097.jpg" alt='加盟上海瑞足康不只是客人满满' ></img>
-                        </a>
-                        <div class="zyxwd212">
-                            <a href="/custom/rzk/newsdetail/86.html">
-                                <b>加盟上海瑞足康不只是客人满满</b>
-                            </a><hr>
-                            <p class="zyxwp1"><a href="/custom/rzk/newsdetail/86.html">上海瑞足康修脚店在当今的社会上那是相当的受欢迎，而且也是众多的足疗店当中不可或缺的组成部分，而且在年...</a></p>
-                            <p class="zyxwp">2021-11-07</p>
-                        </div>
-                    </li>
+                    @foreach($index_news_industry as $item)
+                    @if($loop->index < 3)
+                        <li>
+                            <a href="/news-detail?id={{ $item->id }}">
+                                <img src="{{ url(env('DOMAIN_CDN').'/'.$item->cover_pic) }}" alt="{{ $item->title or '公司新闻' }}">
+                            </a>
+                            <div class="zyxwd212">
+                                <a href="/custom/rzk/newsdetail/100.html">
+                                    <b>{{ $item->title or '公司新闻' }}</b>
+                                </a>
+                                <hr>
+                                <p class="zyxwp1"><a href="/news-detail?id={{ $item->id }}">{{ $item->description or '' }}</a></p>
+                                <p class="zyxwp">{{ date('Y-m-d', $item->updated_at) }}</p>
+                            </div>
+                        </li>
+                    @endif
+                    @endforeach
                 </ul>
             </div>
         </div>

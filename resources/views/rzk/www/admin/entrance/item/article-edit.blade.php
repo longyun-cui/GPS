@@ -43,11 +43,11 @@
                     <div class="col-md-8">
                         <div class="btn-group">
 
-                            @if($operate == 'create' || ($operate == 'edit' && $data->item_type == 11))
+                            @if($operate == 'create' || ($operate == 'edit' && $data->item_sign == "news"))
                             <button type="button" class="btn">
                                 <span class="radio">
                                     <label>
-                                        <input type="radio" name="item_type" value=11 checked="checked"> 最新新闻
+                                        <input type="radio" name="item_sign" value="news" checked="checked"> 最新新闻
 {{--                                        @if($operate == 'edit' && $data->item_type == 11)--}}
 {{--                                            <input type="radio" name="item_type" value=11 checked="checked"> 最新新闻--}}
 {{--                                        @else--}}
@@ -58,14 +58,14 @@
                             </button>
                             @endif
 
-                            @if($operate == 'create' || ($operate == 'edit' && $data->item_type == 41))
+                            @if($operate == 'create' || ($operate == 'edit' && $data->item_sign == "news_industry"))
                             <button type="button" class="btn">
                                 <span class="radio">
                                     <label>
-                                        @if($operate == 'edit' && $data->item_type == 41)
-                                            <input type="radio" name="item_type" value="41" checked="checked"> 行业动态
+                                        @if($operate == 'edit' && $data->item_sign == "news_industry")
+                                            <input type="radio" name="item_sign" value="news_industry" checked="checked"> 行业动态
                                         @else
-                                            <input type="radio" name="item_type" value="41"> 行业动态
+                                            <input type="radio" name="item_sign" value="news_industry"> 行业动态
                                         @endif
                                     </label>
                                 </span>
@@ -326,7 +326,7 @@
         // 添加or编辑
         $("#edit-item-submit").on('click', function() {
             var options = {
-                url: "{{ url('/admin/item/news-edit') }}",
+                url: "{{ url('/admin/item/article-edit') }}",
                 type: "post",
                 dataType: "json",
                 // target: "#div2",
@@ -335,7 +335,7 @@
                     else
                     {
                         layer.msg(data.msg);
-                        location.href = "{{ url('/admin/item/news-list') }}";
+                        location.href = "{{ url('/admin/item/article-list') }}";
                     }
                 }
             };
