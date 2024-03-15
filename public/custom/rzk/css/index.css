@@ -315,6 +315,7 @@
     margin-left: 0px;
 }
 .index_box8 li{width: 290px;height:300px;margin-left: 10px;position: relative;}
+.index_box8li img {width: 100%;}
 .index_box8li::before,.index_box8li::after{
     content: "";
     position: absolute;
