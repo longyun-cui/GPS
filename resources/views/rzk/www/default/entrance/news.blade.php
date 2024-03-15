@@ -45,7 +45,7 @@
                         </a>
                     </h4>
                     <div>
-                        {!! $item->content or '' !!}
+                        {{ $item->description or '' }}
                     </div>
                     <p class="time">{{ date('Y-m-d', $item->updated_at) }}</p>
                 </div>
