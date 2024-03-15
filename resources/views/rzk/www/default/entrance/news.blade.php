@@ -44,10 +44,10 @@
                             {{ $item->title or 'TITLE' }}
                         </a>
                     </h4>
-                    <div>
+                    <p>
                         {{ $item->description or '' }}
-                    </div>
-                    <p class="time">{{ date('Y-m-d', $item->updated_at) }}</p>
+                    </p>
+                    <p class="time">{{ date('Y-m-d', $item->created_at) }}</p>
                 </div>
                 <div class="clear"></div>
             </div>
