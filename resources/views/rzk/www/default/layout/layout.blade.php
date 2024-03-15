@@ -298,7 +298,7 @@
             </div>
         </div>
         <div class="footd3">
-            ©2000 www.rzk888.cn {{ config('rzk.info.info.company_name') }}
+            ©{{ config('rzk.info.info.company_name') }} (2000-{{ date('Y') }}) www.rzk888.com
             <a href="https://beian.miit.gov.cn/" target="_self">蜀ICP备2024053233号-1</a>
 {{--            站长统计 投资有风险，加盟需谨慎！--}}
         </div>
