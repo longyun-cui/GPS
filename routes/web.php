@@ -116,6 +116,12 @@ Route::group(['domain'=>'http://local-guihua.com', 'namespace'=>'GH'], function 
 Route::group(['domain'=>'rzk.'.env('DOMAIN_ROOT'), 'namespace'=>'RZK'], function () {
     require(__DIR__ . '/RZK/rzk-route-web.php');
 });
+Route::group(['domain'=>env('DOMAIN_RZK_WEB'), 'namespace'=>'RZK'], function () {
+    require(__DIR__ . '/RZK/rzk-route-web.php');
+});
+Route::group(['domain'=>env('DOMAIN_RZK_WWW'), 'namespace'=>'RZK'], function () {
+    require(__DIR__ . '/RZK/rzk-route-web.php');
+});
 
 
 
