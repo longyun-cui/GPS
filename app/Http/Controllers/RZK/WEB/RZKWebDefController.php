@@ -74,6 +74,19 @@ class RZKWebDefController extends Controller
         return redirect('/login');
     }
 
+    // 主页
+    public function test()
+    {
+        $result = get_ip_info('216.244.66.111');
+        if($result && $result['code'] == 200)
+        {
+            $ip_address = $result['adcode']['o'];
+            dd($ip_address);
+
+        }
+        dd('false');
+    }
+
 
 
 

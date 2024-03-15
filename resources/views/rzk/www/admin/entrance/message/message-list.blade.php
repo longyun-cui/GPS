@@ -328,6 +328,16 @@
                         }
                     },
                     {
+                        "title": "IP所属地",
+                        "data": "ip_address",
+                        "className": "",
+                        "width": "160px",
+                        "orderable": false,
+                        render: function(data, type, row, meta) {
+                            return data;
+                        }
+                    },
+                    {
                         "title": "创建时间",
                         "data": 'created_at',
                         "className": "font-12px",

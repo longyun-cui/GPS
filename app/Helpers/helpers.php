@@ -209,6 +209,27 @@ if(!function_exists('replace_content')) {
     }
 }
 
+if(!function_exists('get_ip_info'))
+{
+    function get_ip_info($ip)
+    {
+        $url = "https://api.vore.top/api/IPdata?ip=".$ip;
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+        curl_setopt($ch, CURLOPT_HEADER, false);
+        curl_setopt($ch, CURLOPT_TIMEOUT,5);
+//        $result = curl_exec($ch);
+        $result = json_decode(curl_exec($ch),true);
+        curl_close($ch);
+
+        return $result;
+    }
+}
+
 if(!function_exists('Get_IP'))
 {
     function Get_IP()

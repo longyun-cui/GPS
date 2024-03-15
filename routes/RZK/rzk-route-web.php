@@ -24,6 +24,8 @@ Route::group(['namespace' => 'WEB'], function () {
     Route::get('/contact', $controller.'@view_contact');
     Route::post('/message-leave', $controller.'@operate_message_leave');
 
+    Route::get('/test', $controller.'@test');
+
 });
 
 

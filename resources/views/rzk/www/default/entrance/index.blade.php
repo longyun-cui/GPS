@@ -261,33 +261,33 @@
 </div>
 
 {{--创新模式--}}
-<div class="indexd5bg">
-    <div class="w indexd5">
-        <div class="d2t" style="color: #fff;">创新模式-引领养生服务新未来</div>
-        <div class="d5s"><div>瑞足康创新互联网+社区养生模式</div></div>
-        <div class="d5d">
-            <ul>
-                <li>
-                    <p class="d5dp">新服务</p>
-                    <p class="d5dp1">专业技师<br>科技设备</p>
-                </li>
-                <li>
-                    <p class="d5dp">新营销</p>
-                    <p class="d5dp1">线上线下<br>全网销售</p>
-                </li>
-                <li>
-                    <p class="d5dp">互联网</p>
-                    <p class="d5dp1">O2O模式<br>会员体系</p>
-                </li>
-            </ul>
-            <div class="d5d1">传统门店只能做商圈内及周边的生意，瑞足康结合线上小程序平台<br>
-                覆盖更多亚健康人群，线上线下多渠道体验瑞足康的健康养生服务</div>
-            <div class="d5d2">轻量投资&emsp;&emsp;&emsp;灵活选址&emsp;&emsp;&emsp;无需经验&emsp;&emsp;&emsp;集团实力&emsp;&emsp;&emsp;全程帮扶 </div>
-        </div>
-    </div>
+<div class="indexd5bg" style='background:url("/custom/rzk/images/pc-1.jpg");background-size:100%;background-repeat: no-repeat'>
+{{--    <div class="w indexd5">--}}
+{{--        <div class="d2t" style="color: #fff;">创新模式-引领养生服务新未来</div>--}}
+{{--        <div class="d5s"><div>瑞足康创新互联网+社区养生模式</div></div>--}}
+{{--        <div class="d5d">--}}
+{{--            <ul>--}}
+{{--                <li>--}}
+{{--                    <p class="d5dp">新服务</p>--}}
+{{--                    <p class="d5dp1">专业技师<br>科技设备</p>--}}
+{{--                </li>--}}
+{{--                <li>--}}
+{{--                    <p class="d5dp">新营销</p>--}}
+{{--                    <p class="d5dp1">线上线下<br>全网销售</p>--}}
+{{--                </li>--}}
+{{--                <li>--}}
+{{--                    <p class="d5dp">互联网</p>--}}
+{{--                    <p class="d5dp1">O2O模式<br>会员体系</p>--}}
+{{--                </li>--}}
+{{--            </ul>--}}
+{{--            <div class="d5d1">传统门店只能做商圈内及周边的生意，瑞足康结合线上小程序平台<br>--}}
+{{--                覆盖更多亚健康人群，线上线下多渠道体验瑞足康的健康养生服务</div>--}}
+{{--            <div class="d5d2">轻量投资&emsp;&emsp;&emsp;灵活选址&emsp;&emsp;&emsp;无需经验&emsp;&emsp;&emsp;集团实力&emsp;&emsp;&emsp;全程帮扶 </div>--}}
+{{--        </div>--}}
+{{--    </div>--}}
 </div>
 <div class="mindexd5bg">
-    <img src="/custom/rzk/images/m1.jpg" alt="" />
+    <img src="/custom/rzk/images/m-1.jpg" alt="" />
 </div>
 
 {{--全程帮扶--}}
@@ -349,7 +349,7 @@
     </div>
 </div>
 <div class="mindexd7bg">
-    <img src="/custom/rzk/images/m2.jpg" alt="" />
+    <img src="/custom/rzk/images/m-2-1.jpg" alt="" />
 </div>
 
 

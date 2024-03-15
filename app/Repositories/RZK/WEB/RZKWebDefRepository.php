@@ -455,7 +455,16 @@ class RZKWebDefRepository {
         try
         {
             $post_data['category'] = 1;
-            $post_data["ip"] = Get_IP();
+            $ip = Get_IP();
+            if($ip)
+            {
+                $post_data["ip"] = $ip;
+                $result = get_ip_info($ip);
+                if($result && $result['code'] == 200)
+                {
+                    $post_data["ip_address"] = $result['adcode']['o'];
+                }
+            }
             $mine = new RZK_Message;
             $bool = $mine->fill($post_data)->save();
             if(!$bool) throw new Exception("insert--message--fail");
@@ -523,6 +532,10 @@ class RZKWebDefRepository {
 
 
 
+    // 留言
+    public function get_ip_info($ip)
+    {
+    }
 
 
 
