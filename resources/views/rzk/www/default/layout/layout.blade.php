@@ -110,7 +110,7 @@
                 <ul class="dl-submenu">
                     <li class="dl-back"><a href="/">返回上一级</a></li>
                     <li><a href="/news/index">公司新闻</a></li>
-                    <li><a href="/news/hangye">行业资讯</a></li>
+                    <li><a href="/news/industry">行业资讯</a></li>
                 </ul>
             </li>
             <li><a href="/contact">联系我们</a></li>
@@ -299,7 +299,7 @@
         </div>
         <div class="footd3">
             ©2000 www.rzk888.cn {{ config('rzk.info.info.company_name') }}
-            <a href="https://beian.miit.gov.cn/" target="_self">沪ICP备18035853号-3</a>
+            <a href="https://beian.miit.gov.cn/" target="_self">蜀ICP备2024053233号-1</a>
 {{--            站长统计 投资有风险，加盟需谨慎！--}}
         </div>
     </div>
