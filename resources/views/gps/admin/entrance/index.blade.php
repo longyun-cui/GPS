@@ -586,12 +586,12 @@
                             </a>
                         </li>
                         <li class="">
-                            <a target="_blank" href="http://rzk.chaos01.cn/">
+                            <a target="_blank" href="http://rzk888.com/">
                                 【ON】首页 <span class="pull-right"><b class="badge bg-aqua">3</b></span>
                             </a>
                         </li>
                         <li class="">
-                            <a target="_blank" href="http://rzk.chaos01.cn/admin/">
+                            <a target="_blank" href="http://rzk888.com/admin/">
                                 【ON】Admin <span class="pull-right"><b class="badge bg-red">4</b></span>
                             </a>
                         </li>
