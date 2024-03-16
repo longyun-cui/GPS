@@ -7,6 +7,7 @@ use App\Models\RZK\RZK_Message;
 
 use App\Repositories\Common\CommonRepository;
 
+use App\Repositories\MailRepository;
 use Response, Auth, Validator, DB, Exception, Cache, Blade, Carbon;
 use QrCode, Excel;
 
@@ -482,6 +483,14 @@ class RZKWebDefRepository {
             $mine = new RZK_Message;
             $bool = $mine->fill($post_data)->save();
             if(!$bool) throw new Exception("insert--message--fail");
+
+            // 程序内发邮件
+            $email_data['target'] = env('EMAIL_RZK');
+            $email_data['name'] = $post_data['name'];
+            $email_data['mobile'] = $post_data['mobile'];
+            $mail_repo = new MailRepository;
+            $flag = $mail_repo->send_email_to_rzk_for_message($email_data);
+//            if(count($flag) >= 1) throw new Exception("send-email-failed");
 
             DB::commit();
             $msg = '提交成功！';
