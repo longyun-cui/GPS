@@ -2335,7 +2335,7 @@ class RZKWebAdminRepository {
         }
 
         $operate = $post_data["operate"];
-        if($operate != 'article-enable') return response_error([],"参数【operate】有误！");
+        if($operate != 'item-enable') return response_error([],"参数【operate】有误！");
         $id = $post_data["item_id"];
         if(intval($id) !== 0 && !$id) return response_error([],"参数【ID】有误！");
 
@@ -2386,7 +2386,7 @@ class RZKWebAdminRepository {
         }
 
         $operate = $post_data["operate"];
-        if($operate != 'article-disable') return response_error([],"参数【operate】有误！");
+        if($operate != 'item-disable') return response_error([],"参数【operate】有误！");
         $id = $post_data["item_id"];
         if(intval($id) !== 0 && !$id) return response_error([],"参数【ID】有误！");
 

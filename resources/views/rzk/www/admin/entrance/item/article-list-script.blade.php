@@ -192,7 +192,7 @@
                 ,btn: ['确定', '取消']
                 ,yes: function(index){
                     $.post(
-                        "{{ url('/item/item-delete') }}",
+                        "{{ url('/admin/item/item-delete') }}",
                         {
                             _token: $('meta[name="_token"]').attr('content'),
                             operate: "item-delete",
@@ -220,7 +220,7 @@
                 ,btn: ['确定', '取消']
                 ,yes: function(index){
                     $.post(
-                        "{{ url('/item/item-restore') }}",
+                        "{{ url('/admin/item/item-restore') }}",
                         {
                             _token: $('meta[name="_token"]').attr('content'),
                             operate: "item-restore",
@@ -248,7 +248,7 @@
                 ,btn: ['确定', '取消']
                 ,yes: function(index){
                     $.post(
-                        "{{ url('/item/item-delete-permanently') }}",
+                        "{{ url('/admin/item/item-delete-permanently') }}",
                         {
                             _token: $('meta[name="_token"]').attr('content'),
                             operate: "item-delete-permanently",
@@ -276,7 +276,7 @@
                 ,btn: ['确定', '取消']
                 ,yes: function(index){
                     $.post(
-                        "{{ url('/admin/item/item-publish') }}",
+                        "{{ url('/admin/item/article-publish') }}",
                         {
                             _token: $('meta[name="_token"]').attr('content'),
                             operate: "item-publish",
@@ -299,19 +299,38 @@
         // 【启用】
         $("#item-main-body").on('click', ".item-enable-submit", function() {
             var $that = $(this);
-            layer.msg('确定"启用"？', {
-                time: 0
-                ,btn: ['确定', '取消']
-                ,yes: function(index){
+            // layer.msg('确定"启用"？', {
+            //     time: 0
+            //     ,btn: ['确定', '取消']
+            //     ,yes: function(index){
+            //     }
+            // });
+
+            var $index = layer.load(1, {
+                shade: [0.3, '#fff'],
+                content: '<span class="loadtip">处理中</span>',
+                success: function (layer) {
+                    layer.find('.layui-layer-content').css({
+                        'padding-top': '40px',
+                        'width': '100px',
+                    });
+                    layer.find('.loadtip').css({
+                        'font-size':'20px',
+                        'margin-left':'-18px'
+                    });
+                }
+            });
+
                     $.post(
-                        "{{ url('/item/item-enable') }}",
+                        "{{ url('/admin/item/article-enable') }}",
                         {
                             _token: $('meta[name="_token"]').attr('content'),
                             operate: "item-enable",
                             item_id: $that.attr('data-id')
                         },
                         function(data){
-                            layer.close(index);
+                            // layer.close(index);
+                            layer.closeAll('loading');
                             if(!data.success) layer.msg(data.msg);
                             else
                             {
@@ -320,25 +339,42 @@
                         },
                         'json'
                     );
-                }
-            });
         });
         // 【禁用】
         $("#item-main-body").on('click', ".item-disable-submit", function() {
             var $that = $(this);
-            layer.msg('确定"禁用"？', {
-                time: 0
-                ,btn: ['确定', '取消']
-                ,yes: function(index){
+            // layer.msg('确定"禁用"？', {
+            //     time: 0
+            //     ,btn: ['确定', '取消']
+            //     ,yes: function(index){
+            //     }
+            // });
+
+            var $index = layer.load(1, {
+                shade: [0.3, '#fff'],
+                content: '<span class="loadtip">处理中</span>',
+                success: function (layer) {
+                    layer.find('.layui-layer-content').css({
+                        'padding-top': '40px',
+                        'width': '100px',
+                    });
+                    layer.find('.loadtip').css({
+                        'font-size':'20px',
+                        'margin-left':'-18px'
+                    });
+                }
+            });
+
                     $.post(
-                        "{{ url('/item/item-disable') }}",
+                        "{{ url('/admin/item/article-disable') }}",
                         {
                             _token: $('meta[name="_token"]').attr('content'),
                             operate: "item-disable",
                             item_id: $that.attr('data-id')
                         },
                         function(data){
-                            layer.close(index);
+                            // layer.close(index);
+                            layer.closeAll('loading');
                             if(!data.success) layer.msg(data.msg);
                             else
                             {
@@ -347,68 +383,11 @@
                         },
                         'json'
                     );
-                }
-            });
         });
 
 
 
 
-        // 内容【设置贴片广告】
-        $("#item-main-body").on('click', ".item-ad-set-submit", function() {
-            var that = $(this);
-            layer.msg('确定要"设置"么，原有广告将被替换？', {
-                time: 0
-                ,btn: ['确定', '取消']
-                ,yes: function(index){
-                    $.post(
-                        "{{ url('/admin/item/item-ad-set') }}",
-                        {
-                            _token: $('meta[name="_token"]').attr('content'),
-                            operate: "item-ad-set",
-                            id:that.attr('data-id')
-                        },
-                        function(data){
-                            layer.close(index);
-                            if(!data.success) layer.msg(data.msg);
-                            else
-                            {
-                                $('#datatable_ajax').DataTable().ajax.reload(null,false);
-                            }
-                        },
-                        'json'
-                    );
-                }
-            });
-        });
-
-        // 内容【取消贴片广告】
-        $("#item-main-body").on('click', ".item-ad-cancel-submit", function() {
-            var that = $(this);
-            layer.msg('确定要"取消"么？', {
-                time: 0
-                ,btn: ['确定', '取消']
-                ,yes: function(index){
-                    $.post(
-                        "{{ url('/admin/item/item-ad-cancel') }}",
-                        {
-                            _token: $('meta[name="_token"]').attr('content'),
-                            operate: "item-ad-cancel",
-                            id:that.attr('data-id')
-                        },
-                        function(data){
-                            layer.close(index);
-                            if(!data.success) layer.msg(data.msg);
-                            else
-                            {
-                                $('#datatable_ajax').DataTable().ajax.reload(null,false);
-                            }
-                        },
-                        'json'
-                    );
-                }
-            });
-        });
 
 
 
