@@ -36,7 +36,7 @@
 
 <!--pc导航 start-->
 <div class="zydhb" id="top">
-    <div class="top"></div>
+{{--    <div class="top"></div>--}}
     <div class="w zydh">
         <a href="/"><img src="/custom/rzk/logo.jpg" style="float:left;height:100%;"></a>
         <div class="zydhu" id="menu">
@@ -47,9 +47,9 @@
                 <li class="mainlevel {{ $menu_about_active or '' }}" >
                     <a href="/about">集团介绍</a>
                 </li>
-                <li class="mainlevel {{ $menu_join_us_active or '' }}">
-                    <a href="/join_us">诚邀合作</a>
-                </li>
+{{--                <li class="mainlevel {{ $menu_join_us_active or '' }}">--}}
+{{--                    <a href="/join_us">诚邀合作</a>--}}
+{{--                </li>--}}
                 <li class="mainlevel {{ $menu_support_active or '' }}">
                     <a href="/support">运营指导</a>
                 </li>
@@ -100,7 +100,7 @@
         <ul class="dl-menu">
             <li><a href="/">首页</a></li>
             <li><a href="/about">集团介绍</a></li>
-            <li><a href="/join_us">诚邀合作</a></li>
+{{--            <li><a href="/join_us">诚邀合作</a></li>--}}
             <li><a href="/support">运营指导</a></li>
             <li><a href="/product">产品/服务</a></li>
             <!-- <li><a href="/Index/cases/index.html">成功案例</a></li> -->
