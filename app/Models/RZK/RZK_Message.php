@@ -12,7 +12,7 @@ class RZK_Message extends Model
         'admin_id', 'menu_id', 'item_id',
         'name', 'mobile', 'email', 'address',
         'title', 'subtitle', 'description', 'content', 'custom', 'link_url', 'cover_pic',
-        'ip',
+        'ip', 'ip_address',
         'visit_num', 'share_num'
     ];
     protected $dateFormat = 'U';
