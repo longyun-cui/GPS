@@ -13,7 +13,7 @@
 <!--banner start-->
 <div class="banner banner1" id="banner" >
 
-    <a href="/" class="d1" style="background:url('/custom/rzk/images/banner4.jpg') center no-repeat;background-size:100% 100%;"></a>
+    <a href="/" class="d1" style="background:url('/custom/rzk/images/banner7.jpg') center no-repeat;background-size:100% 100%;"></a>
     <a href="/" class="d1" style="background:url('/custom/rzk/images/banner5.jpg') center no-repeat;background-size:100% 100%;"></a>
     <a href="/" class="d1" style="background:url('/custom/rzk/images/banner6.jpg') center no-repeat;background-size:100% 100%;"></a>
 
