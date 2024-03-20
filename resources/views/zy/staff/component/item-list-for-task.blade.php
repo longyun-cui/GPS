@@ -150,9 +150,9 @@
 
                 {{--电话号码--}}
                 @if(!empty($item->mobile))
-                    <div class="text-row text-info-row- multi-ellipsis-1 margin-bottom-4px">
-                        <i class="fa fa-mobile-phone text-blue" style="width:16px;line-height:20px;text-align:center;float:left;"></i>
-                        <span class="">
+                    <div class="text-row text-info-row- multi-ellipsis-1 margin-bottom-4px" style="cursor:pointer;">
+                        <i class="fa fa-mobile-phone text-blue" style="width:16px;line-height:20px;text-align:center;float:left;cursor:pointer;"></i>
+                        <span class="" style="cursor:pointer;">
                             <a href="tel:{{ $item->mobile or '' }}">{{ $item->mobile or '' }}</a>
                         </span>
                     </div>
@@ -160,9 +160,9 @@
 
                 {{--电话号码--}}
                 @if(!empty($item->mobile))
-                    <div class="text-row text-info-row- multi-ellipsis-1 margin-bottom-4px _none">
-                        <i class="fa fa-mobile-phone text-blue" style="width:16px;line-height:20px;text-align:center;float:left;"></i>
-                        <span class="">
+                    <div class="text-row text-info-row- multi-ellipsis-1 margin-bottom-4px _none" style="cursor:pointer;">
+                        <i class="fa fa-mobile-phone text-blue" style="width:16px;line-height:20px;text-align:center;float:left;cursor:pointer;"></i>
+                        <span class="" style="cursor:pointer;">
                             <a href="javascript:void(0);">{{ $item->mobile or '' }}</a>
                         </span>
                     </div>
@@ -170,9 +170,9 @@
 
                 {{--地址--}}
                 @if(!empty($item->address))
-                    <div class="text-row text-info-row multi-ellipsis-1 margin-bottom-4px">
-                        <i class="fa fa-location-arrow text-blue" style="width:16px;line-height:20px;text-align:center;float:left;"></i>
-                        <span class="">{{ $item->address or '' }}</span>
+                    <div class="text-row text-info-row multi-ellipsis-1 margin-bottom-4px" style="cursor:pointer;">
+                        <i class="fa fa-location-arrow text-blue" style="width:16px;line-height:20px;text-align:center;float:left;cursor:pointer;"></i>
+                        <span class="" style="cursor:pointer;">{{ $item->address or '' }}</span>
                     </div>
                 @endif
 
