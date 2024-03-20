@@ -160,7 +160,7 @@
 
                 {{--电话号码--}}
                 @if(!empty($item->mobile))
-                    <div class="text-row text-info-row- multi-ellipsis-1 margin-bottom-4px">
+                    <div class="text-row text-info-row- multi-ellipsis-1 margin-bottom-4px _none">
                         <i class="fa fa-mobile-phone text-blue" style="width:16px;line-height:20px;text-align:center;float:left;"></i>
                         <span class="">
                             <a href="javascript:void(0);">{{ $item->mobile or '' }}</a>
