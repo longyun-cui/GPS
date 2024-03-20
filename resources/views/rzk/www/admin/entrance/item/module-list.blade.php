@@ -274,8 +274,18 @@
                     },
                     {
                         "className": "",
+                        "width": "80px",
+                        "title": "模块标识",
+                        "data": "item_sign",
+                        "orderable": true,
+                        render: function(data, type, row, meta) {
+                            return data;
+                        }
+                    },
+                    {
+                        "className": "",
                         "width": "120px",
-                        "title": "所属模块",
+                        "title": "模块名称",
                         "data": "item_sign",
                         "orderable": false,
                         render: function(data, type, row, meta) {

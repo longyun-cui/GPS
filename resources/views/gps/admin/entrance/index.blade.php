@@ -576,12 +576,12 @@
                 <div class="box-body">
                     <ul class="nav nav-stacked">
                         <li class="">
-                            <a target="_blank" href="http://rzk.gps.com/">
+                            <a target="_blank" href="http://rzk.com/">
                                 【l】首页 <span class="pull-right"><b class="badge bg-green">1</b></span>
                             </a>
                         </li>
                         <li class="">
-                            <a target="_blank" href="http://rzk.gps.com/admin">
+                            <a target="_blank" href="http://rzk.com/admin">
                                 【l】Admin <span class="pull-right"><b class="badge bg-orange">2</b></span>
                             </a>
                         </li>

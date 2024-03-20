@@ -235,7 +235,14 @@
                     type: "post",
                     dataType: "json",
                     // target: "#div2",
+                    complete: function(xhr, status) {
+                        // console.log('complete_xhr:'+xhr);
+                        // console.log('complete_status:'+status);
+                    },
                     success: function (data) {
+                        // console.log(data);
+                        // console.log('success_status:'+status);
+                        // console.log('success_xhr:'+xhr);
                         if(!data.success) layer.msg(data.msg);
                         else
                         {
@@ -249,6 +256,11 @@
 
                             // history.go(-1);
                         }
+                    },
+                    error: function (xhr, status, error) {
+                        // console.log('error_xhr:'+xhr);
+                        // console.log('error_status:'+status);
+                        // console.log('error_error:'+error);
                     }
                 };
                 $("#form-edit-item").ajaxSubmit(options);

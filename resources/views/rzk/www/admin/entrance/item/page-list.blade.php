@@ -274,8 +274,18 @@
                     },
                     {
                         "className": "",
-                        "width": "120px",
+                        "width": "80px",
                         "title": "页面标识",
+                        "data": "item_sign",
+                        "orderable": true,
+                        render: function(data, type, row, meta) {
+                            return data;
+                        }
+                    },
+                    {
+                        "className": "",
+                        "width": "120px",
+                        "title": "页面名称",
                         "data": "item_sign",
                         "orderable": false,
                         render: function(data, type, row, meta) {

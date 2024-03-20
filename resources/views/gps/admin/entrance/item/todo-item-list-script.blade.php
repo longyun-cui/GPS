@@ -226,23 +226,32 @@
                             operate: "todo-delete",
                             item_id: $li.attr('data-id')
                         },
-                        function(data){
+                        function(data, status){
 
-                            // layer.close(index);
+                            console.log(status);
+                            layer.close(index);
                             layer.closeAll('loading');
 
-                            if(!data.success)
-                            {
-                                layer.msg(data.msg);
-                            }
-                            else
-                            {
-                                layer.msg("操作完成");
-                                $li.remove();
-                            }
+                            // if(!data.success)
+                            // {
+                            //     layer.msg(data.msg);
+                            // }
+                            // else
+                            // {
+                            //     layer.msg("操作完成");
+                            //     $li.remove();
+                            // }
                         },
                         'json'
-                    );
+                    ).fail(function(jqXHR, textStatus, errorThrown) {
+                        // 请求失败时的回调
+                        layer.close(index);
+                        layer.closeAll('loading');
+                        console.log('POST Request failed:', jqXHR, textStatus, errorThrown);
+                        console.log('POST Request failed jqXHR:', jqXHR);
+                        console.log('POST Request failed textStatus:', textStatus);
+                        console.log('POST Request failed errorThrown:', errorThrown);
+                    });
                 }
             });
         });
