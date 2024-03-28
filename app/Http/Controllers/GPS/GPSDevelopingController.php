@@ -1,12 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\GPS\Def;
+namespace App\Http\Controllers\GPS;
 
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App\Repositories\GPS\DevelopingRepository;
+use App\Repositories\GPS\GPSDevelopingRepository;
+
+use Response, Auth, Validator, DB, Exception;
+use QrCode, Excel;
 
 class GPSDevelopingController extends Controller
 {
@@ -15,7 +18,7 @@ class GPSDevelopingController extends Controller
     private $repo;
     public function __construct()
     {
-        $this->repo = new DevelopingRepository;
+        $this->repo = new GPSDevelopingRepository;
     }
 
 

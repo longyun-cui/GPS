@@ -1,5 +1,5 @@
 <?php
-namespace App\Repositories\GPS\Dev;
+namespace App\Repositories\GPS;
 
 use App\Models\GPS\GPS_User;
 use App\Models\GPS\GPS_Item;

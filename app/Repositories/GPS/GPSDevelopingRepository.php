@@ -11,7 +11,7 @@ use App\Repositories\Common\CommonRepository;
 use Response, Auth, Validator, DB, Exception, Cache;
 use QrCode;
 
-class DevelopingRepository {
+class GPSDevelopingRepository {
 
     private $model;
     private $repo;

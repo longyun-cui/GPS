@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\GPS\Def;
+namespace App\Http\Controllers\GPS;
 
 use Illuminate\Http\Request;
 use App\Http\Requests;
@@ -8,10 +8,10 @@ use App\Http\Controllers\Controller;
 
 use App\Models\DEF\Def_Testing;
 
-use App\Repositories\GPS\Def\GPSTestingRepository;
+use App\Repositories\GPS\GPSTestingRepository;
 
-use Image;
-use phpDocumentor\Reflection\Types\Object_;
+use Response, Auth, Validator, DB, Exception;
+use QrCode, Excel;
 
 class GPSTestingController extends Controller
 {
@@ -47,7 +47,7 @@ class GPSTestingController extends Controller
 
 
     //
-    public function test_headers()
+    public function test_php_headers()
     {
         $headers = apache_request_headers();
         $headers = getallheaders();
@@ -57,7 +57,7 @@ class GPSTestingController extends Controller
     }
 
     //
-    public function test_plus_plus()
+    public function test_php_plus_plus()
     {
         $x=15;
         echo "y=15 x++=".$x++;
@@ -68,7 +68,7 @@ class GPSTestingController extends Controller
     }
 
     //
-    public function test_plus_numbers()
+    public function test_php_numbers()
     {
         $object = new class{};
         if($object) echo 1;
@@ -159,7 +159,6 @@ class GPSTestingController extends Controller
         echo 'storage_path(uploads) ---- '.storage_path('uploads')."<br>";
     }
 
-
     //
     public function test_php_json()
     {
@@ -168,14 +167,15 @@ class GPSTestingController extends Controller
         echo json_encode($array);
     }
 
-
-
-
+    //
     public function get_php_ip_location()
     {
         define('WEB_ROOT', dirname(__FILE__));
         echo $this->convertip('54.36.148.99','full');
     }
+
+
+
 
 
 

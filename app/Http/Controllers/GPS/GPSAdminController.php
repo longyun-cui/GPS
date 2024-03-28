@@ -80,7 +80,6 @@ class GPSAdminController extends Controller
     // 返回主页视图
     public function view_admin_index()
     {
-//        dd(1);
         return $this->repo->view_admin_index();
     }
 
@@ -96,6 +95,71 @@ class GPSAdminController extends Controller
 //        dd(1);
         return $this->repo->view_admin_style();
     }
+
+
+
+
+
+    // 导航
+    public function root()
+    {
+        return $this->repo->root();
+    }
+
+    // 导航
+    public function view_admin_navigation()
+    {
+        return $this->repo->view_admin_navigation();
+        return view('GPS.default.entrance.navigation');
+    }
+
+    // 测试
+    public function view_admin_testing_list()
+    {
+        return $this->repo->view_admin_testing_list();
+    }
+
+    // 工具
+    public function view_admin_tool_list()
+    {
+        return $this->repo->view_admin_tool_list();
+    }
+
+    // 模板
+    public function view_admin_template_list()
+    {
+        return $this->repo->view_admin_template_list();
+    }
+
+
+
+
+    //
+    public function tool()
+    {
+        $type = request()->get("type");
+        if($type == "type")
+        {
+            return response_success([],"type");
+        }
+        // 生成密码
+        else if($type == "password_encode")
+        {
+            $password = request("password");
+            $password_encode = password_encode($password);
+            return response_success(['password_encode'=>$password_encode]);
+        }
+        else if($type == "xx")
+        {
+            return response_success([]);
+        }
+    }
+
+
+
+
+
+
 
 
 
@@ -295,63 +359,6 @@ class GPSAdminController extends Controller
 
 
 
-
-
-
-
-    // 导航
-    public function root()
-    {
-        return $this->repo->root();
-    }
-
-    // 导航
-    public function navigation()
-    {
-        return view('GPS.default.entrance.navigation');
-    }
-
-    // 测试
-    public function test_list()
-    {
-        return view('GPS.default.entrance.test-list');
-    }
-
-    // 工具
-    public function tool_list()
-    {
-        return view('GPS.default.entrance.tool-list');
-    }
-
-    // 模板
-    public function template_list()
-    {
-        return view('GPS.default.entrance.template-list');
-    }
-
-
-
-
-    //
-    public function tool()
-    {
-        $type = request()->get("type");
-        if($type == "type")
-        {
-            return response_success([],"type");
-        }
-        // 生成密码
-        else if($type == "password_encode")
-        {
-            $password = request("password");
-            $password_encode = password_encode($password);
-            return response_success(['password_encode'=>$password_encode]);
-        }
-        else if($type == "xx")
-        {
-            return response_success([]);
-        }
-    }
 
 
 

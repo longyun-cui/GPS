@@ -1,17 +1,16 @@
 <?php
-namespace App\Repositories\GPS\Def;
+namespace App\Repositories\GPS;
 
-use App\Models\DEF\Def_Module;
-use App\Models\DEF\Def_Menu;
-use App\Models\DEF\Def_Item;
-use App\Models\DEF\Def_Message;
+use App\Models\GPS\GPS_User;
+use App\Models\GPS\GPS_Item;
+use App\Models\GPS\GPS_Menu;
 
 use App\Repositories\Common\CommonRepository;
 
-use Response, Auth, Validator, DB, Exception, Cache;
-use QrCode;
+use Response, Auth, Validator, DB, Exception, Cache, Blade, Carbon;
+use QrCode, Excel;
 
-class GPSIndexRepository {
+class GPSTestingRepository {
 
     private $env;
     private $auth_check;
@@ -24,10 +23,35 @@ class GPSIndexRepository {
 
     public function __construct()
     {
-        if(Auth::guard("admin")->check())
+        $this->modelUser = new GPS_User;
+        $this->modelItem = new GPS_Item;
+
+        $this->view_blade_403 = env('TEMPLATE_GPS_ADMIN').'entrance.errors.403';
+        $this->view_blade_404 = env('TEMPLATE_GPS_ADMIN').'entrance.errors.404';
+
+        Blade::setEchoFormat('%s');
+        Blade::setEchoFormat('e(%s)');
+        Blade::setEchoFormat('nl2br(e(%s))');
+
+        if(isMobileEquipment()) $is_mobile_equipment = 1;
+        else $is_mobile_equipment = 0;
+        view()->share('is_mobile_equipment',$is_mobile_equipment);
+    }
+
+
+    // 登录情况
+    public function get_me()
+    {
+        if(Auth::guard("gps_admin")->check())
         {
             $this->auth_check = 1;
-            $this->me = Auth::guard("admin")->user();
+            $this->me = Auth::guard("gps_admin")->user();
+            $me = $this->me;
+            if($me->birth_day)
+            {
+                $diff = time_diff($me->birth_day);
+                $this->me->diff = $diff;
+            }
             view()->share('me',$this->me);
         }
         else $this->auth_check = 0;
@@ -43,15 +67,30 @@ class GPSIndexRepository {
     // root
     public function root()
     {
-        $view_blade = env('TEMPLATE_GPS_DEF').'entrance.index';
+        $this->get_me();
+        $me = $this->me;
+
+        $view_blade = env('TEMPLATE_GPS_ADMIN').'entrance.testing.index';
         return view($view_blade);
     }
 
-
-    // 返回（后台）主页视图
-    public function view_404()
+    // php
+    public function t_php()
     {
-        $view_blade = env('TEMPLATE_GPS_DEF').'entrance.errors.404';
+        $this->get_me();
+        $me = $this->me;
+
+        $view_blade = env('TEMPLATE_GPS_ADMIN').'entrance.testing.php';
+        return view($view_blade);
+    }
+
+    // js
+    public function t_js()
+    {
+        $this->get_me();
+        $me = $this->me;
+
+        $view_blade = env('TEMPLATE_GPS_ADMIN').'entrance.testing.js';
         return view($view_blade);
     }
 

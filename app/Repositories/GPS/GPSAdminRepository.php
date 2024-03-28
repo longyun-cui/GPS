@@ -71,7 +71,6 @@ class GPSAdminRepository {
     {
         $this->get_me();
         $me = $this->me;
-//        dd($me->toArray());
 
         $view_blade = env('TEMPLATE_GPS_ADMIN').'entrance.index';
         return view($view_blade);
@@ -90,15 +89,73 @@ class GPSAdminRepository {
 
 
     // 主页
+    public function view_admin_ui()
+    {
+        $this->get_me();
+        $me = $this->me;
+
+        $view_data['menu_active_of_ui'] = 'active';
+        $view_blade = env('TEMPLATE_GPS_ADMIN').'entrance.ui';
+        return view($view_blade);
+    }
+    // 主页
     public function view_admin_style()
     {
         $this->get_me();
         $me = $this->me;
-//        dd($me->toArray());
 
+        $view_data['menu_active_of_style'] = 'active';
         $view_blade = env('TEMPLATE_GPS_ADMIN').'entrance.style';
-        return view($view_blade);
+        return view($view_blade)->with($view_data);
     }
+
+
+
+
+    // testing
+    public function view_admin_navigation()
+    {
+        $this->get_me();
+        $me = $this->me;
+
+        $view_data['menu_active_of_navigation'] = 'active';
+        $view_blade = env('TEMPLATE_GPS_ADMIN').'entrance.navigation.index';
+        return view($view_blade)->with($view_data);
+    }
+    // testing
+    public function view_admin_testing_list()
+    {
+        $this->get_me();
+        $me = $this->me;
+
+        $view_data['menu_active_of_testing_list'] = 'active';
+        $view_blade = env('TEMPLATE_GPS_ADMIN').'entrance.navigation.testing-list';
+        return view($view_blade)->with($view_data);
+    }
+    // tool
+    public function view_admin_tool_list()
+    {
+        $this->get_me();
+        $me = $this->me;
+
+        $view_data['menu_active_of_tool_list'] = 'active';
+        $view_blade = env('TEMPLATE_GPS_ADMIN').'entrance.navigation.tool-list';
+        return view($view_blade)->with($view_data);
+    }
+    // tool
+    public function view_admin_template_list()
+    {
+        $this->get_me();
+        $me = $this->me;
+
+        $view_data['menu_active_of_template_list'] = 'active';
+        $view_blade = env('TEMPLATE_GPS_ADMIN').'entrance.navigation.template-list';
+        return view($view_blade)->with($view_data);
+    }
+
+
+
+
 
 
 

@@ -1,5 +1,5 @@
 <?php
-namespace App\Repositories\GPS\Def;
+namespace App\Repositories\GPS;
 
 use App\Models\DEF\Def_Module;
 use App\Models\DEF\Def_Menu;
@@ -11,7 +11,7 @@ use App\Repositories\Common\CommonRepository;
 use Response, Auth, Validator, DB, Exception, Cache;
 use QrCode;
 
-class GPSTestingRepository {
+class GPSIndexRepository {
 
     private $env;
     private $auth_check;
@@ -41,24 +41,17 @@ class GPSTestingRepository {
 
 
     // root
-    public function root()
+    public function index()
     {
-        $view_blade = env('TEMPLATE_GPS_DEF').'entrance.testing.index';
+        $view_blade = env('TEMPLATE_GPS_DEF').'entrance.index';
         return view($view_blade);
     }
 
-    // php
-    public function t_php()
-    {
 
-        $view_blade = env('TEMPLATE_GPS_DEF').'entrance.testing.php';
-        return view($view_blade);
-    }
-
-    // js
-    public function t_js()
+    // 返回（后台）主页视图
+    public function view_404()
     {
-        $view_blade = env('TEMPLATE_GPS_DEF').'entrance.testing.js';
+        $view_blade = env('TEMPLATE_GPS_DEF').'entrance.errors.404';
         return view($view_blade);
     }
 

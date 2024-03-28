@@ -10,7 +10,7 @@
                 <img src="/AdminLTE/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
             </div>
             <div class="pull-left info">
-                <p>{{ $me->nickname or '' }}</p>
+                <p>{{ $me->username or '' }}</p>
                 <!-- Status -->
                 <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>
@@ -106,6 +106,30 @@
                 <a href="{{ url('/dev/ui')}}" target="_blank">
                     <i class="fa fa-file-text text-yellow"></i>
                     <span>ui</span>
+                </a>
+            </li>
+
+
+
+
+            <li class="header">navigation</li>
+
+            <li class="treeview {{ $menu_active_of_testing_list or '' }}">
+                <a href="{{ url('/admin/testing-list')}}">
+                    <i class="fa fa-file-text text-yellow"></i>
+                    <span>testing</span>
+                </a>
+            </li>
+            <li class="treeview {{ $menu_active_of_tool_list or '' }}">
+                <a href="{{ url('/admin/tool-list')}}">
+                    <i class="fa fa-file-text text-yellow"></i>
+                    <span>tool</span>
+                </a>
+            </li>
+            <li class="treeview {{ $menu_active_of_template_list or '' }}">
+                <a href="{{ url('/admin/template-list')}}">
+                    <i class="fa fa-file-text text-yellow"></i>
+                    <span>template</span>
                 </a>
             </li>
 

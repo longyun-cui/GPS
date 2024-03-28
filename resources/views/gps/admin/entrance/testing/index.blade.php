@@ -1,4 +1,4 @@
-@extends(env('TEMPLATE_GPS_DEF').'layout.layout')
+@extends(env('TEMPLATE_GPS_ADMIN').'layout.layout')
 
 
 @section('head_title')
