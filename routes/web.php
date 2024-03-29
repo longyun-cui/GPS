@@ -41,40 +41,30 @@ Route::group(['prefix'=>'common'], function () {
 
 
 
+
+
 /*
- * 超级管理员
+ * SUPER
  */
 Route::group(['domain'=>'super.'.env('DOMAIN_ROOT'), 'namespace'=>'Super'], function () {
     require(__DIR__ . '/Super/route.php');
 });
 
 
-
-
-
-
-
-
-
 /*
  * GPS
  */
-Route::group(['domain'=>'gps.'.env('DOMAIN_ROOT'), 'namespace'=>'GPS'], function () {
-    require(__DIR__ . '/GPS/gps-route.php');
-});
-Route::group(['domain'=>'gps.'.env('DOMAIN_ROOT'), 'prefix'=>'admin', 'namespace'=>'GPS'], function () {
-    require(__DIR__ . '/GPS/gps-route-admin.php');
-});
-Route::group(['domain'=>'gps.'.env('DOMAIN_ROOT'), 'prefix'=>'dev', 'namespace'=>'GPS'], function () {
-    require(__DIR__ . '/GPS/gps-route-dev.php');
-});
-
-
 /*
- * UI
+ * WWW
  */
-Route::group(['prefix'=>'ui', 'namespace'=>'UI'], function () {
-    require(__DIR__ . '/UI/route.php');
+Route::group(['domain'=>'www.'.env('DOMAIN_ROOT'), 'namespace'=>'LY'], function () {
+    require(__DIR__ . '/LY/gps-route-for-www.php');
+});
+Route::group(['domain'=>'gps.'.env('DOMAIN_ROOT'), 'namespace'=>'LY'], function () {
+    require(__DIR__ . '/LY/gps-route-for-gps.php');
+});
+Route::group(['domain'=>'dev.'.env('DOMAIN_ROOT'), 'namespace'=>'LY'], function () {
+    require(__DIR__ . '/LY/gps-route-for-dev.php');
 });
 
 
@@ -84,14 +74,18 @@ Route::group(['prefix'=>'ui', 'namespace'=>'UI'], function () {
 Route::group(['domain'=>'test.'.env('DOMAIN_ROOT'), 'namespace'=>'Testing'], function () {
     require(__DIR__ . '/Testing/route.php');
 });
-
-
 /*
  * Developing 开发中
  */
 Route::group(['domain'=>'dev.'.env('DOMAIN_ROOT'), 'namespace'=>'Developing'], function () {
     require(__DIR__ . '/Developing/route.php');
 
+});
+/*
+ * UI
+ */
+Route::group(['prefix'=>'ui', 'namespace'=>'UI'], function () {
+    require(__DIR__ . '/UI/route.php');
 });
 
 
@@ -103,7 +97,7 @@ Route::group(['domain'=>'dev.'.env('DOMAIN_ROOT'), 'namespace'=>'Developing'], f
 Route::group(['domain'=>'gh.'.env('DOMAIN_ROOT'), 'namespace'=>'GH'], function () {
     require(__DIR__ . '/GH/gh-route-web.php');
 });
-Route::group(['domain'=>env('DOMAIN_GH_WEB'), 'namespace'=>'GH'], function () {
+Route::group(['domain'=>env('DOMAIN_GH'), 'namespace'=>'GH'], function () {
     require(__DIR__ . '/GH/gh-route-web.php');
 });
 Route::group(['domain'=>env('DOMAIN_GH_WWW'), 'namespace'=>'GH'], function () {
@@ -166,111 +160,4 @@ Route::group(['prefix'=>'email'], function () {
 
 
 
-/*
- * 后台
- */
-Route::group(['prefix'=>'admin', 'namespace'=>'Admin'], function () {
-
-    // 注册登录
-    Route::group(['namespace'=>'Auth'], function () {
-
-        $controller = "AuthController";
-
-        Route::match(['get','post'], 'login', $controller.'@login');
-        Route::match(['get','post'], 'logout', $controller.'@logout');
-
-    });
-
-
-    // 后台管理，需要登录
-    Route::group(['middleware'=>'admin'], function () {
-
-        $controller = "AdminController";
-
-        Route::get('/404', $controller.'@view_404');
-
-        Route::get('/', $controller.'@index');
-
-        // 管理员模块
-        Route::group(['prefix'=>'administrator'], function () {
-            $controller = "AdministratorController";
-
-            Route::get('/', $controller.'@index');
-            Route::get('index', $controller.'@index');
-            Route::match(['get','post'], 'edit', $controller.'@editAction');
-
-            Route::match(['get','post'], 'password/reset', $controller.'@password_reset');
-
-            Route::match(['get','post'], 'list', $controller.'@viewList');
-        });
-
-        // 样式模块
-        Route::group(['prefix'=>'module'], function () {
-            $controller = "ModuleController";
-
-            Route::get('/', $controller.'@index');
-            Route::get('index', $controller.'@index');
-            Route::match(['get','post'], 'list', $controller.'@viewList');
-            Route::get('create', $controller.'@createAction');
-            Route::match(['get','post'], 'edit', $controller.'@editAction');
-            Route::match(['get','post'], 'sort', $controller.'@sortAction');
-            Route::post('delete', $controller.'@deleteAction');
-            Route::post('enable', $controller.'@enableAction');
-            Route::post('disable', $controller.'@disableAction');
-
-            Route::post('delete_multiple_option', $controller.'@deleteMultipleOption');
-        });
-
-        // 目录模块
-        Route::group(['prefix'=>'menu'], function () {
-            $controller = "MenuController";
-
-            Route::get('/', $controller.'@index');
-            Route::get('index', $controller.'@index');
-            Route::match(['get','post'], 'list', $controller.'@viewList');
-            Route::match(['get','post'], 'items', $controller.'@viewItemsList');
-            Route::get('create', $controller.'@createAction');
-            Route::match(['get','post'], 'edit', $controller.'@editAction');
-            Route::match(['get','post'], 'sort', $controller.'@sortAction');
-            Route::post('delete', $controller.'@deleteAction');
-            Route::post('enable', $controller.'@enableAction');
-            Route::post('disable', $controller.'@disableAction');
-        });
-
-        // 内容模块
-        Route::group(['prefix'=>'item'], function () {
-            $controller = "ItemController";
-
-            Route::get('/', $controller.'@index');
-            Route::get('index', $controller.'@index');
-            Route::match(['get','post'], 'list', $controller.'@viewList');
-            Route::get('create', $controller.'@createAction');
-            Route::match(['get','post'], 'edit', $controller.'@editAction');
-            Route::post('delete', $controller.'@deleteAction');
-            Route::post('enable', $controller.'@enableAction');
-            Route::post('disable', $controller.'@disableAction');
-
-            Route::get('select2_menus', $controller.'@select2_menus');
-        });
-
-        //留言模块
-        Route::group(['prefix'=>'message'], function () {
-            $controller = "MessageController";
-
-            Route::get('/', $controller.'@index');
-            Route::get('index', $controller.'@index');
-            Route::match(['get','post'], 'list', $controller.'@viewList');
-            Route::get('create', $controller.'@createAction');
-            Route::match(['get','post'], 'edit', $controller.'@editAction');
-            Route::post('delete', $controller.'@deleteAction');
-            Route::post('enable', $controller.'@enableAction');
-            Route::post('disable', $controller.'@disableAction');
-
-            Route::get('select2_menus', $controller.'@select2_menus');
-        });
-
-    });
-
-
-});
 
