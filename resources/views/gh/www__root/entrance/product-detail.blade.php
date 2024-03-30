@@ -1,4 +1,4 @@
-@extends(env('TEMPLATE_GH_WEB_DEF').'layout.layout')
+@extends(env('TEMPLATE_GH_WWW').'layout.layout')
 
 
 @section('head_title')
@@ -73,7 +73,7 @@
 
 
 
-    @include(env('TEMPLATE_GH_WEB_DEF').'section.qr_code')
+    @include(env('TEMPLATE_GH_WWW').'section.qr_code')
 
 
 </div>

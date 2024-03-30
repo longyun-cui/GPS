@@ -115,7 +115,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <link rel="stylesheet" href="{{ asset('/resource/common/css/AdminLTE/index.css') }}">
 
     {{--layout-style--}}
-    @include(env('TEMPLATE_GH_WEB_DEF').'layout.layout-style')
+    @include(env('TEMPLATE_GH_WWW').'layout.layout-style')
 
     @yield('css')
     @yield('style')
@@ -148,19 +148,19 @@ desired effect
 
 
     {{--main-header--}}
-    @include(env('TEMPLATE_GH_WEB_DEF').'layout.main-header')
+    @include(env('TEMPLATE_GH_WWW').'layout.main-header')
 
     {{--main-sidebar--}}
-    {{--@include(env('TEMPLATE_GH_WEB_DEF').'layout.main-sidebar')--}}
+    {{--@include(env('TEMPLATE_GH_WWW').'layout.main-sidebar')--}}
 
     {{--main-content--}}
-    @include(env('TEMPLATE_GH_WEB_DEF').'layout.main-content')
+    @include(env('TEMPLATE_GH_WWW').'layout.main-content')
 
     {{--main-footer--}}
-    @include(env('TEMPLATE_GH_WEB_DEF').'layout.main-footer')
+    @include(env('TEMPLATE_GH_WWW').'layout.main-footer')
 
     {{--control-sidebar--}}
-    {{--@include(env('TEMPLATE_GH_WEB_DEF').'layout.control-sidebar')--}}
+    {{--@include(env('TEMPLATE_GH_WWW').'layout.control-sidebar')--}}
 
 
 </div>
@@ -278,7 +278,7 @@ desired effect
 
 
 {{--layout-script--}}
-@include(env('TEMPLATE_GH_WEB_DEF').'layout.layout-script')
+@include(env('TEMPLATE_GH_WWW').'layout.layout-script')
 
 
 </body>

@@ -1,4 +1,4 @@
-@extends(env('TEMPLATE_GH_WEB_ADMIN').'layout.layout')
+@extends(env('TEMPLATE_GH_WWW__ADMIN').'layout.layout')
 
 
 @section('head_title')
@@ -614,7 +614,7 @@
                 </div>
             </div>
 
-{{--            @include(env('TEMPLATE_GH_WEB_ADMIN').'component.product-create')--}}
+{{--            @include(env('TEMPLATE_GH_WWW__ADMIN').'component.product-create')--}}
 
         </div>
     </div>
@@ -1569,7 +1569,7 @@
 //            TableDatatablesAjax_record.init();
 //        });
 </script>
-@include(env('TEMPLATE_GH_WEB_ADMIN').'entrance.item.product-list-script')
+@include(env('TEMPLATE_GH_WWW__ADMIN').'entrance.item.product-list-script')
 
-@include(env('TEMPLATE_GH_WEB_ADMIN').'component.product-create-script')
+@include(env('TEMPLATE_GH_WWW__ADMIN').'component.product-create-script')
 @endsection

@@ -42,7 +42,7 @@ class LY_WWWIndexRepository
 
 
     // root
-    public function index()
+    public function view_index()
     {
         $view_blade = env('TEMPLATE_LY_WWW').'welcome';
         return view($view_blade);

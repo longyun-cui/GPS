@@ -42,7 +42,7 @@ class LY_GPSIndexRepository
 
 
     // root
-    public function index()
+    public function view_index()
     {
         $view_blade = env('TEMPLATE_LY_GPS').'entrance.index';
         return view($view_blade);

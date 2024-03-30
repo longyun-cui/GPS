@@ -24,9 +24,9 @@ class LY_WWWIndexController extends Controller
 
 
     // 导航
-    public function index()
+    public function view_index()
     {
-        return $this->repo->index();
+        return $this->repo->view_index();
     }
     // 导航
     public function view_404()

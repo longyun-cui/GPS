@@ -58,34 +58,10 @@ Route::group(['domain'=>'super.'.env('DOMAIN_ROOT'), 'namespace'=>'Super'], func
  * WWW
  */
 Route::group(['domain'=>'www.'.env('DOMAIN_ROOT'), 'namespace'=>'LY'], function () {
-    require(__DIR__ . '/LY/gps-route-for-www.php');
+    require(__DIR__ . '/LY/ly-route-for-www.php');
 });
 Route::group(['domain'=>'gps.'.env('DOMAIN_ROOT'), 'namespace'=>'LY'], function () {
-    require(__DIR__ . '/LY/gps-route-for-gps.php');
-});
-Route::group(['domain'=>'dev.'.env('DOMAIN_ROOT'), 'namespace'=>'LY'], function () {
-    require(__DIR__ . '/LY/gps-route-for-dev.php');
-});
-
-
-/*
- * TESTING 测试
- */
-Route::group(['domain'=>'test.'.env('DOMAIN_ROOT'), 'namespace'=>'Testing'], function () {
-    require(__DIR__ . '/Testing/route.php');
-});
-/*
- * Developing 开发中
- */
-Route::group(['domain'=>'dev.'.env('DOMAIN_ROOT'), 'namespace'=>'Developing'], function () {
-    require(__DIR__ . '/Developing/route.php');
-
-});
-/*
- * UI
- */
-Route::group(['prefix'=>'ui', 'namespace'=>'UI'], function () {
-    require(__DIR__ . '/UI/route.php');
+    require(__DIR__ . '/LY/ly-route-for-gps.php');
 });
 
 
@@ -95,13 +71,13 @@ Route::group(['prefix'=>'ui', 'namespace'=>'UI'], function () {
  * GH 桂花
  */
 Route::group(['domain'=>'gh.'.env('DOMAIN_ROOT'), 'namespace'=>'GH'], function () {
-    require(__DIR__ . '/GH/gh-route-web.php');
+    require(__DIR__ . '/GH/gh-route-www.php');
 });
 Route::group(['domain'=>env('DOMAIN_GH'), 'namespace'=>'GH'], function () {
-    require(__DIR__ . '/GH/gh-route-web.php');
+    require(__DIR__ . '/GH/gh-route-www.php');
 });
 Route::group(['domain'=>env('DOMAIN_GH_WWW'), 'namespace'=>'GH'], function () {
-    require(__DIR__ . '/GH/gh-route-web.php');
+    require(__DIR__ . '/GH/gh-route-www.php');
 });
 
 

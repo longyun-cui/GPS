@@ -32,7 +32,7 @@ class LY_GPSAdminController extends Controller
     {
         if(request()->isMethod('get'))
         {
-            $view_blade = env('DOMAIN_LY_GPS__ADMIN').'entrance.login';
+            $view_blade = env('TEMPLATE_LY_GPS__ADMIN').'entrance.login';
             return view($view_blade);
         }
         else if(request()->isMethod('post'))

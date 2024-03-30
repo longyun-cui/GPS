@@ -66,10 +66,10 @@ class Kernel extends HttpKernel
         'login.turn' => \App\Http\Middleware\TurnToLoginMiddleware::class,
 
 
-        'gps.user.login' => \App\Http\Middleware\GPS\GPSUserLoginMiddleware::class,
-        'gps.super.login' => \App\Http\Middleware\GPS\GPSSuperLoginMiddleware::class,
-        'gps.admin.login' => \App\Http\Middleware\GPS\GPSAdminLoginMiddleware::class,
-        'gps.staff.login' => \App\Http\Middleware\GPS\GPSStaffLoginMiddleware::class,
+        'gps.user.login' => \App\Http\Middleware\LY\GPSUserLoginMiddleware::class,
+        'gps.super.login' => \App\Http\Middleware\LY\GPSSuperLoginMiddleware::class,
+        'gps.admin.login' => \App\Http\Middleware\LY\GPSAdminLoginMiddleware::class,
+        'gps.staff.login' => \App\Http\Middleware\LY\GPSStaffLoginMiddleware::class,
 
 
         'gh.web.admin.login' => \App\Http\Middleware\GH\GHWebAdminLoginMiddleware::class,

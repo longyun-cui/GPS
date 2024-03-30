@@ -1,4 +1,4 @@
-@extends(env('TEMPLATE_GH_WEB_DEF').'layout.layout')
+@extends(env('TEMPLATE_GH_WWW').'layout.layout')
 
 
 @section('head_title')
@@ -54,7 +54,7 @@
         </div>
         <div class="box-body">
             <ul class="products-list product-list-in-box">
-                @include(env('TEMPLATE_GH_WEB_DEF').'component.product-list', ['item_list'=>$item_list])
+                @include(env('TEMPLATE_GH_WWW').'component.product-list', ['item_list'=>$item_list])
             </ul>
         </div>
         <div class="box-footer text-center">
@@ -70,13 +70,13 @@
                 <div class="wow slideInLeft module-title-row title-with-double-line title-lg" style="visibility: visible; animation-name: slideInLeft;"><b>最新产品</b></div>
                 <div class="wow slideInRight module-subtitle-row title-sm" style="visibility: visible; animation-name: slideInRight;"></div>
             </header>
-            @include(env('TEMPLATE_GH_WEB_DEF').'component.product-list-2', ['item_list'=>$item_list])
+            @include(env('TEMPLATE_GH_WWW').'component.product-list-2', ['item_list'=>$item_list])
         </div>
     </div>
 
 
     <div class="module-container text-center bg-dark margin-bottom-16px">
-        @include(env('TEMPLATE_GH_WEB_DEF').'section.qr_code')
+        @include(env('TEMPLATE_GH_WWW').'section.qr_code')
     </div>
 
 

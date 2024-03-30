@@ -1,4 +1,4 @@
-@extends(env('TEMPLATE_GH_WEB_ADMIN').'layout.layout')
+@extends(env('TEMPLATE_GH_WWW__ADMIN').'layout.layout')
 
 
 @section('head_title')
