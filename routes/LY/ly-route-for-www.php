@@ -2,7 +2,21 @@
 
 
 /*
- * 超级管理员-后台管理
+ * ROOT
+ */
+Route::group([], function () {
+
+    $controller = "LY_WWWIndexController";
+
+    Route::get('/', $controller.'@view_index');
+
+});
+
+
+
+
+/*
+ * Admin 管理员
  */
 Route::group(['prefix' => 'admin', 'namespace' => 'WWW'], function () {
 
@@ -56,23 +70,6 @@ Route::group(['prefix' => 'admin', 'namespace' => 'WWW'], function () {
 
 
     });
-
-
-});
-
-
-
-
-/*
- * 超级管理员
- */
-Route::group([], function () {
-
-
-    $controller = "LY_WWWIndexController";
-
-    Route::get('/', $controller.'@index');
-
 
 
 });
