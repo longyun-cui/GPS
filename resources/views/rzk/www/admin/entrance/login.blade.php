@@ -1,4 +1,4 @@
-@extends(env('TEMPLATE_GH_WEB_ADMIN').'layout.auth')
+@extends(env('TEMPLATE_RZK_WEB_ADMIN').'layout.auth')
 
 
 @section('head_title')
