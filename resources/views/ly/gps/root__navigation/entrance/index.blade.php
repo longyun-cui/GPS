@@ -220,6 +220,53 @@
     {{--导航--}}
     <div class="row">
 
+        {{--K-ORG--}}
+        <div class="col-xs-12 col-sm-6 col-md-3">
+            <div class="box box-primary box-solid">
+                <div class="box-header with-border">
+                    <h3 class="box-title comprehensive-month-title">K-ORG</h3>
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <ul class="nav nav-stacked">
+                        <li class="">
+                            <a target="_blank" href="http://www.k-org.com/">
+                                【l】首页 <span class="pull-right"><b class="badge bg-green">1</b></span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a target="_blank" href="http://super.k-org.com/admin">
+                                【l】SUPER <span class="pull-right"><b class="badge bg-orange">2</b></span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a target="_blank" href="http://org.k-org.com/admin">
+                                【l】ORG <span class="pull-right"><b class="badge bg-orange">2</b></span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a target="_blank" href="http://www.k-org.cn/">
+                                【ON】首页 <span class="pull-right"><b class="badge bg-aqua">3</b></span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a target="_blank" href="http://super.k-org.cn/admin">
+                                【ON】super <span class="pull-right"><b class="badge bg-red">4</b></span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a target="_blank" href="http://org.k-org.cn/admin">
+                                【ON】ORG <span class="pull-right"><b class="badge bg-red">4</b></span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
         {{--lookwit--}}
         <div class="col-xs-12 col-sm-6 col-md-3">
             <div class="box box-danger box-solid">
@@ -271,59 +318,22 @@
                     <ul class="nav nav-stacked">
                         <li class="">
                             <a target="_blank" href="http://super.ruwei.com/admin">
-                                【local】SUPER <span class="pull-right"><b class="badge bg-green">1</b></span>
+                                【L】SUPER <span class="pull-right"><b class="badge bg-green">1</b></span>
                             </a>
                         </li>
                         <li class="">
                             <a target="_blank" href="http://atom.ruwei.com/admin">
-                                【local】ATOM <span class="pull-right"><b class="badge bg-orange">2</b></span>
+                                【L】ATOM <span class="pull-right"><b class="badge bg-orange">2</b></span>
                             </a>
                         </li>
                         <li class="">
                             <a target="_blank" href="http://doc.ruwei.com/home">
-                                【local】DOC <span class="pull-right"><b class="badge bg-aqua">3</b></span>
+                                【L】DOC <span class="pull-right"><b class="badge bg-aqua">3</b></span>
                             </a>
                         </li>
                         <li class="">
                             <a target="_blank" href="javascript:void(0);">
-                                【local】 <span class="pull-right"><b class="badge bg-red">4</b></span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        {{--K-ORG--}}
-        <div class="col-xs-12 col-sm-6 col-md-3">
-            <div class="box box-danger box-solid">
-                <div class="box-header with-border">
-                    <h3 class="box-title comprehensive-month-title">K-ORG</h3>
-                    <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                        </button>
-                    </div>
-                </div>
-                <div class="box-body">
-                    <ul class="nav nav-stacked">
-                        <li class="">
-                            <a target="_blank" href="http://www.k-org.com/">
-                                【local】首页 <span class="pull-right"><b class="badge bg-green">1</b></span>
-                            </a>
-                        </li>
-                        <li class="">
-                            <a target="_blank" href="http://super.k-org.com/admin">
-                                【local】SUPER <span class="pull-right"><b class="badge bg-orange">2</b></span>
-                            </a>
-                        </li>
-                        <li class="">
-                            <a target="_blank" href="http://www.k-org.cn/">
-                                【ON】首页 <span class="pull-right"><b class="badge bg-aqua">3</b></span>
-                            </a>
-                        </li>
-                        <li class="">
-                            <a target="_blank" href="http://super.k-org.cn/admin">
-                                【ON】super <span class="pull-right"><b class="badge bg-red">4</b></span>
+                                【L】 <span class="pull-right"><b class="badge bg-red">4</b></span>
                             </a>
                         </li>
                     </ul>
