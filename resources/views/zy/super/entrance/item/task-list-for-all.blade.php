@@ -289,7 +289,7 @@
                     },
                     {
                         "className": "text-left",
-                        "width": "120px",
+                        "width": "160px",
                         "title": "电话",
                         "data": "mobile",
                         "orderable": false,
