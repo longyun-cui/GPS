@@ -1,6 +1,7 @@
 <?php
 namespace App\Repositories\ZY;
 
+use App\Models\ZY\ZY_Task;
 use App\Models\ZY\ZY_User;
 use App\Models\ZY\ZY_Item;
 use App\Models\ZY\ZY_Pivot_Item_Relation;
@@ -86,7 +87,7 @@ class ZYSuperRepository {
 
         $return['data'] = $me;
 
-        $view_blade = env('TEMPLATE_ZY_ADMIN').'entrance.my-account.my-profile-info-edit';
+        $view_blade = env('TEMPLATE_ZY_SUPER').'entrance.my-account.my-profile-info-edit';
         return view($view_blade)->with($return);
     }
     // 【基本信息】保存数据
@@ -1162,6 +1163,108 @@ class ZYSuperRepository {
 //        dd($list->toArray());
         return datatable_response($list, $draw, $total);
     }
+
+
+
+
+
+
+
+
+    // 【内容】【全部】返回-列表-视图
+    public function view_task_list_for_all($post_data)
+    {
+        $this->get_me();
+        $me = $this->me;
+
+        $sales = ZY_User::select('id','true_name')->where('user_category',11)->whereIn('user_type',[41,61,88])->get();
+
+        $return['sales'] = $sales;
+        $return['menu_active_of_task_list'] = 'active';
+        $return['menu_active_of_task_list_for_all'] = 'active';
+
+        $view_blade = env('TEMPLATE_ZY_SUPER').'entrance.item.task-list-for-all';
+        return view($view_blade)->with($return);
+    }
+    // 【内容】【全部】返回-列表-数据
+    public function get_task_list_for_all_datatable($post_data)
+    {
+        $this->get_me();
+        $me = $this->me;
+
+        $query = ZY_Task::select('*')
+//            ->withTrashed()
+            ->with('owner','creator');
+//            ->where('item_category',11)
+//            ->where('item_type', '!=',0);
+
+        if(!empty($post_data['name'])) $query->where('name', 'like', "%{$post_data['name']}%");
+        if(!empty($post_data['title'])) $query->where('title', 'like', "%{$post_data['title']}%");
+        if(!empty($post_data['tag'])) $query->where('tag', 'like', "%{$post_data['tag']}%");
+
+        $item_type = isset($post_data['item_type']) ? $post_data['item_type'] : '';
+        if($item_type == "article") $query->where('item_type', 1);
+        else if($item_type == "menu_type") $query->where('item_type', 11);
+        else if($item_type == "time_line") $query->where('item_type', 18);
+        else if($item_type == "debase") $query->where('item_type', 22);
+        else if($item_type == "vote") $query->where('item_type', 29);
+        else if($item_type == "ask") $query->where('item_type', 31);
+
+
+        $item_result = isset($post_data['item_result']) ? $post_data['item_result'] : '';
+        if($item_result == "加微信")
+        {
+            $query->where('is_completed',1);
+            $query->where('item_result',19);
+            $query->orderByDesc('completed_at');
+        }
+        else if($item_result == "有备注")
+        {
+            $query->where('is_completed',1);
+            $query->whereNotNull('remark');
+            $query->orderByDesc('completed_at');
+        }
+
+
+
+
+        $owner_id = isset($post_data['finished']) ? $post_data['owner'] : '';
+        if(!in_array($owner_id,[-1,0])) $query->where('owner_id', $owner_id);
+
+        $is_completed = isset($post_data['finished']) ? $post_data['finished'] : '';
+        if($is_completed == 0) $query->where('is_completed', 0);
+        else if($is_completed == 1) $query->where('is_completed', 1);
+
+        $total = $query->count();
+
+        $draw  = isset($post_data['draw'])  ? $post_data['draw']  : 1;
+        $skip  = isset($post_data['start'])  ? $post_data['start']  : 0;
+        $limit = isset($post_data['length']) ? $post_data['length'] : 20;
+
+        if(isset($post_data['order']))
+        {
+            $columns = $post_data['columns'];
+            $order = $post_data['order'][0];
+            $order_column = $order['column'];
+            $order_dir = $order['dir'];
+
+            $field = $columns[$order_column]["data"];
+            $query->orderBy($field, $order_dir);
+        }
+        else $query->orderBy("id", "desc");
+
+        if($limit == -1) $list = $query->get();
+        else $list = $query->skip($skip)->take($limit)->get();
+
+        foreach ($list as $k => $v)
+        {
+            $list[$k]->custom = json_decode($v->custom,true);
+//            $list[$k]->description = replace_blank($v->description);
+        }
+//        dd($list->toArray());
+        return datatable_response($list, $draw, $total);
+    }
+
 
 
 

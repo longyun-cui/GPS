@@ -228,6 +228,16 @@ class ZYSuperController extends Controller
 
 
 
+    // 【任务】返回-列表-视图（全部任务）
+    public function view_task_list_for_all()
+    {
+        if(request()->isMethod('get')) return $this->repo->view_task_list_for_all(request()->all());
+        else if(request()->isMethod('post')) return $this->repo->get_task_list_for_all_datatable(request()->all());
+    }
+
+
+
+
 
 
 

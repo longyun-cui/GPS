@@ -93,6 +93,9 @@ Route::group(['middleware' => ['zy.super.login']], function () {
     Route::match(['get','post'], '/item/item-list-for-all', $controller.'@view_item_list_for_all');
 
 
+    Route::match(['get','post'], '/item/task-list-for-all', $controller.'@view_task_list_for_all');
+
+
 
 });
 
