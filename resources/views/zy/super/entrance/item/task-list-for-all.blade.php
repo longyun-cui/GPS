@@ -310,7 +310,7 @@
                     {
                         "title": "拥有者",
                         "data": "owner_id",
-                        "className": "text-left",
+                        "className": "",
                         "width": "64px",
                         "orderable": false,
                         render: function(data, type, row, meta) {
@@ -318,20 +318,20 @@
                         }
                     },
                     {
-                        "className": "text-left",
-                        "width": "64px",
                         "title": "发布者",
                         "data": "creator_id",
+                        "className": "",
+                        "width": "64px",
                         "orderable": false,
                         render: function(data, type, row, meta) {
                             return row.creator == null ? '未知' : '<a target="_blank" href="/user/'+row.creator.id+'">'+row.creator.username+'</a>';
                         }
                     },
                     {
-                        "className": "font-12px",
-                        "width": "120px",
                         "title": "创建时间",
                         "data": 'created_at',
+                        "className": "",
+                        "width": "120px",
                         "orderable": true,
                         render: function(data, type, row, meta) {
 //                            return data;
@@ -348,10 +348,10 @@
                         }
                     },
                     {
-                        "className": "font-12px",
-                        "width": "120px",
                         "title": "修改时间",
                         "data": 'updated_at',
+                        "className": "",
+                        "width": "120px",
                         "orderable": true,
                         render: function(data, type, row, meta) {
 //                            return data;
@@ -369,10 +369,10 @@
                     },
 
                     {
-                        "className": "font-12px",
-                        "width": "120px",
                         "title": "完成时间",
                         "data": 'completed_at',
+                        "className": "",
+                        "width": "120px",
                         "orderable": true,
                         render: function(data, type, row, meta) {
 //                            return data;
@@ -389,9 +389,9 @@
                         }
                     },
                     {
-                        "width": "60px",
                         "title": "完成",
                         "data": "is_completed",
+                        "width": "60px",
                         "orderable": false,
                         render: function(data, type, row, meta) {
                             if(data == 0)
@@ -415,9 +415,9 @@
                         }
                     },
                     {
-                        "width": "60px",
                         "title": "状态",
                         "data": "item_status",
+                        "width": "60px",
                         "orderable": false,
                         render: function(data, type, row, meta) {
 //                            return data;
@@ -437,9 +437,9 @@
                         }
                     },
                     {
-                        "width": "120px",
                         "title": "操作",
                         "data": 'id',
+                        "width": "120px",
                         "orderable": false,
                         render: function(data, type, row, meta) {
 
@@ -490,46 +490,6 @@
                     let startIndex = this.api().context[0]._iDisplayStart;//获取本页开始的条数
                     this.api().column(1).nodes().each(function(cell, i) {
                         cell.innerHTML =  startIndex + i + 1;
-                    });
-
-                    ajax_datatable.$('.tooltips').tooltip({placement: 'top', html: true});
-                    $("a.verify").click(function(event){
-                        event.preventDefault();
-                        var node = $(this);
-                        var tr = node.closest('tr');
-                        var nickname = tr.find('span.nickname').text();
-                        var cert_name = tr.find('span.certificate_type_name').text();
-                        var action = node.attr('data-action');
-                        var certificate_id = node.attr('data-id');
-                        var action_name = node.text();
-
-                        var tpl = "{{trans('labels.crc.verify_user_certificate_tpl')}}";
-                        layer.open({
-                            'title': '警告',
-                            content: tpl
-                                .replace('@action_name', action_name)
-                                .replace('@nickname', nickname)
-                                .replace('@certificate_type_name', cert_name),
-                            btn: ['Yes', 'No'],
-                            yes: function(index) {
-                                layer.close(index);
-                                $.post(
-                                    '/admin/medsci/certificate/user/verify',
-                                    {
-                                        action: action,
-                                        id: certificate_id,
-                                        _token: '{{csrf_token()}}'
-                                    },
-                                    function(json){
-                                        if(json['response_code'] == 'success') {
-                                            layer.msg('操作成功!', {time: 3500});
-                                            ajax_datatable.ajax.reload();
-                                        } else {
-                                            layer.alert(json['response_data'], {time: 10000});
-                                        }
-                                    }, 'json');
-                            }
-                        });
                     });
                 },
                 "language": { url: '/common/dataTableI18n' },
