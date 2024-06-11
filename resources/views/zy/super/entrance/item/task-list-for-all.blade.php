@@ -230,46 +230,46 @@
                 "orderCellsTop": true,
                 "columns": [
                     {
-                        "width": "32px",
                         "title": "选择",
                         "data": "id",
+                        "width": "32px",
                         'orderable': false,
                         render: function(data, type, row, meta) {
                             return '<label><input type="checkbox" name="bulk-id" class="minimal" value="'+data+'"></label>';
                         }
                     },
                     {
-                        "width": "32px",
                         "title": "序号",
                         "data": null,
+                        "width": "32px",
                         "targets": 0,
                         'orderable': false
                     },
                     {
-                        "className": "font-12px",
-                        "width": "32px",
                         "title": "ID",
                         "data": "id",
+                        "className": "font-12px",
+                        "width": "40px",
                         "orderable": true,
                         render: function(data, type, row, meta) {
                             return data;
                         }
                     },
                     {
-                        "className": "text-left",
-                        "width": "64px",
                         "title": "联系人",
                         "data": "name",
+                        "className": "text-left",
+                        "width": "64px",
                         "orderable": false,
                         render: function(data, type, row, meta) {
                             return data;
                         }
                     },
                     {
-                        "className": "text-left",
-                        "width": "",
                         "title": "公司",
                         "data": "company",
+                        "className": "text-left",
+                        "width": "120px",
                         "orderable": false,
                         render: function(data, type, row, meta) {
                             return data;
@@ -288,30 +288,30 @@
                         }
                     },
                     {
-                        "className": "text-left",
-                        "width": "160px",
                         "title": "电话",
                         "data": "mobile",
+                        "className": "text-left",
+                        "width": "120px",
                         "orderable": false,
                         render: function(data, type, row, meta) {
                             return data;
                         }
                     },
                     {
-                        "className": "text-left",
-                        "width": "",
                         "title": '备注',
                         "data": "remark",
+                        "className": "text-left",
+                        "width": "",
                         "orderable": false,
                         render: function(data, type, row, meta) {
                             return data;
                         }
                     },
                     {
-                        "className": "text-left",
-                        "width": "64px",
                         "title": "拥有者",
                         "data": "owner_id",
+                        "className": "text-left",
+                        "width": "64px",
                         "orderable": false,
                         render: function(data, type, row, meta) {
                             return row.owner == null ? '未知' : '<a target="_blank" href="/user/'+row.owner.id+'">'+row.owner.username+'</a>';
@@ -437,7 +437,7 @@
                         }
                     },
                     {
-                        "width": "144px",
+                        "width": "120px",
                         "title": "操作",
                         "data": 'id',
                         "orderable": false,
