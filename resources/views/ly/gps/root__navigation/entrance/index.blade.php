@@ -224,7 +224,7 @@
         <div class="col-xs-12 col-sm-6 col-md-3">
             <div class="box box-primary box-solid">
                 <div class="box-header with-border">
-                    <h3 class="box-title comprehensive-month-title">K-ORG</h3>
+                    <h3 class="box-title comprehensive-month-title">K-ORG（本地）</h3>
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                         </button>
@@ -247,6 +247,22 @@
                                 【l】ORG <span class="pull-right"><b class="badge bg-orange">2</b></span>
                             </a>
                         </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        {{--K-ORG--}}
+        <div class="col-xs-12 col-sm-6 col-md-3">
+            <div class="box box-primary box-solid">
+                <div class="box-header with-border">
+                    <h3 class="box-title comprehensive-month-title">K-ORG（线上）</h3>
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <ul class="nav nav-stacked">
                         <li class="">
                             <a target="_blank" href="http://www.k-org.cn/">
                                 【ON】首页 <span class="pull-right"><b class="badge bg-aqua">3</b></span>
@@ -266,6 +282,7 @@
                 </div>
             </div>
         </div>
+
 
         {{--lookwit--}}
         <div class="col-xs-12 col-sm-6 col-md-3">
@@ -303,7 +320,6 @@
                 </div>
             </div>
         </div>
-
         {{--ruwei--}}
         <div class="col-xs-12 col-sm-6 col-md-3">
             <div class="box box-danger box-solid">
@@ -341,7 +357,253 @@
             </div>
         </div>
 
-        {{--微信开发--}}
+    </div>
+
+
+    {{--导航--}}
+    <div class="row">
+
+        {{--DK 董凯--}}
+        <div class="col-xs-12 col-sm-6 col-md-3">
+            <div class="box box-success box-solid">
+                <div class="box-header with-border">
+                    <h3 class="box-title comprehensive-month-title">DK 董凯（本地）</h3>
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <ul class="nav nav-stacked">
+                        <li class="">
+                            <a target="_blank" href="http://super.local-dongkai.com/user/staff-list-for-all">
+                                【l】Super.员工列表 <span class="pull-right"><b class="badge bg-green">1</b></span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a target="_blank" href="http://admin.local-dongkai.com/item/order-list-for-all">
+                                【l】Admin.工单列表 <span class="pull-right"><b class="badge bg-orange">2</b></span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a target="_blank" href="http://client.local-dongkai.com/item/delivery-list">
+                                【l】Client.交付列表 <span class="pull-right"><b class="badge bg-aqua">3</b></span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a target="_blank" href="http://finance.local-dongkai.com/item/daily-list">
+                                【l】Finance.日报列表 <span class="pull-right"><b class="badge bg-red">4</b></span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        {{--DK 董凯--}}
+        <div class="col-xs-12 col-sm-6 col-md-3">
+            <div class="box box-success box-solid">
+                <div class="box-header with-border">
+                    <h3 class="box-title comprehensive-month-title">DK 董凯（线上）</h3>
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <ul class="nav nav-stacked">
+                        <li class="">
+                            <a target="_blank" href="http://super.feiniji.top/user/staff-list-for-all">
+                                【ON】Super.员工列表 <span class="pull-right"><b class="badge bg-green">1</b></span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a target="_blank" href="http://admin.feiniji.top/item/order-list-for-all">
+                                【ON】Admin.工单列表 <span class="pull-right"><b class="badge bg-orange">2</b></span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a target="_blank" href="http://client.feiniji.top/item/delivery-list">
+                                【ON】Client.交付列表 <span class="pull-right"><b class="badge bg-aqua">3</b></span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a target="_blank" href="http://finance.feiniji.top/item/daily-list">
+                                【ON】Finance.日报列表 <span class="pull-right"><b class="badge bg-red">4</b></span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+        {{--豫好物流--}}
+        <div class="col-xs-12 col-sm-6 col-md-3">
+            <div class="box box-danger box-solid">
+                <div class="box-header with-border">
+                    <h3 class="box-title comprehensive-month-title">豫好物流（本地）</h3>
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <ul class="nav nav-stacked">
+                        <li class="">
+                            <a target="_blank" href="http://super.local-yuhao.com/user/user-list-for-all">
+                                【local】Super.员工列表 <span class="pull-right"><b class="badge bg-orange">2</b></span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a target="_blank" href="http://admin.local-yuhao.com/item/order-list-for-all">
+                                【local】订单列表 <span class="pull-right"><b class="badge bg-green">1</b></span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        {{--豫好物流--}}
+        <div class="col-xs-12 col-sm-6 col-md-3">
+            <div class="box box-danger box-solid">
+                <div class="box-header with-border">
+                    <h3 class="box-title comprehensive-month-title">豫好物流（线上）</h3>
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <ul class="nav nav-stacked">
+                        <li class="">
+                            <a target="_blank" href="http://super.yuhaowuliu.cn/item/record-list-for-all">
+                                【ON】Super.记录列表 <span class="pull-right"><b class="badge bg-aqua">3</b></span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a target="_blank" href="http://admin.yuhaowuliu.cn/item/order-list-for-all">
+                                【ON】订单列表 <span class="pull-right"><b class="badge bg-red">4</b></span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    {{--导航--}}
+    <div class="row">
+
+        {{--ZY兆益信息--}}
+        <div class="col-xs-12 col-sm-6 col-md-3">
+            <div class="box box-warning box-solid">
+                <div class="box-header with-border">
+                    <h3 class="box-title comprehensive-month-title">ZY兆益信息（本地）</h3>
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <ul class="nav nav-stacked">
+                        <li class="">
+                            <a target="_blank" href="http://super.zy.gps.com/">
+                                【local】Super <span class="pull-right"><b class="badge bg-green">1</b></span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a target="_blank" href="http://admin.zy.gps.com/">
+                                【local】Admin <span class="pull-right"><b class="badge bg-orange">2</b></span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a target="_blank" href="http://staff.zy.gps.com/">
+                                【local】Staff  <span class="pull-right"><b class="badge bg-aqua">3</b></span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        {{--ZY兆益信息--}}
+        <div class="col-xs-12 col-sm-6 col-md-3">
+            <div class="box box-warning box-solid">
+                <div class="box-header with-border">
+                    <h3 class="box-title comprehensive-month-title">ZY兆益信息（线上）</h3>
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <ul class="nav nav-stacked">
+                        <li class="">
+                            <a target="_blank" href="http://super.zy.chaos01.cn/">
+                                【ON】Super <span class="pull-right"><b class="badge bg-red">4</b></span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a target="_blank" href="http://admin.zy.chaos01.cn/">
+                                【ON】Admin <span class="pull-right"><b class="badge bg-purple">5</b></span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a target="_blank" href="http://staff.zy.chaos01.cn/">
+                                【ON】Staff <span class="pull-right"><b class="badge bg-maroon">6</b></span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a target="_blank" href="https://lxcrm.weiwenjia.com/">
+                                励销云 - 工作台 <span class="pull-right"><b class="badge bg-fuchsia">7</b></span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+        {{--GH 桂花--}}
+        <div class="col-xs-12 col-sm-6 col-md-3">
+            <div class="box box-danger box-solid">
+                <div class="box-header with-border">
+                    <h3 class="box-title comprehensive-month-title">GH 桂花</h3>
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <ul class="nav nav-stacked">
+                        <li class="">
+                            <a target="_blank" href="http://gh.gps.com/">
+                                【l】首页 <span class="pull-right"><b class="badge bg-green">1</b></span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a target="_blank" href="http://gh.gps.com/admin/item/product-list-for-all">
+                                【l】Admin.产品列表 <span class="pull-right"><b class="badge bg-orange">2</b></span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a target="_blank" href="http://gh.chaos01.cn/">
+                                【ON】首页 <span class="pull-right"><b class="badge bg-aqua">3</b></span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a target="_blank" href="http://gh.chaos01.cn/admin/item/product-list-for-all">
+                                【ON】Admin.产品列表 <span class="pull-right"><b class="badge bg-red">4</b></span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+        {{--tools--}}
         <div class="col-xs-12 col-sm-6 col-md-3">
             <div class="box box-danger box-solid">
                 <div class="box-header with-border">
@@ -394,184 +656,6 @@
     {{--导航--}}
     <div class="row">
 
-        {{--GH 桂花--}}
-        <div class="col-xs-12 col-sm-6 col-md-3">
-            <div class="box box-warning box-solid">
-                <div class="box-header with-border">
-                    <h3 class="box-title comprehensive-month-title">GH 桂花</h3>
-                    <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                        </button>
-                    </div>
-                </div>
-                <div class="box-body">
-                    <ul class="nav nav-stacked">
-                        <li class="">
-                            <a target="_blank" href="http://gh.gps.com/">
-                                【l】首页 <span class="pull-right"><b class="badge bg-green">1</b></span>
-                            </a>
-                        </li>
-                        <li class="">
-                            <a target="_blank" href="http://gh.gps.com/admin/item/product-list-for-all">
-                                【l】Admin.产品列表 <span class="pull-right"><b class="badge bg-orange">2</b></span>
-                            </a>
-                        </li>
-                        <li class="">
-                            <a target="_blank" href="http://gh.chaos01.cn/">
-                                【ON】首页 <span class="pull-right"><b class="badge bg-aqua">3</b></span>
-                            </a>
-                        </li>
-                        <li class="">
-                            <a target="_blank" href="http://gh.chaos01.cn/admin/item/product-list-for-all">
-                                【ON】Admin.产品列表 <span class="pull-right"><b class="badge bg-red">4</b></span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        {{--DK 董凯--}}
-        <div class="col-xs-12 col-sm-6 col-md-3">
-            <div class="box box-warning box-solid">
-                <div class="box-header with-border">
-                    <h3 class="box-title comprehensive-month-title">DK 董凯</h3>
-                    <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                        </button>
-                    </div>
-                </div>
-                <div class="box-body">
-                    <ul class="nav nav-stacked">
-                        <li class="">
-                            <a target="_blank" href="http://super.local-dongkai.com/user/staff-list-for-all">
-                                【l】Super.员工列表 <span class="pull-right"><b class="badge bg-green">1</b></span>
-                            </a>
-                        </li>
-                        <li class="">
-                            <a target="_blank" href="http://admin.local-dongkai.com/item/order-list-for-all">
-                                【l】Admin.工单列表 <span class="pull-right"><b class="badge bg-orange">2</b></span>
-                            </a>
-                        </li>
-                        <li class="">
-                            <a target="_blank" href="http://client.local-dongkai.com/item/order-list-for-all">
-                                【l】Client.工单列表 <span class="pull-right"><b class="badge bg-orange">2</b></span>
-                            </a>
-                        </li>
-                        <li class="">
-                            <a target="_blank" href="http://super.dk.chaos01.cn/user/staff-list-for-all">
-                                【ON】Super.员工列表 <span class="pull-right"><b class="badge bg-aqua">3</b></span>
-                            </a>
-                        </li>
-                        <li class="">
-                            <a target="_blank" href="http://admin.dk.chaos01.cn/item/order-list-for-all">
-                                【ON】Admin.工单列表 <span class="pull-right"><b class="badge bg-red">4</b></span>
-                            </a>
-                        </li>
-                        <li class="">
-                            <a target="_blank" href="http://client.dk.chaos01.cn/item/order-list-for-all">
-                                【ON】Client.工单列表 <span class="pull-right"><b class="badge bg-red">4</b></span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        {{--豫好物流--}}
-        <div class="col-xs-12 col-sm-6 col-md-3">
-            <div class="box box-warning box-solid">
-                <div class="box-header with-border">
-                    <h3 class="box-title comprehensive-month-title">豫好物流</h3>
-                    <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                        </button>
-                    </div>
-                </div>
-                <div class="box-body">
-                    <ul class="nav nav-stacked">
-                        <li class="">
-                            <a target="_blank" href="http://super.local-yuhao.com/user/user-list-for-all">
-                                【local】Super.员工列表 <span class="pull-right"><b class="badge bg-orange">2</b></span>
-                            </a>
-                        </li>
-                        <li class="">
-                            <a target="_blank" href="http://admin.local-yuhao.com/item/order-list-for-all">
-                                【local】订单列表 <span class="pull-right"><b class="badge bg-green">1</b></span>
-                            </a>
-                        </li>
-                        <li class="">
-                            <a target="_blank" href="http://super.yuhaowuliu.cn/item/record-list-for-all">
-                                【ON】Super.记录列表 <span class="pull-right"><b class="badge bg-aqua">3</b></span>
-                            </a>
-                        </li>
-                        <li class="">
-                            <a target="_blank" href="http://admin.yuhaowuliu.cn/item/order-list-for-all">
-                                【ON】订单列表 <span class="pull-right"><b class="badge bg-red">4</b></span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        {{--ZY兆益信息--}}
-        <div class="col-xs-12 col-sm-6 col-md-3">
-            <div class="box box-warning box-solid">
-                <div class="box-header with-border">
-                    <h3 class="box-title comprehensive-month-title">ZY兆益信息</h3>
-                    <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                        </button>
-                    </div>
-                </div>
-                <div class="box-body">
-                    <ul class="nav nav-stacked">
-                        <li class="">
-                            <a target="_blank" href="http://super.zy.gps.com/">
-                                【local】Super <span class="pull-right"><b class="badge bg-green">1</b></span>
-                            </a>
-                        </li>
-                        <li class="">
-                            <a target="_blank" href="http://admin.zy.gps.com/">
-                                【local】Admin <span class="pull-right"><b class="badge bg-orange">2</b></span>
-                            </a>
-                        </li>
-                        <li class="">
-                            <a target="_blank" href="http://staff.zy.gps.com/">
-                                【local】Staff  <span class="pull-right"><b class="badge bg-aqua">3</b></span>
-                            </a>
-                        </li>
-                        <li class="">
-                            <a target="_blank" href="http://super.zy.chaos01.cn/">
-                                【ON】Super <span class="pull-right"><b class="badge bg-red">4</b></span>
-                            </a>
-                        </li>
-                        <li class="">
-                            <a target="_blank" href="http://admin.zy.chaos01.cn/">
-                                【ON】Admin <span class="pull-right"><b class="badge bg-purple">5</b></span>
-                            </a>
-                        </li>
-                        <li class="">
-                            <a target="_blank" href="http://staff.zy.chaos01.cn/">
-                                【ON】Staff <span class="pull-right"><b class="badge bg-maroon">6</b></span>
-                            </a>
-                        </li>
-                        <li class="">
-                            <a target="_blank" href="https://lxcrm.weiwenjia.com/">
-                                励销云 - 工作台 <span class="pull-right"><b class="badge bg-fuchsia">7</b></span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-
-    {{--导航--}}
-    <div class="row">
 
         {{--RZK 瑞足康--}}
         <div class="col-xs-12 col-sm-6 col-md-3">
@@ -615,141 +699,6 @@
             </div>
         </div>
 
-        {{--DK 董凯--}}
-        <div class="col-xs-12 col-sm-6 col-md-3">
-            <div class="box box-success box-solid">
-                <div class="box-header with-border">
-                    <h3 class="box-title comprehensive-month-title">DK 董凯</h3>
-                    <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                        </button>
-                    </div>
-                </div>
-                <div class="box-body">
-                    <ul class="nav nav-stacked">
-                        <li class="">
-                            <a target="_blank" href="http://super.local-dongkai.com/user/staff-list-for-all">
-                                【l】Super.员工列表 <span class="pull-right"><b class="badge bg-green">1</b></span>
-                            </a>
-                        </li>
-                        <li class="">
-                            <a target="_blank" href="http://admin.local-dongkai.com/item/order-list-for-all">
-                                【l】Admin.工单列表 <span class="pull-right"><b class="badge bg-orange">2</b></span>
-                            </a>
-                        </li>
-                        <li class="">
-                            <a target="_blank" href="http://client.local-dongkai.com/item/order-list-for-all">
-                                【l】Client.工单列表 <span class="pull-right"><b class="badge bg-orange">2</b></span>
-                            </a>
-                        </li>
-                        <li class="">
-                            <a target="_blank" href="http://super.dk.chaos01.cn/user/staff-list-for-all">
-                                【ON】Super.员工列表 <span class="pull-right"><b class="badge bg-aqua">3</b></span>
-                            </a>
-                        </li>
-                        <li class="">
-                            <a target="_blank" href="http://admin.dk.chaos01.cn/item/order-list-for-all">
-                                【ON】Admin.工单列表 <span class="pull-right"><b class="badge bg-red">4</b></span>
-                            </a>
-                        </li>
-                        <li class="">
-                            <a target="_blank" href="http://client.dk.chaos01.cn/item/order-list-for-all">
-                                【ON】Client.工单列表 <span class="pull-right"><b class="badge bg-red">4</b></span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        {{--豫好物流--}}
-        <div class="col-xs-12 col-sm-6 col-md-3">
-            <div class="box box-success box-solid">
-                <div class="box-header with-border">
-                    <h3 class="box-title comprehensive-month-title">豫好物流</h3>
-                    <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                        </button>
-                    </div>
-                </div>
-                <div class="box-body">
-                    <ul class="nav nav-stacked">
-                        <li class="">
-                            <a target="_blank" href="http://super.local-yuhao.com/user/user-list-for-all">
-                                【local】Super.员工列表 <span class="pull-right"><b class="badge bg-orange">2</b></span>
-                            </a>
-                        </li>
-                        <li class="">
-                            <a target="_blank" href="http://admin.local-yuhao.com/item/order-list-for-all">
-                                【local】订单列表 <span class="pull-right"><b class="badge bg-green">1</b></span>
-                            </a>
-                        </li>
-                        <li class="">
-                            <a target="_blank" href="http://super.yuhaowuliu.cn/item/record-list-for-all">
-                                【ON】Super.记录列表 <span class="pull-right"><b class="badge bg-aqua">3</b></span>
-                            </a>
-                        </li>
-                        <li class="">
-                            <a target="_blank" href="http://admin.yuhaowuliu.cn/item/order-list-for-all">
-                                【ON】订单列表 <span class="pull-right"><b class="badge bg-red">4</b></span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        {{--ZY兆益信息--}}
-        <div class="col-xs-12 col-sm-6 col-md-3">
-            <div class="box box-success box-solid">
-                <div class="box-header with-border">
-                    <h3 class="box-title comprehensive-month-title">ZY兆益信息</h3>
-                    <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                        </button>
-                    </div>
-                </div>
-                <div class="box-body">
-                    <ul class="nav nav-stacked">
-                        <li class="">
-                            <a target="_blank" href="http://super.zy.gps.com/">
-                                【local】Super <span class="pull-right"><b class="badge bg-green">1</b></span>
-                            </a>
-                        </li>
-                        <li class="">
-                            <a target="_blank" href="http://admin.zy.gps.com/">
-                                【local】Admin <span class="pull-right"><b class="badge bg-orange">2</b></span>
-                            </a>
-                        </li>
-                        <li class="">
-                            <a target="_blank" href="http://staff.zy.gps.com/">
-                                【local】Staff  <span class="pull-right"><b class="badge bg-aqua">3</b></span>
-                            </a>
-                        </li>
-                        <li class="">
-                            <a target="_blank" href="http://super.zy.chaos01.cn/">
-                                【ON】Super <span class="pull-right"><b class="badge bg-red">4</b></span>
-                            </a>
-                        </li>
-                        <li class="">
-                            <a target="_blank" href="http://admin.zy.chaos01.cn/">
-                                【ON】Admin <span class="pull-right"><b class="badge bg-purple">5</b></span>
-                            </a>
-                        </li>
-                        <li class="">
-                            <a target="_blank" href="http://staff.zy.chaos01.cn/">
-                                【ON】Staff <span class="pull-right"><b class="badge bg-maroon">6</b></span>
-                            </a>
-                        </li>
-                        <li class="">
-                            <a target="_blank" href="https://lxcrm.weiwenjia.com/">
-                                励销云 - 工作台 <span class="pull-right"><b class="badge bg-fuchsia">7</b></span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
 
     </div>
 
