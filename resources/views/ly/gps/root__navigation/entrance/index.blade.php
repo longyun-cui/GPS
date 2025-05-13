@@ -377,22 +377,37 @@
                     <ul class="nav nav-stacked">
                         <li class="">
                             <a target="_blank" href="http://super.local-dongkai.com/user/staff-list-for-all">
-                                【l】Super.员工列表 <span class="pull-right"><b class="badge bg-green">1</b></span>
+                                【l】Super.员工列表 <span class="pull-right"><b class="badge bg-red">1</b></span>
                             </a>
                         </li>
                         <li class="">
-                            <a target="_blank" href="http://admin.local-dongkai.com/item/order-list-for-all">
-                                【l】Admin.工单列表 <span class="pull-right"><b class="badge bg-orange">2</b></span>
+                            <a target="_blank" href="http://cc.local-dongkai.com/">
+                                【l】CC.调度系统 <span class="pull-right"><b class="badge bg-purple">2</b></span>
                             </a>
                         </li>
                         <li class="">
-                            <a target="_blank" href="http://client.local-dongkai.com/item/delivery-list">
-                                【l】Client.交付列表 <span class="pull-right"><b class="badge bg-aqua">3</b></span>
+                            <a target="_blank" href="http://admin.local-dongkai.com">
+                                【l】Admin.工单列表 <span class="pull-right"><b class="badge bg-purple">2</b></span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a target="_blank" href="http://client.local-dongkai.com">
+                                【l】Client.交付列表 <span class="pull-right"><b class="badge bg-blue">3</b></span>
                             </a>
                         </li>
                         <li class="">
                             <a target="_blank" href="http://finance.local-dongkai.com/item/daily-list">
-                                【l】Finance.日报列表 <span class="pull-right"><b class="badge bg-red">4</b></span>
+                                【l】Finance.日报列表 <span class="pull-right"><b class="badge bg-green">4</b></span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a target="_blank" href="http://admin2.local-dongkai.com/item/clue-list">
+                                【l】Choice.线索列表 <span class="pull-right"><b class="badge bg-purple">2</b></span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a target="_blank" href="http://customer.local-dongkai.com/item/clue-list">
+                                【l】Customer.线索列表 <span class="pull-right"><b class="badge bg-aqua">5</b></span>
                             </a>
                         </li>
                     </ul>
@@ -412,23 +427,38 @@
                 <div class="box-body">
                     <ul class="nav nav-stacked">
                         <li class="">
-                            <a target="_blank" href="http://super.feiniji.top/user/staff-list-for-all">
-                                【ON】Super.员工列表 <span class="pull-right"><b class="badge bg-green">1</b></span>
+                            <a target="_blank" href="http://super.feiniji.xyz/user/staff-list-for-all">
+                                【ON】Super.员工列表 <span class="pull-right"><b class="badge bg-red">1</b></span>
                             </a>
                         </li>
                         <li class="">
-                            <a target="_blank" href="http://admin.feiniji.top/item/order-list-for-all">
-                                【ON】Admin.工单列表 <span class="pull-right"><b class="badge bg-orange">2</b></span>
+                            <a target="_blank" href="http://cc.feiniji.xyz/">
+                                【ON】CC.调度系统 <span class="pull-right"><b class="badge bg-purple">2</b></span>
                             </a>
                         </li>
                         <li class="">
-                            <a target="_blank" href="http://client.feiniji.top/item/delivery-list">
-                                【ON】Client.交付列表 <span class="pull-right"><b class="badge bg-aqua">3</b></span>
+                            <a target="_blank" href="http://admin.feiniji.xyz">
+                                【ON】Admin.工单列表 <span class="pull-right"><b class="badge bg-purple">2</b></span>
                             </a>
                         </li>
                         <li class="">
-                            <a target="_blank" href="http://finance.feiniji.top/item/daily-list">
-                                【ON】Finance.日报列表 <span class="pull-right"><b class="badge bg-red">4</b></span>
+                            <a target="_blank" href="http://client.feiniji.xyz">
+                                【ON】Client.交付列表 <span class="pull-right"><b class="badge bg-blue">3</b></span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a target="_blank" href="http://finance.feiniji.xyz/item/daily-list">
+                                【ON】Finance.日报列表 <span class="pull-right"><b class="badge bg-green">4</b></span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a target="_blank" href="http://admin2.feiniji.xyz/item/clue-list">
+                                【ON】Choice.线索列表 <span class="pull-right"><b class="badge bg-purple">2</b></span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a target="_blank" href="http://customer.feiniji.xyz/item/clue-list">
+                                【ON】Customer.线索列表 <span class="pull-right"><b class="badge bg-aqua">5</b></span>
                             </a>
                         </li>
                     </ul>

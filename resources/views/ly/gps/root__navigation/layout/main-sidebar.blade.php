@@ -72,6 +72,23 @@
             </li>
 
 
+            {{--AdminLTE3--}}
+            <li class="header">AdminLTE-3.2.0</li>
+
+            <li class="treeview {{ $menu_active_of__for_ or '' }}">
+                <a target="_blank" href="{{ url('/AdminLTE-3.2.0/index2.html') }}">
+                    <i class="fa fa-user text-blue"></i>
+                    <span>index2</span>
+                </a>
+            </li>
+            <li class="treeview {{ $menu_active_of__for_ or '' }}">
+                <a target="_blank" href="{{ url('/AdminLTE-3.2.0/pages/UI/icons.html') }}">
+                    <i class="fa fa-user text-blue"></i>
+                    <span>Icons</span>
+                </a>
+            </li>
+
+
 
 
 
