@@ -85,12 +85,12 @@
                 <div class="box-body">
                     <ul class="nav nav-stacked">
                         <li class="">
-                            <a target="_blank" href="https://ecs.console.aliyun.com/#/server/i-bp10lxdukyo9gnku1t5a/detail?regionId=cn-hangzhou">
+                            <a target="_blank" href="https://ecs.console.aliyun.com/server/i-bp146ieahkd8l6m2pmv3/detail?regionId=cn-hangzhou">
                                 【ECS】Hangzhou <span class="pull-right"><b class="badge bg-green">1</b></span>
                             </a>
                         </li>
                         <li class="">
-                            <a target="_blank" href="https://ecs.console.aliyun.com/#/server/i-j6cgq48vcu8aj97enzhz/detail?regionId=cn-hongkong">
+                            <a target="_blank" href="https://ecs.console.aliyun.com/server/i-j6cgq48vcu8aj97enzhz/detail?regionId=cn-hongkong">
                                 【ECS】HK <span class="pull-right"><b class="badge bg-aqua">2</b></span>
                             </a>
                         </li>
@@ -376,7 +376,7 @@
                 <div class="box-body">
                     <ul class="nav nav-stacked">
                         <li class="">
-                            <a target="_blank" href="http://super.local-dongkai.com/user/staff-list-for-all">
+                            <a target="_blank" href="http://super.local-dongkai.com">
                                 【l】Super.员工列表 <span class="pull-right"><b class="badge bg-red">1</b></span>
                             </a>
                         </li>
@@ -427,7 +427,7 @@
                 <div class="box-body">
                     <ul class="nav nav-stacked">
                         <li class="">
-                            <a target="_blank" href="http://super.feiniji.xyz/user/staff-list-for-all">
+                            <a target="_blank" href="http://super.feiniji.xyz">
                                 【ON】Super.员工列表 <span class="pull-right"><b class="badge bg-red">1</b></span>
                             </a>
                         </li>
